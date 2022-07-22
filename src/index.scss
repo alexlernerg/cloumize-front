@@ -1,0 +1,11 @@
+@import './theme/colors.scss';
+@import './theme/buttons.scss';
+@import './theme/typography.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+body { 
+    margin: 0; 
+    font-family: 'Rubik', sans-serif;
+    color: var(--main-text);
+}
