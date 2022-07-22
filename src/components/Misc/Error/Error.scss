@@ -1,5 +1,7 @@
-// .ErrorContainer {
-//     & button {
-//         @include button();
-//     }
-// }
+@use "../../../theme/buttons.scss";
+
+.ErrorContainer {
+    & button {
+        @include buttons.button-primary();
+    }
+}

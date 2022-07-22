@@ -5,6 +5,10 @@
   color: var(--main-primary);
   width: fit-content;
   cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
   &:hover {
     background-color: var(--main-primary);
     color: var(--main-white);
@@ -24,3 +28,4 @@
   @include button();
   padding: 7.5px 16px;
 }
+
