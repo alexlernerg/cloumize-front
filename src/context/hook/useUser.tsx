@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { userContext } from "../userContext";
+import { UserContext } from "../userContext";
 
 export function useUser() {
-  return useContext(userContext);
+  return useContext(UserContext);
 }

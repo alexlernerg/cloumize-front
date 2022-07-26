@@ -1,33 +1,46 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
+import { getUser } from "../services/UserService";
+import { getAccessToken } from "../store/AccessTokenStore";
 
 interface IContext {
-  children: any
+  children: any;
 }
 
-interface IUser {
-  user: any;
-  setUser: React.Dispatch<React.SetStateAction<any>>;
+const defaultUser = {
+  name: '',
+  email: ''
 }
 
-/**
- * The initial context values.
- */
-export const userContext = createContext<IUser>({
-  user: {},
-  setUser: async () => Promise,
+
+export const UserContext = createContext<any>({
+  currentUser: defaultUser,
+  getCurrentUser: async () => Promise,
 });
 
-export const UserProvider = ({ children }: IContext)=> {
-  const [user, setUser] = useState({});
+export const UserProvider = ({ children }: IContext): any => {
+  const [currentUser, setCurrentUser] = useState<any>();
+  
+  const getCurrentUser = (): Promise<React.SetStateAction<any>> => {
+    return getUser()
+    .then((response: any) => {
+      setCurrentUser(response.user);
+    })
+    .catch((error: any)=>{
+      console.error('Unable to get user data', error)
+    });
+  };
+  
+  useEffect(() => {
+    if (getAccessToken()) {
+      getCurrentUser();
+    }
+  }, []);
 
-  const values = {
-    user, 
-    setUser
+  const values: any = {
+    currentUser,
+    setCurrentUser,
+    getCurrentUser,
   };
 
-  return (
-    <userContext.Provider value={values}>
-      {children}
-    </userContext.Provider>
-  );
+  return <UserContext.Provider value={values}>{children}</UserContext.Provider>;
 };
