@@ -1,11 +1,12 @@
+const EMAIL_PATTERN =
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
 export const validators: any = {
   name: (value: string) => {
     let message;
 
     if (!value) {
       message = 'Name is required';
-    } else if (Number(value) <= 0) {
-      message = 'Name must be greater than 0';
     }
 
     return message;
@@ -15,8 +16,8 @@ export const validators: any = {
 
     if (!value) {
       message = 'Email is required';
-    } else if (value && value.length !== 42) {
-      message = 'Email length must have 42 characters';
+    } else if (!EMAIL_PATTERN.test(value)) {
+      message = 'Email is invalid';
     }
 
     return message;
@@ -26,8 +27,8 @@ export const validators: any = {
 
     if (!value) {
       message = 'Password is required';
-    } else if (value && value.length !== 42) {
-      message = 'Password length must have 42 characters';
+    } else if (value && value.length < 8) {
+      message = 'Password length must have 8 characters';
     }
 
     return message;
