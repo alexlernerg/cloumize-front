@@ -1,7 +1,32 @@
 @use "../../../theme/buttons.scss";
 
 .ErrorContainer {
-    & button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    &__image  {
+        width: 300px;
+    }
+    &__title {
+        margin: 40px 0 0;
+    }
+    &__subtitle {
+        color: var(--primary-40);
+        margin: 5px 0 40px;
+    }
+    &__button {
         @include buttons.button-primary();
     }
 }
+
+@media (min-width: 1280px) {
+    .ErrorContainer {
+        &__image {
+            width: 550px;
+        }
+    }
+}
+
+
