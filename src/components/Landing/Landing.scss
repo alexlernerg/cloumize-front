@@ -1,0 +1,7 @@
+@use '../../theme/buttons.scss';
+
+.LandingContainer {
+    &__authBtn {
+        @include buttons.button-primary()
+    }
+}

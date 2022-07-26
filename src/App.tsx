@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Landing from './Pages/Landing/Landing';
+import Landing from './Pages/Landing/LandingPage';
 import Auth from './Pages/AuthPage/AuthPage';
 import Error from './Pages/ErrorPage/ErrorPage';
 import SavingsFinder from './components/Profile/SavingsFinder/SavingsFinder';
@@ -17,7 +17,7 @@ export default function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/login' element={<Auth />} />
+        <Route path='/signin' element={<Auth />} />
         <Route path='/signup' element={<Auth />} />
         <Route path='/user' element={<Dashboard />} />
         <Route path='/user/savingsFinder' element={<SavingsFinder />} />
