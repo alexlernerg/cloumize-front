@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from '../../Misc/Navbar/Navbar';
+import './SavingsPlans.scss';
 
 const SavingsPlans = () => {
   return <div className='SavingsPlansContainer'>
-    SavingsPlans
+    <Navbar/>
+    <div>SavingsPlans</div>
   </div>;
 };
 

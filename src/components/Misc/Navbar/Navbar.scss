@@ -1,7 +1,7 @@
 .NavbarContainer {
     background-color: var(--main-primary);
-    height: 100vh;
-    min-width: 250px;
+    // height: 100vh;
+    width: 250px;
     padding: 33.5px 16px 87.5px;
     display: flex;
     flex-direction: column;
@@ -16,24 +16,86 @@
             align-items: center;
         }
         &-hr {
-            width: 206px;
+            width: 240px;
             margin-top: 30px;
             margin-bottom: 80px;
-            border: 0.5px solid var(--primary-40)
-        }
-        &-list {
-            list-style: none;
-            padding: 0;
-            & li {
-                background-color: red;
-                & a {
-                    text-decoration: none;
-                    color: var(--main-white);
-                }
-            }
+            border: 0.5px solid var(--primary-40);
         }
     }
     &__user {
         width: 100%;
+        &-avatar {
+            width: fit-content;
+            border: 2px solid var(--avatar);
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & img {
+                border-radius: 100%;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        &-info {
+            display: flex;
+            align-items: center;
+            margin-top: 28px;
+        }
+        &-name {
+            & p:first-child {
+                font-size: 14px;
+                font-weight: 400;
+                color: var(--main-white);
+            }
+            & p:last-child {
+                font-size: 10px;
+                font-weight: 400;
+                color: var(--primary-40);
+            }
+        }
+        &-settings {
+            color: var(--main-white);
+            font-weight: 500;
+            margin-left: 5px;
+        }
+        &-settingsImg {
+            margin: 0px 0px 20px 20px;
+        }
+        &-hr {
+            width: 240px;
+            border: 0.5px solid var(--primary-40);
+        }
+    }
+}
+
+.Routing {
+    &__list {
+        list-style: none;
+        padding: 0;
+        & li {
+            border-radius: 15px;
+            & a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                padding: 14px 16px;
+                & img {
+                    margin-right: 10px;
+                }
+            }
+        }
+        &-white {
+            background-color: var(--main-white);
+            & a {
+                color: var(--main-primary);
+            }
+        }
+        &-blue {
+            background-color: none;
+            & a {
+                color: var(--main-white);
+            }
+        }
     }
 }
