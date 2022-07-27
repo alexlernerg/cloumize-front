@@ -1,11 +1,12 @@
 .NavbarContainer {
     background-color: var(--main-primary);
-    width: 72px;
+    min-width: 72px;
     padding: 33.5px 16px 87.5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    overflow: hidden;
     &__routing {
         width: 100%;
         &-logo {
@@ -109,7 +110,7 @@
 
 @media (min-width: 1024px) {
     .NavbarContainer {
-        width: 250px;
+        min-width: 250px;
         &__routing {
             &-hr {
                 width: 240px;

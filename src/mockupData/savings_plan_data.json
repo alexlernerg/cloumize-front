@@ -1,0 +1,24 @@
+{
+    "savings_plan_data": [
+        {
+          "user_id_cm": 2,
+          "aws_account_id": 2379241094,
+          "sp_id_aws": "99ec1362-fcdd-4f09-8e2f-6ada70ff901c",
+          "status": "active",
+          "sp_type": "Compute",
+          "instance_family": "",
+          "term_remaining_d": 15,
+          "commitment": 0.001
+        },
+        {
+          "user_id_cm": 2,
+          "aws_account_id": 2379241094,
+          "sp_id_aws": "7b15c17b-ff5f-4dde-80c3-ccb452f5cf58",
+          "status": "active",
+          "sp_type": "EC2Instance",
+          "instance_family": "t2",
+          "term_remaining_d": 15,
+          "commitment": 0.001
+        }
+      ]
+}
