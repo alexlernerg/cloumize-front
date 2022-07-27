@@ -1,7 +1,6 @@
 .NavbarContainer {
     background-color: var(--main-primary);
-    // height: 100vh;
-    width: 250px;
+    width: 72px;
     padding: 33.5px 16px 87.5px;
     display: flex;
     flex-direction: column;
@@ -14,9 +13,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            & img {
+                width: 70px;
+            }
         }
         &-hr {
-            width: 240px;
+            width: 40px;
             margin-top: 30px;
             margin-bottom: 80px;
             border: 0.5px solid var(--primary-40);
@@ -43,15 +45,18 @@
             margin-top: 28px;
         }
         &-name {
+            margin-left: 5px;
             & p:first-child {
                 font-size: 14px;
                 font-weight: 400;
                 color: var(--main-white);
+                margin-bottom: 0;
             }
             & p:last-child {
                 font-size: 10px;
                 font-weight: 400;
                 color: var(--primary-40);
+                margin-top: 0;
             }
         }
         &-settings {
@@ -60,10 +65,10 @@
             margin-left: 5px;
         }
         &-settingsImg {
-            margin: 0px 0px 20px 20px;
+            margin: 0px 0px 20px 25px;
         }
         &-hr {
-            width: 240px;
+            width: 40px;
             border: 0.5px solid var(--primary-40);
         }
     }
@@ -78,10 +83,12 @@
             & a {
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 text-decoration: none;
-                padding: 14px 16px;
+                padding: 14px;
+                height: 40px;
                 & img {
-                    margin-right: 10px;
+                    margin-right: 0px;
                 }
             }
         }
@@ -95,6 +102,43 @@
             background-color: none;
             & a {
                 color: var(--main-white);
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .NavbarContainer {
+        width: 250px;
+        &__routing {
+            &-hr {
+                width: 240px;
+            }
+            &-logo {
+                & img {
+                    width: fit-content;
+                }
+            }
+        }
+        &__user {
+            &-hr {
+                width: 240px;
+            }
+            &-settingsImg {
+                margin: 0px 0px 20px 20px;
+            }
+        }
+    }
+    .Routing {
+        &__list {
+            & li {
+                & a {
+                    justify-content: flex-start;
+                    height: fit-content;
+                    & img {
+                        margin-right: 10px;
+                    }
+                }
             }
         }
     }

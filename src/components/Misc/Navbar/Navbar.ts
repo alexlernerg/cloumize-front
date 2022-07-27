@@ -5,7 +5,10 @@ const Navbar =()=>{
   //Current url
   const {pathname} = useLocation();
 
-  return templateNavbar(pathname);
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1024
+
+  return templateNavbar(pathname, screenWidthMobile);
 }
 
 export default Navbar;
