@@ -2,6 +2,6 @@
 
 .LandingContainer {
     &__authBtn {
-        @include buttons.button-primary()
+        @include buttons.button-primary(var(--main-primary), var(--main-white))
     }
 }

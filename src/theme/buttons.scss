@@ -1,7 +1,4 @@
 @mixin button {
-  background-color: var(--main-primary);
-  color: var(--main-white);
-  border: 1px solid var(--main-primary);
   border-radius: 12px;
   width: fit-content;
   cursor: pointer;
@@ -10,22 +7,32 @@
   line-height: 17px;
   text-align: center;
   text-decoration: none;
-  &:hover {
-    background-color: var(--main-white);
-    color: var(--main-primary);
-  }
   &:disabled {
     cursor: not-allowed;
     background-color: var(--primary-40);
   }
 }
 
-@mixin button-primary {
+@mixin button-primary ($color1, $color2) {
   @include button();
+  background-color: $color1;
+  color: $color2;
+  border: 1px solid $color2;
   padding: 12px 16px;
+  &:hover {
+    background-color: $color2;
+    color: $color1;
+  }
 }
 
-@mixin button-secondary {
+@mixin button-secondary ($color1, $color2) {
   @include button();
+  background-color: $color1;
+  color: $color2;
+  border: 1px solid $color1;
   padding: 7.5px 16px;
+  &:hover {
+    background-color: $color2;
+    color: $color1;
+  }
 }

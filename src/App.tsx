@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { UserProvider } from './context/userContext';
 import Landing from './Pages/Landing/LandingPage';
 import Auth from './Pages/AuthPage/AuthPage';
 import Error from './Pages/ErrorPage/ErrorPage';
@@ -10,8 +11,8 @@ import SavingsPlans from './components/Profile/SavingsPlans/SavingsPlans';
 import Account from './components/Profile/Account/Account';
 import User from './components/Profile/User/User';
 import Dashboard from './components/Profile/Dashboard/Dashboard';
+import AuthCover from "./components/Auth/Cover/Cover";
 import './App.scss';
-import { UserProvider } from './context/userContext';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <UserProvider>
         <Routes>
           <Route path='/' element={<Landing />} />
+          <Route path='/auth' element={<AuthCover/>}/>
           <Route path='/signin' element={<Auth />} />
           <Route path='/signup' element={<Auth />} />
           <Route path='/user' element={<Dashboard />} />

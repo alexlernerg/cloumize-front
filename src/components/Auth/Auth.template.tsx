@@ -4,14 +4,16 @@ import Slider from './Slider/Slider';
 import './Auth.scss';
 
 const Auth = (
+  screenWidthMobile: boolean,
   signinPage: boolean,
   { data, errors, onChange, touched, onBlur, onFocus, onSubmit }: any
 ) => {
   return (
     <div className='AuthContainer'>
-      <div className='AuthContainer__slider'>
+      {!screenWidthMobile && <div className='AuthContainer__slider'>
         <Slider />
-      </div>
+      </div>}
+      {screenWidthMobile && <img src="/Auth/banner.svg" alt="banner"/>}
       <div className='AuthContainer__form'>
         <div className='AuthContainer__form-container'>
           <h5 className='AuthContainer__form-title'>
