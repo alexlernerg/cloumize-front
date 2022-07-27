@@ -12,6 +12,9 @@ const Auth =()=>{
   const {pathname} = useLocation();
   const signinPage = pathname === '/signin';
 
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1024
+
   //Navigate to
   const navigate = useNavigate();
 
@@ -99,7 +102,7 @@ const Auth =()=>{
 
   const formLogic = {data, errors, onChange, touched, onBlur, onFocus, onSubmit}
 
-  return templateAuth(signinPage, formLogic);
+  return templateAuth(screenWidthMobile, signinPage, formLogic);
 }
 
 export default Auth;

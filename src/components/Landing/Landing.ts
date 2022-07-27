@@ -1,7 +1,10 @@
 import templateLanding from "./Landing.template";
 
 const Landing =()=>{
-  return templateLanding();
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1024
+
+  return templateLanding(screenWidthMobile);
 }
 
 export default Landing;

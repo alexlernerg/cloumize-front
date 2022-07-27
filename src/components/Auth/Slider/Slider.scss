@@ -1,13 +1,37 @@
+@use '../../../theme/buttons.scss';
+
 .SliderContainer {
+  background-color: var(--main-primary);
   &__img {
-    height: 95vh !important;
-    margin-bottom: 20px;
+    height: 100vh;
+    margin-bottom: 0px;
+  }
+  &__buttonsAuth {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 500px;
+    &-signinBtn {
+      @include buttons.button-primary(var(--main-white), var(--main-primary));
+      width: 80% !important;
+      margin-bottom: 16px;
+    }
+    &-signupBtn {
+      @include buttons.button-primary(var(--main-primary), var(--main-white));
+      width: 80% !important;
+    }
   }
 }
 
-//
+//Edit carousel styles
+.carousel-slider {
+  height: 100vh !important;
+}
 .control-dots {
-  margin-bottom: 70px !important;
+  margin-bottom: 120px !important;
 }
 .carousel .control-dots .dot {
   width: 25px;
@@ -26,4 +50,20 @@
   border: 8px solid var(--primary-40);
   border-radius: 50%;
   background: var(--main-white);
+}
+
+@media (min-width: 1024px) {
+  .SliderContainer {
+    background-color: var(--main-white);
+    &__img {
+      height: 95vh !important;
+      margin-bottom: 20px;
+    }
+  }
+  .carousel-slider {
+    height: fit-content !important;
+  }
+  .control-dots {
+    margin-bottom: 70px !important;
+  }
 }
