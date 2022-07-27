@@ -1,7 +1,14 @@
+import { useLocation } from "react-router-dom";
 import templateNavbar from "./Navbar.template";
 
 const Navbar =()=>{
-  return templateNavbar();
+  //Current url
+  const {pathname} = useLocation();
+
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1024
+
+  return templateNavbar(pathname, screenWidthMobile);
 }
 
 export default Navbar;

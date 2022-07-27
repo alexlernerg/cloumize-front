@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from '../../Misc/Navbar/Navbar';
+import './SavingsFinder.scss';
 
 const SavingsFinder = () => {
   return <div className='SavingsFinderContainer'>
-    SavingsFinder
+    <Navbar/>
+    <div>SavingsFinder</div>
   </div>;
 };
 
