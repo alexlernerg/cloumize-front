@@ -124,11 +124,26 @@ const SavingsFinder = () => {
       <Navbar />
       <div className='SavingsFinder__container'>
         <div className='SavingsFinder__container-top'>
-          <h1 className='SavingsFinder__container-title'>Available Auto-Savings</h1>
-          <p className='SavingsFinder__container-recomendations'>TODO/Recibe recomendaciones</p>
+          <h1 className='SavingsFinder__container-title'>
+            Available Auto-Savings
+          </h1>
+          <div className='form-check form-switch'>
+            <input
+              className='form-check-input'
+              type='checkbox'
+              role='switch'
+              id='flexSwitchCheckDefault'
+            />
+            <label
+              className='SavingsFinder__container-recomendations form-check-label'
+              htmlFor='flexSwitchCheckDefault'
+            >
+              Recibe recomendaciones
+            </label>
+          </div>
         </div>
         <TableSkeleton data={dataSF} columns={columnsSF} />
-        <Data2Skeleton info={info}/>
+        <Data2Skeleton info={info} />
       </div>
     </div>
   );
