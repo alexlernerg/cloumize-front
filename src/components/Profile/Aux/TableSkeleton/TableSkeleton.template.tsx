@@ -59,7 +59,7 @@ const TableSkeleton = (dataContent: any, columnsContent: any, pathname:string) =
               <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_family}</td>
               <td valign='middle' className='TableSkeletonContainer__body-col'>{content.term_remaining_d}</td>
               <td valign='middle' className='TableSkeletonContainer__body-col'>{content.commitment}</td>
-              <td valign='middle' className='TableSkeletonContainer__body-col'></td>
+              <td valign='middle' className='TableSkeletonContainer__body-col'>{content.discount}</td>
             </tr>
           ))}
           {pathname === '/user/existingPlans' && dataContent.map((content: any, i: any) => (

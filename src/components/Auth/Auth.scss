@@ -55,7 +55,7 @@
       margin: 10px auto;
     }
     &-button {
-      @include buttons.button-primary(var(--main-primary), var(--main-white));
+      @include buttons.button-lg;
       width: 100%;
     }
     ::placeholder {

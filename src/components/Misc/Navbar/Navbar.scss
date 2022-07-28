@@ -97,12 +97,18 @@
             background-color: var(--main-white);
             & a {
                 color: var(--main-primary);
+                &:hover {
+                    color: var(--main-primary);
+                }
             }
         }
         &-blue {
             background-color: none;
             & a {
                 color: var(--main-white);
+                &:hover {
+                    color: var(--main-white);
+                }
             }
         }
     }

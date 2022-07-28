@@ -17,7 +17,7 @@
         margin: 5px 0 40px;
     }
     &__button {
-        @include buttons.button-secondary(var(--main-primary), var(--main-white));
+        @include buttons.button-lg;
     }
 }
 

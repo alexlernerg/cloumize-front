@@ -13,7 +13,8 @@ const dataSP = [
     sp_type: "Compute",
     instance_family: "",
     term_remaining_d: 15,
-    commitment: 0.001
+    commitment: 0.001,
+    discount: '25%'
   },
   {
     user_id_cm: 2,
@@ -23,7 +24,8 @@ const dataSP = [
     sp_type: "EC2Instance",
     instance_family: "t2",
     term_remaining_d: 15,
-    commitment: 0.001
+    commitment: 0.001,
+    discount: '25%'
   }
 ];
 
@@ -39,12 +41,11 @@ const SavingsPlans = () => {
   return <div className='SavingsPlans'>
     <Navbar/>
     <div className='SavingsPlans__container'>
-      <h1>Purchased Savings Plans</h1>
-      <div>
+      <h1 className='SavingsPlans__container-title'>Purchased Savings Plans</h1>
+      <div className='SavingsPlans__interestingData'>
         <p>Active Plans (MTD) 2</p>
         <p>Expiring This Month 1</p>
       </div>
-      <p>Barra de búsqueda</p>
     <TableSkeleton data={dataSP} columns={columnsSP}/>
     <Data2Skeleton info={info}/>
     </div>

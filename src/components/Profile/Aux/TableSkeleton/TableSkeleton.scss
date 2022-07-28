@@ -1,3 +1,5 @@
+@use '../../../../theme/buttons.scss';
+
 .TableSkeletonContainer {
   padding: 20px !important;
   height: fit-content;
@@ -47,6 +49,9 @@
       justify-content: flex-end;
       padding: 0 45px;
       margin-bottom: 72px;
+      & button {
+        @include buttons.button-lg;
+      }
     }
   }
 }

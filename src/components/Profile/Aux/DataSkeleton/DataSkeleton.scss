@@ -36,7 +36,7 @@
       font-size: 14px;
     }
     &-btn {
-      @include buttons.button-primary(var(--main-white), var(--main-primary));
+      @include buttons.buttonOutline-lg;
       display: flex;
       align-items: center;
     }

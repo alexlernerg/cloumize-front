@@ -118,7 +118,6 @@ const info = [
   { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
 ];
 
-// TODO: Mirar width de table en pantallas grandes y buttons general
 const SavingsFinder = () => {
   return (
     <div className='SavingsFinder'>

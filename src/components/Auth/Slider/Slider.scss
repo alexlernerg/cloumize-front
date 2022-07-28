@@ -15,12 +15,12 @@
     align-items: center;
     top: 500px;
     &-signinBtn {
-      @include buttons.button-primary(var(--main-white), var(--main-primary));
+      @include buttons.button-lg;
       width: 80% !important;
       margin-bottom: 16px;
     }
     &-signupBtn {
-      @include buttons.button-primary(var(--main-primary), var(--main-white));
+      @include buttons.buttonOutline-lg;
       width: 80% !important;
     }
   }
