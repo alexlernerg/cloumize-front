@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
-import Data2Skeleton from '../Aux/Data2Skeleton/Data2Skeleton';
+import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './SavingsPlans.scss';
 

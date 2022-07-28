@@ -3,13 +3,36 @@
     height: 100vh;
     &__container {
         margin-left: 300px;
+        margin-right: 20px;
+    &-title {
+        color: var(--main-text);
+        font-weight: 500;
+        font-size: 26px;
+        margin: 0;
+        padding: 0 48px 0 32px;
+      }
     }
+    &__interestingData {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 60px;
+        border: 1px solid var(--primary-40);
+        border-radius: 10px;
+        margin-bottom: 14px;
+        & p {
+          margin: 0;
+          color: var(--main-primary);
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
 }
 
 @media (min-width: 1536px) {
     .ExistingPlans {
         &__container {
             margin-left: 500px;
+            margin-right: 0px;
         }
     }
 } 

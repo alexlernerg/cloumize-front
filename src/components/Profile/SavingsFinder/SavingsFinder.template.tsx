@@ -3,7 +3,7 @@ import Navbar from '../../Misc/Navbar/Navbar';
 import { useTable } from 'react-table';
 import './SavingsFinder.scss';
 import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
-import Data1Skeleton from '../Aux/Data1Skeleton/Data1Skeleton';
+import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 
 const dataSF = [
   {
@@ -112,6 +112,13 @@ const columnsSF = [
   'Approval',
 ];
 
+const info = [
+  { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
+  { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: '$700' },
+  { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
+];
+
+// TODO: Mirar width de table en pantallas grandes y buttons general
 const SavingsFinder = () => {
   return (
     <div className='SavingsFinder'>
@@ -122,7 +129,7 @@ const SavingsFinder = () => {
           <p className='SavingsFinder__container-recomendations'>TODO/Recibe recomendaciones</p>
         </div>
         <TableSkeleton data={dataSF} columns={columnsSF} />
-        <Data1Skeleton/>
+        <Data2Skeleton info={info}/>
       </div>
     </div>
   );

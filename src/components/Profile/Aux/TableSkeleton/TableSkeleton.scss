@@ -26,7 +26,7 @@
 
   &__body {
     color: var(--textTable);
-    height: 224px;
+    max-height: 224px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid var(--primary-90);
@@ -54,7 +54,7 @@
 @media (min-width: 1536px) {
   .TableSkeletonContainer {
     &__body {
-      height: 424px;
+      max-height: 424px;
     }
   }
 }

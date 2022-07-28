@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
-import Data2Skeleton from '../Aux/Data2Skeleton/Data2Skeleton';
+import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ExistingPlans.scss';
 
@@ -43,12 +43,11 @@ const ExistingPlans = () => {
   return <div className='ExistingPlans'>
     <Navbar/>
     <div className='ExistingPlans__container'>
-      <h1>Purchased Reserved Instances</h1>
-      <div>
+      <h1 className='ExistingPlans__container-title'>Purchased Reserved Instances</h1>
+      <div className='ExistingPlans__interestingData'>
         <p>Active Plans (MTD) 4</p>
         <p>Expiring This Month 2</p>
       </div>
-      <p>Barra de búsqueda</p>
       <TableSkeleton data={dataEP} columns={columnsEP}/>
       <Data2Skeleton info={info}/>
     </div>

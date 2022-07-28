@@ -1,6 +1,6 @@
 @use '../../../../theme/buttons.scss';
 
-.Data1Skeleton {
+.DataSkeleton {
   border: 1px solid var(--secondary-80);
   border-radius: 16px;
   background-color: var(--secondary-90);
@@ -39,10 +39,6 @@
       @include buttons.button-primary(var(--main-white), var(--main-primary));
       display: flex;
       align-items: center;
-      &:hover {
-        background-color: var(--main-white);
-        color: var(--main-primary);
-      }
     }
   }
   &__space {

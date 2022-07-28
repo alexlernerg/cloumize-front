@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
-import Data1Skeleton from '../Aux/Data1Skeleton/Data1Skeleton';
+import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ComputeFinder.scss';
 
@@ -423,6 +423,12 @@ const columnsCF = [
   'Launch Time',
 ];
 
+const info = [
+  { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
+  { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: '$700' },
+  { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
+];
+
 const ComputeFinder = () => {
   return (
     <div className='ComputeFinder'>
@@ -437,7 +443,7 @@ const ComputeFinder = () => {
           <p>0 Scheduled Instances</p>
         </div>
         <TableSkeleton data={dataCF} columns={columnsCF} />
-        <Data1Skeleton/>
+        <Data2Skeleton info={info}/>
       </div>
     </div>
   );
