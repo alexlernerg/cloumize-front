@@ -1,0 +1,51 @@
+@use '../../../../theme/buttons.scss';
+
+.Data1Skeleton {
+  border: 1px solid var(--secondary-80);
+  border-radius: 16px;
+  background-color: var(--secondary-90);
+  padding: 32px 41px;
+  &__info {
+    color: var(--grey-80);
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  &__updated {
+    color: var(--grey-50);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    & span {
+      font-weight: 300;
+    }
+  }
+  &__sections {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    &-title,
+    &-total {
+      color: var(--main-text);
+      font-weight: 500;
+      font-size: 16px;
+    }
+    &-savings {
+      color: var(--grey-50);
+      font-weight: 300;
+      font-size: 14px;
+    }
+    &-btn {
+      @include buttons.button-primary(var(--main-white), var(--main-primary));
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: var(--main-white);
+        color: var(--main-primary);
+      }
+    }
+  }
+  &__space {
+    height: 20px;
+  }
+}

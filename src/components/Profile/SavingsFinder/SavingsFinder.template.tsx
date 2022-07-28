@@ -112,22 +112,15 @@ const columnsSF = [
   'Approval',
 ];
 
-const info = [
-  {id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000'},
-  {id: 1, title: 'Unapproved annual ', savings: 'Savings', total: '$700'},
-  {id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700'}
-]
-
 const SavingsFinder = () => {
   return (
     <div className='SavingsFinder'>
       <Navbar />
       <div className='SavingsFinder__container'>
-        <div>
-          <h1>Available Auto-Savings</h1>
-          <p>TODO/Recibe recomendaciones</p>
+        <div className='SavingsFinder__container-top'>
+          <h1 className='SavingsFinder__container-title'>Available Auto-Savings</h1>
+          <p className='SavingsFinder__container-recomendations'>TODO/Recibe recomendaciones</p>
         </div>
-        <p>Barra de búsqueda</p>
         <TableSkeleton data={dataSF} columns={columnsSF} />
         <Data1Skeleton/>
       </div>

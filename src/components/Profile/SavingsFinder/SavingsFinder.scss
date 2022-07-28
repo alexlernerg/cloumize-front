@@ -1,15 +1,31 @@
 .SavingsFinder {
-    display: flex;
-    height: 100vh;
-    &__container {
-        margin-left: 300px;
+  display: flex;
+  height: 100vh;
+  &__container {
+    margin-left: 300px;
+    margin-right: 20px;
+    &-top {
+        display: flex;
+        align-items: center;
     }
+    &-title {
+      color: var(--main-text);
+      font-weight: 500;
+      font-size: 26px;
+      margin: 0;
+      padding: 0 48px 0 32px;
+    }
+    &-recomendations {
+        margin: 0;
+    }
+  }
 }
 
 @media (min-width: 1536px) {
-    .SavingsFinder {
-        &__container {
-            margin-left: 500px;
-        }
+  .SavingsFinder {
+    &__container {
+      margin-left: 500px;
+      margin-right: 0px;
     }
-} 
+  }
+}

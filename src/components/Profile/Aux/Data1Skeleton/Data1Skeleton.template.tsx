@@ -9,26 +9,27 @@ const info = [
 
 const Data1Skeleton = () => {
   return (
+    <>
     <div className='Data1Skeleton'>
       <div>
-        <p>
+        <p className='Data1Skeleton__info'>
           Monthly costs are calculated with the AWS official rate. Other
           associated costs are not included
         </p>
-        <p>Last updated: 2022/7/6 03:45:34</p>
-        <p>Update: every 1h</p>
-        <div>
+        <p className='Data1Skeleton__updated'>Last updated: <span>2022/7/6 03:45:34</span></p>
+        <p className='Data1Skeleton__updated'>Update: <span>every 1h</span></p>
+        <div className='Data1Skeleton__sections'>
           {info.map((inf) => (
             <div key={inf.id}>
-              <p>{inf.title}</p>
-              <p>{inf.savings}</p>
-              <p>{inf.total}</p>
+              <p className='Data1Skeleton__sections-title'>{inf.title}</p>
+              <p className='Data1Skeleton__sections-savings'>{inf.savings}</p>
+              <p className='Data1Skeleton__sections-total'>{inf.total}</p>
             </div>
           ))}
           <div>
-            <p>Download</p>
-            <p>Download this document, edit, save or share</p>
-            <button>
+            <p className='Data1Skeleton__sections-title'>Download</p>
+            <p className='Data1Skeleton__sections-savings'>Download this document, <br/>edit, save or share</p>
+            <button className='Data1Skeleton__sections-btn'>
               Download to CSV
               <img src='/Profile/download.svg' alt='download' />
             </button>
@@ -36,6 +37,8 @@ const Data1Skeleton = () => {
         </div>
       </div>
     </div>
+    <div className='Data1Skeleton__space'></div>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 .TableSkeletonContainer {
-  border: 1px solid var(--primary-90);
-  border-radius: 20px;
+  padding: 20px !important;
   height: fit-content;
 
   &__head,
@@ -13,6 +12,8 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    border: 1px solid var(--primary-90) !important;
+    border-radius: 16px 16px 0 0;
     &-line {
       height: 61px;
       border-bottom: 1px solid var(--grey-20);
@@ -25,9 +26,12 @@
 
   &__body {
     color: var(--textTable);
-    height: 424px;
+    height: 224px;
     overflow-y: auto;
     overflow-x: hidden;
+    border: 1px solid var(--primary-90);
+    border-top: none !important;
+    border-radius: 0 0 16px 16px;
     &-line {
       height: 78px;
       padding: 22px 0;
@@ -35,6 +39,22 @@
     &-col {
       width: 130px !important;
       word-wrap: break-word;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-btn {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 45px;
+      margin-bottom: 72px;
+    }
+  }
+}
+
+@media (min-width: 1536px) {
+  .TableSkeletonContainer {
+    &__body {
+      height: 424px;
     }
   }
 }

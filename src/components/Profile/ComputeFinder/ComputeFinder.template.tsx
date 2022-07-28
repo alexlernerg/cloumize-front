@@ -428,15 +428,14 @@ const ComputeFinder = () => {
     <div className='ComputeFinder'>
       <Navbar />
       <div className='ComputeFinder__container'>
-        <h1>Running EC2 Instances</h1>
-        <div>
+        <h1 className='ComputeFinder__container-title'>Running EC2 Instances</h1>
+        <div className='ComputeFinder__interestingData'>
           <p>3 Running Instances</p>
           <p>1 Stopped Instances</p>
           <p>2 On-Demand Instances</p>
           <p>1 Spot Instances</p>
           <p>0 Scheduled Instances</p>
         </div>
-        <p>Barra de búsqueda</p>
         <TableSkeleton data={dataCF} columns={columnsCF} />
         <Data1Skeleton/>
       </div>
