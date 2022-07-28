@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
-import TableSkeleton from '../TableSkeleton/TableSkeleton';
+import Data2Skeleton from '../Aux/Data2Skeleton/Data2Skeleton';
+import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ExistingPlans.scss';
 
 const dataEP = [
@@ -32,6 +33,12 @@ const dataEP = [
 
 const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Team Remaining', 'Discount', 'Auto-Save']
 
+const info = [
+  { id: 0, title: 'Monthly reserved instances', savings: 'Total', total: '$0' },
+  { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
+  { id: 2, title: 'Number Reserved', savings: 'Numbers', total: '0' },
+];
+
 const ExistingPlans = () => {
   return <div className='ExistingPlans'>
     <Navbar/>
@@ -43,6 +50,7 @@ const ExistingPlans = () => {
       </div>
       <p>Barra de búsqueda</p>
       <TableSkeleton data={dataEP} columns={columnsEP}/>
+      <Data2Skeleton info={info}/>
     </div>
   </div>;
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
-import TableSkeleton from '../TableSkeleton/TableSkeleton';
+import Data1Skeleton from '../Aux/Data1Skeleton/Data1Skeleton';
+import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ComputeFinder.scss';
 
 const dataCF = [
@@ -437,6 +438,7 @@ const ComputeFinder = () => {
         </div>
         <p>Barra de búsqueda</p>
         <TableSkeleton data={dataCF} columns={columnsCF} />
+        <Data1Skeleton/>
       </div>
     </div>
   );

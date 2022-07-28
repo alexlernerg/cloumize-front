@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
-import TableSkeleton from '../TableSkeleton/TableSkeleton';
+import Data2Skeleton from '../Aux/Data2Skeleton/Data2Skeleton';
+import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './SavingsPlans.scss';
 
 const dataSP = [
@@ -28,6 +29,12 @@ const dataSP = [
 
 const columnsSP = ['AWS Account ID', 'Savings Plan D', 'Status', 'Type', 'Instance Family', 'Team Remaining', 'Commitment', 'Discount']
 
+const info = [
+  { id: 0, title: 'Monthly Current Commitment', savings: 'Total', total: '$0' },
+  { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
+  { id: 2, title: 'Number Savings Plans', savings: 'Numbers', total: '0' },
+];
+
 const SavingsPlans = () => {
   return <div className='SavingsPlans'>
     <Navbar/>
@@ -39,6 +46,7 @@ const SavingsPlans = () => {
       </div>
       <p>Barra de búsqueda</p>
     <TableSkeleton data={dataSP} columns={columnsSP}/>
+    <Data2Skeleton info={info}/>
     </div>
   </div>;
 };
