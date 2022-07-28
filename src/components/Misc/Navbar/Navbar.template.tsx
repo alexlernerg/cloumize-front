@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Navbar.scss';
 
 const Routing = ({ pathname, screenWidthMobile }: any) => {
-  console.log("screenWidthMobile", screenWidthMobile)
   return (
     <ul className='Routing__list'>
       {pathname === '/user' ? (
@@ -114,7 +113,6 @@ const Navbar = (pathname: string, screenWidthMobile: boolean) => {
         {!screenWidthMobile && (
           <p className='NavbarContainer__user-settings'>Settings Profile</p>
         )}
-        <hr className='NavbarContainer__user-hr' />
         <div className='NavbarContainer__user-info'>
           {!screenWidthMobile && (
             <>

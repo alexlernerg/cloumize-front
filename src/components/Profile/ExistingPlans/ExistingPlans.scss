@@ -1,4 +1,15 @@
-.ExistingPlansContainer {
+.ExistingPlans {
     display: flex;
     height: 100vh;
+    &__container {
+        margin-left: 300px;
+    }
 }
+
+@media (min-width: 1536px) {
+    .ExistingPlans {
+        &__container {
+            margin-left: 500px;
+        }
+    }
+} 

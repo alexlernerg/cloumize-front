@@ -1,4 +1,15 @@
-.SavingsPlansContainer {
+.SavingsPlans {
     display: flex;
     height: 100vh;
+    &__container {
+        margin-left: 300px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .SavingsPlans {
+        &__container {
+            margin-left: 500px;
+        }
+    }
 }

@@ -1,48 +1,78 @@
-import React, { useState } from 'react';
-import Navbar from '../../Misc/Navbar/Navbar';
-import { useTable } from 'react-table';
+import React from 'react';
 import './TableSkeleton.scss';
-import ReactTooltip from 'react-tooltip';
 
-const TableSkeleton = (dataContent: any, columnsContent: any) => {
-  const data: any = React.useMemo(() => dataContent, []);
-
-  const columns: any = React.useMemo(() => columnsContent, []);
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
-
+const TableSkeleton = (dataContent: any, columnsContent: any, pathname:string) => {
   return (
-    <table {...getTableProps()} className='TableSkeletonContainer'>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-            ))}
+    <table className='table TableSkeletonContainer'>
+      <thead className='TableSkeletonContainer__head'>
+        <tr className='TableSkeletonContainer__head-line'>
+          {columnsContent.map((col: any, i: any) => (
+            <th scope="col" key={i} className='TableSkeletonContainer__head-col'>{col}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody className='TableSkeletonContainer__body'>
+        {pathname === '/user/savingsFinder' && dataContent.map((content: any, i: any) => (
+          <tr key={i} className='TableSkeletonContainer__body-line'>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.aws_account_id}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.recommendation_id_cm}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.region}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_family}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.units}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.current_rate.toFixed(2)}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.Cloumize_Discount.toFixed(2)}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.cloumize_rate.toFixed(2)}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>
+              {content.state === '' && 'Approved'}
+              {content.state === 'Pending Approval' && 'Pending'}
+              {content.state === 'Savings Activated' && 'Active'}
+            </td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>
+              {content.state === '' && 'Approved'}
+              {content.state === 'Pending Approval' && 'Pending'}
+              {content.state === 'Savings Activated' && 'Active'}
+            </td>
           </tr>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <>
-                    <td {...cell.getCellProps()} data-tip data-for={`${cell.render('Cell')}`}>
-                      {cell.render('Cell')}
-                    </td>
-                    <ReactTooltip id={`${cell.render('Cell')}`} type='warning' effect='solid'>
-                      <span>{cell.render('Cell')}</span>
-                    </ReactTooltip>
-                  </>
-                );
-              })}
-            </tr>
-          );
-        })}
+        {pathname === '/user/computeFinder' && dataContent.map((content: any, i: any) => (
+          <tr key={i} className='TableSkeletonContainer__body-line'>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.aws_account_id}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_id}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_type}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.region}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.az}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.platform}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.tenancy}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_lifecycle}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.state}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.launch_time}</td>
+          </tr>
+        ))}
+        {pathname === '/user/savingsPlans' && dataContent.map((content: any, i: any) => (
+          <tr key={i} className='TableSkeletonContainer__body-line'>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.aws_account_id}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.sp_id_aws}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.status}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.sp_type}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_family}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.term_remaining_d}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.commitment}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'></td>
+          </tr>
+        ))}
+        {pathname === '/user/existingPlans' && dataContent.map((content: any, i: any) => (
+          <tr key={i} className='TableSkeletonContainer__body-line'>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.aws_account_id}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.group_reservation_id}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.status}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.description}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.instance_family}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.reservation_count}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.team_remaining}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.discount}</td>
+            <td valign='middle' className='TableSkeletonContainer__body-col'>{content.autosave}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

@@ -99,58 +99,32 @@ const dataSF = [
 ];
 
 const columnsSF = [
-  {
-    Header: 'SAWS Account ID',
-    accessor: 'user_id_cm', // accessor is the "key" in the data
-  },
-  {
-    Header: 'Recomendation ID',
-    accessor: 'aws_account_id',
-  },
-  {
-    Header: 'Region',
-    accessor: 'recommendation_id_cm',
-  },
-  {
-    Header: 'Family',
-    accessor: 'region',
-  },
-  {
-    Header: 'Units',
-    accessor: 'instance_family',
-  },
-  {
-    Header: 'Discount',
-    accessor: 'units',
-  },
-  {
-    Header: 'Cloumize rate',
-    accessor: 'current_rate',
-  },
-  {
-    Header: 'State',
-    accessor: 'Cloumize_Discount',
-  },
-  {
-    Header: 'Approval',
-    accessor: 'cloumize_rate',
-  },
-  {
-    Header: 'Current rate',
-    accessor: 'monthly_savings',
-  },
-  {
-    Header: 'Current rate',
-    accessor: 'state',
-  },
-]
+  'AWS Account ID',
+  'Recomendation ID',
+  'Region',
+  'Family',
+  'Units',
+  'Current rate',
+  'Discount',
+  'Cloumize rate',
+  'State',
+  'Approval',
+];
 
 const SavingsFinder = () => {
-
-  return <div className='SavingsFinderContainer'>
-    <Navbar/>
-    <TableSkeleton data={dataSF} columns={columnsSF}/>
-  </div>;
+  return (
+    <div className='SavingsFinder'>
+      <Navbar />
+      <div className='SavingsFinder__container'>
+        <div>
+          <h1>Available Auto-Savings</h1>
+          <p>TODO/Recibe recomendaciones</p>
+        </div>
+        <p>Barra de búsqueda</p>
+        <TableSkeleton data={dataSF} columns={columnsSF} />
+      </div>
+    </div>
+  );
 };
 
 export default SavingsFinder;

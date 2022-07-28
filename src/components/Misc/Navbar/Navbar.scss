@@ -7,6 +7,8 @@
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
+    position: fixed;
+    height: 100vh;
     &__routing {
         width: 100%;
         &-logo {
@@ -64,13 +66,11 @@
             color: var(--main-white);
             font-weight: 500;
             margin-left: 5px;
+            border-bottom: 0.5px solid var(--primary-40);
+            padding-bottom: 8px;
         }
         &-settingsImg {
             margin: 0px 0px 20px 25px;
-        }
-        &-hr {
-            width: 40px;
-            border: 0.5px solid var(--primary-40);
         }
     }
 }
@@ -87,7 +87,7 @@
                 justify-content: center;
                 text-decoration: none;
                 padding: 14px;
-                height: 40px;
+                height: 65px;
                 & img {
                     margin-right: 0px;
                 }
@@ -139,6 +139,29 @@
                     & img {
                         margin-right: 10px;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1536px) {
+    .NavbarContainer {
+        min-width: 450px;
+        &__routing {
+            &-hr {
+                width: 350px;
+            }
+        }
+        &__user {
+            
+        }
+    }
+    .Routing {
+        &__list {
+            & li {
+                & a {
+                    padding: 24px 14px;
                 }
             }
         }

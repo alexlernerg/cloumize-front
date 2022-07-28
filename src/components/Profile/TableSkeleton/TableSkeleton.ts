@@ -1,7 +1,11 @@
+import { useLocation } from "react-router-dom";
 import templateTableSkeleton from "./TableSkeleton.template";
 
 const TableSkeleton = ({data, columns}:any)=>{
-  return templateTableSkeleton(data, columns);
+  //Current url
+  const {pathname} = useLocation();
+
+  return templateTableSkeleton(data, columns, pathname);
 }
 
 export default TableSkeleton;
