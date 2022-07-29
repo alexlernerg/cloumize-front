@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TableSkeleton.scss';
 
 const TableSkeleton = (
@@ -6,14 +6,29 @@ const TableSkeleton = (
   columnsContent: any,
   pathname: string
 ) => {
+  const [filterChoosed, setFilterChoosed] = useState('aws_account_id');
+  const [search, setSearch] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+
+  const onChange = (e:any) => {
+    const { name, value } = e.target;
+    name === 'search' ? setSearch(value) : setFilterChoosed(value);
+  };
+
+  useEffect(()=> {
+    setFilteredData(dataContent.filter((data:any) => data[filterChoosed].toString().toLowerCase().includes(search.toString().toLowerCase())))
+  },[search]);
+  
   return (
     <>
-      <div>
-        <select>
-          {columnsContent.map((col:any) => <option value={col}>{col}</option>)}
+      <div className='TableSkeletonContainer__search'>
+        <select name="filterChoosed" onChange={onChange} value={filterChoosed} className='TableSkeletonContainer__search-select'>
+          {Object.keys(dataContent[0]).map((col:any) => <option value={col} className='TableSkeletonContainer__search-col'>{col}</option>)}
         </select>
-        <input type="text"></input>
-        <button>Search</button>
+        <div className='TableSkeletonContainer__search-inputContainer'>
+          <img src="/Profile/search.svg" alt="search" className='TableSkeletonContainer__search-img'/>
+          <input type="text" name="search" onChange={onChange} value={search} placeholder={filterChoosed} className='TableSkeletonContainer__search-input'/>
+        </div>
       </div>
       <table className='table TableSkeletonContainer'>
         <thead className='TableSkeletonContainer__head'>
@@ -29,9 +44,9 @@ const TableSkeleton = (
             ))}
           </tr>
         </thead>
-        <tbody className='TableSkeletonContainer__body'>
-          {pathname === '/user/savingsFinder' &&
-            dataContent.map((content: any, i: any) => (
+        <tbody className='TableSkeletonContainer__body'> 
+          {pathname === '/user/savingsFinder' &&  //TODO: Editar ultimas dos columnas
+            filteredData.map((content: any, i: any) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
@@ -100,7 +115,7 @@ const TableSkeleton = (
               </tr>
             ))}
           {pathname === '/user/computeFinder' &&
-            dataContent.map((content: any, i: any) => (
+            filteredData.map((content: any, i: any) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
@@ -165,7 +180,7 @@ const TableSkeleton = (
               </tr>
             ))}
           {pathname === '/user/savingsPlans' &&
-            dataContent.map((content: any, i: any) => (
+            filteredData.map((content: any, i: any) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
@@ -218,7 +233,7 @@ const TableSkeleton = (
               </tr>
             ))}
           {pathname === '/user/existingPlans' &&
-            dataContent.map((content: any, i: any) => (
+            filteredData.map((content: any, i: any) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'

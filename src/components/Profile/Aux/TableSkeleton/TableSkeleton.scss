@@ -9,6 +9,43 @@
     display: block;
   }
 
+  &__search {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+    &-select {
+      width: 236px;
+      border: 1px solid var(--main-primary);
+      border-radius: 12px;
+      padding: 8px;
+      margin-right: 8px;
+      color: var(--main-text);
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-col {
+    }
+    &-inputContainer {
+      border: 1px solid var(--main-primary);
+      border-radius: 12px;
+      padding: 8px;
+      width: 336px;
+    }
+    ::placeholder {
+      color: var(--grey-40);
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-img {
+    }
+    &-input {
+      border: none;
+      outline: 0;
+    }
+  }
+
   &__head {
     color: var(--grey-80);
     font-weight: 400;

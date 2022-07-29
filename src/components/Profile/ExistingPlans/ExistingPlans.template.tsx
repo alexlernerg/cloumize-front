@@ -7,7 +7,7 @@ import './ExistingPlans.scss';
 const dataEP = [
   {
     user_id_cm: 1,
-    aws_account_id: 159825639153,
+    aws_account_id: 159825639152,
     group_reservation_id: "186cbf9e-c75f-4f10-8688-468719c62ddf",
     status: "Active",
     description: "Linux/UNIX standard reserved Instance",
@@ -18,7 +18,7 @@ const dataEP = [
     autosave: "True",
   },
   {
-    user_id_cm: 1,
+    user_id_cm: 2,
     aws_account_id: 159825639153,
     group_reservation_id: "186cbf9e-c75f-4f10-8688-468719c62ddf",
     status: "Expired",
