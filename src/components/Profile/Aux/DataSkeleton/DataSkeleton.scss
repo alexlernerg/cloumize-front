@@ -5,6 +5,7 @@
   border-radius: 16px;
   background-color: var(--secondary-90);
   padding: 20px 16px;
+  width: 95%;
   &__info {
     color: var(--grey-80);
     font-weight: 400;
@@ -23,7 +24,6 @@
   &__sections {
     display: block;
     justify-content: space-between;
-    margin-top: 20px;
     &-title,
     &-total {
       color: var(--main-text);
@@ -33,12 +33,18 @@
     &-savings {
       color: var(--grey-50);
       font-weight: 300;
-      font-size: 14px;
+      font-size: 10px;
+      margin-bottom: 0;
     }
     &-btn {
       @include buttons.buttonOutline-lg;
       display: flex;
       align-items: center;
+    }
+    &-subinfo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
     &-mobile {
       display: flex;
@@ -53,10 +59,18 @@
 @media (min-width: 1280px) {
   .DataSkeleton {
     padding: 32px 41px;
+    width: 100%;
     &__sections {
       display: flex;
       &-mobile {
         display: block;
+      }
+      &-subinfo {
+        align-items: flex-start;
+      }
+      &-savings {
+        font-size: 14px;
+        margin-bottom: auto;
       }
     }
   }

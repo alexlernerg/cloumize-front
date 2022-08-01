@@ -5,9 +5,9 @@ const DataSkeleton = (info: any, pathname: string) => {
   console.log('Pathname', pathname);
   return (
     <>
-      <div className='DataSkeleton'>
+      <div className={`DataSkeleton ${pathname === '/user/savingsFinder' && 'mb-4'}`}>
         <div>
-          {pathname === ('/user/savingsFinder' || '/user/computeFinder') && (
+          {(pathname === '/user/savingsFinder' || pathname ===  '/user/computeFinder') && (
             <>
               <p className='DataSkeleton__info'>
                 Monthly costs are calculated with the AWS official rate. Other
@@ -25,7 +25,7 @@ const DataSkeleton = (info: any, pathname: string) => {
             {info.map((inf: any) => (
               <div key={inf.id} className='DataSkeleton__sections-mobile'>
                 <p className='DataSkeleton__sections-title'>{inf.title}</p>
-                <div>
+                <div className='DataSkeleton__sections-subinfo'>
                   <p className='DataSkeleton__sections-savings'>
                     {inf.savings}
                   </p>
