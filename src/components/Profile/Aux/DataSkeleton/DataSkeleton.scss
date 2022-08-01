@@ -1,0 +1,77 @@
+@use '../../../../theme/buttons.scss';
+
+.DataSkeleton {
+  border: 1px solid var(--secondary-80);
+  border-radius: 16px;
+  background-color: var(--secondary-90);
+  padding: 20px 16px;
+  width: 95%;
+  &__info {
+    color: var(--grey-80);
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  &__updated {
+    color: var(--grey-50);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    & span {
+      font-weight: 300;
+    }
+  }
+  &__sections {
+    display: block;
+    justify-content: space-between;
+    &-title,
+    &-total {
+      color: var(--main-text);
+      font-weight: 500;
+      font-size: 16px;
+    }
+    &-savings {
+      color: var(--grey-50);
+      font-weight: 300;
+      font-size: 10px;
+      margin-bottom: 0;
+    }
+    &-btn {
+      @include buttons.buttonOutline-lg;
+      display: flex;
+      align-items: center;
+    }
+    &-subinfo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    &-mobile {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__space {
+    height: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .DataSkeleton {
+    padding: 32px 41px;
+    width: 100%;
+    &__sections {
+      display: flex;
+      &-mobile {
+        display: block;
+      }
+      &-subinfo {
+        align-items: flex-start;
+      }
+      &-savings {
+        font-size: 14px;
+        margin-bottom: auto;
+      }
+    }
+  }
+}

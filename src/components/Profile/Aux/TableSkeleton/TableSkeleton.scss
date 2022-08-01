@@ -1,0 +1,155 @@
+@use '../../../../theme/buttons.scss';
+
+.TableSkeletonContainer {
+  padding: 20px !important;
+  height: fit-content;
+
+  &__head,
+  &__body {
+    display: block;
+  }
+
+  &__search {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+    &-select {
+      width: 95%;
+      height: 45px;
+      border: 1px solid var(--main-primary);
+      border-radius: 12px;
+      padding: 8px;
+      margin-right: 8px;
+      margin-bottom: 4px;
+      color: var(--main-text);
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-col {
+    }
+    &-inputContainer {
+      border: 1px solid var(--main-primary);
+      border-radius: 12px;
+      padding: 8px;
+      width: 95%;
+      height: 45px;
+    }
+    ::placeholder {
+      color: var(--grey-40);
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-img {
+    }
+    &-input {
+      border: none;
+      outline: 0;
+    }
+  }
+
+  &__head {
+    color: var(--grey-80);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border: 1px solid var(--primary-90) !important;
+    border-radius: 16px 16px 0 0;
+    &-line {
+      height: 61px;
+      border-bottom: 1px solid var(--grey-20);
+    }
+    &-col {
+      width: 130px !important;
+      word-wrap: break-word;
+    }
+  }
+
+  &__body {
+    color: var(--textTable);
+    max-height: 224px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid var(--primary-90);
+    border-top: none !important;
+    border-radius: 0 0 16px 16px;
+    &-line {
+      height: 78px;
+      padding: 22px 0;
+    }
+    &-col {
+      width: 130px !important;
+      word-wrap: break-word;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-btn {
+      display: flex;
+      justify-content: center;
+      padding: 0 5% 0 0;
+      margin-bottom: 72px;
+      & button {
+        @include buttons.button-lg;
+        width: 100% !important;
+      }
+    }
+  }
+}
+.desktop {
+  display: none;
+}
+.mobile {
+  display: block;
+}
+.TableMobile {
+  margin-bottom: 14px;
+  border: 1px solid var(--primary-90);
+  border-radius: 16px;
+  padding: 20px 16px;
+  width: 95% !important;
+  & tr {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    &:not(:last-child){
+      border-bottom: 1px solid var(--primary-90);
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .TableSkeletonContainer {
+    &__search {
+      flex-direction: row;
+      &-select {
+        width: 236px;
+      }
+      &-inputContainer {
+        width: 336px;
+      }
+    }
+    &__body {
+      &-btn {
+        justify-content: flex-end;
+        padding: 0 45px;
+      }
+    }
+  }
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 1536px) {
+  .TableSkeletonContainer {
+    &__body {
+      max-height: 424px;
+    }
+  }
+}

@@ -1,4 +1,55 @@
-.SavingsFinderContainer {
-    display: flex;
-    height: 100vh;
+.SavingsFinder {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  &__container {
+    width: 77%;
+    margin-left: 120px;
+    overflow-y: scroll;
+    &-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    &-title {
+      color: var(--main-text);
+      font-weight: 500;
+      font-size: 20px;
+      margin: 0;
+      padding: 20px 0;
+    }
+    &-recomendations {
+      margin: 0;
+      color: var(--grey-80);
+      font-weight: 300;
+      font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .SavingsFinder {
+    &__container {
+      margin-left: 300px;
+      &-top {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0px;
+      }
+      &-title {
+        padding: 0 48px 0 32px;
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1536px) {
+  .SavingsFinder {
+    &__container {
+      width: 73%;
+      margin-left: 500px;
+    }
+  }
 }

@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+  overflow: hidden;
   &__slider {
     margin-top: 15px;
     margin-right: 0px;
@@ -54,7 +55,7 @@
       margin: 10px auto;
     }
     &-button {
-      @include buttons.button-primary(var(--main-primary), var(--main-white));
+      @include buttons.button-lg;
       width: 100%;
     }
     ::placeholder {
@@ -72,7 +73,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .AuthContainer{
     flex-direction: row;
     justify-content: center;
@@ -80,7 +81,7 @@
       margin-bottom: 0px;
       &-title {
         font-size: 26px;
-        font-weight: 600;
+        font-weight: 500;
         text-align: start;
       }
     }
