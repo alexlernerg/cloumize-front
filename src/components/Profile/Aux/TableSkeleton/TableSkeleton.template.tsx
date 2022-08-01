@@ -5,8 +5,8 @@ const TableMobile = ({ dataContent, columnsContent, pathname }: any) => {
   console.log('props', dataContent, columnsContent, pathname);
   return (
     <>
-      {dataContent.map((data: any) => (
-        <table className='table mobile TableMobile'>
+      {dataContent.map((data: any, i:any) => (
+        <table className='table mobile TableMobile' key={i}>
           {pathname === '/user/savingsFinder' && (
             <>
               <tr>
@@ -213,8 +213,8 @@ const TableSkeleton = (
           value={filterChoosed}
           className='TableSkeletonContainer__search-select'
         >
-          {Object.keys(dataContent[0]).map((col: any) => (
-            <option value={col} className='TableSkeletonContainer__search-col'>
+          {Object.keys(dataContent[0]).map((col: any, i:any) => (
+            <option value={col} className='TableSkeletonContainer__search-col' key={i}>
               {col}
             </option>
           ))}
