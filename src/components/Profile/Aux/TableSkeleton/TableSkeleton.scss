@@ -11,6 +11,7 @@
 
   &__search {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     margin-bottom: 22px;
     &-select {
@@ -90,6 +91,27 @@
         @include buttons.button-lg;
       }
     }
+  }
+}
+
+.desktop {
+  display: none;
+}
+.mobile {
+  display: block;
+}
+
+@media (min-width: 1280px) {
+  .TableSkeletonContainer {
+    &__search {
+      flex-direction: row;
+    }
+  }
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
   }
 }
 

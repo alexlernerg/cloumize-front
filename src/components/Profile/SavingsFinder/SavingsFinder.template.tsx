@@ -8,7 +8,7 @@ import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 const dataSF = [
   {
     user_id_cm: 1,
-    aws_account_id: 159825639153,
+    aws_account_id: 111825639153,
     recommendation_id_cm: 'cm_22926193',
     region: 'EU (Frankfurt)',
     instance_family: 't2',
@@ -118,7 +118,7 @@ const info = [
   { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
 ];
 
-const SavingsFinder = () => {
+const SavingsFinder = (screenWidthMobile:boolean) => {
   return (
     <div className='SavingsFinder'>
       <Navbar />
@@ -142,8 +142,8 @@ const SavingsFinder = () => {
             </label>
           </div>
         </div>
-        <TableSkeleton data={dataSF} columns={columnsSF} />
-        <Data2Skeleton info={info} />
+        {screenWidthMobile ? <Data2Skeleton info={info} />:<TableSkeleton data={dataSF} columns={columnsSF} />}
+        {screenWidthMobile ? <TableSkeleton data={dataSF} columns={columnsSF} />: <Data2Skeleton info={info} />}
       </div>
     </div>
   );

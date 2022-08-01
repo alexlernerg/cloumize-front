@@ -1,7 +1,10 @@
 import templateExistingPlans from "./ExistingPlans.template";
 
 const ExistingPlans =()=>{
-  return templateExistingPlans();
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1280
+
+  return templateExistingPlans(screenWidthMobile);
 }
 
 export default ExistingPlans;

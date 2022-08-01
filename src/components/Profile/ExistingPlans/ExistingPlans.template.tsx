@@ -39,7 +39,7 @@ const info = [
   { id: 2, title: 'Number Reserved', savings: 'Numbers', total: '0' },
 ];
 
-const ExistingPlans = () => {
+const ExistingPlans = (screenWidthMobile:boolean) => {
   return <div className='ExistingPlans'>
     <Navbar/>
     <div className='ExistingPlans__container'>
@@ -48,8 +48,9 @@ const ExistingPlans = () => {
         <p><img src="/Profile/EP1.svg" alt="icon"/>Active Plans (MTD) 4</p>
         <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month 2</p>
       </div>
-      <TableSkeleton data={dataEP} columns={columnsEP}/>
-      <Data2Skeleton info={info}/>
+      {screenWidthMobile ? <Data2Skeleton info={info}/>:<TableSkeleton data={dataEP} columns={columnsEP}/>}
+      {screenWidthMobile ? <TableSkeleton data={dataEP} columns={columnsEP}/>:<Data2Skeleton info={info}/>}
+      
     </div>
   </div>;
 };

@@ -7,7 +7,7 @@ import './ComputeFinder.scss';
 const dataCF = [
   {
     user_id_cm: 1,
-    aws_account_id: 159825639153,
+    aws_account_id: 122223639153,
     instance_id: 'i-077a79e469c0ef831',
     instance_type: 't2.small',
     region: 'EU (Frankfurt)',
@@ -429,7 +429,7 @@ const info = [
   { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
 ];
 
-const ComputeFinder = () => {
+const ComputeFinder = (screenWidthMobile:boolean) => {
   return (
     <div className='ComputeFinder'>
       <Navbar />
@@ -442,8 +442,8 @@ const ComputeFinder = () => {
           <p><img src="/Profile/CF4.svg" alt="icon"/>1 Spot Instances</p>
           <p><img src="/Profile/CF5.svg" alt="icon"/>0 Scheduled Instances</p>
         </div>
-        <TableSkeleton data={dataCF} columns={columnsCF} />
-        <Data2Skeleton info={info}/>
+        {screenWidthMobile ?<Data2Skeleton info={info}/>:<TableSkeleton data={dataCF} columns={columnsCF} />}
+        {screenWidthMobile ?<TableSkeleton data={dataCF} columns={columnsCF} />:<Data2Skeleton info={info}/>}
       </div>
     </div>
   );

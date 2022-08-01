@@ -1,7 +1,10 @@
 import templateSavingsPlans from "./SavingsPlans.template";
 
 const SavingsPlans =()=>{
-  return templateSavingsPlans();
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1280
+
+  return templateSavingsPlans(screenWidthMobile);
 }
 
 export default SavingsPlans;

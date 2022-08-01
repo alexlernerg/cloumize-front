@@ -1,11 +1,14 @@
 .SavingsFinder {
   display: flex;
   height: 100vh;
+  overflow: hidden;
   &__container {
     width: 77%;
-    margin-left: 300px;
+    margin-left: 120px;
+    overflow-y: scroll;
     &-top {
       display: flex;
+      flex-direction: column;
       align-items: center;
     }
     &-title {
@@ -20,6 +23,19 @@
       color: var(--grey-80);
       font-weight: 300;
       font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .SavingsFinder {
+    &__container {
+      margin-left: 300px;
+      &-top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
     }
   }
 }

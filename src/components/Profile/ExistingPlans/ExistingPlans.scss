@@ -1,9 +1,11 @@
 .ExistingPlans {
   display: flex;
   height: 100vh;
+  overflow: hidden;
   &__container {
     width: 77%;
-    margin-left: 300px;
+    margin-left: 120px;
+    overflow-y: scroll;
     &-title {
       color: var(--main-text);
       font-weight: 500;
@@ -30,6 +32,14 @@
       & img {
         margin-right: 8px;
       }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .ExistingPlans {
+    &__container {
+      margin-left: 300px;
     }
   }
 }
