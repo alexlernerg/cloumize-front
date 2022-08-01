@@ -429,20 +429,27 @@ const info = [
   { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
 ];
 
-const ComputeFinder = (screenWidthMobile:boolean) => {
-  return (
-    <div className='ComputeFinder'>
-      <Navbar />
-      <div className='ComputeFinder__container'>
-        <h1 className='ComputeFinder__container-title'>Running EC2 Instances</h1>
-        <div className='ComputeFinder__interestingData'>
+const ExternalData = () => {
+  return(
+<div className='ComputeFinder__interestingData'>
           <p><img src="/Profile/CF1.svg" alt="icon"/>3 Running Instances</p>
           <p><img src="/Profile/CF2.svg" alt="icon"/>1 Stopped Instances</p>
           <p><img src="/Profile/CF3.svg" alt="icon"/>2 On-Demand Instances</p>
           <p><img src="/Profile/CF4.svg" alt="icon"/>1 Spot Instances</p>
           <p><img src="/Profile/CF5.svg" alt="icon"/>0 Scheduled Instances</p>
         </div>
+  )
+}
+
+const ComputeFinder = (screenWidthMobile:boolean) => {
+  return (
+    <div className='ComputeFinder'>
+      <Navbar />
+      <div className='ComputeFinder__container'>
+        <h1 className='ComputeFinder__container-title'>Running EC2 Instances</h1>
+        {!screenWidthMobile && <ExternalData/>}
         {screenWidthMobile ?<Data2Skeleton info={info}/>:<TableSkeleton data={dataCF} columns={columnsCF} />}
+        {screenWidthMobile && <ExternalData />}
         {screenWidthMobile ?<TableSkeleton data={dataCF} columns={columnsCF} />:<Data2Skeleton info={info}/>}
       </div>
     </div>

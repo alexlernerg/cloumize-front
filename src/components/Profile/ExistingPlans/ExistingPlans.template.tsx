@@ -39,18 +39,24 @@ const info = [
   { id: 2, title: 'Number Reserved', savings: 'Numbers', total: '0' },
 ];
 
+const ExternalData = () => {
+  return(
+    <div className='ExistingPlans__interestingData'>
+        <p><img src="/Profile/EP1.svg" alt="icon"/>Active Plans (MTD) 4</p>
+        <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month 2</p>
+      </div>
+  )
+}
+
 const ExistingPlans = (screenWidthMobile:boolean) => {
   return <div className='ExistingPlans'>
     <Navbar/>
     <div className='ExistingPlans__container'>
       <h1 className='ExistingPlans__container-title'>Purchased Reserved Instances</h1>
-      <div className='ExistingPlans__interestingData'>
-        <p><img src="/Profile/EP1.svg" alt="icon"/>Active Plans (MTD) 4</p>
-        <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month 2</p>
-      </div>
+      {!screenWidthMobile && <ExternalData/>}
       {screenWidthMobile ? <Data2Skeleton info={info}/>:<TableSkeleton data={dataEP} columns={columnsEP}/>}
+      {screenWidthMobile && <ExternalData/>}
       {screenWidthMobile ? <TableSkeleton data={dataEP} columns={columnsEP}/>:<Data2Skeleton info={info}/>}
-      
     </div>
   </div>;
 };
