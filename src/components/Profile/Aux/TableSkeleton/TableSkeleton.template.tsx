@@ -6,7 +6,7 @@ const TableMobile = ({ dataContent, columnsContent, pathname }: any) => {
   return (
     <>
       {dataContent.map((data: any) => (
-        <table className='table mobile'>
+        <table className='table mobile TableMobile'>
           {pathname === '/user/savingsFinder' && (
             <>
               <tr>

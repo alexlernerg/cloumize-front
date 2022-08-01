@@ -15,11 +15,13 @@
     justify-content: flex-end;
     margin-bottom: 22px;
     &-select {
-      width: 236px;
+      width: 95%;
+      height: 45px;
       border: 1px solid var(--main-primary);
       border-radius: 12px;
       padding: 8px;
       margin-right: 8px;
+      margin-bottom: 4px;
       color: var(--main-text);
       font-family: 'Rubik';
       font-style: normal;
@@ -32,7 +34,8 @@
       border: 1px solid var(--main-primary);
       border-radius: 12px;
       padding: 8px;
-      width: 336px;
+      width: 95%;
+      height: 45px;
     }
     ::placeholder {
       color: var(--grey-40);
@@ -84,27 +87,55 @@
     }
     &-btn {
       display: flex;
-      justify-content: flex-end;
-      padding: 0 45px;
+      justify-content: center;
+      padding: 0 5% 0 0;
       margin-bottom: 72px;
       & button {
         @include buttons.button-lg;
+        width: 100% !important;
       }
     }
   }
 }
-
 .desktop {
   display: none;
 }
 .mobile {
   display: block;
 }
+.TableMobile {
+  margin-bottom: 14px;
+  border: 1px solid var(--primary-90);
+  border-radius: 16px;
+  padding: 20px 16px;
+  width: 95% !important;
+  & tr {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    &:not(:last-child){
+      border-bottom: 1px solid var(--primary-90);
+    }
+  }
+}
 
 @media (min-width: 1280px) {
   .TableSkeletonContainer {
     &__search {
       flex-direction: row;
+      &-select {
+        width: 236px;
+      }
+      &-inputContainer {
+        width: 336px;
+      }
+    }
+    &__body {
+      &-btn {
+        justify-content: flex-end;
+        padding: 0 45px;
+      }
     }
   }
   .desktop {
