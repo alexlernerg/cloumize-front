@@ -135,6 +135,9 @@
       &-btn {
         justify-content: flex-end;
         padding: 0 45px;
+        & button {
+          width: fit-content !important;
+        }
       }
     }
   }
