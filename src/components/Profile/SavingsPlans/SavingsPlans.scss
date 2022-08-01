@@ -16,14 +16,20 @@
     display: flex;
     justify-content: space-around;
     padding: 20px 60px;
-    border: 1px solid var(--primary-40);
-    border-radius: 10px;
+    border: 1px solid var(--secondary-80);
+    border-radius: 16px;
+    background-color: var(--secondary-90);
     margin-bottom: 22px;
     & p {
       margin: 0;
-      color: var(--main-primary);
+      color: var(--grey-80);
       font-weight: 500;
       font-size: 14px;
+      display: flex;
+      align-items: center;
+      & img {
+        margin-right: 8px;
+      }
     }
   }
 }

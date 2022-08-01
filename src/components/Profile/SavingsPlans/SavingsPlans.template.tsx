@@ -43,8 +43,8 @@ const SavingsPlans = () => {
     <div className='SavingsPlans__container'>
       <h1 className='SavingsPlans__container-title'>Purchased Savings Plans</h1>
       <div className='SavingsPlans__interestingData'>
-        <p>Active Plans (MTD) 2</p>
-        <p>Expiring This Month 1</p>
+        <p><img src="/Profile/SP1.svg" alt="icon"/>Active Plans (MTD) 2</p>
+        <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month 1</p>
       </div>
     <TableSkeleton data={dataSP} columns={columnsSP}/>
     <Data2Skeleton info={info}/>

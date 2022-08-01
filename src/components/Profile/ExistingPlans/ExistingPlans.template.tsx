@@ -45,8 +45,8 @@ const ExistingPlans = () => {
     <div className='ExistingPlans__container'>
       <h1 className='ExistingPlans__container-title'>Purchased Reserved Instances</h1>
       <div className='ExistingPlans__interestingData'>
-        <p>Active Plans (MTD) 4</p>
-        <p>Expiring This Month 2</p>
+        <p><img src="/Profile/EP1.svg" alt="icon"/>Active Plans (MTD) 4</p>
+        <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month 2</p>
       </div>
       <TableSkeleton data={dataEP} columns={columnsEP}/>
       <Data2Skeleton info={info}/>

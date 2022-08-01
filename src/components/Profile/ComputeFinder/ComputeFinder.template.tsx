@@ -436,11 +436,11 @@ const ComputeFinder = () => {
       <div className='ComputeFinder__container'>
         <h1 className='ComputeFinder__container-title'>Running EC2 Instances</h1>
         <div className='ComputeFinder__interestingData'>
-          <p>3 Running Instances</p>
-          <p>1 Stopped Instances</p>
-          <p>2 On-Demand Instances</p>
-          <p>1 Spot Instances</p>
-          <p>0 Scheduled Instances</p>
+          <p><img src="/Profile/CF1.svg" alt="icon"/>3 Running Instances</p>
+          <p><img src="/Profile/CF2.svg" alt="icon"/>1 Stopped Instances</p>
+          <p><img src="/Profile/CF3.svg" alt="icon"/>2 On-Demand Instances</p>
+          <p><img src="/Profile/CF4.svg" alt="icon"/>1 Spot Instances</p>
+          <p><img src="/Profile/CF5.svg" alt="icon"/>0 Scheduled Instances</p>
         </div>
         <TableSkeleton data={dataCF} columns={columnsCF} />
         <Data2Skeleton info={info}/>
