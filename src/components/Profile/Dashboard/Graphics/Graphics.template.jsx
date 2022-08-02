@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 import './Graphics.scss';
 
 import Chart from 'chart.js/auto';
-import { CategoryScale } from 'chart.js';
-Chart.register(CategoryScale);
+import { CategoryScale, Tooltip } from 'chart.js';
+Chart.register(CategoryScale, Tooltip);
 
 const dataVerticalBar = [
   {
@@ -100,7 +100,6 @@ export const VerticalBar = (screenWidthMobile) => {
       '/' +
       data.period_start.split(' ')[0].split('-')[1]
   );
-  console.log('labelsVB', labelsVB);
   const dataVB = dataVerticalBar.map(
     (data) => data.spending_on_demand_instances
   );
@@ -111,7 +110,6 @@ export const VerticalBar = (screenWidthMobile) => {
     labels: labelsVB,
     datasets: [
       {
-        label: 'On-demand',
         data: dataVB,
         backgroundColor: '#80A7FA',
         hoverBackgroundColor: '#2C6CF6',
@@ -120,7 +118,6 @@ export const VerticalBar = (screenWidthMobile) => {
         pointStyle: 'circle',
       },
       {
-        label: 'Autopilot',
         data: dataVB2,
         backgroundColor: '#E9F0FE',
         borderRadius: 5,
@@ -146,11 +143,8 @@ export const VerticalBar = (screenWidthMobile) => {
         <Bar
           data={data}
           options={{
-            responsive: true,
-            maintainAspectRatio: true,
             scales: {
               x: {
-                stacked: true,
                 grid: {
                   display: false,
                 },
@@ -161,10 +155,9 @@ export const VerticalBar = (screenWidthMobile) => {
                 },
               },
               y: {
-                stacked: true,
-                max: 15000,
+                max: 2000,
                 ticks: {
-                  stepSize: 5000,
+                  stepSize: 500,
                   font: {
                     size: screenWidthMobile ? 8 : 12,
                   },
@@ -172,12 +165,26 @@ export const VerticalBar = (screenWidthMobile) => {
               },
             },
             plugins: {
+              tooltip: {
+                backgroundColor: '#8796A6',
+                bodyColor: '#F5F8FB',
+                padding: 15,
+                titleColor: '#F5F8FB',
+                yAlign: 'bottom',
+                displayColors: false,
+                titleFont: {
+                  size: 14,
+                  family: "Rubik"
+                },
+                bodyFont: {
+                  size: 24,
+                  weight: 'bold',
+                  family: "Rubik"
+                },
+              },
               legend: {
                 display: false,
                 position: 'top',
-                labels: {
-                  usePointStyle: true,
-                },
               },
             },
           }}
@@ -208,8 +215,24 @@ export const DoughnutGraphic = () => {
         <Doughnut
           data={data}
           options={{
-            responsive: true,
             plugins: {
+              tooltip: {
+                backgroundColor: '#8796A6',
+                bodyColor: '#F5F8FB',
+                padding: 15,
+                titleColor: '#F5F8FB',
+                yAlign: 'bottom',
+                displayColors: false,
+                titleFont: {
+                  size: 14,
+                  family: "Rubik"
+                },
+                bodyFont: {
+                  size: 24,
+                  weight: 'bold',
+                  family: "Rubik"
+                },
+              },
               legend: {
                 display: false,
                 position: 'bottom',
@@ -253,8 +276,24 @@ export const PieGraphic = (screenWidthMobile) => {
         <Pie
           data={data}
           options={{
-            responsive: true,
             plugins: {
+              tooltip: {
+                backgroundColor: '#8796A6',
+                bodyColor: '#F5F8FB',
+                padding: 15,
+                titleColor: '#F5F8FB',
+                yAlign: 'bottom',
+                displayColors: false,
+                titleFont: {
+                  size: 14,
+                  family: "Rubik"
+                },
+                bodyFont: {
+                  size: 24,
+                  weight: 'bold',
+                  family: "Rubik"
+                },
+              },
               legend: {
                 display: false,
                 position: 'right',
@@ -286,14 +325,14 @@ export const HorizontalBar = () => {
     labels: [''],
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'EU Ireland (eu-west-1a)',
         data: [52],
         backgroundColor: '#2C6CF6',
         borderRadius: 5,
         borderSkipped: false,
       },
       {
-        label: 'Dataset 2',
+        label: 'EU Ireland (eu-west-1b)',
         data: [65],
         backgroundColor: '#80A7FA',
         borderRadius: 5,
@@ -314,12 +353,28 @@ export const HorizontalBar = () => {
                   borderWidth: 2,
                 },
               },
-              responsive: true,
               plugins: {
+                tooltip: {
+                backgroundColor: '#8796A6',
+                bodyColor: '#F5F8FB',
+                padding: 15,
+                titleColor: '#F5F8FB',
+                yAlign: 'bottom',
+                displayColors: false,
+                titleFont: {
+                  size: 14,
+                  family: "Rubik"
+                },
+                bodyFont: {
+                  size: 24,
+                  weight: 'bold',
+                  family: "Rubik"
+                },
+              },
                 legend: {
                   display: false,
                   position: 'right',
-                }
+                },
               },
               scales: {
                 x: {
@@ -332,20 +387,20 @@ export const HorizontalBar = () => {
         </div>
       </div>
       <div className='HorizontalBar__legend'>
-      <div className='HorizontalBar__legend-line'>
-        <p>
-          <img src='/Profile/dotBlue.svg' alt='dot' />
-          EU Ireland (eu-west-1a)
-        </p>
-        <p>52%</p>
-      </div>
-      <div className='HorizontalBar__legend-line'>
-        <p>
-          <img src='/Profile/dotLightBlue.svg' alt='dot' />
-          EU Ireland (eu-west-1b)
-        </p>
-        <p>52%</p>
-      </div>
+        <div className='HorizontalBar__legend-line'>
+          <p>
+            <img src='/Profile/dotBlue.svg' alt='dot' />
+            EU Ireland (eu-west-1a)
+          </p>
+          <p>52%</p>
+        </div>
+        <div className='HorizontalBar__legend-line'>
+          <p>
+            <img src='/Profile/dotLightBlue.svg' alt='dot' />
+            EU Ireland (eu-west-1b)
+          </p>
+          <p>52%</p>
+        </div>
       </div>
     </>
   );
