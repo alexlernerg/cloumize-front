@@ -48,7 +48,7 @@
       border: 1px solid var(--primary-90);
       border-radius: 10px;
       padding: 20px 15px;
-      margin-top: 20px;
+      margin: 20px 0;
       width: 270px;
       height: 185px;
       &__title {
@@ -78,6 +78,7 @@
   &__graphics {
     &-firstLine, &-secondLine {
       display: flex;
+      justify-content: space-between;
     }
   }
 }
@@ -86,8 +87,7 @@
   border: 1px solid var(--primary-90);
   border-radius: 10px;
   padding: 20px 15px;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin: 20px 20px 20px 0;
   width: 270px;
   height: 185px;
   color: var(--main-text);
