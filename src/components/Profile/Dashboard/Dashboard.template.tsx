@@ -80,16 +80,6 @@ const Dashboard = () => {
           <div className='Dashboard__graphics-secondLine'>
             <PieGraphicView/>
             <HorizontalBarGraphic/>
-            <div>
-              <div>
-                <p>eu-west-1a (EU Ireland)</p>
-                <p>52.95%</p>
-              </div>
-              <div>
-                <p>eu-west-1b (EU Ireland)</p>
-                <p>63.25%</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

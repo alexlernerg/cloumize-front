@@ -52,9 +52,9 @@
       width: 270px;
       height: 185px;
       &__title {
-            font-weight: 300;
-            font-size: 14px;
-            color: var(--grey-50);
+        font-weight: 300;
+        font-size: 14px;
+        color: var(--grey-50);
       }
       & p {
         margin: 0;
@@ -76,9 +76,12 @@
     }
   }
   &__graphics {
-    &-firstLine, &-secondLine {
-      display: flex;
-      justify-content: space-between;
+    &-firstLine,
+    &-secondLine {
+      display: block;
+    }
+    &-secondLine {
+      margin: 20px 0;
     }
   }
 }
@@ -125,6 +128,16 @@
       &-title {
         padding: 0 48px 0 32px;
         font-size: 26px;
+      }
+    }
+    &__graphics {
+      &-firstLine {
+        height: 320px;
+        display: flex;
+      }
+      &-secondLine {
+        height: 250px;
+        display: flex;
       }
     }
   }

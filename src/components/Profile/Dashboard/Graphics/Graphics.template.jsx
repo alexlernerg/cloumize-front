@@ -93,10 +93,14 @@ const dataVerticalBar = [
   },
 ];
 
-export const VerticalBar = () => {
+export const VerticalBar = (screenWidthMobile) => {
   const labelsVB = dataVerticalBar?.map(
-    (data) => data.period_start.split(' ')[0]
+    (data) =>
+      data.period_start.split(' ')[0].split('-')[2] +
+      '/' +
+      data.period_start.split(' ')[0].split('-')[1]
   );
+  console.log('labelsVB', labelsVB);
   const dataVB = dataVerticalBar.map(
     (data) => data.spending_on_demand_instances
   );
@@ -127,71 +131,60 @@ export const VerticalBar = () => {
   });
   return (
     <div className='VerticalBar'>
-      <p>Instance Family</p>
-      <Bar
-        data={data}
-        options={{
-          responsive: true,
-          maintainAspectRatio: true,
-          scales: {
-            x: {
-              stacked: true,
-              grid: {
+      <p className='mb-0'>Instance Family</p>
+      <div className='VerticalBar__legend'>
+        <p className='mb-0 me-4'>
+          <img src='/Profile/colorBlueDot.svg' alt='dot' />
+          On-demand
+        </p>
+        <p className='mb-0'>
+          <img src='/Profile/colorLightDot.svg' alt='dot' />
+          Autopilot
+        </p>
+      </div>
+      <div className='VerticalBar__container'>
+        <Bar
+          data={data}
+          options={{
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+              x: {
+                stacked: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  font: {
+                    size: screenWidthMobile ? 8 : 12,
+                  },
+                },
+              },
+              y: {
+                stacked: true,
+                max: 15000,
+                ticks: {
+                  stepSize: 5000,
+                  font: {
+                    size: screenWidthMobile ? 8 : 12,
+                  },
+                },
+              },
+            },
+            plugins: {
+              legend: {
                 display: false,
+                position: 'top',
+                labels: {
+                  usePointStyle: true,
+                },
               },
             },
-            y: {
-              stacked: true,
-              max: 15000,
-              ticks: {
-                stepSize: 5000,
-              },
-            },
-          },
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top',
-              labels: {
-                usePointStyle: true,
-              },
-            },
-          },
-        }}
-      />
+          }}
+        />
+      </div>
     </div>
   );
-};
-
-const stateD = {
-  maintainAspectRatio: false,
-  responsive: false,
-  datasets: [
-    {
-      label: 'Restless',
-      data: [300],
-      backgroundColor: '#80A7FA',
-      hoverBackgroundColor: '#2C6CF6',
-    },
-  ],
-};
-
-const stateHB = {
-  labels: [['January', 'February', 'March', 'April', 'May', 'June', 'July']],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      data: [65, 59, 80, 81, 56],
-    },
-    {
-      label: 'Dataset 2',
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
 };
 
 export const DoughnutGraphic = () => {
@@ -203,74 +196,157 @@ export const DoughnutGraphic = () => {
       {
         label: 'Restless',
         data: [15, 100],
-        backgroundColor: ['#80A7FA','#E9F0FE'],
-        hoverBackgroundColor: ['#2C6CF6','#E9F0FE']
+        backgroundColor: ['#80A7FA', '#E9F0FE'],
+        hoverBackgroundColor: ['#2C6CF6', '#E9F0FE'],
       },
     ],
   });
   return (
     <div className='Doughnut'>
       <p>Text</p>
-      <Doughnut
-        data={data}
-        options={{
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'bottom',
+      <div className='Doughnut__container'>
+        <Doughnut
+          data={data}
+          options={{
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false,
+                position: 'bottom',
+                labels: {
+                  usePointStyle: true,
+                  font: {
+                    size: 12,
+                  },
+                },
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
+        <p className='Doughnut__legend mb-0 mt-4 d-flex items-center'>
+          <img src='/Profile/colorDarkDot.svg' alt='dot' />
+          Restless
+        </p>
+      </div>
     </div>
   );
 };
 
-export const PieGraphic = () => {
+export const PieGraphic = (screenWidthMobile) => {
+  const [data, setData] = useState({
+    maintainAspectRatio: false,
+    responsive: false,
+    labels: ['Awake', 'Awake'],
+    datasets: [
+      {
+        label: '',
+        data: [15, 100],
+        backgroundColor: ['#80A7FA', '#E9F0FE'],
+        hoverBackgroundColor: ['#2C6CF6', '#E9F0FE'],
+      },
+    ],
+  });
   return (
     <div className='Pie'>
-      <Pie
-        data={stateD}
-        options={{
-          legend: {
-            display: false,
-            position: 'right',
-          },
-          elements: {
-            arc: {
-              borderWidth: 0,
+      <p className='mb-0'>Total % reservation coverage</p>
+      <div className='Pie__container'>
+        <Pie
+          data={data}
+          options={{
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false,
+                position: 'right',
+                labels: {
+                  padding: screenWidthMobile ? 10 : 50,
+                  usePointStyle: true,
+                },
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
+        <div className='Pie__legend'>
+          <p>
+            <img src='/Profile/colorDarkDot.svg' alt='dot' />
+            Awake
+          </p>
+          <p>
+            <img src='/Profile/colorLightDot.svg' alt='dot' />
+            Awake
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
 
 export const HorizontalBar = () => {
+  const [data, setData] = useState({
+    labels: [''],
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: [52],
+        backgroundColor: '#2C6CF6',
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+        label: 'Dataset 2',
+        data: [65],
+        backgroundColor: '#80A7FA',
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+    ],
+  });
   return (
-    <div className='HorizontalBar'>
-      <Bar
-        options={{
-          indexAxis: 'y',
-          elements: {
-            bar: {
-              borderWidth: 2,
-            },
-          },
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'right',
-            },
-            title: {
-              display: true,
-              text: 'Chart.js Horizontal Bar Chart',
-            },
-          },
-        }}
-        data={stateHB}
-      />
-    </div>
+    <>
+      <div className='HorizontalBar'>
+        <p className='mb-0'>Top cities</p>
+        <div className='HorizontalBar__container'>
+          <Bar
+            options={{
+              indexAxis: 'y',
+              elements: {
+                bar: {
+                  borderWidth: 2,
+                },
+              },
+              responsive: true,
+              plugins: {
+                legend: {
+                  display: false,
+                  position: 'right',
+                }
+              },
+              scales: {
+                x: {
+                  position: 'top',
+                },
+              },
+            }}
+            data={data}
+          />
+        </div>
+      </div>
+      <div className='HorizontalBar__legend'>
+      <div className='HorizontalBar__legend-line'>
+        <p>
+          <img src='/Profile/dotBlue.svg' alt='dot' />
+          EU Ireland (eu-west-1a)
+        </p>
+        <p>52%</p>
+      </div>
+      <div className='HorizontalBar__legend-line'>
+        <p>
+          <img src='/Profile/dotLightBlue.svg' alt='dot' />
+          EU Ireland (eu-west-1b)
+        </p>
+        <p>52%</p>
+      </div>
+      </div>
+    </>
   );
 };
