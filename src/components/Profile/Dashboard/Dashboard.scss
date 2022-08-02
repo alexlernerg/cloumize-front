@@ -75,6 +75,11 @@
       }
     }
   }
+  &__graphics {
+    &-firstLine, &-secondLine {
+      display: flex;
+    }
+  }
 }
 
 .DataLastMonths {

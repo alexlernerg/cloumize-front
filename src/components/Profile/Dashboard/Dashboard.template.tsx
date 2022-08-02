@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../Misc/Navbar/Navbar';
 import './Dashboard.scss';
+import { DoughnutGraphicView, HorizontalBarGraphic, PieGraphicView, VerticalBarGraphic } from './Graphics/Graphics';
 
 const data = [
   { title: 'Last 12 months', EC2: 1000, achieved_savings: 150, wasted_spending:300},
@@ -70,6 +71,26 @@ const Dashboard = () => {
 
           </div>
           </section>
+        </div>
+        <div className='Dashboard__graphics'>
+          <div className='Dashboard__graphics-firstLine'>
+            <VerticalBarGraphic/>
+            <DoughnutGraphicView/>
+          </div>
+          <div className='Dashboard__graphics-secondLine'>
+            <PieGraphicView/>
+            <HorizontalBarGraphic/>
+            <div>
+              <div>
+                <p>eu-west-1a (EU Ireland)</p>
+                <p>52.95%</p>
+              </div>
+              <div>
+                <p>eu-west-1b (EU Ireland)</p>
+                <p>63.25%</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
