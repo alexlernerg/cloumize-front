@@ -17,8 +17,7 @@
     }
     &-top {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
       background-color: var(--secondary-90);
       padding: 24px 40px;
       border-radius: 10px;
@@ -26,22 +25,27 @@
         font-weight: 500;
         font-size: 24px;
         color: var(--main-text);
+        margin-bottom: 0;
       }
       & p:last-child {
         font-weight: 400;
         font-size: 16px;
         color: var(--grey-50);
+        margin-bottom: 0;
       }
       & a {
         @include buttons.button-lg;
-        padding: 23px !important;
+        padding: 8px 23px !important;
         font-size: 20px !important;
+        margin-top: 29px;
+        align-self: flex-end;
       }
     }
     &-info {
       display: flex;
       justify-content: space-between;
       overflow-x: scroll;
+      width: 270px;
     }
     &-thirdBox,
     &-fourthBox {
@@ -52,6 +56,9 @@
       width: 270px;
       height: 185px;
       &__title {
+        width: 240px;
+      }
+      &__span {
         font-weight: 300;
         font-size: 14px;
         color: var(--grey-50);
@@ -99,6 +106,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 240px;
     &-title {
       font-weight: 300;
       font-size: 14px;
@@ -125,9 +133,31 @@
   .Dashboard {
     &__container {
       margin-left: 300px;
+      &-top {
+        flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      & p:first-child {
+        margin-bottom: 8px;
+      }
+      & a {
+        padding: 23px !important;
+        margin-top: 0px;
+      }
+      }
       &-title {
         padding: 0 48px 0 32px;
         font-size: 26px;
+      }
+      &-info {
+        width: 100%;
+      }
+      &-thirdBox,
+      &-fourthBox {
+        width: 25%;
+        &__title {
+          width: 100%;
+        }
       }
     }
     &__graphics {
@@ -139,6 +169,12 @@
         height: 250px;
         display: flex;
       }
+    }
+  }
+  .DataLastMonths {
+    width: 25%;
+    &__content{
+      width: 100%;
     }
   }
 }

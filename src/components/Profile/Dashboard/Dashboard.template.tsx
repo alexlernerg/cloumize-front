@@ -59,13 +59,13 @@ const Dashboard = () => {
         <div className='Dashboard__container-info'>
           {data.map((d, i) => <DataLastMonths data={d} key={i}/>)}
           <section className='Dashboard__container-thirdBox'>
-            <p className='mb-1'>3 <span className='Dashboard__container-thirdBox__title'>Savings Strategies</span> </p>
+            <p className='Dashboard__container-thirdBox__title mb-1'>3 <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span> </p>
             <p className='mb-4'>Approved</p>
-            <p className='mb-1'>3 <span className='Dashboard__container-thirdBox__title'>Savings Strategies</span></p>
+            <p className='mb-1'>3 <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span></p>
             <p><img src="/Profile/Info.svg" alt="info"/>Pending</p>
           </section>
           <section className='Dashboard__container-fourthBox'>
-          <p>2 <span className='Dashboard__container-fourthBox__title'>Savings Strategies <br/>Running</span></p>
+          <p className='Dashboard__container-fourthBox__title'>2 <span className='Dashboard__container-fourthBox__span'>Savings Strategies <br/>Running</span></p>
           <div className='Dashboard__container-fourthBox__img'>
             <img src="/Profile/SavingsStrategies.svg" alt="Savings strategies"/>
 
