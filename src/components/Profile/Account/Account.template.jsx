@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from "react-router-dom";
-import { createPaymentSession, getPaymentSession } from '../../../services/PaymentService';
+import { createPaymentSession, getPaymentSession, getPrice } from '../../../services/PaymentService';
 import './Account.scss';
 
 const ProductDisplay = () => {
   const [product, setProduct] = useState({lookup_keys: 'aws'})
+  const [price, setPrice] = useState(0)
   const onClick=(e)=> {
     e.preventDefault()
     getPaymentSession(product)
@@ -12,12 +13,19 @@ const ProductDisplay = () => {
       window.location.href = response.sessionURL
     })
   }
+  useEffect(()=> {
+    getPrice(product)
+    .then((response) => {
+      console.log(response)
+      setPrice(response.prices.data[0].unit_amount)
+    });
+  })
   return(
   <section>
     <div className="product">
       <div className="description">
         <h3>Starter plan</h3>
-        <h5>$20.00 / month</h5>
+        <h5>${price} / month</h5>
       </div>
     </div>
     <form>
