@@ -1,4 +1,38 @@
-.AccountContainer {
+.Account {
     display: flex;
     height: 100vh;
+    overflow: hidden;
+    &__container {
+      width: 77%;
+      margin-left: 120px;
+      overflow-y: scroll;
+      &-title {
+          color: var(--main-text);
+          font-weight: 500;
+          font-size: 20px;
+          margin: 0;
+          padding: 20px 0;
+        }
+    }
 }
+
+@media (min-width: 1280px) {
+    .Account {
+      &__container {
+        margin-left: 300px;
+        &-title {
+          padding: 0 48px 0 32px;
+          font-size: 26px;
+        }
+      }
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .Account {
+      &__container {
+        width: 73%;
+        margin-left: 500px;
+      }
+    }
+  }

@@ -1,67 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import { createPaymentSession, getPaymentSession, getPrice } from '../../../services/PaymentService';
+import {
+  createPaymentSession,
+  getPaymentSession,
+  getPrice,
+} from '../../../services/PaymentService';
+import Navbar from '../../Misc/Navbar/Navbar';
 import './Account.scss';
 
 const ProductDisplay = () => {
-  const [product, setProduct] = useState({lookup_keys: 'aws'})
-  const [price, setPrice] = useState(0)
-  const onClick=(e)=> {
-    e.preventDefault()
-    getPaymentSession(product)
-    .then((response)=> {
-      window.location.href = response.sessionURL
-    })
-  }
-  useEffect(()=> {
-    getPrice(product)
-    .then((response) => {
-      console.log(response)
-      setPrice(response.prices.data[0].unit_amount)
+  const [product, setProduct] = useState({ lookup_keys: 'aws' });
+  const [price, setPrice] = useState(0);
+  const onClick = (e) => {
+    e.preventDefault();
+    getPaymentSession(product).then((response) => {
+      window.location.href = response.sessionURL;
     });
-  })
-  return(
-  <section>
-    <div className="product">
-      <div className="description">
-        <h3>Starter plan</h3>
-        <h5>${price} / month</h5>
+  };
+  useEffect(() => {
+    getPrice(product).then((response) => {
+      console.log(response);
+      setPrice(response.prices.data[0].unit_amount);
+    });
+  });
+  return (
+    <section>
+      <div className='product'>
+        <div className='description'>
+          <h3>Starter plan</h3>
+          <h5>${price} / month</h5>
+        </div>
       </div>
-    </div>
-    <form>
-      {/* Add a hidden field with the lookup_key of your Price */}
-      <input type="hidden" name="lookup_key" value={product.lookup_keys}/>
-      <button id="checkout-and-portal-button" onClick={onClick}>
-        Checkout
-      </button>
-    </form>
-  </section>
-  )
+      <form>
+        {/* Add a hidden field with the lookup_key of your Price */}
+        <input type='hidden' name='lookup_key' value={product.lookup_keys} />
+        <button id='checkout-and-portal-button' onClick={onClick}>
+          Checkout
+        </button>
+      </form>
+    </section>
+  );
 };
 
 const SuccessDisplay = ({ sessionId }) => {
-  console.log("sessionID", sessionId);
-  const onClick=(e)=> {
-    e.preventDefault()
-    createPaymentSession({sessionId})
-    .then((response)=> {
-      window.location.href = response.portalSession
-    })
-  }
+  console.log('sessionID', sessionId);
+  const onClick = (e) => {
+    e.preventDefault();
+    createPaymentSession({ sessionId }).then((response) => {
+      window.location.href = response.portalSession;
+    });
+  };
   return (
     <section>
-      <div className="product Box-root">
-        <div className="description Box-root">
+      <div className='product Box-root'>
+        <div className='description Box-root'>
           <h3>Subscription to starter plan successful!</h3>
         </div>
       </div>
       <form>
         <input
-          type="hidden"
-          id="session-id"
-          name="session_id"
+          type='hidden'
+          id='session-id'
+          name='session_id'
           value={sessionId}
         />
-        <button id="checkout-and-portal-button" onClick={onClick}>
+        <button id='checkout-and-portal-button' onClick={onClick}>
           Manage your billing information
         </button>
       </form>
@@ -83,7 +85,7 @@ export default function Account() {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
-    console.log("query", query.get('session_id'))
+    console.log('query', query.get('session_id'));
 
     if (query.get('success')) {
       setSuccess(true);
@@ -99,12 +101,31 @@ export default function Account() {
   }, [sessionId]);
 
   if (!success && message === '') {
-    return <ProductDisplay />;
+    return (
+      <div className='Account'>
+        <Navbar />
+        <div className='Account__container'>
+          <ProductDisplay />
+        </div>
+      </div>
+    );
   } else if (success && sessionId !== '') {
-    return <SuccessDisplay sessionId={sessionId} />;
+    return (
+      <div className='Account'>
+        <Navbar />
+        <div className='Account__container'>
+        <SuccessDisplay sessionId={sessionId} />
+        </div>
+      </div>
+    )
   } else {
-    return <Message message={message} />;
+    return (
+      <div className='Account'>
+        <Navbar />
+        <div className='Account__container'>
+        <Message message={message} />
+        </div>
+      </div>
+    )  
   }
 }
-
-
