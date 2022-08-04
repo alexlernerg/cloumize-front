@@ -30,7 +30,7 @@ export default function App() {
           <Route path='/user/savingsPlans' element={<SavingsPlans />} />
           <Route path='/user/account' element={<Account />} />
           <Route path='/user/:id' element={<User />} />
-          <Route path='/*' element={<Error />} />
+          {/* <Route path='/*' element={<Error />} /> */}
         </Routes>
       </UserProvider>
     </div>
