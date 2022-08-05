@@ -1,8 +1,8 @@
 const EMAIL_PATTERN =
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-export const validators: any = {
-  name: (value: string) => {
+export const validators:any = {
+  name: (value: string):any => {
     let message;
 
     if (!value) {
