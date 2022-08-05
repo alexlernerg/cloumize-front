@@ -1,8 +1,8 @@
 import React from 'react';
 import './DataSkeleton.scss';
 
-const DataSkeleton = (info: any, pathname: string) => {
-  console.log('Pathname', pathname);
+const DataSkeleton = (info: any, pathname: string, onClick:any) => {
+  console.log('Info', info);
   return (
     <>
       <div className={`DataSkeleton ${pathname === '/user/savingsFinder' && 'mb-4'}`}>
@@ -38,7 +38,7 @@ const DataSkeleton = (info: any, pathname: string) => {
               <p className='DataSkeleton__sections-savings'>
                 Download this document, edit, save or share
               </p>
-              <button className='DataSkeleton__sections-btn'>
+              <button className='DataSkeleton__sections-btn' onClick={onClick}>
                 Download to CSV
                 <img src='/Profile/download.svg' alt='download' />
               </button>
