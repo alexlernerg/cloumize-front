@@ -107,7 +107,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   );
 };
 
-export const DoughnutGraphic = (dataRest) => {
+export const DoughnutGraphic = (dataRest, getRandomColor) => {
   const [data, setData] = useState({
     maintainAspectRatio: false,
     responsive: false,
@@ -116,8 +116,7 @@ export const DoughnutGraphic = (dataRest) => {
       {
         label: '',
         data: Object.values(dataRest[0].instance_breakdown_platform),
-        backgroundColor: ['#80A7FA', '#E9F0FE'],
-        hoverBackgroundColor: ['#2C6CF6', '#E9F0FE'],
+        backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
       },
     ],
   });
@@ -178,7 +177,6 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
         label: '',
         data: Object.values(dataRest[0].coverage),
         backgroundColor: ['#80A7FA', '#E9F0FE'],
-        hoverBackgroundColor: ['#2C6CF6', '#E9F0FE'],
       },
     ],
   });
@@ -236,14 +234,14 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
   );
 };
 
-export const HorizontalBar = (dataRest) => {
+export const HorizontalBar = (dataRest, getRandomColor) => {
   const [data, setData] = useState({
     labels: [''],
     datasets: [
       {
         label: '',
         data: [],
-        backgroundColor: '#2C6CF6',
+        backgroundColor: getRandomColor(),
         borderRadius: 5,
         borderSkipped: false,
       },
@@ -255,7 +253,7 @@ export const HorizontalBar = (dataRest) => {
       const obj = {
         label: '',
         data: [],
-        backgroundColor: '#2C6CF6',
+        backgroundColor: getRandomColor(),
         borderRadius: 5,
         borderSkipped: false,
       };

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import Checkbox from './Checkbox/Checkbox';
 import './TableSkeleton.scss';
 
-const TableMobile = ({ dataContent, columnsContent, pathname }: any) => {
+const TableMobile = ({ dataContent, columnsContent, pathname }) => {
   return (
     <>
-      {dataContent.map((data: any, i: any) => (
+      {dataContent.map((data, i) => (
         <table className='table mobile TableMobile' key={i}>
           {pathname === '/user/savingsFinder' && (
             <>
@@ -30,15 +31,15 @@ const TableMobile = ({ dataContent, columnsContent, pathname }: any) => {
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.current_rate}</td>
+                <td>{data.current_rate.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.Cloumize_Discount}</td>
+                <td>{data.Cloumize_Discount.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.cloumize_rate}</td>
+                <td>{data.cloumize_rate.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
@@ -184,53 +185,20 @@ const TableMobile = ({ dataContent, columnsContent, pathname }: any) => {
   );
 };
 
-const TableSkeleton = (
-  dataContent: any,
-  columnsContent: any,
-  pathname: string
-) => {
+const TableSkeleton = (dataContent, columnsContent, pathname) => {
   const [filterChoosed, setFilterChoosed] = useState('aws_account_id');
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState([]);
 
-  const onChange = (e: any) => {
+  const onChange = (e) => {
     const { name, value } = e.target;
     name === 'search' ? setSearch(value) : setFilterChoosed(value);
   };
 
-  const [doCheck, setDoCheck]: [
-    any,
-    React.Dispatch<React.SetStateAction<any>>
-  ] = useState({all: false, rest:[]});
-
-  console.log("doCheck", doCheck);
-
-  const onCheck = (e: React.FormEvent<HTMLInputElement>) => {
-    const {checked, name} = e.currentTarget;
-    if (name === 'all') {
-      console.log("Selecciono todos", checked, name)
-    } else {
-      console.log("Selecciono uno", checked, name)
-    }
-    // setDoCheck();
-  };
-
-  useEffect(()=> {
-    const filteredArray = dataContent.filter((data:any)=> data.state === 'Pending Approval');
-    console.log("filteredArray", filteredArray);
-    const mapArray = filteredArray.map((data:any) => {
-      const obj = {
-        id: data.aws_account_id,
-        check: false
-      }
-      return obj
-    })
-    doCheck.rest = mapArray
-  },[])
-
+  //Filter data on table
   useEffect(() => {
     setFilteredData(
-      dataContent.filter((data: any) =>
+      dataContent.filter((data) =>
         data[filterChoosed]
           .toString()
           .toLowerCase()
@@ -238,6 +206,41 @@ const TableSkeleton = (
       )
     );
   }, [search]);
+
+  const [isCheckAll, setIsCheckAll] = useState(false);
+  const [isCheck, setIsCheck] = useState([]);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const filteredArray = dataContent.filter(
+      (data) => data.state === 'Pending Approval'
+    );
+    const mapArray = filteredArray.map((data) => {
+      const obj = {
+        id: data.recommendation_id_cm,
+        check: false,
+      };
+      return obj;
+    });
+    setList(mapArray);
+  }, []);
+
+  const handleSelectAll = (e) => {
+    setIsCheckAll(!isCheckAll);
+    setIsCheck(list.map((li) => li.id));
+    if (isCheckAll) {
+      setIsCheck([]);
+    }
+  };
+
+  const handleClick = (e) => {
+    const { id, checked } = e.target;
+    console.log('e', id, checked);
+    setIsCheck([...isCheck, id]);
+    if (!checked) {
+      setIsCheck(isCheck.filter((item) => item !== id));
+    }
+  };
 
   return (
     <>
@@ -248,7 +251,7 @@ const TableSkeleton = (
           value={filterChoosed}
           className='TableSkeletonContainer__search-select'
         >
-          {Object.keys(dataContent[0]).map((col: any, i: any) => (
+          {Object.keys(dataContent[0]).map((col, i) => (
             <option
               value={col}
               className='TableSkeletonContainer__search-col'
@@ -278,7 +281,7 @@ const TableSkeleton = (
         <thead className='TableSkeletonContainer__head'>
           <tr className='TableSkeletonContainer__head-line'>
             {pathname === '/user/savingsFinder'
-              ? columnsContent.map((col: any, i: any) => (
+              ? columnsContent.map((col, i) => (
                   <td
                     valign='middle'
                     key={i}
@@ -287,23 +290,19 @@ const TableSkeleton = (
                     {col === 'Approval' ? (
                       <div className='TableSkeletonContainer__head-approve'>
                         <p>{col}</p>
-                        <label className='custom-radio-checkbox z-10'>
-                          <input
-                            className='custom-radio-checkbox__input z-10'
-                            type='checkbox'
-                            name='all'
-                            checked={doCheck.all}
-                            onChange={(e) => onCheck(e)}
-                          />
-                          <span className='custom-radio-checkbox__show custom-radio-checkbox__show--checkbox z-10'></span>
-                        </label>
+                        <Checkbox
+                          type='checkbox'
+                          id='selectAll'
+                          handleClick={handleSelectAll}
+                          isChecked={isCheckAll}
+                        />
                       </div>
                     ) : (
                       col
                     )}
                   </td>
                 ))
-              : columnsContent.map((col: any, i: any) => (
+              : columnsContent.map((col, i) => (
                   <td
                     valign='middle'
                     key={i}
@@ -315,8 +314,8 @@ const TableSkeleton = (
           </tr>
         </thead>
         <tbody className='TableSkeletonContainer__body'>
-          {pathname === '/user/savingsFinder' && //TODO: Editar ultimas dos columnas
-            filteredData.map((content: any, i: any) => (
+          {pathname === '/user/savingsFinder' &&
+            filteredData.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
@@ -347,6 +346,7 @@ const TableSkeleton = (
                   className='TableSkeletonContainer__body-col'
                 >
                   {content.units}
+                  {i}
                 </td>
                 <td
                   valign='middle'
@@ -392,27 +392,24 @@ const TableSkeleton = (
                 >
                   {content.state === '' ||
                   content.state === 'Savings Activated' ? (
-                    <div className='d-flex justify-content-center'>
-                      <img src='/Profile/checkbox.svg' alt='checkbox'/>
-
+                    <div className='d-flex justify-content-center checkboxDesktop'>
+                      <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
-                    <label className='custom-radio-checkbox z-10 d-flex justify-content-center'>
-                      <input
-                        className='custom-radio-checkbox__input z-10'
-                        type='checkbox'
-                        name={content.aws_account_id}
-                        checked={doCheck?.rest[i]?.check}
-                        onChange={(e) => onCheck(e)}
-                      />
-                      <span className='custom-radio-checkbox__show custom-radio-checkbox__show--checkbox z-10'></span>
-                    </label>
+                    <Checkbox
+                      key={list[0]?.id} //TODO: Iterar por cada obj ya filtrado (filteredArray)
+                      type='checkbox'
+                      id={list[0]?.id}
+                      handleClick={handleClick}
+                      isChecked={isCheck.includes(list[0]?.id)}
+                      className='custom-radio-checkbox__input z-10'
+                    />
                   )}
                 </td>
               </tr>
             ))}
           {pathname === '/user/computeFinder' &&
-            filteredData.map((content: any, i: any) => (
+            filteredData.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
@@ -477,7 +474,7 @@ const TableSkeleton = (
               </tr>
             ))}
           {pathname === '/user/savingsPlans' &&
-            filteredData.map((content: any, i: any) => (
+            filteredData.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
@@ -530,7 +527,7 @@ const TableSkeleton = (
               </tr>
             ))}
           {pathname === '/user/existingPlans' &&
-            filteredData.map((content: any, i: any) => (
+            filteredData.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'

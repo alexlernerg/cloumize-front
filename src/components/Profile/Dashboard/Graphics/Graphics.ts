@@ -1,5 +1,12 @@
 import {VerticalBar, DoughnutGraphic, PieGraphic, HorizontalBar} from "./Graphics.template";
 
+const getRandomColor = () => {
+  const myColors = ['#0C56F6', '#80A7FA', '#96B6FB', '#55BFF9', '#99D9FB', '#AADFFC', '#477ED0'];
+  const colorRandom = Math.floor(Math.random()*myColors.length);
+  const color = myColors[colorRandom];
+  return color;
+} 
+
 export const VerticalBarGraphic = () => {
   const dataVerticalBar = [
     {
@@ -93,7 +100,7 @@ export const VerticalBarGraphic = () => {
 };
 
 export const DoughnutGraphicView = ({dataRest}:any) => {
-  return DoughnutGraphic(dataRest)
+  return DoughnutGraphic(dataRest, getRandomColor)
 };
 
 export const PieGraphicView = ({dataRest}:any) => {
@@ -103,5 +110,5 @@ export const PieGraphicView = ({dataRest}:any) => {
 };
 
 export const HorizontalBarGraphic = ({dataRest}:any) => {
-  return HorizontalBar(dataRest)
+  return HorizontalBar(dataRest, getRandomColor)
 };
