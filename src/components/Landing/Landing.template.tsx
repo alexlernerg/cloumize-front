@@ -172,9 +172,9 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         <div>
           <p>AI Powered Cloud Savings!</p>
           <div>
-            <a href="/"><img src="" alt=""/></a>
-            <a href="/"><img src="" alt=""/></a>
-            <a href="/"><img src="" alt=""/></a>
+            <a href="/"><img src="/Landing/Twitter.svg" alt="twitter"/></a>
+            <a href="/"><img src="/Landing/Instagram.svg" alt="instagram"/></a>
+            <a href="/"><img src="/Landing/Linkedin.svg" alt="linkedIn"/></a>
             <a href="/">Hola@cloumize.com</a>
           </div>
         </div>
