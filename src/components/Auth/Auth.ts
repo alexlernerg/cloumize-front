@@ -6,6 +6,7 @@ import { signIn, signUp } from '../../services/AuthService';
 import { setAccessToken } from '../../store/AccessTokenStore';
 import { useNavigate } from 'react-router-dom';
 import templateAuth from "./Auth.template";
+import { IUser } from '../../interfaces/json';
 
 const Auth =()=>{
   //Current url
@@ -22,7 +23,7 @@ const Auth =()=>{
   const {getCurrentUser} = useUser();
 
   //Form logic
-  const [data, setData]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
+  const [data, setData]:[IUser, React.Dispatch<React.SetStateAction<IUser>>] = useState({
     name: '',
     email: '',
     password: '',
@@ -35,9 +36,9 @@ const Auth =()=>{
     confirmPassword: validators.password()
   });
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setData((prevState:any) => ({
+    setData((prevState:IUser) => ({
       ...prevState,
       [name]: value,
     }));
@@ -49,7 +50,7 @@ const Auth =()=>{
 
   const [touched, setTouched] = useState({});
 
-  const onBlur = (e: any) => {
+  const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
 
     setTouched((prevTouched) => ({
@@ -58,7 +59,7 @@ const Auth =()=>{
     }));
   };
 
-  const onFocus = (e: any) => {
+  const onFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
 
     setTouched((prevTouched) => ({

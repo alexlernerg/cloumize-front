@@ -2,7 +2,6 @@ import React from 'react';
 import './DataSkeleton.scss';
 
 const DataSkeleton = (info: any, pathname: string, onClick:any) => {
-  console.log('Info', info);
   return (
     <>
       <div className={`DataSkeleton ${pathname === '/user/savingsFinder' && 'mb-4'}`}>

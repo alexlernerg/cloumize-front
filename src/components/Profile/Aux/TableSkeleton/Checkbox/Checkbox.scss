@@ -1,0 +1,44 @@
+/* Centra el input personalizado con el texto */
+.custom-radio-checkbox {
+    display: flex;
+    align-items: center;
+    font-family: arial;
+    cursor: pointer;
+  }
+  
+  /* Modificador para dar la imagen de checkbox */
+  .custom-radio-checkbox__show--checkbox {
+    background-image: url('./uncheck.svg');
+  }
+  
+  /* Oculta input original */
+  .custom-radio-checkbox > .custom-radio-checkbox__input {
+    display: none;
+  }
+  
+  /* Radio personalizado usando <span> */
+  .custom-radio-checkbox > .custom-radio-checkbox__show {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+  }
+  
+  /* Cambia el checkbox personalizado cuando es pulsado */
+  .custom-radio-checkbox
+    > .custom-radio-checkbox__input:checked
+    + .custom-radio-checkbox__show--checkbox {
+    background-image: url('./check.svg');
+  }
+
+  @media (min-width: 1280px) {
+    .checkboxDesktop {
+      margin-right: 20px;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .checkboxDesktop {
+      margin-right: 0px;
+    }
+  }

@@ -4,12 +4,8 @@ import Navbar from '../../Misc/Navbar/Navbar';
 import './Dashboard.scss';
 import { DoughnutGraphicView, HorizontalBarGraphic, PieGraphicView, VerticalBarGraphic } from './Graphics/Graphics';
 
-const data = [
-  { title: 'Last 12 months', EC2: 1000, achieved_savings: 150, wasted_spending:300},
-  {title: 'Last months', EC2: 300, achieved_savings: 200, wasted_spending:150}
-]
-
 const DataLastMonths = ({data}:any) => {
+  console.log("DATA", data)
   return (
     <section className='DataLastMonths'>
       <div className='DataLastMonths__header'>
@@ -20,30 +16,30 @@ const DataLastMonths = ({data}:any) => {
         <div>
           <p className='DataLastMonths__content-title'>EC2 Costs</p>
           <p>
-            ${data.EC2}
-            <img src='/Profile/graphic.svg' alt='graphic' />
+            ${data.EC2.toFixed(2)}
+            <img src='/Profile/graphic.svg' alt='graphic' className='ms-2'/>
           </p>
         </div>
         <div>
           <p className='DataLastMonths__content-title'>Achieved Savings</p>
           <p>
-            ${data.achieved_savings}
-            <img src='/Profile/graphic.svg' alt='graphic' />
+            ${data.achieved_savings.toFixed(2)}
+            <img src='/Profile/graphic.svg' alt='graphic' className='ms-2'/>
           </p>
         </div>
       </div>
       <div>
         <p className='DataLastMonths__content-title'>Wasted spending</p>
         <p>
-          ${data.wasted_spending}
-          <img src='/Profile/graphic.svg' alt='graphic' />
+          ${data.wasted_spending.toFixed(2)}
+          <img src='/Profile/graphic.svg' alt='graphic' className='ms-2'/>
         </p>
       </div>
     </section>
   );
 };
 
-const Dashboard = () => {
+const Dashboard = (dataRest:any, data:any) => {
   return (
     <div className='Dashboard'>
       <Navbar />
@@ -57,15 +53,15 @@ const Dashboard = () => {
           <Link to='/user/savingsFinder'>Find them</Link>
         </div>
         <div className='Dashboard__container-info'>
-          {data.map((d, i) => <DataLastMonths data={d} key={i}/>)}
+          {data.map((d:any, i:any) => <DataLastMonths data={d} key={i}/>)}
           <section className='Dashboard__container-thirdBox'>
-            <p className='Dashboard__container-thirdBox__title mb-1'>3 <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span> </p>
+            <p className='Dashboard__container-thirdBox__title mb-1'>{dataRest[0].savings_strategies_approved} <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span> </p>
             <p className='mb-4'>Approved</p>
-            <p className='mb-1'>3 <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span></p>
-            <p><img src="/Profile/Info.svg" alt="info"/>Pending</p>
+            <p className='mb-1'>{dataRest[0].savings_strategies_pending} <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span></p>
+            {Number(dataRest[0].savings_strategies_pending) > 0 && <p className='Dashboard__container-thirdBox__pending'><img src="/Profile/Info.svg" alt="info"/>Pending</p>}
           </section>
           <section className='Dashboard__container-fourthBox'>
-          <p className='Dashboard__container-fourthBox__title'>2 <span className='Dashboard__container-fourthBox__span'>Savings Strategies <br/>Running</span></p>
+          <p className='Dashboard__container-fourthBox__title'>{dataRest[0].savings_strategies_running} <span className='Dashboard__container-fourthBox__span'>Savings Strategies <br/>Running</span></p>
           <div className='Dashboard__container-fourthBox__img'>
             <img src="/Profile/SavingsStrategies.svg" alt="Savings strategies"/>
 
@@ -75,11 +71,11 @@ const Dashboard = () => {
         <div className='Dashboard__graphics'>
           <div className='Dashboard__graphics-firstLine'>
             <VerticalBarGraphic/>
-            <DoughnutGraphicView/>
+            <DoughnutGraphicView dataRest={dataRest}/>
           </div>
           <div className='Dashboard__graphics-secondLine'>
-            <PieGraphicView/>
-            <HorizontalBarGraphic/>
+            <PieGraphicView dataRest={dataRest}/>
+            <HorizontalBarGraphic dataRest={dataRest}/>
           </div>
         </div>
       </div>

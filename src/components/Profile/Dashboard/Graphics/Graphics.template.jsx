@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 import './Graphics.scss';
 
@@ -6,94 +6,7 @@ import Chart from 'chart.js/auto';
 import { CategoryScale, Tooltip } from 'chart.js';
 Chart.register(CategoryScale, Tooltip);
 
-const dataVerticalBar = [
-  {
-    user_id_cm: 1,
-    period_start: '2021-07-31 19:00:00',
-    period_end: '2021-08-31 19:00:00',
-    spending_on_demand_instances: 1322.12518624,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2021-08-31 19:00:00',
-    period_end: '2021-09-30 19:00:00',
-    spending_on_demand_instances: 1319.0965546592,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2021-09-30 19:00:00',
-    period_end: '2021-10-31 19:00:00',
-    spending_on_demand_instances: 1332.2767557696,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2021-10-31 19:00:00',
-    period_end: '2021-11-30 19:00:00',
-    spending_on_demand_instances: 1172.7441292616,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2021-11-30 19:00:00',
-    period_end: '2021-12-31 19:00:00',
-    spending_on_demand_instances: 1315.966794496,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2021-12-31 19:00:00',
-    period_end: '2022-01-31 19:00:00',
-    spending_on_demand_instances: 1319.9267891176,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2022-01-31 19:00:00',
-    period_end: '2022-02-28 19:00:00',
-    spending_on_demand_instances: 1185.717794468,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2022-02-28 19:00:00',
-    period_end: '2022-03-31 19:00:00',
-    spending_on_demand_instances: 1319.070034856,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2022-03-31 19:00:00',
-    period_end: '2022-04-30 19:00:00',
-    spending_on_demand_instances: 1290.5424247182,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2022-04-30 19:00:00',
-    period_end: '2022-05-31 19:00:00',
-    spending_on_demand_instances: 1320.0750210848,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2022-05-31 19:00:00',
-    period_end: '2022-06-30 19:00:00',
-    spending_on_demand_instances: 0.0,
-    spending_std_reserved_instances: 0.0,
-  },
-  {
-    user_id_cm: 1,
-    period_start: '2022-06-30 19:00:00',
-    period_end: '2022-07-31 19:00:00',
-    spending_on_demand_instances: 574.7957773408,
-    spending_std_reserved_instances: 0.0,
-  },
-];
-
-export const VerticalBar = (screenWidthMobile) => {
+export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   const labelsVB = dataVerticalBar?.map(
     (data) =>
       data.period_start.split(' ')[0].split('-')[2] +
@@ -174,12 +87,12 @@ export const VerticalBar = (screenWidthMobile) => {
                 displayColors: false,
                 titleFont: {
                   size: 14,
-                  family: "Rubik"
+                  family: 'Rubik',
                 },
                 bodyFont: {
                   size: 24,
                   weight: 'bold',
-                  family: "Rubik"
+                  family: 'Rubik',
                 },
               },
               legend: {
@@ -194,17 +107,16 @@ export const VerticalBar = (screenWidthMobile) => {
   );
 };
 
-export const DoughnutGraphic = () => {
+export const DoughnutGraphic = (dataRest, getRandomColor) => {
   const [data, setData] = useState({
     maintainAspectRatio: false,
     responsive: false,
-    labels: ['Restless'],
+    labels: Object.keys(dataRest[0].instance_breakdown_platform),
     datasets: [
       {
-        label: 'Restless',
-        data: [15, 100],
-        backgroundColor: ['#80A7FA', '#E9F0FE'],
-        hoverBackgroundColor: ['#2C6CF6', '#E9F0FE'],
+        label: '',
+        data: Object.values(dataRest[0].instance_breakdown_platform),
+        backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
       },
     ],
   });
@@ -225,12 +137,12 @@ export const DoughnutGraphic = () => {
                 displayColors: false,
                 titleFont: {
                   size: 14,
-                  family: "Rubik"
+                  family: 'Rubik',
                 },
                 bodyFont: {
                   size: 24,
                   weight: 'bold',
-                  family: "Rubik"
+                  family: 'Rubik',
                 },
               },
               legend: {
@@ -255,20 +167,20 @@ export const DoughnutGraphic = () => {
   );
 };
 
-export const PieGraphic = (screenWidthMobile) => {
+export const PieGraphic = (screenWidthMobile, dataRest) => {
   const [data, setData] = useState({
     maintainAspectRatio: false,
     responsive: false,
-    labels: ['Awake', 'Awake'],
+    labels: Object.keys(dataRest[0].coverage),
     datasets: [
       {
         label: '',
-        data: [15, 100],
+        data: Object.values(dataRest[0].coverage),
         backgroundColor: ['#80A7FA', '#E9F0FE'],
-        hoverBackgroundColor: ['#2C6CF6', '#E9F0FE'],
       },
     ],
   });
+
   return (
     <div className='Pie'>
       <p className='mb-0'>Total % reservation coverage</p>
@@ -286,12 +198,12 @@ export const PieGraphic = (screenWidthMobile) => {
                 displayColors: false,
                 titleFont: {
                   size: 14,
-                  family: "Rubik"
+                  family: 'Rubik',
                 },
                 bodyFont: {
                   size: 24,
                   weight: 'bold',
-                  family: "Rubik"
+                  family: 'Rubik',
                 },
               },
               legend: {
@@ -308,11 +220,13 @@ export const PieGraphic = (screenWidthMobile) => {
         <div className='Pie__legend'>
           <p>
             <img src='/Profile/colorDarkDot.svg' alt='dot' />
-            Awake
+            {Object.keys(dataRest[0].coverage)[0] === 'percentage_covered' &&
+              'Covered'}
           </p>
           <p>
             <img src='/Profile/colorLightDot.svg' alt='dot' />
-            Awake
+            {Object.keys(dataRest[0].coverage)[1] ===
+              'percentage_not_covered' && 'Not Covered'}
           </p>
         </div>
       </div>
@@ -320,26 +234,40 @@ export const PieGraphic = (screenWidthMobile) => {
   );
 };
 
-export const HorizontalBar = () => {
+export const HorizontalBar = (dataRest, getRandomColor) => {
   const [data, setData] = useState({
     labels: [''],
     datasets: [
       {
-        label: 'EU Ireland (eu-west-1a)',
-        data: [52],
-        backgroundColor: '#2C6CF6',
-        borderRadius: 5,
-        borderSkipped: false,
-      },
-      {
-        label: 'EU Ireland (eu-west-1b)',
-        data: [65],
-        backgroundColor: '#80A7FA',
+        label: '',
+        data: [],
+        backgroundColor: getRandomColor(),
         borderRadius: 5,
         borderSkipped: false,
       },
     ],
   });
+
+  useEffect(() => {
+    const reformattedArray = dataRest[0].instance_breakdown_family.map((i) => {
+      const obj = {
+        label: '',
+        data: [],
+        backgroundColor: getRandomColor(),
+        borderRadius: 5,
+        borderSkipped: false,
+      };
+      obj.label = Object.keys(i);
+      obj.data = [Object.values(i)[0]];
+      return obj;
+    });
+
+    setData((prevState) => ({
+      ...prevState,
+      datasets: reformattedArray,
+    }));
+  }, []);
+
   return (
     <>
       <div className='HorizontalBar'>
@@ -355,22 +283,22 @@ export const HorizontalBar = () => {
               },
               plugins: {
                 tooltip: {
-                backgroundColor: '#8796A6',
-                bodyColor: '#F5F8FB',
-                padding: 15,
-                titleColor: '#F5F8FB',
-                yAlign: 'bottom',
-                displayColors: false,
-                titleFont: {
-                  size: 14,
-                  family: "Rubik"
+                  backgroundColor: '#8796A6',
+                  bodyColor: '#F5F8FB',
+                  padding: 15,
+                  titleColor: '#F5F8FB',
+                  yAlign: 'bottom',
+                  displayColors: false,
+                  titleFont: {
+                    size: 14,
+                    family: 'Rubik',
+                  },
+                  bodyFont: {
+                    size: 24,
+                    weight: 'bold',
+                    family: 'Rubik',
+                  },
                 },
-                bodyFont: {
-                  size: 24,
-                  weight: 'bold',
-                  family: "Rubik"
-                },
-              },
                 legend: {
                   display: false,
                   position: 'right',
@@ -386,22 +314,23 @@ export const HorizontalBar = () => {
           />
         </div>
       </div>
-      <div className='HorizontalBar__legend'>
-        <div className='HorizontalBar__legend-line'>
+      <DataServer dataRest={dataRest}/>
+    </>
+  );
+};
+
+export const DataServer = ({dataRest}) => {
+  return (
+    <div className='HorizontalBar__legend'>
+      {dataRest[0].instance_breakdown_az.map((data, i) => (
+        <div className='HorizontalBar__legend-line' key={i}>
           <p>
             <img src='/Profile/dotBlue.svg' alt='dot' />
-            EU Ireland (eu-west-1a)
+            {Object.keys(data)}
           </p>
-          <p>52%</p>
+          <p>{Object.values(data)}%</p>
         </div>
-        <div className='HorizontalBar__legend-line'>
-          <p>
-            <img src='/Profile/dotLightBlue.svg' alt='dot' />
-            EU Ireland (eu-west-1b)
-          </p>
-          <p>52%</p>
-        </div>
-      </div>
-    </>
+      ))}
+    </div>
   );
 };
