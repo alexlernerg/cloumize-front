@@ -111,13 +111,13 @@
       width: fit-content;
     }
     &-textApproved {
-      background: var(--main-secondary);
+      background: var(--main-secondary) !important;
     }
     &-textPending {
-      background: var(--grey-30);
+      background: var(--grey-30) !important;
     }
     &-textActive {
-      background: var(--decoration-5);
+      background: var(--decoration-5) !important;
     }
   }
 }
@@ -140,6 +140,26 @@
     padding: 8px 0;
     &:not(:last-child) {
       border-bottom: 1px solid var(--primary-90);
+    }
+  }
+  &__body {
+    &-col {
+        width: 100%t;
+        word-wrap: break-word;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    &-btn {
+      width: 100%;
+      & button {
+        @include buttons.button-lg;
+        width: 100% !important;
+        background-color: var(--main-primary) !important;
+        &:disabled {
+          background-color: var(--primary-40) !important;
+          border: 1px solid var(--primary-40) !important;
+        }
+      }
     }
   }
 }

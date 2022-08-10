@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Checkbox from './Checkbox/Checkbox';
 import './TableSkeleton.scss';
 
-const TableMobile = ({ dataContent, columnsContent, pathname }) => {
+const TableMobile = ({
+  dataContent,
+  columnsContent,
+  pathname,
+  list,
+  isCheck,
+  handleClick,
+}) => {
   return (
     <>
       {dataContent.map((data, i) => (
@@ -43,20 +50,52 @@ const TableMobile = ({ dataContent, columnsContent, pathname }) => {
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td>
-                  {data.state === '' && 'Approved'}
-                  {data.state === 'Pending Approval' && 'Pending'}
-                  {data.state === 'Savings Activated' && 'Active'}
+                <td valign='middle' className='TableMobile__body-col'>
+                  {data.state === '' && (
+                    <p className='TableSkeletonContainer__body-textApproved m-0'>
+                      Approved
+                    </p>
+                  )}
+                  {data.state === 'Pending Approval' && (
+                    <p className='TableSkeletonContainer__body-textPending m-0'>
+                      Pending
+                    </p>
+                  )}
+                  {data.state === 'Savings Activated' && (
+                    <p className='TableSkeletonContainer__body-textActive m-0'>
+                      Active
+                    </p>
+                  )}
                 </td>
               </tr>
-              <tr>
+              <tr className='align-items-center'>
                 <td>{columnsContent[9]}</td>
-                <td>
-                  {data.state === '' && 'Approved'}
-                  {data.state === 'Pending Approval' && 'Pending'}
-                  {data.state === 'Savings Activated' && 'Active'}
+                <td valign='middle' className='TableMobile__body-col'>
+                  {data.state === '' || data.state === 'Savings Activated' ? (
+                    <div className='d-flex justify-content-center checkboxDesktop'>
+                      <img src='/Profile/checkbox.svg' alt='checkbox' />
+                    </div>
+                  ) : (
+                    <Checkbox
+                      key={list[0]?.id} //TODO: Iterar por cada obj ya filtrado (filteredArray)
+                      type='checkbox'
+                      id={list[0]?.id}
+                      handleClick={handleClick}
+                      isChecked={isCheck.includes(list[0]?.id)}
+                      className='custom-radio-checkbox__input z-10'
+                    />
+                  )}
                 </td>
               </tr>
+              {data.state === 'Pending Approval' && (
+                <tr>
+                  <td className='TableMobile__body-btn'>
+                    <button disabled={isCheck.length <= 0 ? true : false}>
+                      Approve
+                    </button>
+                  </td>
+                </tr>
+              )}
             </>
           )}
           {pathname === '/user/computeFinder' && (
@@ -185,63 +224,21 @@ const TableMobile = ({ dataContent, columnsContent, pathname }) => {
   );
 };
 
-const TableSkeleton = (dataContent, columnsContent, pathname) => {
-  const [filterChoosed, setFilterChoosed] = useState('aws_account_id');
-  const [search, setSearch] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    name === 'search' ? setSearch(value) : setFilterChoosed(value);
-  };
-
-  //Filter data on table
-  useEffect(() => {
-    setFilteredData(
-      dataContent.filter((data) =>
-        data[filterChoosed]
-          .toString()
-          .toLowerCase()
-          .includes(search.toString().toLowerCase())
-      )
-    );
-  }, [search]);
-
-  const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    const filteredArray = dataContent.filter(
-      (data) => data.state === 'Pending Approval'
-    );
-    const mapArray = filteredArray.map((data) => {
-      const obj = {
-        id: data.recommendation_id_cm,
-        check: false,
-      };
-      return obj;
-    });
-    setList(mapArray);
-  }, []);
-
-  const handleSelectAll = (e) => {
-    setIsCheckAll(!isCheckAll);
-    setIsCheck(list.map((li) => li.id));
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
-
-  const handleClick = (e) => {
-    const { id, checked } = e.target;
-    console.log('e', id, checked);
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id));
-    }
-  };
-
+const TableSkeleton = (
+  dataContent,
+  columnsContent,
+  pathname,
+  screenWidthMobile,
+  filteredData,
+  filterChoosed,
+  search,
+  onChange,
+  isCheckAll,
+  isCheck,
+  list,
+  handleSelectAll,
+  handleClick
+) => {
   return (
     <>
       <div className='TableSkeletonContainer__search'>
@@ -591,10 +588,13 @@ const TableSkeleton = (dataContent, columnsContent, pathname) => {
         dataContent={dataContent}
         columnsContent={columnsContent}
         pathname={pathname}
+        list={list}
+        isCheck={isCheck}
+        handleClick={handleClick}
       />
-      {pathname === '/user/savingsFinder' && (
+      {pathname === '/user/savingsFinder' && !screenWidthMobile && (
         <div className='TableSkeletonContainer__body-btn'>
-          <button>Approve</button>
+          <button disabled={isCheck.length <= 0 ? true : false}>Approve</button>
         </div>
       )}
     </>
