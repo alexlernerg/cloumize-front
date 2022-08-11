@@ -6,11 +6,11 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
   return (
     <div className='LandingContainer'>
       <section className='LandingContainer__Navbar'>
-        <div>
+        <div className='LandingContainer__Navbar-part1'>
           <img src='/Landing/logo.svg' alt='logo' />
           <p>AI Powered Cloud Savings!</p>
         </div>
-        <div>
+        <div className='LandingContainer__Navbar-part2'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signin'}
             className='LandingContainer__authBtn'
@@ -26,9 +26,9 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         </div>
       </section>
       <section className='LandingContainer__Section1'>
-        <h1>&#123;Save $ : Boost Productivity&#125;</h1>
-        <p>Cloumize provides Cloud Savings as a Service to</p>
-        <div>
+        <h1 className='LandingContainer__Section1-title'>&#123;Save $ : Boost Productivity&#125;</h1>
+        <p className='LandingContainer__Section1-subtitle'>Cloumize provides Cloud Savings as a Service to</p>
+        <div className='LandingContainer__Section1-btns'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
             className='LandingContainer__authBtn'
@@ -37,30 +37,25 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           </Link>
           <button>Contact Sales</button>
         </div>
-        <p>Accelerated by</p>
-        <div>
-          <img src='/Landing/shuttle.svg' alt='shuttle' />
-          <img src='/Landing/shuttle.svg' alt='shuttle' />
-        </div>
         <img src='/Landing/dashboard.svg' alt='dashboard' />
       </section>
       <section className='LandingContainer__Section2'>
-        <h2>HOW TO BENEFIT</h2>
-        <h3>Slash your EC2 costs up to 60%*</h3>
-        <p>
+        <h2 className='LandingContainer__Section2-title'>HOW TO BENEFIT</h2>
+        <h3 className='LandingContainer__Section2-subtitle'>Slash your EC2 costs up to 60%*</h3>
+        <p className='LandingContainer__Section2-content'>
           In just few easy step, you are all set to manage your business
           finances. Manage all expenses with Cloumize all in one place.
         </p>
-        <div>
+        <div className='LandingContainer__Section2-cards'>
           {info2.map((info: any) => (
-            <div key={info.id}>
+            <div key={info.id} className='LandingContainer__Section2-card'>
               <img src={info.img.src} alt={info.img.alt} />
-              <h4>{info.title}</h4>
-              <p>{info.content}</p>
+              <h4 className='LandingContainer__Section2-card__title'>{info.title}</h4>
+              <p className='LandingContainer__Section2-card__content'>{info.content}</p>
             </div>
           ))}
         </div>
-        <div>
+        <div className='LandingContainer__Section2-btns'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
             className='LandingContainer__authBtn'
@@ -72,9 +67,9 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
       </section>
       <section className='LandingContainer__Section3'>
         <div>
-          <h2>HOW TO MONOTHERIZE</h2>
-          <h3>Monitor and negotiate your transactions</h3>
-          <p>
+          <h2 className='LandingContainer__Section3-title'>HOW TO MONOTHERIZE</h2>
+          <h3 className='LandingContainer__Section3-subtitle'>Monitor and negotiate your transactions</h3>
+          <p className='LandingContainer__Section3-content'>
             Cloumize’s algorithm monitors your infrastructure and trades the
             most lucrative deals in real time
           </p>
@@ -90,9 +85,9 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
       <section className='LandingContainer__Section4'>
         <img src='/Landing/incentives.svg' alt='Savings Finder' />
         <div>
-          <h2>HOW TO HAVE INCENTIVES</h2>
-          <h3>Aligned with a success fee-revenue incentive</h3>
-          <p>
+          <h2 className='LandingContainer__Section4-title'>HOW TO HAVE INCENTIVES</h2>
+          <h3 className='LandingContainer__Section4-subtitle'>Aligned with a success fee-revenue incentive</h3>
+          <p className='LandingContainer__Section4-content'>
             Cloumize’s algorithm monitors your infrastructure and trades the
             most lucrative deals in real time
           </p>
@@ -105,19 +100,21 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         </div>
       </section>
       <section className='LandingContainer__Section5'>
-        <h2>HOW TO REGISTER</h2>
-        <h3>Few Easy Steps and Done</h3>
-        <p>
+        <h2 className='LandingContainer__Section5-title'>HOW TO REGISTER</h2>
+        <h3 className='LandingContainer__Section5-subtitle'>Few Easy Steps and Done</h3>
+        <p className='LandingContainer__Section5-content'>
           In just few easy step, you are all set to manage your business
           finances.Manage all expenses with Cloumize all in one place.
         </p>
-        {info5.map((info: any) => (
-          <div key={info.id}>
-            <img src={info.img.src} alt={info.img.alt} />
-            <p>{info.content}</p>
-          </div>
-        ))}
-        <div>
+        <div className='LandingContainer__Section5-cards'>
+          {info5.map((info: any) => (
+            <div key={info.id} className='LandingContainer__Section5-card'>
+              <img src={info.img.src} alt={info.img.alt} />
+              <p className='LandingContainer__Section5-card__content'>{info.content}</p>
+            </div>
+          ))}
+        </div>
+        <div className='LandingContainer__Section5-btns'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
             className='LandingContainer__authBtn'
@@ -127,41 +124,50 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           <button>Contact Sales</button>
         </div>
       </section>
-      <section className='LandingContainer__Section5'>
-        <h2>Frequently Asked Questions</h2>
-        <div>
-          <button id='0' onClick={onClick}>What is a Payment Gateway?</button>
-          <button id='1' onClick={onClick}>Do I need to pay to Instapay even when there is no transaction going on in my business?</button>
-          <button id='2' onClick={onClick}>What platforms does ACME payment gateway support?</button>
-          <button id='3' onClick={onClick}>Does ACME provide international payments support?</button>
-          <button id='4' onClick={onClick}>Is there any setup fee or annual maintainance fee that I need to pay regularly?</button>
+      <section className='LandingContainer__Section6'>
+        <h2 className='LandingContainer__Section6-title'>Frequently Asked Questions</h2>
+        <div className='LandingContainer__Section6-content'>
+          <div className='LandingContainer__Section6-questions'>
+            <div className={`${Number(ID) === 0 && 'LandingContainer__Section6-questions__selected'}`}><article><span>01</span><p>What is a Payment Gateway?</p></article><button id='0' onClick={onClick} className={`${Number(ID) === 0 && 'LandingContainer__Section6-questions__btnSelected'}`}>&#62;</button></div>
+            <div className={`${Number(ID) === 1 && 'LandingContainer__Section6-questions__selected'}`}><article><span>02</span><p>Do I need to pay to Instapay even when there is no transaction going on in my business?</p></article><button id='1' onClick={onClick} className={`${Number(ID) === 1 && 'LandingContainer__Section6-questions__btnSelected'}`}>&#62;</button></div>
+            <div className={`${Number(ID) === 2 && 'LandingContainer__Section6-questions__selected'}`}><article><span>03</span><p>What platforms does ACME payment gateway support?</p></article><button id='2' onClick={onClick} className={`${Number(ID) === 2 && 'LandingContainer__Section6-questions__btnSelected'}`}>&#62;</button></div>
+            <div className={`${Number(ID) === 3 && 'LandingContainer__Section6-questions__selected'}`}><article><span>04</span><p>Does ACME provide international payments support?</p></article><button id='3' onClick={onClick} className={`${Number(ID) === 3 && 'LandingContainer__Section6-questions__btnSelected'}`}>&#62;</button></div>
+            <div className={`${Number(ID) === 4 && 'LandingContainer__Section6-questions__selected'}`}><article><span>05</span><p>Is there any setup fee or annual maintainance fee that I need to pay regularly?</p></article><button id='4' onClick={onClick} className={`${Number(ID) === 4 && 'LandingContainer__Section6-questions__btnSelected'}`}>&#62;</button></div>
+          </div>
+          <div className='LandingContainer__Section6-answers'>
+            {Number(ID) === 0 && <div>
+              <p className='LandingContainer__Section6-answers__title'>What is a Payment Gateway?</p>
+              <p className='LandingContainer__Section6-answers__content'>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
+              </div>}
+            {Number(ID) === 1 && <div>
+              <p className='LandingContainer__Section6-answers__title'>Do I need to pay to Instapay even when there is no transaction going on in my business?</p>
+              <p className='LandingContainer__Section6-answers__content'>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
+              </div>}
+            {Number(ID) === 2 && <div>
+              <p className='LandingContainer__Section6-answers__title'>What platforms does ACME payment gateway support?</p>
+              <p className='LandingContainer__Section6-answers__content'>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
+              </div>}
+            {Number(ID) === 3 && <div>
+              <p className='LandingContainer__Section6-answers__title'>Does ACME provide international payments support?</p>
+              <p className='LandingContainer__Section6-answers__content'>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
+              </div>}
+            {Number(ID) === 4 && <div>
+              <p className='LandingContainer__Section6-answers__title'>Is there any setup fee or annual maintainance fee that I need to pay regularly?</p>
+              <p className='LandingContainer__Section6-answers__content'>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
+              </div>}
+          </div>
         </div>
-        <div>
-          {Number(ID) === 0 && <div>
-            <p>What is a Payment Gateway?</p>
-            <p>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
-            </div>}
-          {Number(ID) === 1 && <div>
-            <p>Do I need to pay to Instapay even when there is no transaction going on in my business?</p>
-            <p>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
-            </div>}
-          {Number(ID) === 2 && <div>
-            <p>What platforms does ACME payment gateway support?</p>
-            <p>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
-            </div>}
-          {Number(ID) === 3 && <div>
-            <p>Does ACME provide international payments support?</p>
-            <p>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
-            </div>}
-          {Number(ID) === 4 && <div>
-            <p>Is there any setup fee or annual maintainance fee that I need to pay regularly?</p>
-            <p>No, you do not need to pay Instapay where there is no transaction happening. With one of the lowest transaction charges in the industry, pay only when you get paid!</p>
-            </div>}
+      </section>
+      <section className='LandingContainer__Section7'>
+      <p>Accelerated by</p>
+        <div className='LandingContainer__Section7-accelerated'>
+          <img src='/Landing/shuttle.svg' alt='shuttle' />
+          <img src='/Landing/shuttle.svg' alt='shuttle' />
         </div>
       </section>
       <footer className='LandingContainer__Footer'>
-      <div>
-          <img src='/Landing/logo.svg' alt='logo' />
+        <div className='LandingContainer__Footer-part1'>
+          <img src='/Landing/logo.svg' alt='logo'/>
           <div>
           <Link to="">How to benefit</Link>
           <Link to="">How to monotherize</Link>
@@ -169,11 +175,11 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           <Link to="">How to register</Link>
             </div>
         </div>
-        <div>
+        <div className='LandingContainer__Footer-part2'>
           <p>AI Powered Cloud Savings!</p>
-          <div>
+          <div className='LandingContainer__Footer-part2__sm'>
+            <a href="/"><img src="/Landing/medium.svg" alt="medium"/></a>
             <a href="/"><img src="/Landing/Twitter.svg" alt="twitter"/></a>
-            <a href="/"><img src="/Landing/Instagram.svg" alt="instagram"/></a>
             <a href="/"><img src="/Landing/Linkedin.svg" alt="linkedIn"/></a>
             <a href="/">Hola@cloumize.com</a>
           </div>
