@@ -61,6 +61,7 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100% 1000px;
+  overflow-x: hidden;
   &__Navbar {
     background-color: var(--main-primary);
     display: flex;
@@ -166,7 +167,7 @@
       padding: 32px;
       margin-bottom: 24px;
       &:not(:last-child) {
-        margin-right: 24px;
+        margin-right: 0px;
       }
       &__title {
         font-weight: 600;
@@ -207,11 +208,12 @@
     background: url('./bg2Mob.svg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 0px -100px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 150px 130px;
+    padding: 28px;
     &-subtitle {
       width: 90% !important;
     }
@@ -225,6 +227,9 @@
       color: var(--main-white);
       border: 1px solid var(--main-primary);
       padding: 14px 40px;
+      margin-top: 88px;
+      margin-bottom: 56px;
+      width: 100% !important;
     }
     & img {
       width: 317px;
@@ -233,11 +238,13 @@
   &__Section4 {
     @include section();
     display: flex;
+    flex-direction: column-reverse;
     justify-content: space-around;
     align-items: center;
-    padding: 150px 130px;
+    padding: 28px;
     & img {
-      margin-right: 168px;
+      margin-right: 0px;
+      width: 317px;
     }
     &-subtitle {
       width: 110% !important;
@@ -252,6 +259,9 @@
       color: var(--main-white);
       border: 1px solid var(--main-primary);
       padding: 14px 40px;
+      margin-top: 88px;
+      margin-bottom: 56px;
+      width: 100% !important;
     }
   }
   &__Section5 {
@@ -261,16 +271,24 @@
     align-items: center;
     &-cards {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 74px;
+    }
+    &-subtitle,
+    &-content {
+      text-align: center;
+    }
+    &-content {
+      width: 90%;
     }
     &-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       &:not(:first-child) {
-        margin-left: 148px;
+        margin-left: 0px;
       }
       &__content {
         width: 236px;
@@ -379,47 +397,37 @@
   &__Section7 {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding-left: 28px;
     & p {
       font-weight: 500;
-      font-size: 48px;
-      line-height: 57px;
+      font-size: 24px;
+      line-height: 28px;
       color: var(--main-text);
-      margin-bottom: 88px;
+      margin-bottom: 40px;
     }
     &-accelerated {
-      margin-bottom: 173px;
-      & img:last-child {
-        margin-left: 42px;
+      margin-bottom: 56px;
+      & img {
+        width: 135px;
+        &:last-child {
+          margin-left: 42px;
+        }
       }
     }
   }
   &__Footer {
     background-color: var(--main-primary);
     border-radius: 24px 24px 0px 0px;
-    padding: 52px 130px 84px;
-    display: flex;
-    justify-content: space-between;
+    padding: 60px;
     &-part1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       & img {
         margin-bottom: 48px;
       }
-      & a {
-        color: var(--main-white);
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20px;
-        &:not(:last-child) {
-          margin-right: 32px;
-        }
-        &:hover {
-          color: var(--primary-40);
-        }
-      }
-    }
-    &-part2 {
-      margin-top: 10px;
       & p {
         color: var(--primary-70);
         font-weight: 500;
@@ -427,16 +435,44 @@
         line-height: 24px;
         margin-bottom: 60px;
       }
-      & a {
-        &:not(:last-child) {
-          margin-right: 16px;
+    }
+    &-part2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      &__links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & a {
+          color: var(--main-white);
+          text-decoration: none;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 32px;
+          &:not(:last-child) {
+            margin-right: 0px;
+          }
+          &:hover {
+            color: var(--primary-40);
+          }
         }
-        color: var(--main-white);
-        text-decoration: none;
       }
       &__sm {
         display: flex;
+        flex-direction: column;
         align-items: center;
+        & a {
+          margin-right: 16px;
+          color: var(--main-white);
+          text-decoration: none;
+          &:last-child {
+            margin-top: 24px;
+          }
+        }
       }
     }
   }
@@ -504,7 +540,10 @@
         width: 924px;
       }
     }
-    &__Section2, &__Section3 {
+    &__Section2,
+    &__Section3,
+    &__Section4,
+    &__Section5 {
       &-title {
         font-size: 20px;
         line-height: 24px;
@@ -535,6 +574,9 @@
       }
       &-card {
         margin-bottom: 0px;
+        &:not(:last-child) {
+          margin-right: 24px;
+        }
       }
       &-btns {
         flex-direction: row;
@@ -553,8 +595,80 @@
       background: url('./bg2.svg');
       background-size: cover;
       flex-direction: row;
+      padding: 150px 130px;
       & img {
         width: 545px;
+      }
+      & a {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 138px !important;
+      }
+    }
+    &__Section4 {
+      flex-direction: row;
+      padding: 150px 130px;
+      & img {
+        margin-right: 168px;
+        width: 508px;
+      }
+      & a {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 138px !important;
+      }
+    }
+    &__Section5 {
+      &-content {
+        width: 45%;
+      }
+      &-cards {
+        flex-direction: row;
+      }
+      &-card {
+        &:not(:first-child) {
+          margin-left: 148px;
+        }
+      }
+    }
+    &__Section7 {
+      align-items: center;
+      padding-left: 0px;
+      & p {
+        font-size: 48px;
+        line-height: 57px;
+        margin-bottom: 88px;
+      }
+      &-accelerated {
+        margin-bottom: 173px;
+        & img {
+          width: 296px;
+        }
+      }
+    }
+    &__Footer {
+      padding: 52px 130px 84px;
+      &-part1,
+      &-part2 {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      &-part2 {
+        &__links {
+          flex-direction: row;
+          & a {
+            margin-bottom: 0px;
+            &:not(:last-child) {
+              margin-right: 32px;
+            }
+          }
+        }
+        &__sm {
+          flex-direction: row;
+          & a:last-child {
+            margin-top: 0px;
+          }
+        }
       }
     }
   }
