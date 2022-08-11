@@ -1,25 +1,25 @@
 @mixin section {
   &-title {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 12px;
+    line-height: 14px;
     color: var(--main-primary);
     margin-bottom: 18px;
   }
   &-subtitle {
     font-weight: 500;
-    font-size: 48px;
-    line-height: 57px;
+    font-size: 24px;
+    line-height: 28px;
     color: var(--main-text);
     margin-bottom: 27px;
   }
   &-content {
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 17px;
     color: var(--grey-40);
-    width: 45%;
-    text-align: center;
+    width: 100%;
+    text-align: start;
     margin-bottom: 76px;
   }
 }
@@ -60,20 +60,22 @@
   background: url('./bg1.svg');
   background-position: top;
   background-repeat: no-repeat;
-  background-size: 100% 1100px;
+  background-size: 100% 1000px;
   &__Navbar {
     background-color: var(--main-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 39px 100px;
+    padding: 32px 29px;
+    border-bottom: 1px solid var(--primary-50);
     &-part1 {
       display: flex;
       align-items: center;
       & p {
-        margin: 0;
-        color: var(--primary-50);
-        margin-left: 36px;
+        display: none;
+      }
+      & img {
+        width: 98px;
       }
     }
     &-part2 {
@@ -86,7 +88,7 @@
         color: var(--primary-80);
         text-decoration: none;
         border-bottom: 1px solid var(--primary-40);
-        padding: 16px 0;
+        padding: 0;
         &:hover {
           color: var(--primary-80);
         }
@@ -95,9 +97,11 @@
         }
       }
       &__signin {
+        display: none;
         @include btnOut();
       }
       &__signup {
+        display: none;
         @include btnIn();
       }
     }
@@ -107,46 +111,60 @@
     margin-top: 120px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding-left: 28px;
     &-title {
-      font-weight: 700;
-      font-size: 60px;
-      line-height: 71px;
-      margin-bottom: 32px;
+      font-weight: 500;
+      font-size: 34px;
+      line-height: 40px;
     }
     &-subtitle {
       font-weight: 400;
-      font-size: 20px;
-      line-height: 24px;
-      margin-bottom: 67px;
+      font-size: 14px;
+      line-height: 150%;
     }
     &-btns {
       margin-bottom: 67px;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
       & a {
         @include btnIn();
         padding: 14px 40px;
+        width: 100% !important;
       }
       & button {
         @include btnOut();
-        margin-left: 25px;
+        margin-left: 0px;
+        margin-top: 25px;
+        width: 100% !important;
       }
+    }
+    & img {
+      width: 90%;
     }
   }
   &__Section2 {
     @include section();
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     margin: 50px 0 108px;
+    padding-left: 28px;
+    &-subtitle {
+      width: 60%;
+    }
     &-cards {
       display: flex;
       justify-content: center;
-      padding: 0 130px;
+      flex-direction: column;
+      padding: 0 28px 0 0;
     }
     &-card {
       border: 1px solid var(--primary-90);
       border-radius: 16px;
       padding: 32px;
+      margin-bottom: 24px;
       &:not(:last-child) {
         margin-right: 24px;
       }
@@ -165,25 +183,32 @@
     }
     &-btns {
       margin-top: 76px;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
       & a {
         @include btnOut();
         background-color: var(--main-primary);
         padding: 14px 40px;
+        width: 100% !important;
       }
       & button {
         @include btnIn();
         border: 1px solid var(--main-primary);
         color: var(--main-primary);
-        margin-left: 25px;
+        margin-left: 0px;
+        margin-top: 25px;
+        width: 100% !important;
       }
     }
   }
   &__Section3 {
     @include section();
-    background: url('./bg2.svg');
+    background: url('./bg2Mob.svg');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 150px 130px;
@@ -200,6 +225,9 @@
       color: var(--main-white);
       border: 1px solid var(--main-primary);
       padding: 14px 40px;
+    }
+    & img {
+      width: 317px;
     }
   }
   &__Section4 {
@@ -409,6 +437,124 @@
       &__sm {
         display: flex;
         align-items: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .LandingContainer {
+    background-size: 100% 1100px;
+    &__Navbar {
+      padding: 39px 100px;
+      border-bottom: none;
+      &-part1 {
+        & p {
+          display: block;
+          margin: 0;
+          color: var(--primary-50);
+          margin-left: 36px;
+        }
+        & img {
+          width: 195px;
+        }
+      }
+      &-part2 {
+        &__medium {
+          padding: 16px 0;
+        }
+        &__signin {
+          display: block;
+          @include btnOut();
+        }
+        &__signup {
+          display: block;
+          @include btnIn();
+        }
+      }
+    }
+    &__Section1 {
+      align-items: center;
+      padding-left: 0px;
+      &-title {
+        font-weight: 700;
+        font-size: 60px;
+        line-height: 71px;
+        margin-bottom: 32px;
+      }
+      &-subtitle {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 67px;
+      }
+      &-btns {
+        flex-direction: row;
+        justify-content: center;
+        & a {
+          width: 138px !important;
+        }
+        & button {
+          margin-left: 25px;
+          margin-top: 0;
+          width: 138px !important;
+        }
+      }
+      & img {
+        width: 924px;
+      }
+    }
+    &__Section2, &__Section3 {
+      &-title {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &-subtitle {
+        width: 100%;
+        font-size: 48px;
+        line-height: 57px;
+      }
+      &-content {
+        width: 45%;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+    &__Section2 {
+      align-items: center;
+      padding-left: 0px;
+      &-subtitle {
+        text-align: center;
+      }
+      &-content {
+        text-align: center;
+      }
+      &-cards {
+        padding: 0 130px;
+        flex-direction: row;
+      }
+      &-card {
+        margin-bottom: 0px;
+      }
+      &-btns {
+        flex-direction: row;
+        justify-content: center;
+        & a {
+          width: 138px !important;
+        }
+        & button {
+          margin-left: 25px;
+          margin-top: 0;
+          width: 138px !important;
+        }
+      }
+    }
+    &__Section3 {
+      background: url('./bg2.svg');
+      background-size: cover;
+      flex-direction: row;
+      & img {
+        width: 545px;
       }
     }
   }

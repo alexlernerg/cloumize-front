@@ -11,7 +11,7 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           <p>AI Powered Cloud Savings!</p>
         </div>
         <div className='LandingContainer__Navbar-part2'>
-          <a href='/' className='LandingContainer__Navbar-part2__medium'>Visita nuestro Blog&nbsp;<img src="/Landing/mediumNav.svg" alt="medium"/></a>
+          <a href='/' className='LandingContainer__Navbar-part2__medium'>{!screenWidthMobile ? 'Visita nuestro Blog' : 'Blog'}&nbsp;<img src="/Landing/mediumNav.svg" alt="medium"/></a>
           <Link
             to={screenWidthMobile ? '/auth' : '/signin'}
             className='LandingContainer__Navbar-part2__signin'
@@ -80,7 +80,7 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         </div>
         <img src='/Landing/savingsFinder.svg' alt='Savings Finder' />
       </section>
-      <section className='LandingContainer__Section4'>
+      {/* <section className='LandingContainer__Section4'>
         <img src='/Landing/incentives.svg' alt='Savings Finder' />
         <div>
           <h2 className='LandingContainer__Section4-title'>HOW TO HAVE INCENTIVES</h2>
@@ -180,7 +180,7 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
             <a href="/">Hola@cloumize.com</a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };
