@@ -1,4 +1,3 @@
-@use '../../theme/buttons.scss';
 @mixin section {
   &-title {
     font-weight: 500;
@@ -24,15 +23,44 @@
     margin-bottom: 76px;
   }
 }
+@mixin btnOut {
+  border: 1px solid var(--primary-90);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--main-white);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 12px 0;
+  width: 138px;
+  text-decoration: none;
+  text-align: center;
+  &:hover {
+    color: var(--main-white);
+  }
+}
+@mixin btnIn {
+  border: 1px solid var(--main-white);
+  border-radius: 8px;
+  background-color: var(--main-white);
+  color: var(--main-primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 12px 0;
+  width: 138px;
+  text-decoration: none;
+  text-align: center;
+  &:hover {
+    color: var(--main-primary);
+  }
+}
 
 .LandingContainer {
   background: url('./bg1.svg');
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100% 1100px;
-  &__authBtn {
-    @include buttons.button-lg;
-  }
   &__Navbar {
     background-color: var(--main-primary);
     display: flex;
@@ -48,11 +76,29 @@
         margin-left: 36px;
       }
     }
-    &-part-2 {
+    &-part2 {
       display: flex;
       align-items: center;
-      & a:last-child {
-        margin-left: 10px;
+      & a:not(:last-child) {
+        margin-right: 18px;
+      }
+      &__medium {
+        color: var(--primary-80);
+        text-decoration: none;
+        border-bottom: 1px solid var(--primary-40);
+        padding: 16px 0;
+        &:hover {
+          color: var(--primary-80);
+        }
+        & img {
+          margin-left: 10px;
+        }
+      }
+      &__signin {
+        @include btnOut();
+      }
+      &__signup {
+        @include btnIn();
       }
     }
   }
@@ -76,7 +122,12 @@
     }
     &-btns {
       margin-bottom: 67px;
+      & a {
+        @include btnIn();
+        padding: 14px 40px;
+      }
       & button {
+        @include btnOut();
         margin-left: 25px;
       }
     }
@@ -114,8 +165,16 @@
     }
     &-btns {
       margin-top: 76px;
+      & a {
+        @include btnOut();
+        background-color: var(--main-primary);
+        padding: 14px 40px;
+      }
       & button {
-        margin-left: 16px;
+        @include btnIn();
+        border: 1px solid var(--main-primary);
+        color: var(--main-primary);
+        margin-left: 25px;
       }
     }
   }
@@ -135,6 +194,13 @@
       width: 70% !important;
       text-align: start;
     }
+    & a {
+      @include btnIn();
+      background-color: var(--main-primary);
+      color: var(--main-white);
+      border: 1px solid var(--main-primary);
+      padding: 14px 40px;
+    }
   }
   &__Section4 {
     @include section();
@@ -151,6 +217,13 @@
     &-content {
       width: 95% !important;
       text-align: start;
+    }
+    & a {
+      @include btnIn();
+      background-color: var(--main-primary);
+      color: var(--main-white);
+      border: 1px solid var(--main-primary);
+      padding: 14px 40px;
     }
   }
   &__Section5 {
@@ -180,8 +253,16 @@
     }
     &-btns {
       margin-bottom: 119px;
+      & a {
+        @include btnOut();
+        background-color: var(--main-primary);
+        padding: 14px 40px;
+      }
       & button {
-        margin-left: 16px;
+        @include btnIn();
+        border: 1px solid var(--main-primary);
+        color: var(--main-primary);
+        margin-left: 25px;
       }
     }
   }
@@ -192,8 +273,8 @@
       justify-content: space-around;
     }
     &-questions {
-        margin-top: 92px;
-        z-index: 5;
+      margin-top: 92px;
+      z-index: 5;
       & div {
         width: 647px;
         border: none;
@@ -209,11 +290,11 @@
         justify-content: space-between;
         align-items: center;
         & article {
-            display: flex;
-            & p {
-                margin-top: 5px;
-                margin-bottom: 0;
-            }
+          display: flex;
+          & p {
+            margin-top: 5px;
+            margin-bottom: 0;
+          }
         }
         & span {
           font-weight: 500;
@@ -223,13 +304,13 @@
           margin-right: 16px;
         }
         & button {
-            border: none;
-            background-color: transparent;
-            align-self: flex-end;
-            font-size: 24px;
-            margin-left: 24px;
-            color: var(--primary-80);
-            cursor: pointer;
+          border: none;
+          background-color: transparent;
+          align-self: flex-end;
+          font-size: 24px;
+          margin-left: 24px;
+          color: var(--primary-80);
+          cursor: pointer;
         }
       }
       &__selected {
@@ -240,26 +321,25 @@
       }
     }
     &-answers {
-        background: rgba(238, 248, 254, 0.5);
-        padding: 44px 34px 0px 142px;
-        margin-top: 48px;
-        margin-left: -100px;
-        height: 503px;
-        border-radius: 16px;
-        &__title {
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
-            color: var(--main-text);
-            margin-bottom: 40px;
-        }
-        &__content {
-            font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-color: var(--grey-70);
-
-        }
+      background: rgba(238, 248, 254, 0.5);
+      padding: 44px 34px 0px 142px;
+      margin-top: 48px;
+      margin-left: -100px;
+      height: 503px;
+      border-radius: 16px;
+      &__title {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: var(--main-text);
+        margin-bottom: 40px;
+      }
+      &__content {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: var(--grey-70);
+      }
     }
     &-title {
       font-weight: 500;

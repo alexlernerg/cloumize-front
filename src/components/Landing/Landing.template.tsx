@@ -11,15 +11,16 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           <p>AI Powered Cloud Savings!</p>
         </div>
         <div className='LandingContainer__Navbar-part2'>
+          <a href='/' className='LandingContainer__Navbar-part2__medium'>Visita nuestro Blog&nbsp;<img src="/Landing/mediumNav.svg" alt="medium"/></a>
           <Link
             to={screenWidthMobile ? '/auth' : '/signin'}
-            className='LandingContainer__authBtn'
+            className='LandingContainer__Navbar-part2__signin'
           >
-            Signin
+            Login
           </Link>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
-            className='LandingContainer__authBtn'
+            className='LandingContainer__Navbar-part2__signup'
           >
             Signup
           </Link>
@@ -31,7 +32,6 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         <div className='LandingContainer__Section1-btns'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
-            className='LandingContainer__authBtn'
           >
             Signup
           </Link>
@@ -58,7 +58,6 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         <div className='LandingContainer__Section2-btns'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
-            className='LandingContainer__authBtn'
           >
             Signup
           </Link>
@@ -75,7 +74,6 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           </p>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
-            className='LandingContainer__authBtn'
           >
             Signup
           </Link>
@@ -93,7 +91,6 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
           </p>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
-            className='LandingContainer__authBtn'
           >
             Signup
           </Link>
@@ -117,7 +114,6 @@ const Landing = (screenWidthMobile: boolean, info2: any, info5: any, ID:any, onC
         <div className='LandingContainer__Section5-btns'>
           <Link
             to={screenWidthMobile ? '/auth' : '/signup'}
-            className='LandingContainer__authBtn'
           >
             Signup
           </Link>
