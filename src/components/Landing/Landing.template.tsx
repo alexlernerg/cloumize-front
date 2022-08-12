@@ -194,7 +194,98 @@ const Faqs = ({ID, onClick}:any) => {
 
 const FaqsMob = ({ID, onClick}:any) => {
   return(
-    <div>Mobile</div>
+    <section className='LandingContainer__Section6'>
+      <h2 className='LandingContainer__Section6-title'>
+        Frequently Asked Questions
+      </h2>
+      <div className='LandingContainer__Section6-content'>
+        <div className='LandingContainer__Section6-questions'>
+          <div className={`${Number(ID) === 0 && 'LandingContainer__Section6-questions__selected'}`}>
+            <article>
+              <span>01</span>
+              <p>What is a Payment Gateway?</p>
+            </article>
+            <button id='0' onClick={onClick} className={`${Number(ID) === 0 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+          </div>
+          {Number(ID) === 0 && (
+            <div>
+              <p className='LandingContainer__Section6-answers__content'>
+                No, you do not need to pay Instapay where there is no
+                transaction happening. With one of the lowest transaction
+                charges in the industry, pay only when you get paid!
+              </p>
+            </div>
+          )}
+          <div className={`${Number(ID) === 1 && 'LandingContainer__Section6-questions__selected'}`}>
+            <article>
+              <span>02</span>
+              <p>
+                Do I need to pay to Instapay even when there is no transaction
+                going on in my business?
+              </p>
+            </article>
+            <button id='1' onClick={onClick} className={`${Number(ID) === 1 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+          </div>
+          {Number(ID) === 1 && (
+            <div>
+              <p className='LandingContainer__Section6-answers__content'>
+                No, you do not need to pay Instapay where there is no
+                transaction happening. With one of the lowest transaction
+                charges in the industry, pay only when you get paid!
+              </p>
+            </div>
+          )}
+          <div className={`${Number(ID) === 2 && 'LandingContainer__Section6-questions__selected'}`}>
+            <article>
+              <span>03</span>
+              <p>What platforms does ACME payment gateway support?</p>
+            </article>
+            <button id='2' onClick={onClick} className={`${Number(ID) === 2 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+          </div>
+          {Number(ID) === 2 && (
+            <div>
+              <p className='LandingContainer__Section6-answers__content'>
+                No, you do not need to pay Instapay where there is no
+                transaction happening. With one of the lowest transaction
+                charges in the industry, pay only when you get paid!
+              </p>
+            </div>
+          )}
+          <div className={`${Number(ID) === 3 && 'LandingContainer__Section6-questions__selected'}`}>
+            <article>
+              <span>04</span>
+              <p>Does ACME provide international payments support?</p>
+            </article>
+            <button id='3' onClick={onClick} className={`${Number(ID) === 3 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+          </div>
+          {Number(ID) === 3 && (
+            <div>
+              <p className='LandingContainer__Section6-answers__content'>
+                No, you do not need to pay Instapay where there is no
+                transaction happening. With one of the lowest transaction
+                charges in the industry, pay only when you get paid!
+              </p>
+            </div>
+          )}
+          <div className={`${Number(ID) === 4 && 'LandingContainer__Section6-questions__selected'}`}>
+            <article>
+              <span>05</span>
+              <p>Is there any setup fee or annual maintainance fee that I need to pay regularly?</p>
+            </article>
+            <button id='4' onClick={onClick} className={`${Number(ID) === 4 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+          </div>
+          {Number(ID) === 4 && (
+              <div>
+                <p className='LandingContainer__Section6-answers__content'>
+                  No, you do not need to pay Instapay where there is no
+                  transaction happening. With one of the lowest transaction
+                  charges in the industry, pay only when you get paid!
+                </p>
+              </div>
+            )}
+        </div>
+      </div>
+    </section>
   )
 }
 
