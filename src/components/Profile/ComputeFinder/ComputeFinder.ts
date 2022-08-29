@@ -424,9 +424,9 @@ const ComputeFinder =()=>{
   ];
   
   const info = [
-    { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
-    { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: '$700' },
-    { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
+    { id: 0, title: 'Cloumize Savings', savings: 'Achieved', total: '$1,000' },
+    { id: 1, title: 'Unapproved Savings ', savings: 'Annual Forecast', total: '$700' },
+    { id: 2, title: 'Potential Savings', savings: 'Annual Forecast', total: '$1,700' },
   ];
 
   return templateComputeFinder(screenWidthMobile, dataCF, columnsCF, info);

@@ -54,14 +54,14 @@ const Routing = ({ pathname, screenWidthMobile }: any) => {
         <li className='Routing__list-white'>
           <Link to='/user/existingPlans'>
             <img src='/Misc/Navbar/EPBlue.svg' alt='Existing Plans' />
-            {!screenWidthMobile && <p style={{margin: 0}}>Existing Plans</p>}
+            {!screenWidthMobile && <p style={{margin: 0}}>Reserved Instance Plans</p>}
           </Link>
         </li>
       ) : (
         <li className='Routing__list-blue'>
           <Link to='/user/existingPlans'>
             <img src='/Misc/Navbar/EPWhite.svg' alt='Existing Plans' />
-            {!screenWidthMobile && <p style={{margin: 0}}>Existing Plans</p>}
+            {!screenWidthMobile && <p style={{margin: 0}}>Reserved Instance Plans</p>}
           </Link>
         </li>
       )}

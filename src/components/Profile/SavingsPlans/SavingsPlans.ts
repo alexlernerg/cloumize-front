@@ -32,9 +32,9 @@ const SavingsPlans =()=>{
   const columnsSP = ['AWS Account ID', 'Savings Plan D', 'Status', 'Type', 'Instance Family', 'Team Remaining', 'Commitment', 'Discount']
   
   const info = [
-    { id: 0, title: 'Monthly Current Commitment', savings: 'Total', total: '$0' },
+    { id: 0, title: 'Monthly Commitment', savings: 'Total', total: '$0' },
     { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
-    { id: 2, title: 'Number Savings Plans', savings: 'Numbers', total: '0' },
+    { id: 2, title: 'Savings Plans', savings: 'Count', total: '0' },
   ];
 
   return templateSavingsPlans(screenWidthMobile, dataSP, columnsSP, info);
