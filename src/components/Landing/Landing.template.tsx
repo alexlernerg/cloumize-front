@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.scss';
 
-const Faqs = ({ID, onClick}:any) => {
-  console.log("ID", ID)
+const Faqs = ({ ID, onClick }: any) => {
+  console.log('ID', ID);
   return (
     <section className='LandingContainer__Section6'>
       <h2 className='LandingContainer__Section6-title'>
@@ -16,20 +16,21 @@ const Faqs = ({ID, onClick}:any) => {
               Number(ID) === 0 &&
               'LandingContainer__Section6-questions__selected'
             }`}
+            id='0'
+            onClick={onClick}
           >
-            <article>
-              <span>01</span>
-              <p>What is a Payment Gateway?</p>
+            <article id='0' onClick={onClick}>
+              <span id='0'
+            onClick={onClick}>01</span>
+              <p id='0'
+            onClick={onClick}>What is a Payment Gateway?</p>
             </article>
-            <button
-              id='0'
-              onClick={onClick}
-              className={`${
-                Number(ID) === 0 &&
-                'LandingContainer__Section6-questions__btnSelected'
-              }`}
-            >
-              &#62;
+            <button id='0' onClick={onClick}>
+              {Number(ID) === 0 ? (
+                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowLight.svg' alt='No selected' />
+              )}
             </button>
           </div>
           <div
@@ -37,23 +38,24 @@ const Faqs = ({ID, onClick}:any) => {
               Number(ID) === 1 &&
               'LandingContainer__Section6-questions__selected'
             }`}
+            id='1'
+            onClick={onClick}
           >
-            <article>
-              <span>02</span>
-              <p>
+            <article id='1' onClick={onClick}>
+              <span id='1'
+            onClick={onClick}>02</span>
+              <p id='1'
+            onClick={onClick}>
                 Do I need to pay to Instapay even when there is no transaction
                 going on in my business?
               </p>
             </article>
-            <button
-              id='1'
-              onClick={onClick}
-              className={`${
-                Number(ID) === 1 &&
-                'LandingContainer__Section6-questions__btnSelected'
-              }`}
-            >
-              &#62;
+            <button id='1' onClick={onClick}>
+              {Number(ID) === 1 ? (
+                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowLight.svg' alt='No selected' />
+              )}
             </button>
           </div>
           <div
@@ -61,20 +63,21 @@ const Faqs = ({ID, onClick}:any) => {
               Number(ID) === 2 &&
               'LandingContainer__Section6-questions__selected'
             }`}
+            id='2'
+            onClick={onClick}
           >
-            <article>
-              <span>03</span>
-              <p>What platforms does ACME payment gateway support?</p>
+            <article id='2' onClick={onClick}>
+              <span id='2'
+            onClick={onClick}>03</span>
+              <p id='2'
+            onClick={onClick}>What platforms does ACME payment gateway support?</p>
             </article>
-            <button
-              id='2'
-              onClick={onClick}
-              className={`${
-                Number(ID) === 2 &&
-                'LandingContainer__Section6-questions__btnSelected'
-              }`}
-            >
-              &#62;
+            <button id='2' onClick={onClick}>
+              {Number(ID) === 2 ? (
+                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowLight.svg' alt='No selected' />
+              )}
             </button>
           </div>
           <div
@@ -82,20 +85,21 @@ const Faqs = ({ID, onClick}:any) => {
               Number(ID) === 3 &&
               'LandingContainer__Section6-questions__selected'
             }`}
+            id='3'
+            onClick={onClick}
           >
-            <article>
-              <span>04</span>
-              <p>Does ACME provide international payments support?</p>
+            <article id='3' onClick={onClick}>
+              <span id='3'
+            onClick={onClick}>04</span>
+              <p id='3'
+            onClick={onClick}>Does ACME provide international payments support?</p>
             </article>
-            <button
-              id='3'
-              onClick={onClick}
-              className={`${
-                Number(ID) === 3 &&
-                'LandingContainer__Section6-questions__btnSelected'
-              }`}
-            >
-              &#62;
+            <button id='3' onClick={onClick}>
+              {Number(ID) === 3 ? (
+                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowLight.svg' alt='No selected' />
+              )}
             </button>
           </div>
           <div
@@ -103,23 +107,22 @@ const Faqs = ({ID, onClick}:any) => {
               Number(ID) === 4 &&
               'LandingContainer__Section6-questions__selected'
             }`}
+            id='4'
+            onClick={onClick}
           >
-            <article>
-              <span>05</span>
-              <p>
+            <article id='4' onClick={onClick}>
+              <span id='4' onClick={onClick}>05</span>
+              <p id='4' onClick={onClick}>
                 Is there any setup fee or annual maintainance fee that I need to
                 pay regularly?
               </p>
             </article>
-            <button
-              id='4'
-              onClick={onClick}
-              className={`${
-                Number(ID) === 4 &&
-                'LandingContainer__Section6-questions__btnSelected'
-              }`}
-            >
-              &#62;
+            <button id='4' onClick={onClick}>
+              {Number(ID) === 4 ? (
+                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowLight.svg' alt='No selected' />
+              )}
             </button>
           </div>
         </div>
@@ -192,20 +195,39 @@ const Faqs = ({ID, onClick}:any) => {
   );
 };
 
-const FaqsMob = ({ID, onClick}:any) => {
-  return(
+const FaqsMob = ({ ID, onClick }: any) => {
+  return (
     <section className='LandingContainer__Section6'>
       <h2 className='LandingContainer__Section6-title'>
         Frequently Asked Questions
       </h2>
       <div className='LandingContainer__Section6-content'>
         <div className='LandingContainer__Section6-questions'>
-          <div className={`${Number(ID) === 0 && 'LandingContainer__Section6-questions__selected'}`}>
-            <article>
-              <span>01</span>
-              <p>What is a Payment Gateway?</p>
+          <div
+            className={`${
+              Number(ID) === 0 &&
+              'LandingContainer__Section6-questions__selected'
+            }`}
+            id='0'
+              onClick={onClick}
+          >
+            <article id='0'
+              onClick={onClick}>
+              <span id='0'
+              onClick={onClick}>01</span>
+              <p id='0'
+              onClick={onClick}>What is a Payment Gateway?</p>
             </article>
-            <button id='0' onClick={onClick} className={`${Number(ID) === 0 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+            <button
+              id='0'
+              onClick={onClick}
+            >
+              {Number(ID) === 0 ? (
+                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+              )}
+            </button>
           </div>
           {Number(ID) === 0 && (
             <div>
@@ -216,15 +238,34 @@ const FaqsMob = ({ID, onClick}:any) => {
               </p>
             </div>
           )}
-          <div className={`${Number(ID) === 1 && 'LandingContainer__Section6-questions__selected'}`}>
-            <article>
-              <span>02</span>
-              <p>
+          <div
+            className={`${
+              Number(ID) === 1 &&
+              'LandingContainer__Section6-questions__selected'
+            }`}
+            id='1'
+              onClick={onClick}
+          >
+            <article id='1'
+              onClick={onClick}>
+              <span id='1'
+              onClick={onClick}>02</span>
+              <p id='1'
+              onClick={onClick}>
                 Do I need to pay to Instapay even when there is no transaction
                 going on in my business?
               </p>
             </article>
-            <button id='1' onClick={onClick} className={`${Number(ID) === 1 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+            <button
+              id='1'
+              onClick={onClick}
+            >
+              {Number(ID) === 1 ? (
+                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+              )}
+            </button>
           </div>
           {Number(ID) === 1 && (
             <div>
@@ -235,12 +276,31 @@ const FaqsMob = ({ID, onClick}:any) => {
               </p>
             </div>
           )}
-          <div className={`${Number(ID) === 2 && 'LandingContainer__Section6-questions__selected'}`}>
-            <article>
-              <span>03</span>
-              <p>What platforms does ACME payment gateway support?</p>
+          <div
+            className={`${
+              Number(ID) === 2 &&
+              'LandingContainer__Section6-questions__selected'
+            }`}
+            id='2'
+              onClick={onClick}
+          >
+            <article id='2'
+              onClick={onClick}>
+              <span id='2'
+              onClick={onClick}>03</span>
+              <p id='2'
+              onClick={onClick}>What platforms does ACME payment gateway support?</p>
             </article>
-            <button id='2' onClick={onClick} className={`${Number(ID) === 2 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+            <button
+              id='2'
+              onClick={onClick}
+            >
+              {Number(ID) === 2 ? (
+                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+              )}
+            </button>
           </div>
           {Number(ID) === 2 && (
             <div>
@@ -251,12 +311,30 @@ const FaqsMob = ({ID, onClick}:any) => {
               </p>
             </div>
           )}
-          <div className={`${Number(ID) === 3 && 'LandingContainer__Section6-questions__selected'}`}>
-            <article>
-              <span>04</span>
-              <p>Does ACME provide international payments support?</p>
+          <div
+            className={`${
+              Number(ID) === 3 &&
+              'LandingContainer__Section6-questions__selected'
+            }`} id='3'
+            onClick={onClick}
+          >
+            <article id='3'
+              onClick={onClick}>
+              <span id='3'
+              onClick={onClick}>04</span>
+              <p id='3'
+              onClick={onClick}>Does ACME provide international payments support?</p>
             </article>
-            <button id='3' onClick={onClick} className={`${Number(ID) === 3 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+            <button
+              id='3'
+              onClick={onClick}
+            >
+              {Number(ID) === 3 ? (
+                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+              )}
+            </button>
           </div>
           {Number(ID) === 3 && (
             <div>
@@ -267,27 +345,48 @@ const FaqsMob = ({ID, onClick}:any) => {
               </p>
             </div>
           )}
-          <div className={`${Number(ID) === 4 && 'LandingContainer__Section6-questions__selected'}`}>
-            <article>
-              <span>05</span>
-              <p>Is there any setup fee or annual maintainance fee that I need to pay regularly?</p>
+          <div
+            className={`${
+              Number(ID) === 4 &&
+              'LandingContainer__Section6-questions__selected'
+            }`} id='4'
+            onClick={onClick}
+          >
+            <article id='4'
+              onClick={onClick}>
+              <span id='4'
+              onClick={onClick}>05</span>
+              <p id='4'
+              onClick={onClick}>
+                Is there any setup fee or annual maintainance fee that I need to
+                pay regularly?
+              </p>
             </article>
-            <button id='4' onClick={onClick} className={`${Number(ID) === 4 ? 'LandingContainer__Section6-questions__btnSelected' : 'rotate'}`}>v</button>
+            <button
+              id='4'
+              onClick={onClick}
+            >
+              {Number(ID) === 4 ? (
+                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+              ) : (
+                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+              )}
+            </button>
           </div>
           {Number(ID) === 4 && (
-              <div>
-                <p className='LandingContainer__Section6-answers__content'>
-                  No, you do not need to pay Instapay where there is no
-                  transaction happening. With one of the lowest transaction
-                  charges in the industry, pay only when you get paid!
-                </p>
-              </div>
-            )}
+            <div>
+              <p className='LandingContainer__Section6-answers__content'>
+                No, you do not need to pay Instapay where there is no
+                transaction happening. With one of the lowest transaction
+                charges in the industry, pay only when you get paid!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Landing = (
   screenWidthMobile: boolean,
@@ -327,7 +426,9 @@ const Landing = (
           Slash your EC2 costs up to 60%
         </h1>
         <p className='LandingContainer__Section1-subtitle'>
-        There are two kinds of companies, those that work to try to charge more and those that work to charge less. We will be the second. - Jeff Bezos
+          There are two kinds of companies, those that work to try to charge
+          more and those that work to charge less. We will be the second. - Jeff
+          Bezos
         </p>
         <div className='LandingContainer__Section1-btns'>
           <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
@@ -338,10 +439,11 @@ const Landing = (
       <section className='LandingContainer__Section2'>
         <h2 className='LandingContainer__Section2-title'>HOW TO BENEFIT</h2>
         <h3 className='LandingContainer__Section2-subtitle'>
-        &#123;Save $ : Boost Productivity&#125;
+          &#123;Save $ : Boost Productivity&#125;
         </h3>
         <p className='LandingContainer__Section2-content'>
-        Cloumize manages your compute costs and trades in real time on the AWS EC2 Reserved Instance Marketplace
+          Cloumize manages your compute costs and trades in real time on the AWS
+          EC2 Reserved Instance Marketplace
         </p>
         <div className='LandingContainer__Section2-cards'>
           {info2.map((info: any) => (
@@ -370,7 +472,8 @@ const Landing = (
             Explore potential savings at no costs
           </h3>
           <p className='LandingContainer__Section3-content'>
-            Cloumize's algorithm monitors your infrastructure and trades the most profitable plans in real time
+            Cloumize's algorithm monitors your infrastructure and trades the
+            most profitable plans in real time
           </p>
           {!screenWidthMobile && (
             <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
@@ -387,14 +490,13 @@ const Landing = (
         )}
         <img src='/Landing/incentives.svg' alt='Savings Finder' />
         <div>
-          <h2 className='LandingContainer__Section4-title'>
-            THE BENEFITS
-          </h2>
+          <h2 className='LandingContainer__Section4-title'>THE BENEFITS</h2>
           <h3 className='LandingContainer__Section4-subtitle'>
             Aligned with our customers, having a success-fee revenue incentive.
           </h3>
           <p className='LandingContainer__Section4-content'>
-            We only charge a percentage of the savings, so try our product for free without commitment.
+            We only charge a percentage of the savings, so try our product for
+            free without commitment.
           </p>
           {!screenWidthMobile && (
             <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
@@ -407,7 +509,8 @@ const Landing = (
           Start saving in under 5 minutes
         </h3>
         <p className='LandingContainer__Section5-content'>
-          In just a few easy steps, explore your potential compute savings and select our discounts.
+          In just a few easy steps, explore your potential compute savings and
+          select our discounts.
         </p>
         <div className='LandingContainer__Section5-cards'>
           {info5.map((info: any) => (
@@ -426,7 +529,11 @@ const Landing = (
           </div>
         )}
       </section>
-      {!screenWidthMobile ? <Faqs ID={ID} onClick={onClick}/> : <FaqsMob ID={ID} onClick={onClick}/>}
+      {!screenWidthMobile ? (
+        <Faqs ID={ID} onClick={onClick} />
+      ) : (
+        <FaqsMob ID={ID} onClick={onClick} />
+      )}
       <section className='LandingContainer__Section7'>
         <p>Accelerated by</p>
         <div className='LandingContainer__Section7-accelerated'>

@@ -340,6 +340,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
         & article {
           display: flex;
           flex-direction: column;
@@ -367,9 +368,6 @@
       }
       &__selected {
         background-color: var(--question-selected) !important;
-      }
-      &__btnSelected {
-        color: var(--main-primary) !important;
       }
     }
     &-answers {
@@ -482,10 +480,6 @@
       }
     }
   }
-}
-
-.rotate {
-  transform: rotate(180deg);
 }
 
 @media (min-width: 1280px) {
