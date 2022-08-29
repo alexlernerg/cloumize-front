@@ -24,6 +24,7 @@
   &__sections {
     display: block;
     justify-content: space-between;
+    margin-top: 20px;
     &-title,
     &-total {
       color: var(--main-text);

@@ -11,7 +11,7 @@ const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[]
       <div className='SavingsFinder__container'>
         <div className='SavingsFinder__container-top'>
           <h1 className='SavingsFinder__container-title'>
-            Available Auto-Savings
+            Savings Finder
           </h1>
           <div className='form-check form-switch'>
             <input

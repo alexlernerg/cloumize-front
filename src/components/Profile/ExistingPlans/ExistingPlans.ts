@@ -34,9 +34,9 @@ const ExistingPlans =()=>{
   const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Team Remaining', 'Discount', 'Auto-Save']
   
   const info = [
-    { id: 0, title: 'Monthly reserved instances', savings: 'Total', total: '$0' },
+    { id: 0, title: 'Monthly Commitment', savings: 'Total', total: '$0' },
     { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
-    { id: 2, title: 'Number Reserved', savings: 'Numbers', total: '0' },
+    { id: 2, title: 'Reserved Instances', savings: 'Count', total: '0' },
   ];
 
   return templateExistingPlans(screenWidthMobile, dataEP, columnsEP, info);

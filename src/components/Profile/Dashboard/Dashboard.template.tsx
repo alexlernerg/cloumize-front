@@ -29,7 +29,7 @@ const DataLastMonths = ({data}:any) => {
         </div>
       </div>
       <div>
-        <p className='DataLastMonths__content-title'>Wasted spending</p>
+        <p className='DataLastMonths__content-title'>Missed Spending</p>
         <p>
           ${data.wasted_spending.toFixed(2)}
           <img src='/Profile/graphic.svg' alt='graphic' className='ms-2'/>
@@ -55,17 +55,17 @@ const Dashboard = (dataRest:any, data:any) => {
         <div className='Dashboard__container-info'>
           {data.map((d:any, i:any) => <DataLastMonths data={d} key={i}/>)}
           <section className='Dashboard__container-thirdBox'>
-            <p className='Dashboard__container-thirdBox__title mb-1'>{dataRest[0].savings_strategies_approved} <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span> </p>
-            <p className='mb-4'>Approved</p>
-            <p className='mb-1'>{dataRest[0].savings_strategies_pending} <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span></p>
-            {Number(dataRest[0].savings_strategies_pending) > 0 && <p className='Dashboard__container-thirdBox__pending'><img src="/Profile/Info.svg" alt="info"/>Pending</p>}
-          </section>
-          <section className='Dashboard__container-fourthBox'>
           <p className='Dashboard__container-fourthBox__title'>{dataRest[0].savings_strategies_running} <span className='Dashboard__container-fourthBox__span'>Savings Strategies <br/>Running</span></p>
           <div className='Dashboard__container-fourthBox__img'>
             <img src="/Profile/SavingsStrategies.svg" alt="Savings strategies"/>
 
           </div>
+          </section>
+          <section className='Dashboard__container-fourthBox'>
+            <p className='Dashboard__container-thirdBox__title mb-1'>{dataRest[0].savings_strategies_approved} <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span> </p>
+            <p className='mb-4'>Approved</p>
+            <p className='mb-1'>{dataRest[0].savings_strategies_pending} <span className='Dashboard__container-thirdBox__span'>Savings Strategies</span></p>
+            {Number(dataRest[0].savings_strategies_pending) > 0 && <p className='Dashboard__container-thirdBox__pending'><img src="/Profile/Info.svg" alt="info"/>Pending</p>}
           </section>
         </div>
         <div className='Dashboard__graphics'>
