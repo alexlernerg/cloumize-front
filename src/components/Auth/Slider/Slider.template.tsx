@@ -11,22 +11,22 @@ const Slider = (screenWidthMobile:boolean) => {
         <div>
           <img src={screenWidthMobile ? '/Auth/slider1Mob.svg' : '/Auth/slider1.svg'} alt='auth' className='SliderContainer__img'/>
           {screenWidthMobile && <div className='SliderContainer__buttonsAuth'>
-            <Link to="/signin" className='SliderContainer__buttonsAuth-signinBtn'>Signin</Link>
-            <Link to="/signup" className='SliderContainer__buttonsAuth-signupBtn'>Signup</Link>
+            <Link to="/signin" className='SliderContainer__buttonsAuth-signinBtn'>Sign in</Link>
+            <Link to="/signup" className='SliderContainer__buttonsAuth-signupBtn'>Sign up</Link>
           </div>}
         </div>
         <div>
           <img src={screenWidthMobile ? '/Auth/slider2Mob.svg' : '/Auth/slider2.svg'} alt='auth' className='SliderContainer__img'/>
           {screenWidthMobile && <div className='SliderContainer__buttonsAuth'>
-            <Link to="/signin" className='SliderContainer__buttonsAuth-signinBtn'>Signin</Link>
-            <Link to="/signup" className='SliderContainer__buttonsAuth-signupBtn'>Signup</Link>
+            <Link to="/signin" className='SliderContainer__buttonsAuth-signinBtn'>Sign in</Link>
+            <Link to="/signup" className='SliderContainer__buttonsAuth-signupBtn'>Sign up</Link>
           </div>}
         </div>
         <div>
           <img src={screenWidthMobile ? '/Auth/slider3Mob.svg' : '/Auth/slider3.svg'} alt='auth' className='SliderContainer__img'/>
           {screenWidthMobile && <div className='SliderContainer__buttonsAuth'>
-            <Link to="/signin" className='SliderContainer__buttonsAuth-signinBtn'>Signin</Link>
-            <Link to="/signup" className='SliderContainer__buttonsAuth-signupBtn'>Signup</Link>
+            <Link to="/signin" className='SliderContainer__buttonsAuth-signinBtn'>Sign in</Link>
+            <Link to="/signup" className='SliderContainer__buttonsAuth-signupBtn'>Sign up</Link>
           </div>}
         </div>
       </Carousel>

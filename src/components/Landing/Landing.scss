@@ -123,6 +123,8 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 150%;
+      width: 90%;
+      text-align: start;
     }
     &-btns {
       margin-bottom: 67px;
@@ -174,6 +176,8 @@
         font-size: 22px;
         line-height: 30px;
         color: var(--main-text);
+        margin-top: 24px;
+        margin-bottom: 16px;
       }
       &__content {
         font-weight: 400;
@@ -273,7 +277,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       margin-bottom: 74px;
     }
     &-subtitle,
@@ -529,6 +533,8 @@
         font-size: 20px;
         line-height: 24px;
         margin-bottom: 67px;
+        width: 80%;
+        text-align: center;
       }
       &-btns {
         flex-direction: row;
@@ -579,7 +585,7 @@
         flex-direction: row;
         align-self: center;
         align-content: center;
-        align-items: center;
+        align-items: flex-start;
       }
       &-card {
         margin-bottom: 0px;

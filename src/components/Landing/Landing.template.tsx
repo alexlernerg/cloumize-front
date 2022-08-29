@@ -301,11 +301,11 @@ const Landing = (
       <section className='LandingContainer__Navbar'>
         <div className='LandingContainer__Navbar-part1'>
           <img src='/Landing/logo.svg' alt='logo' />
-          <p>AI Powered Cloud Savings!</p>
+          <p>AI Powered Cloud Savings</p>
         </div>
         <div className='LandingContainer__Navbar-part2'>
           <a href='/' className='LandingContainer__Navbar-part2__medium'>
-            {!screenWidthMobile ? 'Visita nuestro Blog' : 'Blog'}&nbsp;
+            {!screenWidthMobile ? 'Visit our Blog' : 'Blog'}&nbsp;
             <img src='/Landing/mediumNav.svg' alt='medium' />
           </a>
           <Link
@@ -318,19 +318,19 @@ const Landing = (
             to={screenWidthMobile ? '/auth' : '/signup'}
             className='LandingContainer__Navbar-part2__signup'
           >
-            Signup
+            Sign up
           </Link>
         </div>
       </section>
       <section className='LandingContainer__Section1'>
         <h1 className='LandingContainer__Section1-title'>
-          &#123;Save $ : Boost Productivity&#125;
+          Slash your EC2 costs up to 60%
         </h1>
         <p className='LandingContainer__Section1-subtitle'>
-          Cloumize provides Cloud Savings as a Service to
+        There are two kinds of companies, those that work to try to charge more and those that work to charge less. We will be the second. - Jeff Bezos
         </p>
         <div className='LandingContainer__Section1-btns'>
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           <button>Contact Sales</button>
         </div>
         <img src='/Landing/dashboard.svg' alt='dashboard' />
@@ -338,11 +338,10 @@ const Landing = (
       <section className='LandingContainer__Section2'>
         <h2 className='LandingContainer__Section2-title'>HOW TO BENEFIT</h2>
         <h3 className='LandingContainer__Section2-subtitle'>
-          Slash your EC2 costs up to 60%*
+        &#123;Save $ : Boost Productivity&#125;
         </h3>
         <p className='LandingContainer__Section2-content'>
-          In just few easy step, you are all set to manage your business
-          finances. Manage all expenses with Cloumize all in one place.
+        Cloumize manages your compute costs and trades in real time on the AWS EC2 Reserved Instance Marketplace
         </p>
         <div className='LandingContainer__Section2-cards'>
           {info2.map((info: any) => (
@@ -358,60 +357,57 @@ const Landing = (
           ))}
         </div>
         <div className='LandingContainer__Section2-btns'>
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           <button>Contact Sales</button>
         </div>
       </section>
       <section className='LandingContainer__Section3'>
         <div>
           <h2 className='LandingContainer__Section3-title'>
-            HOW TO MONOTHERIZE
+            HOW TO START SAVING
           </h2>
           <h3 className='LandingContainer__Section3-subtitle'>
-            Monitor and negotiate your transactions
+            Explore potential savings at no costs
           </h3>
           <p className='LandingContainer__Section3-content'>
-            Cloumize’s algorithm monitors your infrastructure and trades the
-            most lucrative deals in real time
+            Cloumize's algorithm monitors your infrastructure and trades the most profitable plans in real time
           </p>
           {!screenWidthMobile && (
-            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           )}
         </div>
         <img src='/Landing/savingsFinder.svg' alt='Savings Finder' />
         {screenWidthMobile && (
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
         )}
       </section>
       <section className='LandingContainer__Section4'>
         {screenWidthMobile && (
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
         )}
         <img src='/Landing/incentives.svg' alt='Savings Finder' />
         <div>
           <h2 className='LandingContainer__Section4-title'>
-            HOW TO HAVE INCENTIVES
+            THE BENEFITS
           </h2>
           <h3 className='LandingContainer__Section4-subtitle'>
-            Aligned with a success fee-revenue incentive
+            Aligned with our customers, having a success-fee revenue incentive.
           </h3>
           <p className='LandingContainer__Section4-content'>
-            Cloumize’s algorithm monitors your infrastructure and trades the
-            most lucrative deals in real time
+            We only charge a percentage of the savings, so try our product for free without commitment.
           </p>
           {!screenWidthMobile && (
-            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           )}
         </div>
       </section>
       <section className='LandingContainer__Section5'>
         <h2 className='LandingContainer__Section5-title'>HOW TO REGISTER</h2>
         <h3 className='LandingContainer__Section5-subtitle'>
-          Few Easy Steps and Done
+          Start saving in under 5 minutes
         </h3>
         <p className='LandingContainer__Section5-content'>
-          In just few easy step, you are all set to manage your business
-          finances. Manage all expenses with Cloumize all in one place.
+          In just a few easy steps, explore your potential compute savings and select our discounts.
         </p>
         <div className='LandingContainer__Section5-cards'>
           {info5.map((info: any) => (
@@ -425,7 +421,7 @@ const Landing = (
         </div>
         {!screenWidthMobile && (
           <div className='LandingContainer__Section5-btns'>
-            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Signup</Link>
+            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
             <button>Contact Sales</button>
           </div>
         )}
@@ -446,8 +442,8 @@ const Landing = (
         <div className='LandingContainer__Footer-part2'>
           <div className='LandingContainer__Footer-part2__links'>
             <Link to=''>How to benefit</Link>
-            <Link to=''>How to monotherize</Link>
-            <Link to=''>How to have incentives</Link>
+            <Link to=''>Monetize</Link>
+            <Link to=''>Achieve</Link>
             <Link to=''>How to register</Link>
           </div>
           <div className='LandingContainer__Footer-part2__sm'>
