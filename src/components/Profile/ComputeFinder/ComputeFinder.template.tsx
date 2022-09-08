@@ -36,7 +36,7 @@ const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[
         </h1>
         {!screenWidthMobile && <ExternalData />}
         {screenWidthMobile ? (
-          <Data2Skeleton info={info} data={dataCF}/>
+          <Data2Skeleton data={dataCF}/>
         ) : (
           <TableSkeleton data={dataCF} columns={columnsCF} />
         )}
@@ -44,7 +44,7 @@ const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[
         {screenWidthMobile ? (
           <TableSkeleton data={dataCF} columns={columnsCF} />
         ) : (
-          <Data2Skeleton info={info} data={dataCF}/>
+          <Data2Skeleton data={dataCF}/>
         )}
       </div>
     </div>

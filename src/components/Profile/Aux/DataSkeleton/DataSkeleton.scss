@@ -74,5 +74,9 @@
         margin-bottom: auto;
       }
     }
+    &__sectionsCF {
+      justify-content: flex-end;
+      margin-top: -75px;
+    }
   }
 }

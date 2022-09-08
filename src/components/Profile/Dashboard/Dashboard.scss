@@ -47,14 +47,14 @@
       overflow-x: scroll;
       width: 100%;
     }
-    &-thirdBox,
-    &-fourthBox {
+    &-thirdBox {
       border: 1px solid var(--primary-90);
       border-radius: 10px;
       padding: 20px 15px;
       margin: 20px 0;
       width: 270px;
       height: 185px;
+      margin-right: 20px;
       &__title {
         width: 240px;
       }
@@ -67,18 +67,14 @@
         margin: 0;
         color: var(--main-text);
       }
-    }
-    &-thirdBox {
-      margin-right: 20px;
-      &__pending:last-child {
-        @include buttons.buttonOutline-xs;
-        cursor: default !important;
-      }
-    }
-    &-fourthBox {
       &__img {
         display: flex;
         justify-content: flex-end;
+        margin-top: -90px;
+      }
+      &__pending:last-child {
+        @include buttons.buttonOutline-xs;
+        cursor: default !important;
       }
     }
   }
@@ -152,9 +148,9 @@
       &-info {
         width: 100%;
       }
-      &-thirdBox,
-      &-fourthBox {
-        width: 25%;
+      &-thirdBox {
+        width: 33.3%;
+        margin-right: 0px;
         &__title {
           width: 100%;
         }
@@ -172,8 +168,11 @@
     }
   }
   .DataLastMonths {
-    width: 25%;
+    width: 33.3%;
     &__content{
+      width: 100%;
+    }
+    &__header {
       width: 100%;
     }
   }

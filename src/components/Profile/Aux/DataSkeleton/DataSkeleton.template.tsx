@@ -20,8 +20,8 @@ const DataSkeleton = (info: any, pathname: string, onClick:any) => {
               </p>
             </>
           )}
-          <div className='DataSkeleton__sections'>
-            {info.map((inf: any) => (
+          <div className={`DataSkeleton__sections ${pathname ===  '/user/computeFinder' && 'DataSkeleton__sectionsCF'}`}>
+            {info && info.map((inf: any) => (
               <div key={inf.id} className='DataSkeleton__sections-mobile'>
                 <p className='DataSkeleton__sections-title'>{inf.title}</p>
                 <div className='DataSkeleton__sections-subinfo'>
