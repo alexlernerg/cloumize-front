@@ -35,8 +35,9 @@ const Auth = (
                   }`}
                   style={{
                     background:
-                      "url('./Auth/email.svg') no-repeat scroll 10px 12px",
+                      "url('./Auth/email.svg') no-repeat scroll 10px 17px",
                     paddingLeft: '30px',
+                    paddingTop: '15px'
                   }}
                 />
                 {/* <div>{errors.name}</div> */}
@@ -54,7 +55,7 @@ const Auth = (
                 touched.email && errors.email ? 'is-invalid' : ''
               }`}
               style={{
-                background: "url('./Auth/email.svg') no-repeat scroll 10px 12px",
+                background: "url('./Auth/email.svg') no-repeat scroll 10px 15px",
                 paddingLeft: '30px',
               }}
             />
@@ -72,7 +73,7 @@ const Auth = (
               }`}
               style={{
                 background:
-                  "url('./Auth/password.svg') no-repeat scroll 10px 12px",
+                  "url('./Auth/password.svg') no-repeat scroll 10px 15px",
                 paddingLeft: '30px',
               }}
             />
@@ -92,11 +93,11 @@ const Auth = (
                   }`}
                   style={{
                     background:
-                      "url('./Auth/password.svg') no-repeat scroll 10px 12px",
+                      "url('./Auth/password.svg') no-repeat scroll 10px 15px",
                     paddingLeft: '30px',
                   }}
                 />
-                {/* <div>{errors.name}</div> */}
+                {data.confirmPassword !== data.password && <div className='AuthContainer__form-error'>Passwords do not match</div>}
               </>
             )}
             <div className='AuthContainer__form-checkbox'>

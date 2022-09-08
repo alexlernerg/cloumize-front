@@ -5,13 +5,13 @@ const http = create({
 });
 
 export const getUser = () => {
-  return http.get(`/users/me`);
+  return http.get(`/user/me`);
 };
 
 export const updateUser = (updateUser:any) => {
-  return http.patch(`/users/me`, updateUser);
+  return http.patch(`/user/update`, updateUser);
 };
 
-export const deleteUser = () => {
-  return http.delete(`/users/me`);
+export const deleteUser = (user:any) => {
+  return http.delete(`/users/delete`, user);
 };

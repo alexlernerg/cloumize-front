@@ -9,10 +9,10 @@ export const signUp = (userData:any) => {
 };
 
 export const signIn = (userData:any) => {
-  return http.post(`/auth/signin`, userData);
+  return http.post(`/auth/login`, userData);
 };
 
-// Update Password
+//TODO: Update Password
 // Send email to restore password
 export const passwordResetEmail = (user:any) => {
   return http.post("/users/password_reset", user);
