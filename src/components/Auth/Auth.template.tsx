@@ -40,7 +40,7 @@ const Auth = (
                     paddingTop: '15px'
                   }}
                 />
-                {/* <div>{errors.name}</div> */}
+                <div className='AuthContainer__form-error'>{errors.name}</div>
               </>
             )}
             <input
@@ -59,7 +59,7 @@ const Auth = (
                 paddingLeft: '30px',
               }}
             />
-            {/* <div>{errors.email}</div> */}
+            <div className='AuthContainer__form-error'>{errors.email}</div>
             <input
               type='text'
               placeholder='Password'
@@ -77,7 +77,14 @@ const Auth = (
                 paddingLeft: '30px',
               }}
             />
-            {/* <div>{errors.password}</div> */}
+            <div className='AuthContainer__form-error'>
+              <p style={{color: (errors.password.lengthMsg === '' && errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? '#13D733' : '#FF434E'}}>Your password  needs to:</p>
+                <ul>
+                  {errors.password.lengthMsg === '' ? <li className='AuthContainer__form-error-correct'>v 8 characteres long</li>: <li>x 8 characteres long</li>}
+                  {errors.password.uppercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Uppercase letter</li>: <li>x Uppercase letter</li>}
+                  {errors.password.lowercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Lower case letter</li>: <li>x Lower case letter</li>}
+                </ul>
+              </div>
             {!signinPage && (
               <>
                 <input
