@@ -12,7 +12,6 @@ export const signIn = (userData:any) => {
   return http.post(`/auth/login`, userData);
 };
 
-//TODO: Update Password
 // Send email to restore password
 export const passwordResetEmail = (user:any) => {
   return http.post("/users/password_reset", user);

@@ -46,7 +46,7 @@ const Dashboard =()=>{
   ];
   const data = [
     { title: 'Last 12 months', EC2: dataRest[0].spending_ec2_last_year, achieved_savings: dataRest[0].achieved_savings, wasted_spending: dataRest[0].ec2_wasted_spending_year},
-    {title: 'Last months', EC2: dataRest[0].spending_ec2_last_month, achieved_savings: dataRest[0].achieved_savings, wasted_spending: dataRest[0].ec2_wasted_spending_last_month}
+    {title: 'Last month', EC2: dataRest[0].spending_ec2_last_month, achieved_savings: dataRest[0].achieved_savings, wasted_spending: dataRest[0].ec2_wasted_spending_last_month}
   ]
   return templateDashboard(dataRest, data);
 }

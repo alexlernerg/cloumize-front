@@ -13,7 +13,6 @@ export const getSavingsFinder = async (data:any) => {
 export const getComputeFinder = async (data:any) => {
   return await http.post(`/data/compute-finder`, data);
 };
-//TODO: POST COMPUTE FINDER
 export const getExistingPlans = async (data:any) => {
     return await http.post(`/data/existing-plans`, data);
   };
