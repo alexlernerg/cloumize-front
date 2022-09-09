@@ -42,7 +42,7 @@ const Auth =()=>{
 
 //  const errorsPass = [["length", errors.password.lengthMsg], ["uppercase", errors.password.uppercaseMsg], ["lowercase", errors.password.lowercaseMsg]]
 //  console.table(errorsPass)
-console.log("errors", errors)
+// console.log("errors", errors)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -68,6 +68,8 @@ console.log("errors", errors)
   };
 
   const [touched, setTouched] = useState({});
+
+  console.log("touched", touched);
 
   const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;

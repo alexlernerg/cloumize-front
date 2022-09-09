@@ -38,7 +38,7 @@ export const validators:any = {
     } else if (value && value.length > 8){
       message = ''
     }
-    console.log("Password", value)
+    // console.log("Password", value)
     return message;
   },
   passwordUppercase: (value: string) => {
@@ -51,7 +51,7 @@ export const validators:any = {
     } else if (value && uppercase.test(value)){
       message = ''
     }
-    console.log("Uppercase", value)
+    // console.log("Uppercase", value)
     return message;
   },
   passwordLowercase: (value: string) => {
@@ -64,8 +64,8 @@ export const validators:any = {
     } else if (value && lowercase.test(value)){
       message = ''
     }
-    console.log("Lowercase", value)
-    console.log("LowercaseMSG", message)
+    // console.log("Lowercase", value)
+    // console.log("LowercaseMSG", message)
     return message;
   }
 };
