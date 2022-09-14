@@ -48,7 +48,7 @@ const Dashboard = (dataRest:any, data:any) => {
         <div className='Dashboard__container-top'>
           <div>
             <p>$300</p>
-            <p>in potential monthly savings</p>
+            <p>Potential Annual Savings</p>
           </div>
           <Link to='/user/savingsFinder'>Find them</Link>
         </div>
