@@ -66,17 +66,19 @@
     background-color: var(--main-primary);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 32px 29px;
     border-bottom: 1px solid var(--primary-50);
     &-part1 {
-      display: flex;
-      align-items: center;
+      display: block;
+      align-items: flex-start;
       & p {
-        display: none;
+        color: var(--primary-50);
+        margin-bottom: 0;
+        margin-top: 10px;
       }
       & img {
-        width: 98px;
+        width: 120px;
       }
     }
     &-part2 {
@@ -109,7 +111,7 @@
   }
   &__Section1 {
     color: var(--main-white);
-    margin-top: 120px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -131,12 +133,12 @@
       display: flex;
       flex-direction: column;
       width: 90%;
-      & a {
+      &-signup {
         @include btnIn();
         padding: 14px 40px;
         width: 100% !important;
       }
-      & button {
+      &-contact {
         @include btnOut();
         margin-left: 0px;
         margin-top: 25px;
@@ -152,8 +154,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin: 50px 0 108px;
+    margin: 50px 0 56px;
     padding-left: 28px;
+    &-content {
+      margin-bottom: 46px;
+    }
     &-subtitle {
       width: 60%;
     }
@@ -187,17 +192,17 @@
       }
     }
     &-btns {
-      margin-top: 76px;
+      margin-top: 46px;
       display: flex;
       flex-direction: column;
       width: 90%;
-      & a {
+      &-signup {
         @include btnOut();
         background-color: var(--main-primary);
         padding: 14px 40px;
         width: 100% !important;
       }
-      & button {
+      &-contact {
         @include btnIn();
         border: 1px solid var(--main-primary);
         color: var(--main-primary);
@@ -232,8 +237,11 @@
       border: 1px solid var(--main-primary);
       padding: 14px 40px;
       margin-top: 88px;
-      margin-bottom: 56px;
+      margin-bottom: 20px;
       width: 100% !important;
+      &:hover {
+        color: var(--main-white);
+      }
     }
     & img {
       width: 317px;
@@ -264,25 +272,30 @@
       border: 1px solid var(--main-primary);
       padding: 14px 40px;
       margin-top: 88px;
-      margin-bottom: 56px;
       width: 100% !important;
+      &:hover {
+        color: var(--main-white);
+      }
     }
   }
   &__Section5 {
     @include section();
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 28px;
     &-cards {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 74px;
+      align-self: center;
+      padding-right: 30px;
     }
     &-subtitle,
     &-content {
-      text-align: center;
+      text-align: start;
     }
     &-content {
       width: 90%;
@@ -303,16 +316,17 @@
     }
     &-btns {
       margin-bottom: 119px;
-      & a {
+      &-signup {
         @include btnOut();
         background-color: var(--main-primary);
         padding: 14px 40px;
       }
-      & button {
+      &-contact {
         @include btnIn();
         border: 1px solid var(--main-primary);
         color: var(--main-primary);
         margin-left: 25px;
+        padding: 14px 30px;
       }
     }
   }
@@ -401,8 +415,7 @@
   &__Section7 {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding-left: 28px;
+    align-items: center;
     & p {
       font-weight: 500;
       font-size: 24px;
@@ -431,6 +444,7 @@
       align-items: center;
       & img {
         margin-bottom: 48px;
+        width: 195px;
       }
       & p {
         color: var(--primary-70);
@@ -488,11 +502,13 @@
     &__Navbar {
       padding: 39px 100px;
       border-bottom: none;
+      align-items: center;
       &-part1 {
+        display: flex;
+        align-items: center;
         & p {
           display: block;
           margin: 0;
-          color: var(--primary-50);
           margin-left: 36px;
         }
         & img {
@@ -516,6 +532,7 @@
     &__Section1 {
       align-items: center;
       padding-left: 0px;
+      margin-top: 120px;
       &-title {
         font-weight: 700;
         font-size: 60px;
@@ -533,10 +550,10 @@
       &-btns {
         flex-direction: row;
         justify-content: center;
-        & a {
+        &-signup {
           width: 138px !important;
         }
-        & button {
+        &-contact {
           margin-left: 25px;
           margin-top: 0;
           width: 138px !important;
@@ -568,6 +585,10 @@
     &__Section2 {
       align-items: center;
       padding-left: 0px;
+      margin: 108px 0px;
+      &-content {
+        margin-bottom: 76px;
+      }
       &-subtitle {
         text-align: center;
       }
@@ -583,17 +604,23 @@
       }
       &-card {
         margin-bottom: 0px;
+        width: 25%;
+        min-height: 409px;
         &:not(:last-child) {
           margin-right: 24px;
+        }
+        &__title {
+          min-height: 90px;
         }
       }
       &-btns {
         flex-direction: row;
         justify-content: center;
-        & a {
+        margin-top: 76px;
+        &-signup {
           width: 138px !important;
         }
-        & button {
+        &-contact {
           margin-left: 25px;
           margin-top: 0;
           width: 138px !important;
@@ -623,16 +650,22 @@
       }
       & a {
         margin-top: 0px;
-        margin-bottom: 0px;
         width: 138px !important;
       }
     }
     &__Section5 {
+      align-items: center;
+      padding: 0;
       &-content {
         width: 45%;
       }
+      &-subtitle,
+    &-content {
+      text-align: center;
+    }
       &-cards {
         flex-direction: row;
+        padding-right: 0px;
       }
       &-card {
         &:not(:first-child) {
@@ -661,8 +694,6 @@
       }
     }
     &__Section7 {
-      align-items: center;
-      padding-left: 0px;
       & p {
         font-size: 48px;
         line-height: 57px;

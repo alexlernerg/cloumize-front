@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../Misc/Navbar/Navbar';
+import OnBoarding from '../../OnBoarding/OnBoarding';
 import './Dashboard.scss';
 import { DoughnutGraphicView, HorizontalBarGraphic, PieGraphicView, VerticalBarGraphic } from './Graphics/Graphics';
 
 const DataLastMonths = ({data}:any) => {
-  console.log("DATA", data)
   return (
     <section className='DataLastMonths'>
       <div className='DataLastMonths__header'>
@@ -40,44 +40,49 @@ const DataLastMonths = ({data}:any) => {
 };
 
 const Dashboard = (dataRest:any, data:any) => {
+  const [onBoarding, setOnBoarding] = useState(true);
+  const showOnBoarding = () => setOnBoarding(!onBoarding);
   return (
-    <div className='Dashboard'>
-      <Navbar />
-      <div className='Dashboard__container'>
-        <h1 className='Dashboard__container-title'>Dashboard</h1>
-        <div className='Dashboard__container-top'>
-          <div>
-            <p>$300</p>
-            <p>Potential Annual Savings</p>
+    <>
+      {onBoarding && <div className='Dashboard__onboarding'><OnBoarding closePopup={showOnBoarding}/></div>}
+      <div className='Dashboard'>
+        <Navbar />
+        <div className='Dashboard__container'>
+          <h1 className='Dashboard__container-title'>Dashboard</h1>
+          <div className='Dashboard__container-top'>
+            <div>
+              <p>$300</p>
+              <p>Potential Annual Savings</p>
+            </div>
+            <Link to='/user/savingsFinder'>Find them</Link>
           </div>
-          <Link to='/user/savingsFinder'>Find them</Link>
-        </div>
-        <div className='Dashboard__container-info'>
-          {data.map((d:any, i:any) => <DataLastMonths data={d} key={i}/>)}
-          <section className='Dashboard__container-thirdBox'>
-          <div className='DataLastMonths__header'>
-            <p>Saving Strategies</p>
+          <div className='Dashboard__container-info'>
+            {data.map((d:any, i:any) => <DataLastMonths data={d} key={i}/>)}
+            <section className='Dashboard__container-thirdBox'>
+            <div className='DataLastMonths__header'>
+              <p>Saving Strategies</p>
+            </div>
+            <p className='Dashboard__container-thirdBox__title'>{dataRest[0].savings_strategies_running} <span className='Dashboard__container-thirdBox__span'>Running</span></p>
+            <p className='Dashboard__container-thirdBox__title'>{dataRest[0].savings_strategies_approved} <span className='Dashboard__container-thirdBox__span'>Approved</span></p>
+            <p className='Dashboard__container-thirdBox__title'>{dataRest[0].savings_strategies_pending} <span className='Dashboard__container-thirdBox__span'>Pending</span></p>
+            <div className='Dashboard__container-thirdBox__img'>
+              <img src="/Profile/SavingsStrategies.svg" alt="Savings strategies"/>
+            </div>
+            </section>
           </div>
-          <p className='Dashboard__container-thirdBox__title'>{dataRest[0].savings_strategies_running} <span className='Dashboard__container-thirdBox__span'>Running</span></p>
-          <p className='Dashboard__container-thirdBox__title'>{dataRest[0].savings_strategies_approved} <span className='Dashboard__container-thirdBox__span'>Approved</span></p>
-          <p className='Dashboard__container-thirdBox__title'>{dataRest[0].savings_strategies_pending} <span className='Dashboard__container-thirdBox__span'>Pending</span></p>
-          <div className='Dashboard__container-thirdBox__img'>
-            <img src="/Profile/SavingsStrategies.svg" alt="Savings strategies"/>
-          </div>
-          </section>
-        </div>
-        <div className='Dashboard__graphics'>
-          <div className='Dashboard__graphics-firstLine'>
-            <VerticalBarGraphic/>
-            <DoughnutGraphicView dataRest={dataRest}/>
-          </div>
-          <div className='Dashboard__graphics-secondLine'>
-            <PieGraphicView dataRest={dataRest}/>
-            <HorizontalBarGraphic dataRest={dataRest}/>
+          <div className='Dashboard__graphics'>
+            <div className='Dashboard__graphics-firstLine'>
+              <VerticalBarGraphic/>
+              <DoughnutGraphicView dataRest={dataRest}/>
+            </div>
+            <div className='Dashboard__graphics-secondLine'>
+              <PieGraphicView dataRest={dataRest}/>
+              <HorizontalBarGraphic dataRest={dataRest}/>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
