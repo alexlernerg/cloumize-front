@@ -4,6 +4,7 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
+  z-index: 0;
   &__container {
     width: 77%;
     margin-left: 120px;
@@ -129,6 +130,19 @@
     width: 20px;
     outline: none;
   }
+}
+
+.disable {
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  opacity: 0.5;
+  height: 100vh;
+  width: 100vw;
+  filter: brightness(50%)
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 @media (min-width: 1280px) {

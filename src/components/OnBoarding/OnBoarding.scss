@@ -8,7 +8,7 @@
   top: 5%;
   z-index: 10;
   width: 90vw;
-  height: 740px;
+  height: fit-content;
   &__header {
     border-radius: 8px 8px 0 0;
     background-color: var(--main-primary);
@@ -25,8 +25,9 @@
       width: 100%;
     }
   }
-  &__content {
+  &__content-0, &__content-1, &__content-2, &__content-3 {
     padding: 32px 20px;
+    min-height: 200px;
     &-title0  {
       font-weight: 400;
       font-size: 16px !important;
@@ -108,4 +109,30 @@
     border: none;
     padding: 7.5px 20.5px;
   }
+}
+
+@media (min-width: 1024px) {
+    .OnBoardingContainer {
+        width: 60vw;
+        top: 10%;
+        &__image {
+            & img {
+                width: 100%;
+            }
+        }
+        &__content-2 {
+            padding: 32px 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+    .Buttons {
+        &__image {
+          &:first-child {
+            margin-left: 400px !important;
+          }
+        }
+      }
 }
