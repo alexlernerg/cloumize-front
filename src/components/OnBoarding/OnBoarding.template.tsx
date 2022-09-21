@@ -39,17 +39,17 @@ const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, 
             <p className='OnBoardingContainer__content-text1'>To obtain the benefits and continue with the process, <span>create a Stack</span></p>
         </>}
         {page === 2 && <>
-            <div>
-                <img/>
+            <div className='OnBoardingContainer__content-step1'>
+                <img src="/OnBoarding/step1.svg" alt="step1"/>
                 <p>Wait until the stack creation is complete</p>
             </div>
-            <div>
-                <img/>
+            <div className='OnBoardingContainer__content-step2'>
+                <img src="/OnBoarding/step2.svg" alt="step2"/>
                 <p>Select the output tab and insert the arn code</p>
             </div>
-            <div>
+            <div className='OnBoardingContainer__content-ARN'>
                 <label>Arn Code</label>
-                <input type="text"></input>
+                <input type="text" placeholder='insert your code'></input>
             </div>
         </>}
         {page === 3 && <>

@@ -8,6 +8,7 @@
   top: 5%;
   z-index: 10;
   width: 90vw;
+  height: 740px;
   &__header {
     border-radius: 8px 8px 0 0;
     background-color: var(--main-primary);
@@ -47,6 +48,39 @@
             color: var(--main-primary);
             text-decoration: none !important;
         }
+    }
+    &-title3 {
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--grey-80);
+        text-align: center;
+    }
+    &-text3 {
+        font-weight: 300;
+        font-size: 14px;
+        text-align: center;
+    }
+    &-step1, &-step2 {
+        display: flex;
+        align-items: flex-start;
+        & img {
+            margin-right: 8px;
+        }
+    }
+    &-ARN {
+        border: 1.4783px solid var(--main-primary);
+        border-radius: 6px;
+        padding: 12px 10px;
+        & input {
+            border: none;
+            margin-left: 8px;
+            outline: none;
+        }
+    }
+    ::placeholder {
+        font-weight: 500;
+        font-size: 14px;
+        color: var(--grey-30);
     }
   }
   &__buttons {
