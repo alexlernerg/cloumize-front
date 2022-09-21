@@ -10,9 +10,10 @@ const TableMobile = ({
   isCheck,
   handleClick,
 }) => {
+  console.log("dataContentMobile", dataContent)
   return (
     <>
-      {dataContent.map((data, i) => (
+      {dataContent?.map((data, i) => (
         <table className='table mobile TableMobile' key={i}>
           {pathname === '/user/savingsFinder' && (
             <>
@@ -51,7 +52,7 @@ const TableMobile = ({
               <tr>
                 <td>{columnsContent[8]}</td>
                 <td valign='middle' className='TableMobile__body-col'>
-                  {data.state === '' && (
+                  {data.state === 'Approved' && (
                     <p className='TableSkeletonContainer__body-textApproved m-0'>
                       Approved
                     </p>
@@ -239,7 +240,6 @@ const TableSkeleton = (
   handleSelectAll,
   handleClick
 ) => {
-  console.log("dataTable2", filteredData)
   return (
     <>
       <div className='TableSkeletonContainer__search'>
@@ -586,7 +586,7 @@ const TableSkeleton = (
         </tbody>
       </table>
       <TableMobile
-        dataContent={dataContent}
+        dataContent={filteredData}
         columnsContent={columnsContent}
         pathname={pathname}
         list={list}

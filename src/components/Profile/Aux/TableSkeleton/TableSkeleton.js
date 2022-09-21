@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import templateTableSkeleton from './TableSkeleton.template';
 
 const TableSkeleton = ({ data, columns }) => {
-  console.log("dataTable1", data)
   //Current url
   const { pathname } = useLocation();
 
@@ -12,13 +11,15 @@ const TableSkeleton = ({ data, columns }) => {
 
   const [filterChoosed, setFilterChoosed] = useState('aws_account_id');
   const [search, setSearch] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
 
   //Filter data on table
   const onChange = (e) => {
     const { name, value } = e.target;
     name === 'search' ? setSearch(value) : setFilterChoosed(value);
   };
+
+  useEffect(() => {setFilteredData(data)},[data])
 
   useEffect(() => {
     setFilteredData(
