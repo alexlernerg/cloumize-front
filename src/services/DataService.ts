@@ -1,24 +1,24 @@
 import { create } from './BaseService';
 
 const http = create({
-  useAccessToken: false,
+  useAccessToken: true,
 });
 
-export const getDashboard = async (data:any) => {
-    return await http.post(`/data/dashboard`, data);
-  };
-export const getSavingsFinder = async (data:any) => {
-  return await http.post(`/data/savings-finder`, data);
+export const getDashboard = async () => {
+  return await http.get(`/data/dashboard`);
 };
-export const getComputeFinder = async (data:any) => {
-  return await http.post(`/data/compute-finder`, data);
+export const getSavingsFinder = async () => {
+  return await http.get(`/data/savings-finder`);
 };
-export const getExistingPlans = async (data:any) => {
-    return await http.post(`/data/existing-plans`, data);
-  };
-  export const getSavingsPlans = async (data:any) => {
-    return await http.post(`/data/savings-plans`, data);
-  };
-  export const getAccount = async (data:any) => {
-    return await http.post(`/data/account`, data);
-  };
+export const getComputeFinder = async () => {
+  return await http.get(`/data/compute-finder`);
+};
+export const getExistingPlans = async () => {
+  return await http.get(`/data/existing-plans`);
+};
+export const getSavingsPlans = async () => {
+  return await http.get(`/data/savings-plans`);
+};
+export const getAccount = async () => {
+  return await http.get(`/data/account`);
+};

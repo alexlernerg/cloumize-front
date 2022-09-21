@@ -38,15 +38,15 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.current_rate.toFixed(2)}</td>
+                <td>{data.current_rate?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.Cloumize_Discount.toFixed(2)}</td>
+                <td>{data.Cloumize_Discount?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.cloumize_rate.toFixed(2)}</td>
+                <td>{data.cloumize_rate?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
@@ -239,6 +239,7 @@ const TableSkeleton = (
   handleSelectAll,
   handleClick
 ) => {
+  console.log("dataTable2", filteredData)
   return (
     <>
       <div className='TableSkeletonContainer__search'>
@@ -349,25 +350,25 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.current_rate.toFixed(2)}
+                  {content.current_rate?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.Cloumize_Discount.toFixed(2)}
+                  {content.Cloumize_Discount?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.cloumize_rate.toFixed(2)}
+                  {content.cloumize_rate?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state === '' && (
+                  {content.state === 'Approved' && (
                     <p className='TableSkeletonContainer__body-textApproved m-0'>
                       Approved
                     </p>

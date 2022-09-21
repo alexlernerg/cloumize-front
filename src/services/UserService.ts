@@ -5,7 +5,8 @@ const http = create({
 });
 
 export const getUser = () => {
-  return http.get(`/user/me`);
+  console.log("entra en getUser")
+  return http.get('/user/me');
 };
 
 export const updateUser = (updateUser:any) => {
@@ -13,5 +14,6 @@ export const updateUser = (updateUser:any) => {
 };
 
 export const deleteUser = (user:any) => {
-  return http.delete(`/users/delete`, user);
+  return http.delete(`/user/delete`, user);
 };
+

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import templateTableSkeleton from './TableSkeleton.template';
 
 const TableSkeleton = ({ data, columns }) => {
+  console.log("dataTable1", data)
   //Current url
   const { pathname } = useLocation();
 

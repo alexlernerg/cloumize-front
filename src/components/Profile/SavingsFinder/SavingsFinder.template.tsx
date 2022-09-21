@@ -5,6 +5,7 @@ import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 
 const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[], info:any) => {
+  console.log("dataSF", dataSF)
   return (
     <div className='SavingsFinder'>
       <Navbar />

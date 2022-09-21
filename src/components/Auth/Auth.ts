@@ -21,7 +21,7 @@ const Auth =()=>{
   const navigate = useNavigate();
 
   //User context
-  const {getCurrentUser} = useUser();
+  const {setCurrentUser, getCurrentUser} = useUser();
 
   //Form logic
   const [data, setData]:[IUser, React.Dispatch<React.SetStateAction<IUser>>] = useState({
@@ -99,13 +99,13 @@ const Auth =()=>{
 
     console.log("data", data)
     console.log("isValid", isValid());
-
-    if (isValid() && signinPage) {
+    //TODO: ISVALID SIGNIN
+    if (signinPage) {
       signIn({email: data.email, password: data.password})
       .then((response:any)=> {
         console.log("response", response);
         setAccessToken(response.token);
-        getCurrentUser().then(() => navigate('/user'));
+        navigate('/user');
       })
       .catch((error: any) => {
         // setErrorLogin(error?.message);

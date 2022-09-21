@@ -437,20 +437,18 @@ const Landing = (
             {!screenWidthMobile ? 'Visit our Blog' : 'Blog'}&nbsp;
             <img src='/Landing/mediumNav.svg' alt='medium' />
           </a>
-          <a
-            // to={screenWidthMobile ? '/auth' : '/signin'}
-            href='https://form-cloumize.carrd.co/'
+          <Link
+            to={screenWidthMobile ? '/auth' : '/signin'}
             className='LandingContainer__Navbar-part2__signin'
           >
             Login
-          </a>
-          <a
-            // to={screenWidthMobile ? '/auth' : '/signup'}
-            href='https://form-cloumize.carrd.co/'
+          </Link>
+          <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}
             className='LandingContainer__Navbar-part2__signup'
           >
             Sign up
-          </a>
+          </Link>
         </div>
       </section>
       <section className='LandingContainer__Section1'>
@@ -510,17 +508,20 @@ const Landing = (
             most profitable plans in real time
           </p>
           {!screenWidthMobile && (
-            <a href='https://form-cloumize.carrd.co/'>Sign up</a>
+            <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           )}
         </div>
         <img src='/Landing/savingsFinder.png' alt='Savings Finder' />
         {screenWidthMobile && (
-          <a href='https://form-cloumize.carrd.co/'>Sign up</a>
+          <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
         )}
       </section>
       <section className='LandingContainer__Section4'>
         {screenWidthMobile && (
-          <a href='https://form-cloumize.carrd.co/'>Sign up</a>
+          <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
         )}
         <img src='/Landing/incentives.png' alt='Savings Finder' />
         <div>
@@ -533,7 +534,8 @@ const Landing = (
             with the customer
           </p>
           {!screenWidthMobile && (
-            <a href='https://form-cloumize.carrd.co/'>Sign up</a>
+            <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           )}
         </div>
       </section>
@@ -558,7 +560,8 @@ const Landing = (
         </div>
         {!screenWidthMobile && (
           <div className='LandingContainer__Section5-btns'>
-            <a href='https://form-cloumize.carrd.co/' target="_blank" rel="noreferrer" className='LandingContainer__Section5-btns-signup'>Sign up</a>
+            <Link
+            to={screenWidthMobile ? '/auth' : '/signup'} className='LandingContainer__Section5-btns-signup'>Sign up</Link>
           <a href="https://calendly.com/alex-cloumize/cloumize-support" target="_blank" rel="noreferrer" className='LandingContainer__Section5-btns-contact'>Contact Sales</a>
           </div>
         )}
