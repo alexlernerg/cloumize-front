@@ -4,6 +4,7 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
+  z-index: 0;
   &__container {
     width: 77%;
     margin-left: 120px;
@@ -47,14 +48,14 @@
       overflow-x: scroll;
       width: 100%;
     }
-    &-thirdBox,
-    &-fourthBox {
+    &-thirdBox {
       border: 1px solid var(--primary-90);
       border-radius: 10px;
       padding: 20px 15px;
       margin: 20px 0;
       width: 270px;
       height: 185px;
+      margin-right: 20px;
       &__title {
         width: 240px;
       }
@@ -67,18 +68,14 @@
         margin: 0;
         color: var(--main-text);
       }
-    }
-    &-thirdBox {
-      margin-right: 20px;
-      &__pending:last-child {
-        @include buttons.buttonOutline-xs;
-        cursor: default !important;
-      }
-    }
-    &-fourthBox {
       &__img {
         display: flex;
         justify-content: flex-end;
+        margin-top: -90px;
+      }
+      &__pending:last-child {
+        @include buttons.buttonOutline-xs;
+        cursor: default !important;
       }
     }
   }
@@ -90,6 +87,12 @@
     &-secondLine {
       margin: 20px 0;
     }
+  }
+  &__onboarding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
   }
 }
 
@@ -129,6 +132,19 @@
   }
 }
 
+.disable {
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  opacity: 0.5;
+  height: 100vh;
+  width: 100vw;
+  filter: brightness(50%)
+}
+
+.disabled {
+  pointer-events: none;
+}
+
 @media (min-width: 1280px) {
   .Dashboard {
     &__container {
@@ -152,9 +168,9 @@
       &-info {
         width: 100%;
       }
-      &-thirdBox,
-      &-fourthBox {
-        width: 25%;
+      &-thirdBox {
+        width: 33.3%;
+        margin-right: 0px;
         &__title {
           width: 100%;
         }
@@ -172,8 +188,11 @@
     }
   }
   .DataLastMonths {
-    width: 25%;
+    width: 33.3%;
     &__content{
+      width: 100%;
+    }
+    &__header {
       width: 100%;
     }
   }

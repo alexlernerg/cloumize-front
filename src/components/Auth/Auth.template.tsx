@@ -35,11 +35,12 @@ const Auth = (
                   }`}
                   style={{
                     background:
-                      "url('./Auth/email.svg') no-repeat scroll 10px 12px",
+                      "url('./Auth/email.svg') no-repeat scroll 10px 17px",
                     paddingLeft: '30px',
+                    paddingTop: '15px'
                   }}
                 />
-                {/* <div>{errors.name}</div> */}
+                {touched.name && <div className='AuthContainer__form-error'>{errors.name}</div>}
               </>
             )}
             <input
@@ -54,11 +55,11 @@ const Auth = (
                 touched.email && errors.email ? 'is-invalid' : ''
               }`}
               style={{
-                background: "url('./Auth/email.svg') no-repeat scroll 10px 12px",
+                background: "url('./Auth/email.svg') no-repeat scroll 10px 15px",
                 paddingLeft: '30px',
               }}
             />
-            {/* <div>{errors.email}</div> */}
+            {touched.email && <div className='AuthContainer__form-error'>{errors.email}</div>}
             <input
               type='text'
               placeholder='Password'
@@ -72,11 +73,18 @@ const Auth = (
               }`}
               style={{
                 background:
-                  "url('./Auth/password.svg') no-repeat scroll 10px 12px",
+                  "url('./Auth/password.svg') no-repeat scroll 10px 15px",
                 paddingLeft: '30px',
               }}
             />
-            {/* <div>{errors.password}</div> */}
+            {touched.password && <div className='AuthContainer__form-error'>
+              <p style={{color: (errors.password.lengthMsg === '' && errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? '#13D733' : '#FF434E'}}>Your password  needs to:</p>
+                <ul>
+                  {errors.password.lengthMsg === '' ? <li className='AuthContainer__form-error-correct'>v 8 characteres long</li>: <li>x 8 characteres long</li>}
+                  {errors.password.uppercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Uppercase letter</li>: <li>x Uppercase letter</li>}
+                  {errors.password.lowercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Lower case letter</li>: <li>x Lower case letter</li>}
+                </ul>
+              </div>}
             {!signinPage && (
               <>
                 <input
@@ -92,11 +100,11 @@ const Auth = (
                   }`}
                   style={{
                     background:
-                      "url('./Auth/password.svg') no-repeat scroll 10px 12px",
+                      "url('./Auth/password.svg') no-repeat scroll 10px 15px",
                     paddingLeft: '30px',
                   }}
                 />
-                {/* <div>{errors.name}</div> */}
+                {data.confirmPassword !== data.password && <div className='AuthContainer__form-error'>Passwords do not match</div>}
               </>
             )}
             <div className='AuthContainer__form-checkbox'>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Landing.scss';
 
 const Faqs = ({ ID, onClick }: any) => {
-  console.log('ID', ID);
   return (
     <section className='LandingContainer__Section6'>
       <h2 className='LandingContainer__Section6-title'>
@@ -20,16 +19,18 @@ const Faqs = ({ ID, onClick }: any) => {
             onClick={onClick}
           >
             <article id='0' onClick={onClick}>
-              <span id='0'
-            onClick={onClick}>01</span>
-              <p id='0'
-            onClick={onClick}>What is a Payment Gateway?</p>
+              <span id='0' onClick={onClick}>
+                01
+              </span>
+              <p id='0' onClick={onClick}>
+                How does the pricing model work?
+              </p>
             </article>
             <button id='0' onClick={onClick}>
               {Number(ID) === 0 ? (
-                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+                <img id='0' src='/Landing/arrowBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowLight.svg' alt='No selected' />
+                <img id='0' src='/Landing/arrowLight.svg' alt='No selected' />
               )}
             </button>
           </div>
@@ -42,19 +43,18 @@ const Faqs = ({ ID, onClick }: any) => {
             onClick={onClick}
           >
             <article id='1' onClick={onClick}>
-              <span id='1'
-            onClick={onClick}>02</span>
-              <p id='1'
-            onClick={onClick}>
-                Do I need to pay to Instapay even when there is no transaction
-                going on in my business?
+              <span id='1' onClick={onClick}>
+                02
+              </span>
+              <p id='1' onClick={onClick}>
+                How does the buy-back guarantee work?
               </p>
             </article>
             <button id='1' onClick={onClick}>
               {Number(ID) === 1 ? (
-                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+                <img id='1' src='/Landing/arrowBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowLight.svg' alt='No selected' />
+                <img id='1' src='/Landing/arrowLight.svg' alt='No selected' />
               )}
             </button>
           </div>
@@ -67,16 +67,18 @@ const Faqs = ({ ID, onClick }: any) => {
             onClick={onClick}
           >
             <article id='2' onClick={onClick}>
-              <span id='2'
-            onClick={onClick}>03</span>
-              <p id='2'
-            onClick={onClick}>What platforms does ACME payment gateway support?</p>
+              <span id='2' onClick={onClick}>
+                03
+              </span>
+              <p id='2' onClick={onClick}>
+                What is my commitment period with Cloumize reservations?
+              </p>
             </article>
             <button id='2' onClick={onClick}>
               {Number(ID) === 2 ? (
-                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+                <img id='2' src='/Landing/arrowBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowLight.svg' alt='No selected' />
+                <img id='2' src='/Landing/arrowLight.svg' alt='No selected' />
               )}
             </button>
           </div>
@@ -89,16 +91,19 @@ const Faqs = ({ ID, onClick }: any) => {
             onClick={onClick}
           >
             <article id='3' onClick={onClick}>
-              <span id='3'
-            onClick={onClick}>04</span>
-              <p id='3'
-            onClick={onClick}>Does ACME provide international payments support?</p>
+              <span id='3' onClick={onClick}>
+                04
+              </span>
+              <p id='3' onClick={onClick}>
+                How does the onboarding process work, and do I need engineering
+                resources to set it up?
+              </p>
             </article>
             <button id='3' onClick={onClick}>
               {Number(ID) === 3 ? (
-                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+                <img id='3' src='/Landing/arrowBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowLight.svg' alt='No selected' />
+                <img id='3' src='/Landing/arrowLight.svg' alt='No selected' />
               )}
             </button>
           </div>
@@ -111,17 +116,18 @@ const Faqs = ({ ID, onClick }: any) => {
             onClick={onClick}
           >
             <article id='4' onClick={onClick}>
-              <span id='4' onClick={onClick}>05</span>
+              <span id='4' onClick={onClick}>
+                05
+              </span>
               <p id='4' onClick={onClick}>
-                Is there any setup fee or annual maintainance fee that I need to
-                pay regularly?
+                Will Cloumize interrupt my infrastructure or cause downtime?
               </p>
             </article>
             <button id='4' onClick={onClick}>
               {Number(ID) === 4 ? (
-                <img src='/Landing/arrowBlue.svg' alt='Selected' />
+                <img id='4' src='/Landing/arrowBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowLight.svg' alt='No selected' />
+                <img id='4' src='/Landing/arrowLight.svg' alt='No selected' />
               )}
             </button>
           </div>
@@ -130,62 +136,80 @@ const Faqs = ({ ID, onClick }: any) => {
           {Number(ID) === 0 && (
             <div>
               <p className='LandingContainer__Section6-answers__title'>
-                What is a Payment Gateway?
+                How does the pricing model work?
               </p>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                Cloumize charges upon success rate. At the end of each month,
+                Cloumize will charge 25% of the achieved savings.
+                <br />
+                <br />
+                For example, if your EC2 bill is $20,000 per month, and Cloumize
+                reduces your costs to $12,000, achieved savings would be $8,000.
+                Cloumize will charge $2,000, in line with the 25% fee.
+                <br />
+                <br />
+                If Cloumize doesn't find savings, the product is free to use.
               </p>
             </div>
           )}
           {Number(ID) === 1 && (
             <div>
               <p className='LandingContainer__Section6-answers__title'>
-                Do I need to pay to Instapay even when there is no transaction
-                going on in my business?
+                How does the buy-back guarantee work?
               </p>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                Cloumize monitors the coverage and utilization of your EC2
+                reservations, aiming for a 95%-100% coverage and 100%
+                utilization.
+                <br />
+                <br />
+                If you over-provisioned Reserved Instances purchased through
+                Cloumize, the excess cost associated with AWS payment is
+                refunded in the form of Cloumize credit on the following month's
+                bill.
               </p>
             </div>
           )}
           {Number(ID) === 2 && (
             <div>
               <p className='LandingContainer__Section6-answers__title'>
-                What platforms does ACME payment gateway support?
+                What is my commitment period with Cloumize reservations?
               </p>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                With Cloumize, you don't have long-term commitments, so you can
+                maximize savings without compromising flexibility. However,
+                given the AWS marketplace rules, we cannot sell a Reserved
+                Instance within the first 30 days of purchase.
+                <br />
+                <br />
+                Cloumize constantly monitors your infrastructure and sells
+                Reserved Instance when your usage drops. You can rest calmly,
+                knowing you only pay for what you use.
               </p>
             </div>
           )}
           {Number(ID) === 3 && (
             <div>
               <p className='LandingContainer__Section6-answers__title'>
-                Does ACME provide international payments support?
+                How does the onboarding process work, and do I need engineering
+                resources to set it up?
               </p>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                You can sign up and start maximizing Cloumize in under 5 minutes
+                with no extra engineering efforts. We have packaged all the
+                requirements in a convenient CloudFormation template.
               </p>
             </div>
           )}
           {Number(ID) === 4 && (
             <div>
               <p className='LandingContainer__Section6-answers__title'>
-                Is there any setup fee or annual maintainance fee that I need to
-                pay regularly?
+                Will Cloumize interrupt my infrastructure or cause downtime?
               </p>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                Cloumize works exclusively at the billing layer, meaning we
+                cannot modify, start or terminate any of your existing
+                instances.
               </p>
             </div>
           )}
@@ -209,32 +233,37 @@ const FaqsMob = ({ ID, onClick }: any) => {
               'LandingContainer__Section6-questions__selected'
             }`}
             id='0'
-              onClick={onClick}
+            onClick={onClick}
           >
-            <article id='0'
-              onClick={onClick}>
-              <span id='0'
-              onClick={onClick}>01</span>
-              <p id='0'
-              onClick={onClick}>What is a Payment Gateway?</p>
+            <article id='0' onClick={onClick}>
+              <span id='0' onClick={onClick}>
+                01
+              </span>
+              <p id='0' onClick={onClick}>
+                How does the pricing model work?
+              </p>
             </article>
-            <button
-              id='0'
-              onClick={onClick}
-            >
+            <button id='0' onClick={onClick}>
               {Number(ID) === 0 ? (
-                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+                <img id='0' src='/Landing/arrowUpBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+                <img id='0' src='/Landing/arrowDownLight.svg' alt='No selected' />
               )}
             </button>
           </div>
           {Number(ID) === 0 && (
             <div>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                Cloumize charges upon success rate. At the end of each month,
+                Cloumize will charge 25% of the achieved savings.
+                <br />
+                <br />
+                For example, if your EC2 bill is $20,000 per month, and Cloumize
+                reduces your costs to $12,000, achieved savings would be $8,000.
+                Cloumize will charge $2,000, in line with the 25% fee.
+                <br />
+                <br />
+                If Cloumize doesn't find savings, the product is free to use.
               </p>
             </div>
           )}
@@ -244,35 +273,36 @@ const FaqsMob = ({ ID, onClick }: any) => {
               'LandingContainer__Section6-questions__selected'
             }`}
             id='1'
-              onClick={onClick}
+            onClick={onClick}
           >
-            <article id='1'
-              onClick={onClick}>
-              <span id='1'
-              onClick={onClick}>02</span>
-              <p id='1'
-              onClick={onClick}>
-                Do I need to pay to Instapay even when there is no transaction
-                going on in my business?
+            <article id='1' onClick={onClick}>
+              <span id='1' onClick={onClick}>
+                02
+              </span>
+              <p id='1' onClick={onClick}>
+                How does the buy-back guarantee work?
               </p>
             </article>
-            <button
-              id='1'
-              onClick={onClick}
-            >
+            <button id='1' onClick={onClick}>
               {Number(ID) === 1 ? (
-                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+                <img id='1' src='/Landing/arrowUpBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+                <img id='1' src='/Landing/arrowDownLight.svg' alt='No selected' />
               )}
             </button>
           </div>
           {Number(ID) === 1 && (
             <div>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                Cloumize monitors the coverage and utilization of your EC2
+                reservations, aiming for a 95%-100% coverage and 100%
+                utilization.
+                <br />
+                <br />
+                If you over-provisioned Reserved Instances purchased through
+                Cloumize, the excess cost associated with AWS payment is
+                refunded in the form of Cloumize credit on the following month's
+                bill.
               </p>
             </div>
           )}
@@ -282,32 +312,36 @@ const FaqsMob = ({ ID, onClick }: any) => {
               'LandingContainer__Section6-questions__selected'
             }`}
             id='2'
-              onClick={onClick}
+            onClick={onClick}
           >
-            <article id='2'
-              onClick={onClick}>
-              <span id='2'
-              onClick={onClick}>03</span>
-              <p id='2'
-              onClick={onClick}>What platforms does ACME payment gateway support?</p>
+            <article id='2' onClick={onClick}>
+              <span id='2' onClick={onClick}>
+                03
+              </span>
+              <p id='2' onClick={onClick}>
+                What is my commitment period with Cloumize reservations?
+              </p>
             </article>
-            <button
-              id='2'
-              onClick={onClick}
-            >
+            <button id='2' onClick={onClick}>
               {Number(ID) === 2 ? (
-                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+                <img id='2' src='/Landing/arrowUpBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+                <img id='2' src='/Landing/arrowDownLight.svg' alt='No selected' />
               )}
             </button>
           </div>
           {Number(ID) === 2 && (
             <div>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                With Cloumize, you don't have long-term commitments, so you can
+                maximize savings without compromising flexibility. However,
+                given the AWS marketplace rules, we cannot sell a Reserved
+                Instance within the first 30 days of purchase.
+                <br />
+                <br />
+                Cloumize constantly monitors your infrastructure and sells
+                Reserved Instance when your usage drops. You can rest calmly,
+                knowing you only pay for what you use.
               </p>
             </div>
           )}
@@ -315,33 +349,33 @@ const FaqsMob = ({ ID, onClick }: any) => {
             className={`${
               Number(ID) === 3 &&
               'LandingContainer__Section6-questions__selected'
-            }`} id='3'
+            }`}
+            id='3'
             onClick={onClick}
           >
-            <article id='3'
-              onClick={onClick}>
-              <span id='3'
-              onClick={onClick}>04</span>
-              <p id='3'
-              onClick={onClick}>Does ACME provide international payments support?</p>
+            <article id='3' onClick={onClick}>
+              <span id='3' onClick={onClick}>
+                04
+              </span>
+              <p id='3' onClick={onClick}>
+                How does the onboarding process work, and do I need engineering
+                resources to set it up?
+              </p>
             </article>
-            <button
-              id='3'
-              onClick={onClick}
-            >
+            <button id='3' onClick={onClick}>
               {Number(ID) === 3 ? (
-                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+                <img id='3' src='/Landing/arrowUpBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+                <img id='3' src='/Landing/arrowDownLight.svg' alt='No selected' />
               )}
             </button>
           </div>
           {Number(ID) === 3 && (
             <div>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                You can sign up and start maximizing Cloumize in under 5 minutes
+                with no extra engineering efforts. We have packaged all the
+                requirements in a convenient CloudFormation template.
               </p>
             </div>
           )}
@@ -349,36 +383,32 @@ const FaqsMob = ({ ID, onClick }: any) => {
             className={`${
               Number(ID) === 4 &&
               'LandingContainer__Section6-questions__selected'
-            }`} id='4'
+            }`}
+            id='4'
             onClick={onClick}
           >
-            <article id='4'
-              onClick={onClick}>
-              <span id='4'
-              onClick={onClick}>05</span>
-              <p id='4'
-              onClick={onClick}>
-                Is there any setup fee or annual maintainance fee that I need to
-                pay regularly?
+            <article id='4' onClick={onClick}>
+              <span id='4' onClick={onClick}>
+                05
+              </span>
+              <p id='4' onClick={onClick}>
+                Will Cloumize interrupt my infrastructure or cause downtime?
               </p>
             </article>
-            <button
-              id='4'
-              onClick={onClick}
-            >
+            <button id='4' onClick={onClick}>
               {Number(ID) === 4 ? (
-                <img src='/Landing/arrowUpBlue.svg' alt='Selected' />
+                <img id='4' src='/Landing/arrowUpBlue.svg' alt='Selected' />
               ) : (
-                <img src='/Landing/arrowDownLight.svg' alt='No selected' />
+                <img id='4' src='/Landing/arrowDownLight.svg' alt='No selected' />
               )}
             </button>
           </div>
           {Number(ID) === 4 && (
             <div>
               <p className='LandingContainer__Section6-answers__content'>
-                No, you do not need to pay Instapay where there is no
-                transaction happening. With one of the lowest transaction
-                charges in the industry, pay only when you get paid!
+                Cloumize works exclusively at the billing layer, meaning we
+                cannot modify, start or terminate any of your existing
+                instances.
               </p>
             </div>
           )}
@@ -399,11 +429,11 @@ const Landing = (
     <div className='LandingContainer'>
       <section className='LandingContainer__Navbar'>
         <div className='LandingContainer__Navbar-part1'>
-          <img src='/Landing/logo.svg' alt='logo' />
+          <img src='/Landing/logo.png' alt='logo' />
           <p>AI Powered Cloud Savings</p>
         </div>
         <div className='LandingContainer__Navbar-part2'>
-          <a href='/' className='LandingContainer__Navbar-part2__medium'>
+          <a href='https://medium.com/@cloumize' target="_blank" rel="noreferrer" className='LandingContainer__Navbar-part2__medium'>
             {!screenWidthMobile ? 'Visit our Blog' : 'Blog'}&nbsp;
             <img src='/Landing/mediumNav.svg' alt='medium' />
           </a>
@@ -427,20 +457,22 @@ const Landing = (
         </h1>
         <p className='LandingContainer__Section1-subtitle'>
           There are two kinds of companies, those that work to try to charge
-          more and those that work to charge less. We will be the second. - Jeff
+          more and those that work to charge less. <br style={{display: screenWidthMobile ? 'none' : "block"}}/>We will be the second. - Jeff
           Bezos
         </p>
         <div className='LandingContainer__Section1-btns'>
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
-          <button>Contact Sales</button>
+          <a href='https://form-cloumize.carrd.co/' target="_blank" rel="noreferrer" className='LandingContainer__Section1-btns-signup'>Sign up</a>
+          <a href="https://calendly.com/alex-cloumize/cloumize-support" target="_blank" rel="noreferrer" className='LandingContainer__Section1-btns-contact'>Contact Sales</a>
         </div>
-        <img src='/Landing/dashboard.svg' alt='dashboard' />
+        <img src='/Landing/dashboard.png' alt='dashboard' />
       </section>
       <section className='LandingContainer__Section2'>
-        <h2 className='LandingContainer__Section2-title'>HOW TO BENEFIT</h2>
-        <h3 className='LandingContainer__Section2-subtitle'>
+        <h2 className='LandingContainer__Section2-title'>Cloumize in Action</h2>
+        {screenWidthMobile ?<h3 className='LandingContainer__Section2-subtitle'>
+          &#123;Save $ :<br/> Boost Productivity&#125;
+        </h3> : <h3 className='LandingContainer__Section2-subtitle'>
           &#123;Save $ : Boost Productivity&#125;
-        </h3>
+        </h3>}
         <p className='LandingContainer__Section2-content'>
           Cloumize manages your compute costs and trades in real time on the AWS
           EC2 Reserved Instance Marketplace
@@ -459,8 +491,8 @@ const Landing = (
           ))}
         </div>
         <div className='LandingContainer__Section2-btns'>
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
-          <button>Contact Sales</button>
+          <a href='https://form-cloumize.carrd.co/' target="_blank" rel="noreferrer" className='LandingContainer__Section2-btns-signup'>Sign up</a>
+          <a href="https://calendly.com/alex-cloumize/cloumize-support" target="_blank" rel="noreferrer" className='LandingContainer__Section2-btns-contact'>Contact Sales</a>
         </div>
       </section>
       <section className='LandingContainer__Section3'>
@@ -469,48 +501,52 @@ const Landing = (
             HOW TO START SAVING
           </h2>
           <h3 className='LandingContainer__Section3-subtitle'>
-            Explore potential savings at no costs
+            Explore potential savings without long-term commitments
           </h3>
           <p className='LandingContainer__Section3-content'>
             Cloumize's algorithm monitors your infrastructure and trades the
             most profitable plans in real time
           </p>
           {!screenWidthMobile && (
-            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
+            <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           )}
         </div>
-        <img src='/Landing/savingsFinder.svg' alt='Savings Finder' />
+        <img src='/Landing/savingsFinder.png' alt='Savings Finder' />
         {screenWidthMobile && (
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
+          <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
         )}
       </section>
       <section className='LandingContainer__Section4'>
         {screenWidthMobile && (
-          <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
+          <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
         )}
-        <img src='/Landing/incentives.svg' alt='Savings Finder' />
+        <img src='/Landing/incentives.png' alt='Savings Finder' />
         <div>
           <h2 className='LandingContainer__Section4-title'>THE BENEFITS</h2>
           <h3 className='LandingContainer__Section4-subtitle'>
-            Aligned with our customers, having a success-fee revenue incentive.
+            Aligned with our customers, having a success-fee revenue model
           </h3>
           <p className='LandingContainer__Section4-content'>
-            We only charge a percentage of the savings, so try our product for
-            free without commitment.
+            We only charge a 25% of the savings, mantaining an aligned interest
+            with the customer
           </p>
           {!screenWidthMobile && (
-            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
+            <Link
+            to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
           )}
         </div>
       </section>
       <section className='LandingContainer__Section5'>
         <h2 className='LandingContainer__Section5-title'>HOW TO REGISTER</h2>
         <h3 className='LandingContainer__Section5-subtitle'>
-          Start saving in under 5 minutes
+          Start saving with a few clicks
         </h3>
         <p className='LandingContainer__Section5-content'>
-          In just a few easy steps, explore your potential compute savings and
-          select our discounts.
+          Register and execute a CloudFormation template to explore the
+          available savings
         </p>
         <div className='LandingContainer__Section5-cards'>
           {info5.map((info: any) => (
@@ -524,8 +560,9 @@ const Landing = (
         </div>
         {!screenWidthMobile && (
           <div className='LandingContainer__Section5-btns'>
-            <Link to={screenWidthMobile ? '/auth' : '/signup'}>Sign up</Link>
-            <button>Contact Sales</button>
+            <Link
+            to={screenWidthMobile ? '/auth' : '/signup'} className='LandingContainer__Section5-btns-signup'>Sign up</Link>
+          <a href="https://calendly.com/alex-cloumize/cloumize-support" target="_blank" rel="noreferrer" className='LandingContainer__Section5-btns-contact'>Contact Sales</a>
           </div>
         )}
       </section>
@@ -537,35 +574,39 @@ const Landing = (
       <section className='LandingContainer__Section7'>
         <p>Accelerated by</p>
         <div className='LandingContainer__Section7-accelerated'>
-          <img src='/Landing/shuttle.svg' alt='shuttle' />
-          <img src='/Landing/shuttle.svg' alt='shuttle' />
+          <img src='/Landing/shuttle.png' alt='shuttle' />
+          <img src='/Landing/aws.png' alt='shuttle' />
         </div>
       </section>
       <footer className='LandingContainer__Footer'>
         <div className='LandingContainer__Footer-part1'>
-          <img src='/Landing/logo.svg' alt='logo' />
+          <img src='/Landing/logo.png' alt='logo' />
           <p>AI Powered Cloud Savings!</p>
         </div>
         <div className='LandingContainer__Footer-part2'>
-          <div className='LandingContainer__Footer-part2__links'>
+          {/* <div className='LandingContainer__Footer-part2__links'>
             <Link to=''>How to benefit</Link>
             <Link to=''>Monetize</Link>
             <Link to=''>Achieve</Link>
             <Link to=''>How to register</Link>
-          </div>
+          </div> */}
           <div className='LandingContainer__Footer-part2__sm'>
             <div>
-              <a href='/'>
+              <a href='https://medium.com/@cloumize' target="_blank" rel="noreferrer">
                 <img src='/Landing/medium.svg' alt='medium' />
               </a>
-              <a href='/'>
+              <a href="https://www.linkedin.com/company/cloumize/about/" target="_blank" rel="noreferrer">
+                <img
+                  src='/Landing/Linkedin.svg'
+                  alt='linkedIn'
+                  style={{ marginBottom: '5px' }}
+                />
+              </a>
+              <a href='https://twitter.com/Cloumize' target="_blank" rel="noreferrer">
                 <img src='/Landing/Twitter.svg' alt='twitter' />
               </a>
-              <a href='/'>
-                <img src='/Landing/Linkedin.svg' alt='linkedIn' />
-              </a>
             </div>
-            <a href='/'>Hola@cloumize.com</a>
+            <a href='https://mail.google.com/mail/?view=cm&fs=1&to=support@cloumize.com' target="_blank" rel="noreferrer">support@cloumize.com</a>
           </div>
         </div>
       </footer>

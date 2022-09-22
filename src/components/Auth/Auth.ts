@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useUser } from '../../context/hook/useUser';
 import { validators } from '../../helpers/validators';
-import { signIn, signUp } from '../../services/AuthService';
+import { signIn, signUp, passwordResetEmail } from '../../services/AuthService';
 import { setAccessToken } from '../../store/AccessTokenStore';
 import { useNavigate } from 'react-router-dom';
 import templateAuth from "./Auth.template";
 import { IUser } from '../../interfaces/json';
 
 const Auth =()=>{
+  //TODO: Review password validations
   //Current url
   const {pathname} = useLocation();
   const signinPage = pathname === '/signin';
@@ -20,7 +21,7 @@ const Auth =()=>{
   const navigate = useNavigate();
 
   //User context
-  const {getCurrentUser} = useUser();
+  const {setCurrentUser, getCurrentUser} = useUser();
 
   //Form logic
   const [data, setData]:[IUser, React.Dispatch<React.SetStateAction<IUser>>] = useState({
@@ -32,9 +33,16 @@ const Auth =()=>{
   const [errors, setErrors]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
     name: validators.name(),
     email: validators.email(),
-    password: validators.password(),
-    confirmPassword: validators.password()
+    password: {
+      lengthMsg: validators.password(data.password),
+      uppercaseMsg: validators.passwordUppercase(data.password),
+      lowercaseMsg: validators.passwordLowercase(data.password)
+    }
   });
+
+//  const errorsPass = [["length", errors.password.lengthMsg], ["uppercase", errors.password.uppercaseMsg], ["lowercase", errors.password.lowercaseMsg]]
+//  console.table(errorsPass)
+// console.log("errors", errors)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,13 +50,26 @@ const Auth =()=>{
       ...prevState,
       [name]: value,
     }));
-    setErrors((prevState:any) => ({
-      ...prevState,
-      [name]: validators[name] && validators[name](value),
+    if (name !== 'password') {
+      setErrors((prevState:any) => ({
+          ...prevState,
+          [name]: validators[name] && validators[name](value),
+      }));
+    } else {
+      setErrors((prevState:any) => ({
+        ...prevState,
+        password: {
+          lengthMsg: validators.password(data.password),
+          uppercaseMsg: validators.passwordUppercase(data.password),
+          lowercaseMsg: validators.passwordLowercase(data.password)
+        }
     }));
+    }
   };
 
   const [touched, setTouched] = useState({});
+
+  console.log("touched", touched);
 
   const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
@@ -69,34 +90,39 @@ const Auth =()=>{
   };
 
   const isValid = () => {
-    return !Object.keys(errors).some((error) => errors[error]);
+    return (errors.name === undefined && errors.email === undefined && errors.password.lengthMsg === '' &&
+    errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
   };
 
   const onSubmit = (e:React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (isValid() && signinPage) {
-      signIn(data)
+    console.log("data", data)
+    console.log("isValid", isValid());
+    //TODO: ISVALID SIGNIN
+    if (signinPage) {
+      signIn({email: data.email, password: data.password})
       .then((response:any)=> {
+        console.log("response", response);
         setAccessToken(response.token);
-        getCurrentUser().then(() => navigate('/user'));
+        navigate('/user');
       })
       .catch((error: any) => {
-        //TODO: Chequear cuando el backend este construido
         // setErrorLogin(error?.message);
         // setShow(true);
+        console.log("error", error)
       });
     } 
     if (isValid() && !signinPage) {
-      signUp(data)
+      signUp({email: data.email, password: data.password})
       .then((response:any)=> {
         console.log("response", response);
         navigate('/signin');
       })
       .catch((error: any) => {
-        //TODO: Chequear cuando el backend este construido
         // setErrorLogin(error?.message);
         // setShow(true);
+        console.log("error", error)
       });
     } 
   }

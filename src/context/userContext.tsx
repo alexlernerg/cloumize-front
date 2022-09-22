@@ -11,29 +11,29 @@ const defaultUser = {
   email: ''
 }
 
-
 export const UserContext = createContext<any>({
   currentUser: defaultUser,
-  getCurrentUser: async () => Promise,
+  setCurrentUser: async () => Promise,
 });
 
 export const UserProvider = ({ children }: IContext): any => {
   const [currentUser, setCurrentUser] = useState<any>();
   
-  const getCurrentUser = (): Promise<React.SetStateAction<any>> => {
-    return getUser()
+  const getCurrentUser = async (): Promise<React.SetStateAction<any>> => {
+    return await getUser()
     .then((response: any) => {
-      setCurrentUser(response.user);
+      setCurrentUser(response[0]);
     })
     .catch((error: any)=>{
       console.error('Unable to get user data', error)
     });
   };
-  
+
   useEffect(() => {
     if (getAccessToken()) {
       getCurrentUser();
     }
+    console.log("currentUser", currentUser)
   }, []);
 
   const values: any = {

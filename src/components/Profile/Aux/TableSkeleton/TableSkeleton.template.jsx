@@ -9,10 +9,11 @@ const TableMobile = ({
   list,
   isCheck,
   handleClick,
+  sendApproval
 }) => {
   return (
     <>
-      {dataContent.map((data, i) => (
+      {dataContent?.map((data, i) => (
         <table className='table mobile TableMobile' key={i}>
           {pathname === '/user/savingsFinder' && (
             <>
@@ -38,20 +39,20 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.current_rate.toFixed(2)}</td>
+                <td>{data.current_rate?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.Cloumize_Discount.toFixed(2)}</td>
+                <td>{data.Cloumize_Discount?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.cloumize_rate.toFixed(2)}</td>
+                <td>{data.cloumize_rate?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
                 <td valign='middle' className='TableMobile__body-col'>
-                  {data.state === '' && (
+                  {data.state === 'Approved' && (
                     <p className='TableSkeletonContainer__body-textApproved m-0'>
                       Approved
                     </p>
@@ -71,17 +72,17 @@ const TableMobile = ({
               <tr className='align-items-center'>
                 <td>{columnsContent[9]}</td>
                 <td valign='middle' className='TableMobile__body-col'>
-                  {data.state === '' || data.state === 'Savings Activated' ? (
+                  {data.state === 'Approved' || data.state === 'Savings Activated' ? (
                     <div className='d-flex justify-content-center checkboxDesktop'>
                       <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
                     <Checkbox
-                      key={list[0]?.id} //TODO: Iterar por cada obj ya filtrado (filteredArray)
+                      key={data.recommendation_id_cm}
                       type='checkbox'
-                      id={list[0]?.id}
+                      id={data.recommendation_id_cm}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(list[0]?.id)}
+                      isChecked={isCheck.includes(data.recommendation_id_cm)}
                       className='custom-radio-checkbox__input z-10'
                     />
                   )}
@@ -90,7 +91,7 @@ const TableMobile = ({
               {data.state === 'Pending Approval' && (
                 <tr>
                   <td className='TableMobile__body-btn'>
-                    <button disabled={isCheck.length <= 0 ? true : false}>
+                    <button disabled={isCheck.length <= 0 ? true : false} onClick={sendApproval}>
                       Approve
                     </button>
                   </td>
@@ -170,7 +171,7 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.team_remaining}</td>
+                <td>{data['term_remaining (days)']}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
@@ -178,7 +179,7 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td>{data.autosave}</td>
+                <td>{data.cloumize_auto_saver}</td>
               </tr>
             </>
           )}
@@ -214,7 +215,11 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.discount}</td>
+                <td>{data.payment_monthly}</td>
+              </tr>
+              <tr>
+                <td>{columnsContent[8]}</td>
+                <td>{data.payment_upfront}</td>
               </tr>
             </>
           )}
@@ -237,7 +242,8 @@ const TableSkeleton = (
   isCheck,
   list,
   handleSelectAll,
-  handleClick
+  handleClick,
+  sendApproval
 ) => {
   return (
     <>
@@ -349,25 +355,25 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.current_rate.toFixed(2)}
+                  {content.current_rate?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.Cloumize_Discount.toFixed(2)}
+                  {content.Cloumize_Discount?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.cloumize_rate.toFixed(2)}
+                  {content.cloumize_rate?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state === '' && (
+                  {content.state === 'Approved' && (
                     <p className='TableSkeletonContainer__body-textApproved m-0'>
                       Approved
                     </p>
@@ -387,18 +393,18 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state === '' ||
+                  {content.state === 'Approved' ||
                   content.state === 'Savings Activated' ? (
                     <div className='d-flex justify-content-center checkboxDesktop'>
                       <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
                     <Checkbox
-                      key={list[0]?.id} //TODO: Iterar por cada obj ya filtrado (filteredArray)
+                      key={content.recommendation_id_cm}
                       type='checkbox'
-                      id={list[0]?.id}
+                      id={content.recommendation_id_cm}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(list[0]?.id)}
+                      isChecked={isCheck.includes(content.recommendation_id_cm)}
                       className='custom-radio-checkbox__input z-10'
                     />
                   )}
@@ -519,7 +525,13 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.discount}
+                  {content.payment_monthly}
+                </td>
+                <td
+                  valign='middle'
+                  className='TableSkeletonContainer__body-col'
+                >
+                  {content.payment_upfront}
                 </td>
               </tr>
             ))}
@@ -566,7 +578,7 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.team_remaining}
+                  {content['term_remaining (days)']}
                 </td>
                 <td
                   valign='middle'
@@ -578,23 +590,24 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.autosave}
+                  {content.cloumize_auto_saver}
                 </td>
               </tr>
             ))}
         </tbody>
       </table>
       <TableMobile
-        dataContent={dataContent}
+        dataContent={filteredData}
         columnsContent={columnsContent}
         pathname={pathname}
         list={list}
         isCheck={isCheck}
         handleClick={handleClick}
+        sendApproval={sendApproval}
       />
       {pathname === '/user/savingsFinder' && !screenWidthMobile && (
         <div className='TableSkeletonContainer__body-btn'>
-          <button disabled={isCheck.length <= 0 ? true : false}>Approve</button>
+          <button disabled={isCheck.length <= 0 ? true : false} onClick={sendApproval}>Approve</button>
         </div>
       )}
     </>

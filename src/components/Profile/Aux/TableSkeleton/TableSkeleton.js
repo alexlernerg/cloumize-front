@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { approveSF } from '../../../../services/DataService';
 import templateTableSkeleton from './TableSkeleton.template';
 
 const TableSkeleton = ({ data, columns }) => {
@@ -11,13 +12,15 @@ const TableSkeleton = ({ data, columns }) => {
 
   const [filterChoosed, setFilterChoosed] = useState('aws_account_id');
   const [search, setSearch] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
 
   //Filter data on table
   const onChange = (e) => {
     const { name, value } = e.target;
     name === 'search' ? setSearch(value) : setFilterChoosed(value);
   };
+
+  useEffect(() => {setFilteredData(data)},[data])
 
   useEffect(() => {
     setFilteredData(
@@ -39,6 +42,7 @@ const TableSkeleton = ({ data, columns }) => {
     const filteredArray = data.filter(
       (data) => data.state === 'Pending Approval'
     );
+    console.log("filteredArray", filteredArray)
     const mapArray = filteredArray.map((data) => {
       const obj = {
         id: data.recommendation_id_cm,
@@ -47,7 +51,7 @@ const TableSkeleton = ({ data, columns }) => {
       return obj;
     });
     setList(mapArray);
-  }, []);
+  }, [data]);
 
   const handleSelectAll = (e) => {
     setIsCheckAll(!isCheckAll);
@@ -66,6 +70,13 @@ const TableSkeleton = ({ data, columns }) => {
     }
   };
 
+  const sendApproval = () => {
+    approveSF({recommendation_id: isCheck})
+    .then ((response)=> console.log("response", response))
+    .catch((error) => console.log("error", error))
+  }
+  console.log("isCheck", isCheck)
+
   return templateTableSkeleton(
     data,
     columns,
@@ -79,7 +90,8 @@ const TableSkeleton = ({ data, columns }) => {
     isCheck, 
     list,
     handleSelectAll,
-    handleClick
+    handleClick, 
+    sendApproval
   );
 };
 

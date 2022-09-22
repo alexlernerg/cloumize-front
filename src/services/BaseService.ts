@@ -9,9 +9,11 @@ export const create = (opts: any): any => {
 
   http.interceptors.request.use((request:any) => {
     if (opts.useAccessToken !== false) {
-      if (!isTokenValid(getAccessToken())) {
-        logout();
-      }
+      // console.log("tokenValid", isTokenValid(getAccessToken()))
+      // if (!isTokenValid(getAccessToken())) {
+      //   console.log('3');
+      //   logout();
+      // }
       request.headers.common.Authorization = `Bearer ${getAccessToken()}`;
     } else {
       delete request.headers.common.Authorization;
@@ -25,12 +27,12 @@ export const create = (opts: any): any => {
       if (
         opts.reloadOnUnathorized &&
         error.response &&
-        [401, 403, 400].includes(error.response.status)
+        [401, 403, 400].includes(error.response.data.status)
       ) {
         logout();
       }
 
-      return Promise.reject(error?.response?.data?.errors);
+      return Promise.reject(error?.response);
     }
   );
 

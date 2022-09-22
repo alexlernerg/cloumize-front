@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { UserProvider } from './context/userContext';
 import Landing from './Pages/Landing/LandingPage';
 import Auth from './Pages/AuthPage/AuthPage';
-import Error from './Pages/ErrorPage/ErrorPage';
 import SavingsFinder from './components/Profile/SavingsFinder/SavingsFinder';
 import ComputeFinder from './components/Profile/ComputeFinder/ComputeFinder';
 import ExistingPlans from './components/Profile/ExistingPlans/ExistingPlans';

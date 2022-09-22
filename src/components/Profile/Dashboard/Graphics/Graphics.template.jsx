@@ -41,11 +41,11 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   });
   return (
     <div className='VerticalBar'>
-      <p className='mb-0'>Instance Family</p>
+      <p className='mb-0'>Total Compute Costs</p>
       <div className='VerticalBar__legend'>
         <p className='mb-0 me-4'>
           <img src='/Profile/colorBlueDot.svg' alt='dot' />
-          On-demand
+          Other
         </p>
         <p className='mb-0'>
           <img src='/Profile/colorLightDot.svg' alt='dot' />
@@ -271,7 +271,7 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
   return (
     <>
       <div className='HorizontalBar'>
-        <p className='mb-0'>Top cities</p>
+        <p className='mb-0'>Instance family breakdown</p>
         <div className='HorizontalBar__container'>
           <Bar
             options={{

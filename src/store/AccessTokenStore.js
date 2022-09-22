@@ -16,7 +16,11 @@ export const logout = () => {
   window.location.assign("/");
 };
 
+
 export const isTokenValid = (token) => {
-  const info = JSON.parse(Buffer.from(token.split(".")[1], "base64"));
-    return Math.round(Date.now() / 1000) < info.exp;
+  const info = JSON.parse(window.atob(token.split(".")[1]));
+  // const info = JSON.parse(Buffer.from(token.split(".")[1], "base64"));
+  const result = Math.round(Date.now() / 1000) < info.iat;
+  console.log("result", result)
+  return result
 };
