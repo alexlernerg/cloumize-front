@@ -10,7 +10,6 @@ const TableMobile = ({
   isCheck,
   handleClick,
 }) => {
-  console.log("dataContentMobile", dataContent)
   return (
     <>
       {dataContent?.map((data, i) => (
@@ -72,17 +71,17 @@ const TableMobile = ({
               <tr className='align-items-center'>
                 <td>{columnsContent[9]}</td>
                 <td valign='middle' className='TableMobile__body-col'>
-                  {data.state === '' || data.state === 'Savings Activated' ? (
+                  {data.state === 'Approved' || data.state === 'Savings Activated' ? (
                     <div className='d-flex justify-content-center checkboxDesktop'>
                       <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
                     <Checkbox
-                      key={list[0]?.id} //TODO: Iterar por cada obj ya filtrado (filteredArray)
+                      key={data.recommendation_id_cm}
                       type='checkbox'
-                      id={list[0]?.id}
+                      id={data.recommendation_id_cm}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(list[0]?.id)}
+                      isChecked={isCheck.includes(data.recommendation_id_cm)}
                       className='custom-radio-checkbox__input z-10'
                     />
                   )}
@@ -388,18 +387,18 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state === '' ||
+                  {content.state === 'Approved' ||
                   content.state === 'Savings Activated' ? (
                     <div className='d-flex justify-content-center checkboxDesktop'>
                       <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
                     <Checkbox
-                      key={list[0]?.id} //TODO: Iterar por cada obj ya filtrado (filteredArray)
+                      key={content.recommendation_id_cm}
                       type='checkbox'
-                      id={list[0]?.id}
+                      id={content.recommendation_id_cm}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(list[0]?.id)}
+                      isChecked={isCheck.includes(content.recommendation_id_cm)}
                       className='custom-radio-checkbox__input z-10'
                     />
                   )}

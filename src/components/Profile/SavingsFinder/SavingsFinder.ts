@@ -45,7 +45,7 @@ const SavingsFinder = () => {
   //     Cloumize_Discount: 36.31285095214844,
   //     cloumize_rate: 99.86399841308594,
   //     monthly_savings: 56.939998626708984,
-  //     state: '',
+  //     state: 'Approved',
   //   },
   //   {
   //     user_id_cm: 1,
@@ -58,7 +58,7 @@ const SavingsFinder = () => {
   //     Cloumize_Discount: 27.72176170349121,
   //     cloumize_rate: 113.24696350097656,
   //     monthly_savings: 43.435001373291016,
-  //     state: '',
+  //     state: 'Approved',
   //   },
   //   {
   //     user_id_cm: 1,
@@ -84,7 +84,7 @@ const SavingsFinder = () => {
   //     Cloumize_Discount: 36.11111068725586,
   //     cloumize_rate: 83.94999694824219,
   //     monthly_savings: 47.45000076293945,
-  //     state: '',
+  //     state: 'Approved',
   //   },
   //   {
   //     user_id_cm: 1,
@@ -97,7 +97,7 @@ const SavingsFinder = () => {
   //     Cloumize_Discount: 34.65348815917969,
   //     cloumize_rate: 304.0450134277344,
   //     monthly_savings: 161.23614501953125,
-  //     state: '',
+  //     state: 'Approved',
   //   },
   //   {
   //     user_id_cm: 1,

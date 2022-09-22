@@ -41,6 +41,7 @@ const TableSkeleton = ({ data, columns }) => {
     const filteredArray = data.filter(
       (data) => data.state === 'Pending Approval'
     );
+    console.log("filteredArray", filteredArray)
     const mapArray = filteredArray.map((data) => {
       const obj = {
         id: data.recommendation_id_cm,
@@ -49,7 +50,7 @@ const TableSkeleton = ({ data, columns }) => {
       return obj;
     });
     setList(mapArray);
-  }, []);
+  }, [data]);
 
   const handleSelectAll = (e) => {
     setIsCheckAll(!isCheckAll);
@@ -67,6 +68,10 @@ const TableSkeleton = ({ data, columns }) => {
       setIsCheck(isCheck.filter((item) => item !== id));
     }
   };
+
+  console.log("isCheck", isCheck)
+  console.log("list", list)
+  console.log("filteredData", filteredData)
 
   return templateTableSkeleton(
     data,
