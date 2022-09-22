@@ -170,7 +170,7 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.team_remaining}</td>
+                <td>{data['term_remaining (days)']}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
@@ -178,7 +178,7 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td>{data.autosave}</td>
+                <td>{data.cloumize_auto_saver}</td>
               </tr>
             </>
           )}
@@ -214,7 +214,11 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.discount}</td>
+                <td>{data.payment_monthly}</td>
+              </tr>
+              <tr>
+                <td>{columnsContent[8]}</td>
+                <td>{data.payment_upfront}</td>
               </tr>
             </>
           )}
@@ -519,7 +523,13 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.discount}
+                  {content.payment_monthly}
+                </td>
+                <td
+                  valign='middle'
+                  className='TableSkeletonContainer__body-col'
+                >
+                  {content.payment_upfront}
                 </td>
               </tr>
             ))}
@@ -566,7 +576,7 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.team_remaining}
+                  {content['term_remaining (days)']}
                 </td>
                 <td
                   valign='middle'
@@ -578,7 +588,7 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.autosave}
+                  {content.cloumize_auto_saver}
                 </td>
               </tr>
             ))}

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from '../../../context/hook/useUser';
 import Navbar from '../../Misc/Navbar/Navbar';
 import OnBoarding from '../../OnBoarding/OnBoarding';
 import './Dashboard.scss';
 import { DoughnutGraphicView, HorizontalBarGraphic, PieGraphicView, VerticalBarGraphic } from './Graphics/Graphics';
+import { useEffect } from 'react';
 
 const DataLastMonths = ({data}:any) => {
   return (
@@ -40,8 +42,16 @@ const DataLastMonths = ({data}:any) => {
 };
 
 const Dashboard = (dataRest:any, data:any) => {
+  const {currentUser} = useUser();
+  
   const [onBoarding, setOnBoarding] = useState(true);
+
+  useEffect(()=> {
+    currentUser?.arn ? setOnBoarding(false) : setOnBoarding(true)
+  }, [currentUser])
+
   const showOnBoarding = () => setOnBoarding(false);
+
   return (
     <>
       {onBoarding && <div className='Dashboard__onboarding'><OnBoarding closePopup={showOnBoarding}/></div>}
