@@ -32,6 +32,6 @@ export const sendARN = async (ARN:any) => {
   return await http.post(`/data/insert-arn`, {data:ARN});
 };
 export const approveSF = async (SF:any) => {
-  return await http.post(`/data/aprove-saving-finder`, SF);
+  return await http.post(`/data/aprove-saving-finder`, {data:SF});
 };
 

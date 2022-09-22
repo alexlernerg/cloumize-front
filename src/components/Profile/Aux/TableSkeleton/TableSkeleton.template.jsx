@@ -9,6 +9,7 @@ const TableMobile = ({
   list,
   isCheck,
   handleClick,
+  sendApproval
 }) => {
   return (
     <>
@@ -90,7 +91,7 @@ const TableMobile = ({
               {data.state === 'Pending Approval' && (
                 <tr>
                   <td className='TableMobile__body-btn'>
-                    <button disabled={isCheck.length <= 0 ? true : false}>
+                    <button disabled={isCheck.length <= 0 ? true : false} onClick={sendApproval}>
                       Approve
                     </button>
                   </td>
@@ -241,7 +242,8 @@ const TableSkeleton = (
   isCheck,
   list,
   handleSelectAll,
-  handleClick
+  handleClick,
+  sendApproval
 ) => {
   return (
     <>
@@ -601,10 +603,11 @@ const TableSkeleton = (
         list={list}
         isCheck={isCheck}
         handleClick={handleClick}
+        sendApproval={sendApproval}
       />
       {pathname === '/user/savingsFinder' && !screenWidthMobile && (
         <div className='TableSkeletonContainer__body-btn'>
-          <button disabled={isCheck.length <= 0 ? true : false}>Approve</button>
+          <button disabled={isCheck.length <= 0 ? true : false} onClick={sendApproval}>Approve</button>
         </div>
       )}
     </>

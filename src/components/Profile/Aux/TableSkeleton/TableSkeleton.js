@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { approveSF } from '../../../../services/DataService';
 import templateTableSkeleton from './TableSkeleton.template';
 
 const TableSkeleton = ({ data, columns }) => {
@@ -69,9 +70,12 @@ const TableSkeleton = ({ data, columns }) => {
     }
   };
 
+  const sendApproval = () => {
+    approveSF({recommendation_id: isCheck})
+    .then ((response)=> console.log("response", response))
+    .catch((error) => console.log("error", error))
+  }
   console.log("isCheck", isCheck)
-  console.log("list", list)
-  console.log("filteredData", filteredData)
 
   return templateTableSkeleton(
     data,
@@ -86,7 +90,8 @@ const TableSkeleton = ({ data, columns }) => {
     isCheck, 
     list,
     handleSelectAll,
-    handleClick
+    handleClick, 
+    sendApproval
   );
 };
 
