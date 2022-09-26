@@ -59,25 +59,25 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
             maintainAspectRatio: false,
             scales: {
               x: {
-                stacked:true,
+                stacked: true,
                 grid: {
                   display: false,
                 },
                 ticks: {
                   font: {
                     size: screenWidthMobile ? 8 : 14,
-                    family: 'Rubik'
+                    family: 'Rubik',
                   },
                 },
               },
               y: {
-                stacked:true,
+                stacked: true,
                 max: 3000,
                 ticks: {
                   stepSize: 1000,
                   font: {
                     size: screenWidthMobile ? 8 : 14,
-                    family: 'Rubik'
+                    family: 'Rubik',
                   },
                 },
               },
@@ -112,7 +112,11 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   );
 };
 
-export const DoughnutGraphic = (dataRest, getRandomColor, screenWidthMobile) => {
+export const DoughnutGraphic = (
+  dataRest,
+  getRandomColor,
+  screenWidthMobile
+) => {
   const [data, setData] = useState({
     labels: Object.keys(dataRest[0].instance_breakdown_platform),
     datasets: [
@@ -125,7 +129,10 @@ export const DoughnutGraphic = (dataRest, getRandomColor, screenWidthMobile) => 
   });
   return (
     <div className='Doughnut'>
-      <p>Platform <br/>Breakdown</p>
+      <p>
+        Platform <br />
+        Breakdown
+      </p>
       <div className='Doughnut__container'>
         <Doughnut
           data={data}
@@ -145,8 +152,8 @@ export const DoughnutGraphic = (dataRest, getRandomColor, screenWidthMobile) => 
                   family: 'Rubik',
                 },
                 bodyFont: {
-                  size: 24,
-                  weight: 'bold',
+                  size: 14,
+                  // weight: 'bold',
                   family: 'Rubik',
                 },
               },
@@ -154,9 +161,12 @@ export const DoughnutGraphic = (dataRest, getRandomColor, screenWidthMobile) => 
                 display: true,
                 position: screenWidthMobile ? 'left' : 'bottom',
                 labels: {
+                  padding: 10,
                   usePointStyle: true,
+                  pointStyle: 'circle',
                   font: {
-                    size: 14,
+                    size: 16,
+                    family: 'Rubik',
                   },
                 },
               },
@@ -172,7 +182,7 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
   const [data, setData] = useState({
     maintainAspectRatio: false,
     responsive: false,
-    labels: Object.keys(dataRest[0].coverage),
+    labels: ['Reserved', 'On-Demand'],
     datasets: [
       {
         label: '',
@@ -203,8 +213,8 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
                   family: 'Rubik',
                 },
                 bodyFont: {
-                  size: 24,
-                  weight: 'bold',
+                  size: 14,
+                  // weight: 'bold',
                   family: 'Rubik',
                 },
               },
@@ -237,8 +247,10 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 };
 
 export const HorizontalBar = (dataRest, getRandomColor) => {
-  const labelsHB = []
-  dataRest[0].instance_breakdown_family.map((obj)=> Object.keys(obj)).map((key)=> labelsHB.push(key[0]))
+  // const labelsHB = [];
+  // dataRest[0].instance_breakdown_family
+  //   .map((obj) => Object.keys(obj))
+  //   .map((key) => labelsHB.push(key[0]));
   const [data, setData] = useState({
     labels: [''],
     datasets: [
@@ -298,8 +310,8 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
                     family: 'Rubik',
                   },
                   bodyFont: {
-                    size: 24,
-                    weight: 'bold',
+                    size: 14,
+                    // weight: 'bold',
                     family: 'Rubik',
                   },
                 },
@@ -318,12 +330,12 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
           />
         </div>
       </div>
-      <DataServer dataRest={dataRest}/>
+      <DataServer dataRest={dataRest} />
     </>
   );
 };
 
-export const DataServer = ({dataRest}) => {
+export const DataServer = ({ dataRest }) => {
   return (
     <div className='HorizontalBar__legend'>
       <p>Region Breakdown</p>
@@ -339,7 +351,3 @@ export const DataServer = ({dataRest}) => {
     </div>
   );
 };
-
-
-
-
