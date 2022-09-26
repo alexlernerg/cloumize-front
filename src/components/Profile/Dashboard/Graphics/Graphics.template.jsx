@@ -19,7 +19,6 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   const dataVB2 = dataVerticalBar.map(
     (data) => data.spending_std_reserved_instances
   );
-  console.log("labelsVB", labelsVB)
   const [data, setData] = useState({
     labels: labelsVB,
     datasets: [
@@ -60,6 +59,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
             maintainAspectRatio: false,
             scales: {
               x: {
+                stacked:true,
                 grid: {
                   display: false,
                 },
@@ -71,7 +71,8 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                 },
               },
               y: {
-                max: 2000,
+                stacked:true,
+                max: 3000,
                 ticks: {
                   stepSize: 1000,
                   font: {
@@ -122,7 +123,6 @@ export const DoughnutGraphic = (dataRest, getRandomColor, screenWidthMobile) => 
       },
     ],
   });
-  console.log("data.labels", data.labels, data.datasets)
   return (
     <div className='Doughnut'>
       <p>Platform <br/>Breakdown</p>
@@ -237,6 +237,8 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 };
 
 export const HorizontalBar = (dataRest, getRandomColor) => {
+  const labelsHB = []
+  dataRest[0].instance_breakdown_family.map((obj)=> Object.keys(obj)).map((key)=> labelsHB.push(key[0]))
   const [data, setData] = useState({
     labels: [''],
     datasets: [
