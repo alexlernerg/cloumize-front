@@ -20,6 +20,7 @@ const OnBoarding = ({ closePopup }: any) => {
   }, [currentUser])
 
   const [page, setPage] = useState(0);
+  const [error, setError] = useState('');
   const next = () => {
     setPage(page + 1);
   };
@@ -33,7 +34,7 @@ const OnBoarding = ({ closePopup }: any) => {
         console.log('response', response);
         setPage(3);
       })
-      .catch((error: any) => console.log('error', error));
+      .catch((error: any) => setError(error));
   };
 
   const statusOnBoarding = () => {
@@ -52,7 +53,8 @@ const OnBoarding = ({ closePopup }: any) => {
     ARN,
     onChange,
     externalID,
-    statusOnBoarding
+    statusOnBoarding,
+    error
   );
 };
 

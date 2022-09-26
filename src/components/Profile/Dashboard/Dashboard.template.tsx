@@ -47,7 +47,7 @@ const Dashboard = (dataRest:any, data:any) => {
   const [onBoarding, setOnBoarding] = useState(true);
 
   useEffect(()=> {
-    currentUser?.arn ? setOnBoarding(false) : setOnBoarding(true)
+    !currentUser?.arn ? setOnBoarding(false) : setOnBoarding(true)
   }, [currentUser])
 
   const showOnBoarding = () => setOnBoarding(false);

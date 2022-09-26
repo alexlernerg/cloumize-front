@@ -61,7 +61,7 @@ const Auth = (
             />
             {touched.email && <div className='AuthContainer__form-error'>{errors.email}</div>}
             <input
-              type='text'
+              type='password'
               placeholder='Password'
               value={data.password}
               name='password'
@@ -88,7 +88,7 @@ const Auth = (
             {!signinPage && (
               <>
                 <input
-                  type='text'
+                  type='password'
                   placeholder='Confirm password'
                   value={data.confirmPassword}
                   name='confirmPassword'

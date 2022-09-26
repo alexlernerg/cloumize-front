@@ -4,6 +4,7 @@ import { approveSF } from '../../../../services/DataService';
 import templateTableSkeleton from './TableSkeleton.template';
 
 const TableSkeleton = ({ data, columns }) => {
+  console.log("data", data)
   //Current url
   const { pathname } = useLocation();
 

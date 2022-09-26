@@ -108,6 +108,9 @@
     font-size: 14px;
     border: none;
     padding: 7.5px 20.5px;
+    &:disabled {
+      background-color: var(--primary-40);
+    }
   }
 }
 

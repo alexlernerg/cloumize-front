@@ -1,8 +1,7 @@
 import React from 'react';
 import './OnBoarding.scss';
-import { sendARN } from '../../services/DataService';
 
-const Buttons = ({page, next, back, sendARN, statusOnBoarding}:any) => {
+const Buttons = ({ARN, page, next, back, sendARN, statusOnBoarding, error}:any) => {
     console.log("page", page)
     return (
         <>
@@ -12,13 +11,13 @@ const Buttons = ({page, next, back, sendARN, statusOnBoarding}:any) => {
             {page === 2 && <img className="Buttons__image" src="/OnBoarding/dots3.png" alt="dots"/>}
             {page === 3 && <img className="Buttons__image" src="/OnBoarding/dots4.png" alt="dots"/>}
             {page !== 3 && page !== 2 && <button className="Buttons__btn" onClick={next}>Next</button>}
-            {page === 2 && <button className="Buttons__btn" onClick={sendARN}>Next</button>}
-            {page === 3 && <button className="Buttons__btn" onClick={statusOnBoarding}>Next</button>}
+            {page === 2 && <button className="Buttons__btn" disabled={ARN !== '' ? false : true} onClick={sendARN}>Next</button>}
+            {page === 3 && <button className="Buttons__btn" onClick={statusOnBoarding} disabled={error !== '' ? true : false}>Next</button>}
         </>
     )
 }
 
-const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, statusOnBoarding:any) => {
+const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, statusOnBoarding:any, error:string) => {
   return <div className='OnBoardingContainer'>
     <div className='OnBoardingContainer__header'>
         {/* <button onClick={closePopup}><img src="/OnBoarding/x.svg" alt="X"/></button> */}
@@ -30,8 +29,10 @@ const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, 
         {page === 1 && !screenWidthMobile && <img src="/OnBoarding/desktop2.png" alt="step"/>}
         {page === 2 && screenWidthMobile && <img src="/OnBoarding/mobile3.png" alt="step"/>}
         {page === 2 && !screenWidthMobile && <img src="/OnBoarding/desktop3.png" alt="step"/>}
-        {page === 3 && screenWidthMobile && <img src="/OnBoarding/mobile4.png" alt="step"/>}
-        {page === 3 && !screenWidthMobile && <img src="/OnBoarding/desktop4.png" alt="step"/>}
+        {page === 3 && screenWidthMobile && error === '' && <img src="/OnBoarding/mobile4.png" alt="step"/>}
+        {page === 3 && !screenWidthMobile && error === '' &&  <img src="/OnBoarding/desktop4.png" alt="step"/>}
+        {page === 3 && screenWidthMobile && error !== '' && <img src="/OnBoarding/mobile5.png" alt="step"/>}
+        {page === 3 && !screenWidthMobile && error !== '' && <img src="/OnBoarding/desktop5.png" alt="step"/>}
     </div>
     <div className={`OnBoardingContainer__content-${page}`}>
         {page === 0 && <>
@@ -56,13 +57,17 @@ const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, 
                 <input value={ARN} onChange={onChange} type="text" placeholder='insert your code'></input>
             </div>
         </>}
-        {page === 3 && <>
+        {page === 3 && error === '' && <>
             <p className={`OnBoardingContainer__content-${page}-title3`}>Please wait a moment while we find potential savings.</p>
             <p className={`OnBoardingContainer__content-${page}-text3`}>This may take up to 5 minutes.</p>
         </>}
+        {page === 3 && error !=='' && <>
+            <p className={`OnBoardingContainer__content-${page}-title3`}>An error has happened</p>
+            <p className={`OnBoardingContainer__content-${page}-text3`}>{error}</p>
+        </>}
     </div>
     <div className='OnBoardingContainer__buttons'>
-        <Buttons page={page} next={next} back={back} sendARN={sendARN} statusOnBoarding={statusOnBoarding}/>
+        <Buttons ARN={ARN} page={page} next={next} back={back} sendARN={sendARN} statusOnBoarding={statusOnBoarding} error={error}/>
     </div>
   </div>;
 };
