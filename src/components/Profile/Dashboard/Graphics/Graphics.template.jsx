@@ -19,6 +19,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   const dataVB2 = dataVerticalBar.map(
     (data) => data.spending_std_reserved_instances
   );
+  console.log("labelsVB", labelsVB)
   const [data, setData] = useState({
     labels: labelsVB,
     datasets: [
@@ -56,6 +57,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
         <Bar
           data={data}
           options={{
+            maintainAspectRatio: false,
             scales: {
               x: {
                 grid: {
@@ -63,16 +65,18 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                 },
                 ticks: {
                   font: {
-                    size: screenWidthMobile ? 8 : 12,
+                    size: screenWidthMobile ? 8 : 14,
+                    family: 'Rubik'
                   },
                 },
               },
               y: {
                 max: 2000,
                 ticks: {
-                  stepSize: 500,
+                  stepSize: 1000,
                   font: {
-                    size: screenWidthMobile ? 8 : 12,
+                    size: screenWidthMobile ? 8 : 14,
+                    family: 'Rubik'
                   },
                 },
               },
@@ -86,7 +90,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                 yAlign: 'bottom',
                 displayColors: false,
                 titleFont: {
-                  size: 14,
+                  size: 12,
                   family: 'Rubik',
                 },
                 bodyFont: {
@@ -107,26 +111,27 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   );
 };
 
-export const DoughnutGraphic = (dataRest, getRandomColor) => {
+export const DoughnutGraphic = (dataRest, getRandomColor, screenWidthMobile) => {
   const [data, setData] = useState({
-    maintainAspectRatio: false,
-    responsive: false,
     labels: Object.keys(dataRest[0].instance_breakdown_platform),
     datasets: [
       {
-        label: '',
+        // label: '',
         data: Object.values(dataRest[0].instance_breakdown_platform),
         backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
       },
     ],
   });
+  console.log("data.labels", data.labels, data.datasets)
   return (
     <div className='Doughnut'>
-      <p>Text</p>
+      <p>Platform <br/>Breakdown</p>
       <div className='Doughnut__container'>
         <Doughnut
           data={data}
           options={{
+            maintainAspectRatio: false,
+            responsive: true,
             plugins: {
               tooltip: {
                 backgroundColor: '#8796A6',
@@ -136,7 +141,7 @@ export const DoughnutGraphic = (dataRest, getRandomColor) => {
                 yAlign: 'bottom',
                 displayColors: false,
                 titleFont: {
-                  size: 14,
+                  size: 12,
                   family: 'Rubik',
                 },
                 bodyFont: {
@@ -146,22 +151,18 @@ export const DoughnutGraphic = (dataRest, getRandomColor) => {
                 },
               },
               legend: {
-                display: false,
-                position: 'bottom',
+                display: true,
+                position: screenWidthMobile ? 'left' : 'bottom',
                 labels: {
                   usePointStyle: true,
                   font: {
-                    size: 12,
+                    size: 14,
                   },
                 },
               },
             },
           }}
         />
-        <p className='Doughnut__legend mb-0 mt-4 d-flex items-center'>
-          <img src='/Profile/colorDarkDot.svg' alt='dot' />
-          Restless
-        </p>
       </div>
     </div>
   );
@@ -183,11 +184,12 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 
   return (
     <div className='Pie'>
-      <p className='mb-0'>Total % reservation coverage</p>
+      <p className='mb-0'>Reservation Coverage</p>
       <div className='Pie__container'>
         <Pie
           data={data}
           options={{
+            maintainAspectRatio: false,
             plugins: {
               tooltip: {
                 backgroundColor: '#8796A6',
@@ -221,12 +223,12 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
           <p>
             <img src='/Profile/colorDarkDot.svg' alt='dot' />
             {Object.keys(dataRest[0].coverage)[0] === 'percentage_covered' &&
-              'Covered'}
+              'Reserved'}
           </p>
           <p>
             <img src='/Profile/colorLightDot.svg' alt='dot' />
             {Object.keys(dataRest[0].coverage)[1] ===
-              'percentage_not_covered' && 'Not Covered'}
+              'percentage_not_covered' && 'On-Demand'}
           </p>
         </div>
       </div>
@@ -271,7 +273,7 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
   return (
     <>
       <div className='HorizontalBar'>
-        <p className='mb-0'>Instance family breakdown</p>
+        <p className='mb-0'>Instance Family Monthly Spending ($)</p>
         <div className='HorizontalBar__container'>
           <Bar
             options={{
@@ -322,8 +324,9 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
 export const DataServer = ({dataRest}) => {
   return (
     <div className='HorizontalBar__legend'>
+      <p>Region Breakdown</p>
       {dataRest[0].instance_breakdown_az.map((data, i) => (
-        <div className='HorizontalBar__legend-line' key={i}>
+        <div className={`HorizontalBar__legend-line${i}`} key={i}>
           <p>
             <img src='/Profile/dotBlue.svg' alt='dot' />
             {Object.keys(data)}

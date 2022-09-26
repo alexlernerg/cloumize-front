@@ -100,7 +100,8 @@ export const VerticalBarGraphic = () => {
 };
 
 export const DoughnutGraphicView = ({dataRest}:any) => {
-  return DoughnutGraphic(dataRest, getRandomColor)
+  const screenWidthMobile = window.screen.width < 1280
+  return DoughnutGraphic(dataRest, getRandomColor, screenWidthMobile)
 };
 
 export const PieGraphicView = ({dataRest}:any) => {
