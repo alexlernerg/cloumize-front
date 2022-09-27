@@ -22,8 +22,9 @@ const ExistingPlans =()=>{
   useEffect(() => {
     getExistingPlans()
       .then((response: any) => {
-        if (response?.name !== 'Error')
-        setDataEP(response.reserved_instance_data)
+        if (response?.name !== 'Error'){
+          setDataEP(response.reserved_instance_data)
+        }
       })
       .catch((error: any) => {
         console.error('Error data SF', error);

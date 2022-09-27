@@ -22,8 +22,9 @@ const SavingsPlans =()=>{
   useEffect(() => {
     getSavingsPlans()
       .then((response: any) => {
-        if (response?.name !== 'Error')
-        setDataSP(response.savings_plan_data)
+        if (response?.name !== 'Error') {
+          setDataSP(response.savings_plan_data)
+        }
       })
       .catch((error: any) => {
         console.error('Error data SF', error);

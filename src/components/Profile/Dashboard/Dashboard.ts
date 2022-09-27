@@ -111,8 +111,9 @@ const {currentUser} = useUser()
 useEffect(() => {
     getDashboard()
     .then((response: any) => {
-        if (response?.name !== 'Error')
-        setDataRest(response.dashboard_data)
+        if (response?.name !== 'Error') {
+            setDataRest(response.dashboard_data)
+        }
     })
       .catch((error: any) => {
         console.error('Error data SF', error);

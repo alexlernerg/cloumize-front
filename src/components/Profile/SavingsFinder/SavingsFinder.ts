@@ -28,8 +28,9 @@ const SavingsFinder = () => {
   useEffect(() => {
     getSavingsFinder()
       .then((response: any) => {
-        if (response?.name !== 'Error')
-        setDataSF(response.savings_finder_data)
+        if (response?.name !== 'Error') {
+          setDataSF(response.savings_finder_data)
+        }
       })
       .catch((error: any) => {
         console.error('Error data SF', error);
