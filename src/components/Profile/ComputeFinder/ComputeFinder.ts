@@ -24,7 +24,10 @@ const ComputeFinder =()=>{
 
   useEffect(() => {
     getComputeFinder()
-      .then((response: any) => setDataCF(response.ec2_instance_data))
+      .then((response: any) => {
+        if (response?.name !== 'Error')
+        setDataCF(response.ec2_instance_data)
+      })
       .catch((error: any) => {
         console.error('Error data SF', error);
       });
