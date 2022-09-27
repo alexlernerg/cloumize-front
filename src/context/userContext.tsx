@@ -22,7 +22,7 @@ export const UserProvider = ({ children }: IContext): any => {
   const getCurrentUser = async (): Promise<React.SetStateAction<any>> => {
     return await getUser()
     .then((response: any) => {
-      setCurrentUser(response[0]);
+      setCurrentUser(response);
     })
     .catch((error: any)=>{
       console.error('Unable to get user data', error)

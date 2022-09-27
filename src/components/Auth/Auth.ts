@@ -93,7 +93,7 @@ const Auth =()=>{
     errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
   };
 
-  const [errorAPI, setErrorAPI] = useState();
+  const [errorAPI, setErrorAPI] = useState('');
   const [show, setShow] = useState(false);
 
   const onSubmit = (e:React.SyntheticEvent<HTMLFormElement>) => {
@@ -107,6 +107,7 @@ const Auth =()=>{
       })
       .catch((error: any) => {
         setErrorAPI(error?.data.errors.message);
+        setTimeout(() => setErrorAPI(''), 3000)
         setShow(true);
         console.log("error", error)
       });
@@ -119,6 +120,7 @@ const Auth =()=>{
       })
       .catch((error: any) => {
         setErrorAPI(error?.data.errors.message);
+        setTimeout(() => setErrorAPI(''), 3000)
         setShow(true);
         console.log("error", error)
       });

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useUser } from '../../../context/hook/useUser';
 import { getDashboard } from '../../../services/DataService';
 import templateDashboard from './Dashboard.template';
 
@@ -104,28 +105,31 @@ const Dashboard = () => {
             autopilot: 68.186724
         }
     ]
-});
+})
 
-  useEffect(() => {
-    getDashboard()
-      .then((response: any) => setDataRest(response.dashboard_data))
-      .catch((error: any) => {
-        console.error('Error data SF', error);
-      });
-  }, []);
+const {currentUser} = useUser()
+useEffect(() => {
+    console.log("currentUser", currentUser)
+    // if ()
+    // getDashboard()
+    //   .then((response: any) => setDataRest(response.dashboard_data))
+    //   .catch((error: any) => {
+    //     console.error('Error data SF', error);
+    //   });
+  }, [currentUser]);
 
   const data = [
     {
       title: 'Last 12 months',
-      EC2: dataRest.ec2_cost_last_year,
-      achieved_savings: dataRest.achieved_savings_last_year,
-      wasted_spending: dataRest.missed_savings_last_year,
+      EC2: dataRest?.ec2_cost_last_year,
+      achieved_savings: dataRest?.achieved_savings_last_year,
+      wasted_spending: dataRest?.missed_savings_last_year,
     },
     {
       title: 'Last month',
-      EC2: dataRest.ec2_cost_last_month,
-      achieved_savings: dataRest.achieved_savings_last_month,
-      wasted_spending: dataRest.missed_savings_last_month,
+      EC2: dataRest?.ec2_cost_last_month,
+      achieved_savings: dataRest?.achieved_savings_last_month,
+      wasted_spending: dataRest?.missed_savings_last_month,
     },
   ];
   return templateDashboard(dataRest, data);
