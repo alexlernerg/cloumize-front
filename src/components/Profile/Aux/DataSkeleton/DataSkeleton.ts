@@ -5,10 +5,11 @@ import templateDataSkeleton from "./DataSkeleton.template";
 const DataSkeleton =({info, data}:any)=>{
   //Current url
   const {pathname} = useLocation();
+  const url = pathname.split('/')[2]
 
   //Download CVS
   const onClick = ()=> {
-    exportExcel(data)
+    exportExcel(data, url)
   }
   return templateDataSkeleton(info, pathname, onClick);
 }

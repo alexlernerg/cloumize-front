@@ -13,7 +13,6 @@ const DataLastMonths = ({data}:any) => {
     <section className='DataLastMonths'>
       <div className='DataLastMonths__header'>
         <p>{data.title}</p>
-        <input type='date'/>
       </div>
       <div className='DataLastMonths__content'>
         <div>

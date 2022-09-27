@@ -160,7 +160,7 @@ export const DoughnutGraphic = (
                   usePointStyle: true,
                   pointStyle: 'circle',
                   font: {
-                    size: 16,
+                    size: screenWidthMobile ? 12 : 16,
                     family: 'Rubik',
                   },
                 },
