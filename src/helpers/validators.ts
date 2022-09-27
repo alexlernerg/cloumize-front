@@ -13,10 +13,44 @@ function checkUppercase(str: any) {
   return false;
 }
 
-const lowercase = /G[a-z].*/;
-// const uppercase = /^[A-Z]*$/;
+function checkLowercase(str: any) {
+  for (var i = 0; i < str.length; i++) {
+    if (
+      str.charAt(i) == str.charAt(i).toLowerCase() &&
+      str.charAt(i).match(/[A-Z]/i)
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Regex broken down into parts
+const parts = [
+  'arn:aws:connect:',
+  '(?<region_name>[^:]+?)',         // group 1
+  ':',
+  '(?<account_id>\\d{12})',         // group 2
+  ':instance\\/',
+  '(?<instance_id>[A-z0-9\\-]+?)',  // group 3
+  '$'
+];
+
+// Joined parts into regex expression
+const regexARN = new RegExp(parts.join(''));
 
 export const validators: any = {
+  ARN: (value: string): any => {
+    let message;
+
+    if (!value) {
+      message = 'ARN is required';
+    } else if (regexARN.test(value)) {
+      message = 'ARN must have a correct format';
+    }
+
+    return message;
+  },
   name: (value: string): any => {
     let message;
 
@@ -49,7 +83,6 @@ export const validators: any = {
     } else if (value && value.length > 8) {
       message = '';
     }
-    // console.log("Password", value)
     return message;
   },
   passwordUppercase: (value: string) => {
@@ -57,12 +90,14 @@ export const validators: any = {
 
     if (!value) {
       message = 'Uppercase letter';
-    } else if (value && !checkUppercase(value)) {
+    } 
+    if (value && !checkUppercase(value)) {
       message = 'Uppercase letter';
-    } else if (value && checkUppercase(value)) {
+    } 
+    if (value && checkUppercase(value)) {
       message = '';
     }
-    console.log('Uppercase', value);
+    console.log('message', message);
     return message;
   },
   passwordLowercase: (value: string) => {
@@ -70,9 +105,11 @@ export const validators: any = {
 
     if (!value) {
       message = 'Lower case letter';
-    } else if (value && !lowercase.test(value)) {
+    }
+    if (value && !checkLowercase(value)) {
       message = 'Lower case letter';
-    } else if (value && lowercase.test(value)) {
+    } 
+    if (value && checkLowercase(value)) {
       message = '';
     }
     // console.log("Lowercase", value)

@@ -15,6 +15,14 @@
   justify-content: space-between;
   height: 100vh;
   overflow: hidden;
+  &__Error {
+    font-weight: 300;
+      font-size: 11px;
+      line-height: 13px;
+      color: var(--error);
+      padding: 10px 0;
+      text-align: center;
+  }
   &__slider {
     margin-top: 15px;
     margin-right: 0px;

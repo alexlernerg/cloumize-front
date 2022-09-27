@@ -6,7 +6,9 @@ import './Auth.scss';
 const Auth = (
   screenWidthMobile: boolean,
   signinPage: boolean,
-  { data, errors, onChange, touched, onBlur, onFocus, onSubmit }: any
+  { data, errors, onChange, touched, onBlur, onFocus, onSubmit }: any,
+  errorAPI: any,
+  show: boolean
 ) => {
   return (
     <div className='AuthContainer'>
@@ -61,7 +63,7 @@ const Auth = (
             />
             {touched.email && <div className='AuthContainer__form-error'>{errors.email}</div>}
             <input
-              type='text'
+              type='password'
               placeholder='Password'
               value={data.password}
               name='password'
@@ -88,7 +90,7 @@ const Auth = (
             {!signinPage && (
               <>
                 <input
-                  type='text'
+                  type='password'
                   placeholder='Confirm password'
                   value={data.confirmPassword}
                   name='confirmPassword'
@@ -123,6 +125,9 @@ const Auth = (
               SIGN&nbsp;{signinPage ? 'IN' : 'UP'}
             </button>
           </form>
+          {show && <div className='AuthContainer__Error'>
+            <p>{errorAPI}</p>
+          </div>}
           {signinPage ? (
             <p className='AuthContainer__redirect'>
               Don’t have an account?&nbsp;
