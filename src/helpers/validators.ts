@@ -45,9 +45,11 @@ export const validators: any = {
 
     if (!value) {
       message = 'ARN is required';
-    } else if (regexARN.test(value)) {
+    } 
+    if (value && !regexARN.test(value)) {
       message = 'ARN must have a correct format';
     }
+    console.log("regex", regexARN.test(value))
 
     return message;
   },

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import templateOnBoarding from './OnBoarding.template';
 import { getDiscounts, sendARN } from '../../services/DataService';
 import { useUser } from '../../context/hook/useUser';
+import { validators } from '../../helpers/validators';
 
 const OnBoarding = ({ closePopup }: any) => {
   //Screen width
@@ -11,8 +12,17 @@ const OnBoarding = ({ closePopup }: any) => {
 
   const [externalID, setExternalID] = useState('');
   const [ARN, setARN] = useState('');
+  const [error, setError]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
+    ARN: validators.ARN(ARN)
+  });
   const onChange = (e: any) => {
-    setARN(e.target.value);
+    const {value, name} = e.target;
+    setARN(value);
+    setError({[name]: validators[name] && validators[name](value)})
+  };
+
+  const isValid = () => {
+    return error.ARN === undefined
   };
 
   useEffect(()=> {
@@ -20,7 +30,7 @@ const OnBoarding = ({ closePopup }: any) => {
   }, [currentUser])
 
   const [page, setPage] = useState(0);
-  const [error, setError] = useState('');
+  const [errorAPI, setErrorAPI] = useState('');
   const next = () => {
     setPage(page + 1);
   };
@@ -29,20 +39,55 @@ const OnBoarding = ({ closePopup }: any) => {
   };
 
   const sendARNF = () => {
-    sendARN({client_role_arn: ARN})
-      .then((response: any) => {
-        console.log('response', response);
-        setPage(3);
-      })
-      .catch((error: any) => setError(error));
+    if(isValid()){
+      sendARN({client_role_arn: ARN})
+        .then((response: any) => {
+          console.log('response', response);
+          getDiscounts()
+          .then((response:any) => {
+            console.log("responseAPI", response)
+            if (response.sync_instance_status === 0) {
+              setErrorAPI('')
+              setPage(3);
+            }
+            if (response.sync_instance_status === 1) {
+              setErrorAPI('Please activate Cost Explorer on AWS')
+              setPage(3);
+            }
+            if (response.sync_instance_status === 2) {
+              setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
+              setPage(3);
+            }
+            if (response.sync_instance_status === 3) {
+              setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
+              setPage(3);
+            }
+          })
+          .catch((error)=> console.log("error", error))
+        })
+        .catch((error: any) => setErrorAPI(error));
+    }
   };
 
-  const statusOnBoarding = () => {
-    getDiscounts()
-      .then((response) => console.log("response", response.sync_instance_status))
-      .catch((error)=> console.log("error", error))
-    closePopup()
-  }
+  const [touched, setTouched] = useState({});
+
+  const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target;
+
+    setTouched((prevTouched) => ({
+      ...prevTouched,
+      [name]: true,
+    }));
+  };
+
+  const onFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target;
+
+    setTouched((prevTouched) => ({
+      ...prevTouched,
+      [name]: false,
+    }));
+  };
 
   return templateOnBoarding(
     page,
@@ -53,8 +98,12 @@ const OnBoarding = ({ closePopup }: any) => {
     ARN,
     onChange,
     externalID,
-    statusOnBoarding,
-    error
+    closePopup,
+    errorAPI,
+    error,
+    touched,
+    onFocus, 
+    onBlur
   );
 };
 

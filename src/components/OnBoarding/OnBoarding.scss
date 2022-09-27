@@ -9,6 +9,14 @@
   z-index: 10;
   width: 90vw;
   height: fit-content;
+  &__Error {
+    font-weight: 300;
+      font-size: 11px;
+      line-height: 13px;
+      color: var(--error);
+      padding: 10px 0;
+      text-align: center;
+  }
   &__header {
     border-radius: 8px 8px 0 0;
     background-color: var(--main-primary);
