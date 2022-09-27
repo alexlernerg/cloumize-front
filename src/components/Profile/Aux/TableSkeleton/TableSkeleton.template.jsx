@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Checkbox from './Checkbox/Checkbox';
 import './TableSkeleton.scss';
 
@@ -11,6 +11,7 @@ const TableMobile = ({
   handleClick,
   sendApproval
 }) => {
+  console.log("dataContent", dataContent)
   return (
     <>
       {dataContent?.map((data, i) => (
@@ -245,6 +246,7 @@ const TableSkeleton = (
   handleClick,
   sendApproval
 ) => {
+  console.log("dataContent", dataContent)
   return (
     <>
       <div className='TableSkeletonContainer__search'>

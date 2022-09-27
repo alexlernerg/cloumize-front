@@ -7,7 +7,7 @@ const SavingsPlans =()=>{
   const screenWidthMobile = window.screen.width < 1280
 
   const [dataSP, setDataSP] = useState([{
-    user_id_cm: 2,
+    user_id_cm: 0,
     aws_account_id: 2379241094,
     sp_id_aws: "99ec1362-fcdd-4f09-8e2f-6ada70ff901c",
     status: "active",

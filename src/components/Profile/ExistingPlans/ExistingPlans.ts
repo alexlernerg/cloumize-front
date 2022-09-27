@@ -7,7 +7,7 @@ const ExistingPlans =()=>{
   const screenWidthMobile = window.screen.width < 1280
 
   const [dataEP, setDataEP] = useState([{
-    user_id_cm: 1,
+    user_id_cm: 0,
     aws_account_id: 159825639152,
     group_reservation_id: "186cbf9e-c75f-4f10-8688-468719c62ddf",
     status: "Active",

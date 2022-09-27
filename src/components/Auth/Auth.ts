@@ -40,10 +40,6 @@ const Auth =()=>{
     }
   });
 
-//  const errorsPass = [["length", errors.password.lengthMsg], ["uppercase", errors.password.uppercaseMsg], ["lowercase", errors.password.lowercaseMsg]]
-//  console.table(errorsPass)
-// console.log("errors", errors)
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setData((prevState:IUser) => ({
@@ -59,17 +55,15 @@ const Auth =()=>{
       setErrors((prevState:any) => ({
         ...prevState,
         password: {
-          lengthMsg: validators.password(data.password),
-          uppercaseMsg: validators.passwordUppercase(data.password),
-          lowercaseMsg: validators.passwordLowercase(data.password)
+          lengthMsg: validators.password(value),
+          uppercaseMsg: validators.passwordUppercase(value),
+          lowercaseMsg: validators.passwordLowercase(value)
         }
     }));
     }
   };
 
   const [touched, setTouched] = useState({});
-
-  console.log("touched", touched);
 
   const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
@@ -94,13 +88,17 @@ const Auth =()=>{
     errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
   };
 
+  const isValidSignin = () => {
+    return (errors.email === undefined && errors.password.lengthMsg === '' &&
+    errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
+  };
+
+  const [errorAPI, setErrorAPI] = useState();
+  const [show, setShow] = useState(false);
+
   const onSubmit = (e:React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    console.log("data", data)
-    console.log("isValid", isValid());
-    //TODO: ISVALID SIGNIN
-    if (signinPage) {
+    if (isValidSignin() && signinPage) {
       signIn({email: data.email, password: data.password})
       .then((response:any)=> {
         console.log("response", response);
@@ -108,8 +106,8 @@ const Auth =()=>{
         navigate('/user');
       })
       .catch((error: any) => {
-        // setErrorLogin(error?.message);
-        // setShow(true);
+        setErrorAPI(error?.data.errors.message);
+        setShow(true);
         console.log("error", error)
       });
     } 
@@ -120,8 +118,8 @@ const Auth =()=>{
         navigate('/signin');
       })
       .catch((error: any) => {
-        // setErrorLogin(error?.message);
-        // setShow(true);
+        setErrorAPI(error?.data.errors.message);
+        setShow(true);
         console.log("error", error)
       });
     } 
@@ -129,7 +127,7 @@ const Auth =()=>{
 
   const formLogic = {data, errors, onChange, touched, onBlur, onFocus, onSubmit}
 
-  return templateAuth(screenWidthMobile, signinPage, formLogic);
+  return templateAuth(screenWidthMobile, signinPage, formLogic, errorAPI, show);
 }
 
 export default Auth;

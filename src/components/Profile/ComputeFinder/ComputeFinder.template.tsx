@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
+import Spinner from '../../Misc/Spinner/Spinner';
 import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ComputeFinder.scss';
@@ -30,6 +31,7 @@ const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[
   return (
     <div className='ComputeFinder'>
       <Navbar />
+      {dataCF[0].user_id_cm === 0 ? <Spinner/> : 
       <div className='ComputeFinder__container'>
         <h1 className='ComputeFinder__container-title'>
           Running EC2 Instances
@@ -46,7 +48,7 @@ const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[
         ) : (
           <Data2Skeleton data={dataCF}/>
         )}
-      </div>
+      </div>}
     </div>
   );
 };

@@ -26,33 +26,18 @@
     align-items: center;
     text-align: start;
   }
-  & canvas {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .Doughnut {
   margin-top: 20px;
   @include border;
-  &__legend {
-    margin: 32px 0 0;
-    color: var(--grey-80);
-    font-weight: 300;
-    font-size: 14px;
-    & img {
-      margin-right: 8px;
-    }
-  }
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: start;
-  }
-  & canvas {
-    width: 130px !important;
-    height: 130px !important;
+    width: 100%;
+    height: 70%;
   }
 }
 
@@ -60,12 +45,14 @@
   @include border;
   margin-right: 0px;
   &__legend {
-    margin-left: 20px;
     color: var(--grey-80);
     font-weight: 300;
     font-size: 14px;
     & img {
       margin-right: 8px;
+    }
+    & p {
+      min-width: 85px;
     }
     & p:first-child {
       margin-bottom: 10px;
@@ -76,10 +63,8 @@
     align-items: center;
     justify-content: center;
     margin-top: 24px;
-  }
-  & canvas {
-    width: 130px !important;
-    height: 130px !important;
+    width: 75%;
+    height: 120px;
   }
 }
 
@@ -100,7 +85,7 @@
     padding: 16px;
     font-weight: 300;
     font-size: 16px;
-    &-line {
+    &-line0, &-line1 {
       display: flex;
       justify-content: space-between;
       width: 100%;
@@ -128,64 +113,55 @@
       font-size: 16px;
     }
     &__container {
+      width: 100%;
       padding-left: 60px;
-    }
-    & canvas {
-      width: 620px !important;
       height: 200px !important;
     }
   }
   .Doughnut {
     margin-top: 0px;
-    padding: 16px 57px;
+    padding: 16px 30px;
     width: 30%;
-    &__legend {
-      font-size: 16px;
-    }
-    & canvas {
-      width: 150px !important;
-      height: auto !important;
-    }
   }
   .Pie {
     margin-right: 20px;
-    width: 40%;
+    width: 36%;
     &__legend {
-      margin-left: 40px;
       font-size: 16px;
+      & p {
+        min-width: 115px;
+      }
       & p:first-child {
         margin-bottom: 20px;
       }
     }
-    & canvas {
-      width: 150px !important;
-      height: auto !important;
+    &__container {
+      width: 75%;
+      height: 75%;
     }
   }
   .HorizontalBar {
     margin-top: 0;
-    width: 60%;
+    width: 50%;
     @include border;
     border-radius: 16px 0 0 16px;
     &__legend {
       @include border;
       border-radius: 0 16px 16px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       width: 400px;
-      &-line {
+      &-line0 {
+        margin-top: 50px;
+      }
+      &-line0, &-line1 {
+        display: flex;
+        justify-content: space-around;
         width: 80%;
       }
     }
     &__container {
       flex-direction: row;
       margin-top: 20px;
-    }
-    & canvas {
       width: 350px !important;
-      height: auto !important;
     }
   }
 }
