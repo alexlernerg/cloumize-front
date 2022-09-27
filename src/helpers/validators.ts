@@ -27,13 +27,13 @@ function checkLowercase(str: any) {
 
 // Regex broken down into parts
 const parts = [
-  'arn:aws:connect:',
+  'arn:aws:iam::',
   '(?<region_name>[^:]+?)',         // group 1
-  ':',
-  '(?<account_id>\\d{12})',         // group 2
-  ':instance\\/',
-  '(?<instance_id>[A-z0-9\\-]+?)',  // group 3
-  '$'
+  ':'
+  // '(?<account_id>\\d{12})',         // group 2
+  // ':instance\\/',
+  // '(?<instance_id>[A-z0-9\\-]+?)',  // group 3
+  // '$'
 ];
 
 // Joined parts into regex expression
