@@ -11,7 +11,7 @@ const SavingsFinder = () => {
 
   const [dataSF, setDataSF] = useState([
     {
-      user_id_cm: 1,
+      user_id_cm: 0,
       aws_account_id: 111825639153,
       recommendation_id_cm: 'cm_22926193',
       region: 'EXAMPLE EU (Frankfurt)',

@@ -8,7 +8,7 @@ const ComputeFinder =()=>{
 
   const [dataCF, setDataCF] = useState([
     {
-      user_id_cm: 1,
+      user_id_cm: 0,
       aws_account_id: 122223639153,
       instance_id: 'i-077a79e469c0ef831',
       instance_type: 't2.small',

@@ -7,17 +7,12 @@ import { CategoryScale, Tooltip } from 'chart.js';
 Chart.register(CategoryScale, Tooltip);
 
 export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
-  const labelsVB = dataVerticalBar?.map(
-    (data) =>
-      data.period_start.split(' ')[0].split('-')[2] +
-      '/' +
-      data.period_start.split(' ')[0].split('-')[1]
-  );
+  const labelsVB = dataVerticalBar?.map((data) => data.date);
   const dataVB = dataVerticalBar.map(
-    (data) => data.spending_on_demand_instances
+    (data) => data.spending_other
   );
   const dataVB2 = dataVerticalBar.map(
-    (data) => data.spending_std_reserved_instances
+    (data) => data.autopilot
   );
   const [data, setData] = useState({
     labels: labelsVB,
@@ -118,11 +113,11 @@ export const DoughnutGraphic = (
   screenWidthMobile
 ) => {
   const [data, setData] = useState({
-    labels: Object.keys(dataRest[0].instance_breakdown_platform),
+    labels: Object.keys(dataRest.platform),
     datasets: [
       {
         // label: '',
-        data: Object.values(dataRest[0].instance_breakdown_platform),
+        data: Object.values(dataRest.platform),
         backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
       },
     ],
@@ -186,7 +181,7 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
     datasets: [
       {
         label: '',
-        data: Object.values(dataRest[0].coverage),
+        data: Object.values(dataRest.coverage),
         backgroundColor: ['#80A7FA', '#E9F0FE'],
       },
     ],
@@ -232,12 +227,12 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
         <div className='Pie__legend'>
           <p>
             <img src='/Profile/colorDarkDot.svg' alt='dot' />
-            {Object.keys(dataRest[0].coverage)[0] === 'percentage_covered' &&
+            {Object.keys(dataRest.coverage)[0] === 'percentage_covered' &&
               'Reserved'}
           </p>
           <p>
             <img src='/Profile/colorLightDot.svg' alt='dot' />
-            {Object.keys(dataRest[0].coverage)[1] ===
+            {Object.keys(dataRest.coverage)[1] ===
               'percentage_not_covered' && 'On-Demand'}
           </p>
         </div>
@@ -265,7 +260,7 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
   });
 
   useEffect(() => {
-    const reformattedArray = dataRest[0].instance_breakdown_family.map((i) => {
+    const reformattedArray = dataRest.instance_family.map((i) => {
       const obj = {
         label: '',
         data: [],
@@ -339,7 +334,7 @@ export const DataServer = ({ dataRest }) => {
   return (
     <div className='HorizontalBar__legend'>
       <p>Region Breakdown</p>
-      {dataRest[0].instance_breakdown_az.map((data, i) => (
+      {dataRest.az.map((data, i) => (
         <div className={`HorizontalBar__legend-line${i}`} key={i}>
           <p>
             <img src='/Profile/dotBlue.svg' alt='dot' />
