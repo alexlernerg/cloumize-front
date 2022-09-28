@@ -9,7 +9,6 @@ import templateAuth from "./Auth.template";
 import { IUser } from '../../interfaces/json';
 
 const Auth =()=>{
-  //TODO: Review password validations
   //Current url
   const {pathname} = useLocation();
   const signinPage = pathname === '/signin';
@@ -25,13 +24,17 @@ const Auth =()=>{
 
   //Form logic
   const [data, setData]:[IUser, React.Dispatch<React.SetStateAction<IUser>>] = useState({
-    name: '',
+    aws_account_name: '',
+    company_name: '',
+    user_name: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
   const [errors, setErrors]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
-    name: validators.name(),
+    aws_account_name: validators.aws(),
+    company_name: validators.company(),
+    user_name: validators.name(),
     email: validators.email(),
     password: {
       lengthMsg: validators.password(data.password),
@@ -84,7 +87,7 @@ const Auth =()=>{
   };
 
   const isValid = () => {
-    return (errors.name === undefined && errors.email === undefined && errors.password.lengthMsg === '' &&
+    return (errors.aws === undefined && errors.company === undefined && errors.name === undefined && errors.email === undefined && errors.password.lengthMsg === '' &&
     errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
   };
 

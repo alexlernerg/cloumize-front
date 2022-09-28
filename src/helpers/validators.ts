@@ -53,6 +53,24 @@ export const validators: any = {
 
     return message;
   },
+  aws: (value: string): any => {
+    let message;
+
+    if (!value) {
+      message = 'AWS account name is required';
+    }
+
+    return message;
+  },
+  company: (value: string): any => {
+    let message;
+
+    if (!value) {
+      message = 'Company Name is required';
+    }
+
+    return message;
+  },
   name: (value: string): any => {
     let message;
 

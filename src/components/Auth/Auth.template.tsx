@@ -22,27 +22,73 @@ const Auth = (
             Sign&nbsp;{signinPage ? 'in' : 'up'} to Cloumize
           </h5>
           <form onSubmit={onSubmit}>
+          {!signinPage && (
+              <>
+                <input
+                  type='text'
+                  placeholder='AWS account name'
+                  value={data.aws_account_name}
+                  name='aws_account_name'
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  onFocus={onFocus}
+                  className={`AuthContainer__form-input ${
+                    touched.aws_account_name && errors.aws_account_name ? 'is-invalid' : ''
+                  }`}
+                  style={{
+                    background:
+                      "url('./Auth/user.svg') no-repeat scroll 10px 17px",
+                    paddingLeft: '30px',
+                    paddingTop: '15px'
+                  }}
+                />
+                {touched.aws_account_name && <div className='AuthContainer__form-error'>{errors.aws_account_name}</div>}
+              </>
+            )}
+          {!signinPage && (
+              <>
+                <input
+                  type='text'
+                  placeholder='Company Name'
+                  value={data.company_name}
+                  name='company_name'
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  onFocus={onFocus}
+                  className={`AuthContainer__form-input ${
+                    touched.company_name && errors.company_name ? 'is-invalid' : ''
+                  }`}
+                  style={{
+                    background:
+                      "url('./Auth/user.svg') no-repeat scroll 10px 17px",
+                    paddingLeft: '30px',
+                    paddingTop: '15px'
+                  }}
+                />
+                {touched.company_name && <div className='AuthContainer__form-error'>{errors.company_name}</div>}
+              </>
+            )}
             {!signinPage && (
               <>
                 <input
                   type='text'
                   placeholder='Full name'
-                  value={data.name}
-                  name='name'
+                  value={data.user_name}
+                  name='user_name'
                   onChange={onChange}
                   onBlur={onBlur}
                   onFocus={onFocus}
                   className={`AuthContainer__form-input ${
-                    touched.name && errors.name ? 'is-invalid' : ''
+                    touched.user_name && errors.user_name ? 'is-invalid' : ''
                   }`}
                   style={{
                     background:
-                      "url('./Auth/email.svg') no-repeat scroll 10px 17px",
+                      "url('./Auth/user.svg') no-repeat scroll 10px 17px",
                     paddingLeft: '30px',
                     paddingTop: '15px'
                   }}
                 />
-                {touched.name && <div className='AuthContainer__form-error'>{errors.name}</div>}
+                {touched.user_name && <div className='AuthContainer__form-error'>{errors.user_name}</div>}
               </>
             )}
             <input

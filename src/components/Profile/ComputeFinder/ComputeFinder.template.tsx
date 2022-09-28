@@ -5,29 +5,29 @@ import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
 import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ComputeFinder.scss';
 
-const ExternalData = () => {
+const ExternalData = ({data}:any) => {
   return (
     <div className='ComputeFinder__interestingData'>
       <p>
-        <img src='/Profile/CF1.svg' alt='icon' />3 Running Instances
+        <img src='/Profile/CF1.svg' alt='icon' />{data[0]} Running Instances
       </p>
       <p>
-        <img src='/Profile/CF2.svg' alt='icon' />1 Stopped Instances
+        <img src='/Profile/CF2.svg' alt='icon' />{data[1]} Stopped Instances
       </p>
       <p>
-        <img src='/Profile/CF3.svg' alt='icon' />2 On-Demand Instances
+        <img src='/Profile/CF3.svg' alt='icon' />{data[2]} On-Demand Instances
       </p>
       <p>
-        <img src='/Profile/CF4.svg' alt='icon' />1 Spot Instances
+        <img src='/Profile/CF4.svg' alt='icon' />{data[3]} Spot Instances
       </p>
       <p>
-        <img src='/Profile/CF5.svg' alt='icon' />0 Scheduled Instances
+        <img src='/Profile/CF5.svg' alt='icon' />{data[4]} Scheduled Instances
       </p>
     </div>
   );
 };
 
-const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[], info:any) => {
+const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[], stats:any) => {
   return (
     <div className='ComputeFinder'>
       <Navbar />
@@ -36,13 +36,13 @@ const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[
         <h1 className='ComputeFinder__container-title'>
           Running EC2 Instances
         </h1>
-        {!screenWidthMobile && <ExternalData />}
+        {!screenWidthMobile && <ExternalData data={stats}/>}
         {screenWidthMobile ? (
           <Data2Skeleton data={dataCF}/>
         ) : (
           <TableSkeleton data={dataCF} columns={columnsCF} />
         )}
-        {screenWidthMobile && <ExternalData />}
+        {screenWidthMobile && <ExternalData data={stats}/>}
         {screenWidthMobile ? (
           <TableSkeleton data={dataCF} columns={columnsCF} />
         ) : (

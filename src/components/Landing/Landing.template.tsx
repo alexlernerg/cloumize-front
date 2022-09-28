@@ -461,7 +461,7 @@ const Landing = (
           Bezos
         </p>
         <div className='LandingContainer__Section1-btns'>
-          <a href='https://form-cloumize.carrd.co/' target="_blank" rel="noreferrer" className='LandingContainer__Section1-btns-signup'>Sign up</a>
+          <Link to={screenWidthMobile ? '/auth' : '/signup'} className='LandingContainer__Section1-btns-signup'>Sign up</Link>
           <a href="https://calendly.com/alex-cloumize/cloumize-support" target="_blank" rel="noreferrer" className='LandingContainer__Section1-btns-contact'>Contact Sales</a>
         </div>
         <img src='/Landing/dashboard.png' alt='dashboard' />
@@ -491,7 +491,7 @@ const Landing = (
           ))}
         </div>
         <div className='LandingContainer__Section2-btns'>
-          <a href='https://form-cloumize.carrd.co/' target="_blank" rel="noreferrer" className='LandingContainer__Section2-btns-signup'>Sign up</a>
+          <Link to={screenWidthMobile ? '/auth' : '/signup'} className='LandingContainer__Section2-btns-signup'>Sign up</Link>
           <a href="https://calendly.com/alex-cloumize/cloumize-support" target="_blank" rel="noreferrer" className='LandingContainer__Section2-btns-contact'>Contact Sales</a>
         </div>
       </section>

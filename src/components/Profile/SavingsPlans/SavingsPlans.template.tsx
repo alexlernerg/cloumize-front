@@ -6,6 +6,7 @@ import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './SavingsPlans.scss';
 
 const ExternalData = () => {
+  //TODO: meter datos de la API
   return(
     <div className='SavingsPlans__interestingData'>
         <p><img src="/Profile/SP1.svg" alt="icon"/>Active Plans (MTD) 2</p>

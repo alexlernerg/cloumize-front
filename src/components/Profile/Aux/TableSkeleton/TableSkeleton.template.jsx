@@ -425,6 +425,7 @@ const TableSkeleton = (
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
+                  style={{wordBreak: 'break-word'}}
                 >
                   {content.instance_id}
                 </td>

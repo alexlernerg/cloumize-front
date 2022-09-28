@@ -9,6 +9,12 @@ const SavingsFinder = () => {
   //Screen width
   const screenWidthMobile = window.screen.width < 1280;
 
+  const [info, setInfo] = useState([
+    { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
+    { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: '$700' },
+    { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
+  ]);
+
   const [dataSF, setDataSF] = useState([
     {
       user_id_cm: 0,
@@ -29,6 +35,11 @@ const SavingsFinder = () => {
     getSavingsFinder()
       .then((response: any) => {
         if (response?.name !== 'Error') {
+          setInfo([
+            { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(3)}` },
+            { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(3)}` },
+            { id: 2, title: 'Total potential', savings: 'Savings', total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(3)}` },
+          ])
           setDataSF(response.savings_finder_data)
         }
       })
@@ -48,12 +59,6 @@ const SavingsFinder = () => {
     'Cloumize rate',
     'State',
     'Approval',
-  ];
-
-  const info = [
-    { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
-    { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: '$700' },
-    { id: 2, title: 'Total potential', savings: 'Savings', total: '$1,700' },
   ];
 
   return templateSavingsFinder(screenWidthMobile, dataSF, columnsSF, info);

@@ -22,10 +22,18 @@ const ComputeFinder =()=>{
     }
   ])
 
+  const [stats, setStats] = useState([0, 0, 0, 0, 0]);
+
   useEffect(() => {
     getComputeFinder()
       .then((response: any) => {
         if (response?.name !== 'Error') {
+          console.log("response", response.ec2_instance_stats)
+          setStats([response.ec2_instance_stats.running_instance,
+            response.ec2_instance_stats.stopped_instance,
+            response.ec2_instance_stats.on_demand_instance,
+            response.ec2_instance_stats.spot_instance,
+            response.ec2_instance_stats.scheduled_instance, ])
           setDataCF(response.ec2_instance_data)
         }
       })
@@ -39,21 +47,15 @@ const ComputeFinder =()=>{
     'Instance ID',
     'Instance Type',
     'Region',
-    'Availability Zone',
+    'AZ',
     'Platform',
     'Tenancy',
     'Instance Lifecycle',
     'State',
     'Launch Time',
   ];
-  
-  const info = [
-    { id: 0, title: 'Cloumize Savings', savings: 'Achieved', total: '$1,000' },
-    { id: 1, title: 'Unapproved Savings ', savings: 'Annual Forecast', total: '$700' },
-    { id: 2, title: 'Potential Savings', savings: 'Annual Forecast', total: '$1,700' },
-  ];
 
-  return templateComputeFinder(screenWidthMobile, dataCF, columnsCF, info);
+  return templateComputeFinder(screenWidthMobile, dataCF, columnsCF, stats);
 }
 
 export default ComputeFinder;

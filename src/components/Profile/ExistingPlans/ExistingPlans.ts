@@ -6,6 +6,14 @@ const ExistingPlans =()=>{
   //Screen width
   const screenWidthMobile = window.screen.width < 1280
 
+  const [info, setInfo] = useState([
+    { id: 0, title: 'Monthly Commitment', savings: 'Total', total: '$0' },
+    { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
+    { id: 2, title: 'Reserved Instances', savings: 'Count', total: '0' },
+  ]);
+
+  const [stats, setStats] = useState([0, 0]);
+
   const [dataEP, setDataEP] = useState([{
     user_id_cm: 0,
     aws_account_id: 159825639152,
@@ -23,6 +31,12 @@ const ExistingPlans =()=>{
     getExistingPlans()
       .then((response: any) => {
         if (response?.name !== 'Error'){
+          setInfo ([
+            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.reserved_instance_stats.total_upfront_payment.toFixed(3)}` },
+            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.reserved_instance_stats.total_monthly_payment.toFixed(3)}` },
+            { id: 2, title: 'Reserved Instances', savings: 'Count', total: `${response.reserved_instance_stats.count_reserved_instance}` },
+          ])
+          setStats([response.reserved_instance_stats.active_plans, response.reserved_instance_stats.expiring_this_month])
           setDataEP(response.reserved_instance_data)
         }
       })
@@ -31,15 +45,9 @@ const ExistingPlans =()=>{
       });
   }, []);
   
-  const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Team Remaining', 'Discount', 'Auto-Save']
-  
-  const info = [
-    { id: 0, title: 'Monthly Commitment', savings: 'Total', total: '$0' },
-    { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
-    { id: 2, title: 'Reserved Instances', savings: 'Count', total: '0' },
-  ];
+  const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Term Remaining', 'Discount', 'Auto-Save']
 
-  return templateExistingPlans(screenWidthMobile, dataEP, columnsEP, info);
+  return templateExistingPlans(screenWidthMobile, dataEP, columnsEP, info, stats);
 }
 
 export default ExistingPlans;
