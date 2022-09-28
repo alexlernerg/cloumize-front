@@ -27,13 +27,13 @@ const Auth = (
                 <input
                   type='text'
                   placeholder='AWS account name'
-                  value={data.aws_account_name}
-                  name='aws_account_name'
+                  value={data.awsAccountName}
+                  name='awsAccountName'
                   onChange={onChange}
                   onBlur={onBlur}
                   onFocus={onFocus}
                   className={`AuthContainer__form-input ${
-                    touched.aws_account_name && errors.aws_account_name ? 'is-invalid' : ''
+                    touched.awsAccountName && errors.awsAccountName ? 'is-invalid' : ''
                   }`}
                   style={{
                     background:
@@ -42,7 +42,7 @@ const Auth = (
                     paddingTop: '15px'
                   }}
                 />
-                {touched.aws_account_name && <div className='AuthContainer__form-error'>{errors.aws_account_name}</div>}
+                {touched.awsAccountName && <div className='AuthContainer__form-error'>{errors.awsAccountName}</div>}
               </>
             )}
           {!signinPage && (
@@ -50,13 +50,13 @@ const Auth = (
                 <input
                   type='text'
                   placeholder='Company Name'
-                  value={data.company_name}
-                  name='company_name'
+                  value={data.companyName}
+                  name='companyName'
                   onChange={onChange}
                   onBlur={onBlur}
                   onFocus={onFocus}
                   className={`AuthContainer__form-input ${
-                    touched.company_name && errors.company_name ? 'is-invalid' : ''
+                    touched.companyName && errors.companyName ? 'is-invalid' : ''
                   }`}
                   style={{
                     background:
@@ -65,7 +65,7 @@ const Auth = (
                     paddingTop: '15px'
                   }}
                 />
-                {touched.company_name && <div className='AuthContainer__form-error'>{errors.company_name}</div>}
+                {touched.companyName && <div className='AuthContainer__form-error'>{errors.companyName}</div>}
               </>
             )}
             {!signinPage && (
@@ -73,13 +73,13 @@ const Auth = (
                 <input
                   type='text'
                   placeholder='Full name'
-                  value={data.user_name}
-                  name='user_name'
+                  value={data.userName}
+                  name='userName'
                   onChange={onChange}
                   onBlur={onBlur}
                   onFocus={onFocus}
                   className={`AuthContainer__form-input ${
-                    touched.user_name && errors.user_name ? 'is-invalid' : ''
+                    touched.userName && errors.userName ? 'is-invalid' : ''
                   }`}
                   style={{
                     background:
@@ -88,7 +88,7 @@ const Auth = (
                     paddingTop: '15px'
                   }}
                 />
-                {touched.user_name && <div className='AuthContainer__form-error'>{errors.user_name}</div>}
+                {touched.userName && <div className='AuthContainer__form-error'>{errors.userName}</div>}
               </>
             )}
             <input

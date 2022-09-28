@@ -5,64 +5,66 @@ import { validators } from '../../helpers/validators';
 import { signIn, signUp, passwordResetEmail } from '../../services/AuthService';
 import { setAccessToken } from '../../store/AccessTokenStore';
 import { useNavigate } from 'react-router-dom';
-import templateAuth from "./Auth.template";
+import templateAuth from './Auth.template';
 import { IUser } from '../../interfaces/json';
 
-const Auth =()=>{
+const Auth = () => {
   //Current url
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const signinPage = pathname === '/signin';
 
   //Screen width
-  const screenWidthMobile = window.screen.width < 1280
+  const screenWidthMobile = window.screen.width < 1280;
 
   //Navigate to
   const navigate = useNavigate();
 
   //User context
-  const {setCurrentUser, getCurrentUser} = useUser();
+  const { setCurrentUser, getCurrentUser } = useUser();
 
   //Form logic
-  const [data, setData]:[IUser, React.Dispatch<React.SetStateAction<IUser>>] = useState({
-    aws_account_name: '',
-    company_name: '',
-    user_name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  const [errors, setErrors]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
-    aws_account_name: validators.aws(),
-    company_name: validators.company(),
-    user_name: validators.name(),
-    email: validators.email(),
-    password: {
-      lengthMsg: validators.password(data.password),
-      uppercaseMsg: validators.passwordUppercase(data.password),
-      lowercaseMsg: validators.passwordLowercase(data.password)
-    }
-  });
+  const [data, setData]: [IUser, React.Dispatch<React.SetStateAction<IUser>>] =
+    useState({
+      awsAccountName: '',
+      companyName: '',
+      userName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    });
+  const [errors, setErrors]: [any, React.Dispatch<React.SetStateAction<any>>] =
+    useState({
+      awsAccountName: validators.aws(),
+      companyName: validators.company(),
+      userName: validators.name(),
+      email: validators.email(),
+      password: {
+        lengthMsg: validators.password(data.password),
+        uppercaseMsg: validators.passwordUppercase(data.password),
+        lowercaseMsg: validators.passwordLowercase(data.password),
+      },
+    });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setData((prevState:IUser) => ({
+    setData((prevState: IUser) => ({
       ...prevState,
       [name]: value,
     }));
     if (name !== 'password') {
-      setErrors((prevState:any) => ({
-          ...prevState,
-          [name]: validators[name] && validators[name](value),
+      setErrors((prevState: any) => ({
+        ...prevState,
+        [name]: validators[name] && validators[name](value),
       }));
     } else {
-      setErrors((prevState:any) => ({
+      setErrors((prevState: any) => ({
         ...prevState,
         password: {
           lengthMsg: validators.password(value),
           uppercaseMsg: validators.passwordUppercase(value),
-          lowercaseMsg: validators.passwordLowercase(value)
-        }
-    }));
+          lowercaseMsg: validators.passwordLowercase(value),
+        },
+      }));
     }
   };
 
@@ -87,52 +89,77 @@ const Auth =()=>{
   };
 
   const isValid = () => {
-    return (errors.aws === undefined && errors.company === undefined && errors.name === undefined && errors.email === undefined && errors.password.lengthMsg === '' &&
-    errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
+    return errors.aws === undefined &&
+      errors.company === undefined &&
+      errors.name === undefined &&
+      errors.email === undefined &&
+      errors.password.lengthMsg === '' &&
+      errors.password.uppercaseMsg === '' &&
+      errors.password.lowercaseMsg === ''
+      ? true
+      : false;
   };
 
   const isValidSignin = () => {
-    return (errors.email === undefined && errors.password.lengthMsg === '' &&
-    errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? true : false
+    return errors.email === undefined &&
+      errors.password.lengthMsg === '' &&
+      errors.password.uppercaseMsg === '' &&
+      errors.password.lowercaseMsg === ''
+      ? true
+      : false;
   };
 
   const [errorAPI, setErrorAPI] = useState('');
   const [show, setShow] = useState(false);
 
-  const onSubmit = (e:React.SyntheticEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isValidSignin() && signinPage) {
-      signIn({email: data.email, password: data.password})
-      .then((response:any)=> {
-        console.log("response", response);
-        setAccessToken(response.token);
-        navigate('/user');
-      })
-      .catch((error: any) => {
-        setErrorAPI(error?.data.errors.message);
-        setTimeout(() => setErrorAPI(''), 3000)
-        setShow(true);
-        console.log("error", error)
-      });
-    } 
+      signIn({ email: data.email, password: data.password })
+        .then((response: any) => {
+          console.log('response', response);
+          setAccessToken(response.token);
+          navigate('/user');
+        })
+        .catch((error: any) => {
+          setErrorAPI(error?.data.errors.message);
+          setTimeout(() => setErrorAPI(''), 3000);
+          setShow(true);
+          console.log('error', error);
+        });
+    }
     if (isValid() && !signinPage) {
-      signUp({email: data.email, password: data.password})
-      .then((response:any)=> {
-        console.log("response", response);
-        navigate('/signin');
+      signUp({
+        email: data.email,
+        password: data.password,
+        awsAccountName: data.awsAccountName,
+        companyName: data.companyName,
+        userName: data.userName,
       })
-      .catch((error: any) => {
-        setErrorAPI(error?.data.errors.message);
-        setTimeout(() => setErrorAPI(''), 3000)
-        setShow(true);
-        console.log("error", error)
-      });
-    } 
-  }
+        .then((response: any) => {
+          console.log('response', response);
+          navigate('/signin');
+        })
+        .catch((error: any) => {
+          setErrorAPI(error?.data.errors.message);
+          setTimeout(() => setErrorAPI(''), 3000);
+          setShow(true);
+          console.log('error', error);
+        });
+    }
+  };
 
-  const formLogic = {data, errors, onChange, touched, onBlur, onFocus, onSubmit}
+  const formLogic = {
+    data,
+    errors,
+    onChange,
+    touched,
+    onBlur,
+    onFocus,
+    onSubmit,
+  };
 
   return templateAuth(screenWidthMobile, signinPage, formLogic, errorAPI, show);
-}
+};
 
 export default Auth;
