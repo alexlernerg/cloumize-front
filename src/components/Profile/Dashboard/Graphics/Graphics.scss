@@ -85,7 +85,11 @@
     padding: 16px;
     font-weight: 300;
     font-size: 16px;
-    &-line0, &-line1 {
+    overflow-y: scroll;
+    &-title {
+      margin-bottom: 40px;
+    }
+    &-line {
       display: flex;
       justify-content: space-between;
       width: 100%;

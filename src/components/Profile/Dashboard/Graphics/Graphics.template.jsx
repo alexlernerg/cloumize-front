@@ -27,7 +27,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
       },
       {
         data: dataVB2,
-        backgroundColor: '#E9F0FE',
+        backgroundColor: '#708295',
         borderRadius: 5,
         borderSkipped: false,
         pointStyle: 'circle',
@@ -242,42 +242,32 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 };
 
 export const HorizontalBar = (dataRest, getRandomColor) => {
-  // const labelsHB = [];
-  // dataRest[0].instance_breakdown_family
-  //   .map((obj) => Object.keys(obj))
-  //   .map((key) => labelsHB.push(key[0]));
+  console.log("dataRest", dataRest.instance_family)
+  console.log("dataRest", dataRest.spending_overview)
+
+  const labelsHB = [];
+  dataRest.instance_family
+  .map((obj) => Object.keys(obj))
+  .map((key) => labelsHB.push(key[0]));
+  console.log("labelsHB", labelsHB)
+
+  const dataHB = [];
+  dataRest.instance_family
+  .map((obj) => Object.values(obj))
+  .map((value) => dataHB.push(value[0]));
+  console.log("dataHB", dataHB)
+
   const [data, setData] = useState({
-    labels: [''],
+    labels: labelsHB,
     datasets: [
       {
-        label: '',
-        data: [],
+        data: dataHB,
         backgroundColor: getRandomColor(),
         borderRadius: 5,
         borderSkipped: false,
       },
     ],
   });
-
-  useEffect(() => {
-    const reformattedArray = dataRest.instance_family.map((i) => {
-      const obj = {
-        label: '',
-        data: [],
-        backgroundColor: getRandomColor(),
-        borderRadius: 5,
-        borderSkipped: false,
-      };
-      obj.label = Object.keys(i);
-      obj.data = [Object.values(i)[0]];
-      return obj;
-    });
-
-    setData((prevState) => ({
-      ...prevState,
-      datasets: reformattedArray,
-    }));
-  }, []);
 
   return (
     <>
@@ -301,12 +291,12 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
                   yAlign: 'bottom',
                   displayColors: false,
                   titleFont: {
-                    size: 14,
+                    size: 12,
                     family: 'Rubik',
                   },
                   bodyFont: {
-                    size: 14,
-                    // weight: 'bold',
+                    size: 24,
+                    weight: 'bold',
                     family: 'Rubik',
                   },
                 },
@@ -331,11 +321,12 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
 };
 
 export const DataServer = ({ dataRest }) => {
+  console.log("dataRest", dataRest.az)
   return (
     <div className='HorizontalBar__legend'>
-      <p>Region Breakdown</p>
+      <p className='HorizontalBar__legend-title'>Region Breakdown</p>
       {dataRest.az.map((data, i) => (
-        <div className={`HorizontalBar__legend-line${i}`} key={i}>
+        <div className={`HorizontalBar__legend-line`} key={i}>
           <p>
             <img src='/Profile/dotBlue.svg' alt='dot' />
             {Object.keys(data)}
