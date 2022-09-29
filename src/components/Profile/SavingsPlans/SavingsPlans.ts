@@ -28,7 +28,7 @@ const SavingsPlans =()=>{
   useEffect(() => {
     getSavingsPlans()
       .then((response: any) => {
-        if (response?.response.savings_plan_data.length !== 0) {
+        if (response?.savings_plan_data.length !== 0) {
           setInfo([
             { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.savings_plan_stats.monthly_commitment.toFixed(3)}` },
             { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(3)}` },

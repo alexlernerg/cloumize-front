@@ -27,7 +27,8 @@ const ComputeFinder =()=>{
   useEffect(() => {
     getComputeFinder()
       .then((response: any) => {
-        if (response?.response.ec2_instance_data.length !== 0) {
+        console.log("responseCF", response)
+        if (response?.ec2_instance_data.length !== 0) {
           console.log("response", response.ec2_instance_stats)
           setStats([response.ec2_instance_stats.running_instance,
             response.ec2_instance_stats.stopped_instance,

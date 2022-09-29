@@ -10,7 +10,10 @@
     color: var(--grey-80);
     font-weight: 400;
     font-size: 14px;
-    margin-bottom: 8px;
+    margin-top: 8px;
+    &-DS {
+      margin-top: 50px;
+    }
   }
   &__updated {
     color: var(--grey-50);

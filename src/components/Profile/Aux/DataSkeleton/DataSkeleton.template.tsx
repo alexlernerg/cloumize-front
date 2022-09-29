@@ -5,21 +5,15 @@ const DataSkeleton = (info: any, pathname: string, onClick:any) => {
   return (
     <>
       <div className={`DataSkeleton ${pathname === '/user/savingsFinder' && 'mb-4'}`}>
-        <div>
-          {(pathname === '/user/savingsFinder' || pathname ===  '/user/computeFinder') && (
+      {(pathname ===  '/user/computeFinder') && (
             <>
-              <p className='DataSkeleton__info'>
+              <p className='DataSkeleton__info DataSkeleton__info-DS'>
                 Monthly costs are calculated with the AWS official rate. Other
                 associated costs are not included
               </p>
-              <p className='DataSkeleton__updated'>
-                Last updated: <span>2022/7/6 03:45:34</span>
-              </p>
-              <p className='DataSkeleton__updated'>
-                Update: <span>every 1h</span>
-              </p>
             </>
           )}
+        <div>
           <div className={`DataSkeleton__sections ${pathname ===  '/user/computeFinder' && 'DataSkeleton__sectionsCF'}`}>
             {info && info.map((inf: any) => (
               <div key={inf.id} className='DataSkeleton__sections-mobile'>
@@ -43,6 +37,14 @@ const DataSkeleton = (info: any, pathname: string, onClick:any) => {
               </button>
             </div>
           </div>
+          {(pathname === '/user/savingsFinder') && (
+            <>
+              <p className='DataSkeleton__info'>
+                Monthly costs are calculated with the AWS official rate. Other
+                associated costs are not included
+              </p>
+            </>
+          )}
         </div>
       </div>
       <div className='Data1Skeleton__space'></div>
