@@ -11,9 +11,16 @@ const TableSkeleton = ({ data, columns }) => {
   //Screen width
   const screenWidthMobile = window.screen.width < 1280;
 
+  const [responseAPI, setResponseAPI] = useState('');
+  const [show, setShow] = useState(false);
   const [filterChoosed, setFilterChoosed] = useState('aws_account_id');
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
+
+  //Show popup
+  const showPopup = () => {
+    setShow(!show)
+  }
 
   //Filter data on table
   const onChange = (e) => {
@@ -73,10 +80,19 @@ const TableSkeleton = ({ data, columns }) => {
 
   const sendApproval = () => {
     approveSF({recommendation_id: isCheck})
-    .then ((response)=> console.log("response", response))
-    .catch((error) => console.log("error", error))
+    .then ((response)=> {
+      console.log("responseAPI", response)
+      setResponseAPI(response)
+      setTimeout(()=> {
+        setShow(!show)
+        window.location.reload()
+      }, 3000)
+    })
+    .catch((error) => {
+      console.log("responseAPI", error)
+      setResponseAPI(error.message)
+    })
   }
-  console.log("isCheck", isCheck)
 
   return templateTableSkeleton(
     data,
@@ -92,7 +108,10 @@ const TableSkeleton = ({ data, columns }) => {
     list,
     handleSelectAll,
     handleClick, 
-    sendApproval
+    sendApproval, 
+    show, 
+    showPopup,
+    responseAPI
   );
 };
 

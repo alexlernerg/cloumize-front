@@ -1,4 +1,5 @@
 import React from 'react';
+import PopUp from '../PopUp/PopUp';
 import Checkbox from './Checkbox/Checkbox';
 import './TableSkeleton.scss';
 
@@ -9,7 +10,7 @@ const TableMobile = ({
   list,
   isCheck,
   handleClick,
-  sendApproval
+  showPopup
 }) => {
   console.log("dataContent", dataContent)
   return (
@@ -92,7 +93,7 @@ const TableMobile = ({
               {data.state === 'Pending Approval' && (
                 <tr>
                   <td className='TableMobile__body-btn'>
-                    <button disabled={isCheck.length <= 0 ? true : false} onClick={sendApproval}>
+                    <button disabled={isCheck.length <= 0 ? true : false} onClick={showPopup}>
                       Approve
                     </button>
                   </td>
@@ -244,7 +245,10 @@ const TableSkeleton = (
   list,
   handleSelectAll,
   handleClick,
-  sendApproval
+  sendApproval,
+  show, 
+  showPopup,
+  responseAPI
 ) => {
   console.log("dataContent", dataContent)
   return (
@@ -606,13 +610,14 @@ const TableSkeleton = (
         list={list}
         isCheck={isCheck}
         handleClick={handleClick}
-        sendApproval={sendApproval}
+        showPopup={showPopup}
       />
       {pathname === '/user/savingsFinder' && !screenWidthMobile && (
         <div className='TableSkeletonContainer__body-btn'>
-          <button disabled={isCheck.length <= 0 ? true : false} onClick={sendApproval}>Approve</button>
+          <button disabled={isCheck.length <= 0 ? true : false} onClick={showPopup}>Approve</button>
         </div>
       )}
+      {show && <PopUp showPopup={showPopup} sendApproval={sendApproval} responseAPI={responseAPI}/>}
     </>
   );
 };
