@@ -23,10 +23,6 @@
     display: flex;
     justify-content: flex-end;
     padding: 22px 16px;
-    & button {
-      background-color: transparent;
-      border: none;
-    }
   }
   &__image {
     & img {
@@ -106,6 +102,9 @@
     &:first-child {
       margin-left: 130px !important;
     }
+    &:last-child {
+      margin-right: 130px !important;
+    }
     width: 56px;
   }
   &__btn {
@@ -143,6 +142,9 @@
         &__image {
           &:first-child {
             margin-left: 400px !important;
+          }
+          &:last-child {
+            margin-right: 400px !important;
           }
         }
       }

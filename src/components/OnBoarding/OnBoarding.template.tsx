@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../Misc/Spinner/Spinner';
 import './OnBoarding.scss';
 
 const Buttons = ({ARN, page, next, back, sendARN, closePopup, errorAPI, error}:any) => {
@@ -9,18 +10,18 @@ const Buttons = ({ARN, page, next, back, sendARN, closePopup, errorAPI, error}:a
             {page === 1 && <img className="Buttons__image" src="/OnBoarding/dots2.png" alt="dots"/>}
             {page === 2 && <img className="Buttons__image" src="/OnBoarding/dots3.png" alt="dots"/>}
             {page === 3 && <img className="Buttons__image" src="/OnBoarding/dots4.png" alt="dots"/>}
-            {page !== 3 && page !== 2 && <button className="Buttons__btn" onClick={next}>Next</button>}
+            {page !== 2 && page !== 3 && <button className="Buttons__btn" onClick={next}>Next</button>}
             {page === 2 && <button className="Buttons__btn" disabled={error.ARN} onClick={sendARN}>Next</button>}
-            {page === 3 && <button className="Buttons__btn" onClick={closePopup} disabled={errorAPI !== '' ? true : false}>Next</button>}
+            {/* {page === 3 && <button className="Buttons__btn" onClick={closePopup} disabled={errorAPI !== '' ? true : false}>Next</button>} */}
         </>
     )
 }
 
-const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, closePopup:any, errorAPI:string, error:any, touched:any, onFocus:any, onBlur:any) => {
-  return <div className='OnBoardingContainer'>
-    <div className='OnBoardingContainer__header'>
-        {/* <button onClick={closePopup}><img src="/OnBoarding/x.svg" alt="X"/></button> */}
-    </div>
+const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, closePopup:any, errorAPI:string, error:any, touched:any, onFocus:any, onBlur:any) => {
+  return (
+    currentUser ?
+  <div className='OnBoardingContainer'>
+    <div className='OnBoardingContainer__header'></div>
     <div className='OnBoardingContainer__image'>
         {page === 0 && screenWidthMobile && <img src="/OnBoarding/mobile1.png" alt="step"/>}
         {page === 0 && !screenWidthMobile && <img src="/OnBoarding/desktop1.png" alt="step"/>}
@@ -69,7 +70,8 @@ const OnBoarding = (page:number, next:any, back:any, screenWidthMobile:boolean, 
     <div className='OnBoardingContainer__buttons'>
         <Buttons ARN={ARN} page={page} next={next} back={back} sendARN={sendARN} closePopup={closePopup} errorAPI={errorAPI} error={error}/>
     </div>
-  </div>;
+  </div> : <Spinner/>
+  )
 };
 
 export default OnBoarding;

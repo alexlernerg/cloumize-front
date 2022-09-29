@@ -10,6 +10,8 @@ const OnBoarding = ({ closePopup }: any) => {
 
   const {currentUser} = useUser();
 
+  const [page, setPage] = useState(0);
+  const [errorAPI, setErrorAPI] = useState('');
   const [externalID, setExternalID] = useState('');
   const [ARN, setARN] = useState('');
   const [error, setError]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
@@ -27,10 +29,34 @@ const OnBoarding = ({ closePopup }: any) => {
 
   useEffect(()=> {
     setExternalID(currentUser?.external_id)
+    if (currentUser?.ARN !== null && currentUser?.sync_instance_status !== 0) {
+      setPage(3)
+      getDiscounts()
+          .then((response:any) => {
+            console.log("responseAPI", response)
+            if (response.sync_instance_status == 0) {
+              setErrorAPI('')
+              setPage(3);
+            }
+            if (response.sync_instance_status == 1) {
+              setErrorAPI('Please activate Cost Explorer on AWS')
+              setPage(3);
+            }
+            if (response.sync_instance_status == 2) {
+              setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
+              setPage(3);
+            }
+            if (response.sync_instance_status == 3) {
+              setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
+              setPage(3);
+            }
+          })
+          .catch((error)=> console.log("error", error))
+    }
   }, [currentUser])
 
-  const [page, setPage] = useState(0);
-  const [errorAPI, setErrorAPI] = useState('');
+  console.log("errorAPI", errorAPI)
+
   const next = () => {
     setPage(page + 1);
   };
@@ -43,27 +69,7 @@ const OnBoarding = ({ closePopup }: any) => {
       sendARN({client_role_arn: ARN})
         .then((response: any) => {
           console.log('response', response);
-          getDiscounts()
-          .then((response:any) => {
-            console.log("responseAPI", response)
-            if (response.sync_instance_status === 0) {
-              setErrorAPI('')
-              setPage(3);
-            }
-            if (response.sync_instance_status === 1) {
-              setErrorAPI('Please activate Cost Explorer on AWS')
-              setPage(3);
-            }
-            if (response.sync_instance_status === 2) {
-              setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
-              setPage(3);
-            }
-            if (response.sync_instance_status === 3) {
-              setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
-              setPage(3);
-            }
-          })
-          .catch((error)=> console.log("error", error))
+          setPage(3)
         })
         .catch((error: any) => setErrorAPI(error));
     }
@@ -90,6 +96,7 @@ const OnBoarding = ({ closePopup }: any) => {
   };
 
   return templateOnBoarding(
+    currentUser,
     page,
     next,
     back,

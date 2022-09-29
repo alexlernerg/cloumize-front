@@ -30,7 +30,7 @@ const ExistingPlans =()=>{
   useEffect(() => {
     getExistingPlans()
       .then((response: any) => {
-        if (response?.name !== 'Error'){
+        if (response.reserved_instance_data.length !== 0){
           setInfo ([
             { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.reserved_instance_stats.total_upfront_payment.toFixed(3)}` },
             { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.reserved_instance_stats.total_monthly_payment.toFixed(3)}` },
@@ -41,7 +41,7 @@ const ExistingPlans =()=>{
         }
       })
       .catch((error: any) => {
-        console.error('Error data SF', error);
+        console.error('Error data EP', error);
       });
   }, []);
   
