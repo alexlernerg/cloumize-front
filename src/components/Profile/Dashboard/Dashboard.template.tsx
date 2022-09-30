@@ -12,17 +12,9 @@ import {
 } from './Graphics/Graphics';
 import { useEffect } from 'react';
 import Spinner from '../../Misc/Spinner/Spinner';
+import { transforNumber } from '../../../helpers/transformNumber';
 
 const DataLastMonths = ({ data }: any) => {
-  const transforNumber = (n: number) => {
-    const withDecimals = Number.parseFloat(String(n)).toFixed(2);
-    const N = Number(withDecimals);
-    const NFormatted = new Intl.NumberFormat('de-DE', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(N);
-    return NFormatted.split('€')[0];
-  };
   return (
     <section className='DataLastMonths'>
       <div className='DataLastMonths__header'>
