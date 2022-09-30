@@ -45,7 +45,7 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.Cloumize_Discount?.toFixed(2)}</td>
+                <td>{data.cloumize_discount?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
@@ -367,7 +367,7 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.Cloumize_Discount?.toFixed(2)}
+                  {content.cloumize_discount?.toFixed(2)}
                 </td>
                 <td
                   valign='middle'

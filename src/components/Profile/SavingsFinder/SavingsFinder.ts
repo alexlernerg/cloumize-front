@@ -24,7 +24,7 @@ const SavingsFinder = () => {
       instance_family: 't2',
       units: 3,
       current_rate: 156.8040008544922,
-      Cloumize_Discount: 36.31285095214844,
+      cloumize_discount: 36.31285095214844,
       cloumize_rate: 99.86399841308594,
       monthly_savings: 56.939998626708984,
       state: '',
@@ -34,6 +34,7 @@ const SavingsFinder = () => {
   useEffect(() => {
     getSavingsFinder()
       .then((response: any) => {
+        console.log(response)
         if (response?.savings_finder_data.length !== 0) {
           setInfo([
             { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(3)}` },
