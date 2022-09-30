@@ -17,9 +17,8 @@ const Buttons = ({ARN, page, next, back, sendARN, closePopup, errorAPI, error}:a
     )
 }
 
-const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, closePopup:any, errorAPI:string, error:any, touched:any, onFocus:any, onBlur:any) => {
+const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, closePopup:any, errorAPI:string, error:any, touched:any, onFocus:any, onBlur:any, show:boolean) => {
   return (
-    currentUser ?
   <div className='OnBoardingContainer'>
     <div className='OnBoardingContainer__header'></div>
     <div className='OnBoardingContainer__image'>
@@ -61,6 +60,9 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
         {page === 3 && errorAPI === '' && <>
             <p className={`OnBoardingContainer__content-${page}-title3`}>Please wait a moment while we find potential savings.</p>
             <p className={`OnBoardingContainer__content-${page}-text3`}>This may take up to 5 minutes.</p>
+            <div className={`OnBoardingContainer__content-${page}-video`}>
+                <img src="/OnBoarding/video.gif" alt="video"/>
+            </div>
         </>}
         {page === 3 && errorAPI !=='' && <>
             <p className={`OnBoardingContainer__content-${page}-title3`}>An error has happened</p>
@@ -70,7 +72,8 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
     <div className='OnBoardingContainer__buttons'>
         <Buttons ARN={ARN} page={page} next={next} back={back} sendARN={sendARN} closePopup={closePopup} errorAPI={errorAPI} error={error}/>
     </div>
-  </div> : <Spinner/>
+    {show && <Spinner/>}
+  </div>
   )
 };
 

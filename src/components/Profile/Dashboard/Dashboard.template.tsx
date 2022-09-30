@@ -53,9 +53,9 @@ const Dashboard = (dataRest: any, data: any) => {
   const [onBoarding, setOnBoarding] = useState(true);
 
   useEffect(() => {
-    currentUser?.sync_instance_status === '0'
-      ? setOnBoarding(false)
-      : setOnBoarding(true);
+    currentUser && currentUser?.sync_instance_status === '0'
+        ? setOnBoarding(false)
+        : setOnBoarding(true);
     // console.log("currentUSer", currentUser)
   }, [currentUser]);
 

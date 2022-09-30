@@ -27,40 +27,45 @@ const OnBoarding = ({ closePopup }: any) => {
     return error.ARN === undefined
   };
 
+  const [show, setShow] = useState(true);
+
   useEffect(()=> {
     setExternalID(currentUser?.external_id)
-    if (currentUser?.ARN !== null && currentUser?.sync_instance_status !== 0) {
-      setPage(3)
       getDiscounts()
           .then((response:any) => {
-            console.log("responseAPI", response)
-            if (response.sync_instance_status === null && currentUser?.ARN === null) {
-              setPage(0);
-            }
-            if (response.sync_instance_status == 0) {
-              setErrorAPI('')
-              setPage(3);
-            }
-            if (response.sync_instance_status == 1) {
-              setErrorAPI('Please activate Cost Explorer on AWS')
-              setPage(3);
-            }
-            if (response.sync_instance_status == 2) {
-              setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
-              setPage(3);
-            }
-            if (response.sync_instance_status == 3) {
-              setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
-              setPage(3);
+            console.log("responseAPI", response.sync_instance_status)
+            if (currentUser) {
+              setShow(false)
+              if (response.sync_instance_status === null && currentUser?.arn !== null) {
+                setPage(3);
+              }
+              if (response.sync_instance_status === null && currentUser?.arn === null) {
+                setPage(0);
+              }
+              if (response.sync_instance_status == 0) {
+                setErrorAPI('')
+                setPage(3);
+              }
+              if (response.sync_instance_status == 1) {
+                setErrorAPI('Please activate Cost Explorer on AWS')
+                setPage(3);
+              }
+              if (response.sync_instance_status == 2) {
+                setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
+                setPage(3);
+              }
+              if (response.sync_instance_status == 3) {
+                setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
+                setPage(3);
+              }
+            } else {
+              setShow(true)
             }
           })
           .catch((error)=> console.log("error", error))
-    } else {
-      setPage(0)
-    }
   }, [currentUser])
 
-  console.log("errorAPI", errorAPI)
+  console.log("currentUser", currentUser)
 
   const next = () => {
     setPage(page + 1);
@@ -115,7 +120,8 @@ const OnBoarding = ({ closePopup }: any) => {
     error,
     touched,
     onFocus, 
-    onBlur
+    onBlur,
+    show
   );
 };
 
