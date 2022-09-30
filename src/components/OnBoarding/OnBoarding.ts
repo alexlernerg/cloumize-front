@@ -35,26 +35,31 @@ const OnBoarding = ({ closePopup }: any) => {
           .then((response:any) => {
             console.log("responseAPI", response.sync_instance_status)
             if (currentUser) {
-              setShow(false)
               if (response.sync_instance_status === null && currentUser?.arn !== null) {
+                setShow(false)
                 setPage(3);
               }
               if (response.sync_instance_status === null && currentUser?.arn === null) {
+                setShow(false)
                 setPage(0);
               }
               if (response.sync_instance_status == 0) {
+                setShow(false)
                 setErrorAPI('')
                 setPage(3);
               }
               if (response.sync_instance_status == 1) {
+                setShow(false)
                 setErrorAPI('Please activate Cost Explorer on AWS')
                 setPage(3);
               }
               if (response.sync_instance_status == 2) {
+                setShow(false)
                 setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
                 setPage(3);
               }
               if (response.sync_instance_status == 3) {
+                setShow(false)
                 setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
                 setPage(3);
               }
@@ -64,6 +69,8 @@ const OnBoarding = ({ closePopup }: any) => {
           })
           .catch((error)=> console.log("error", error))
   }, [currentUser])
+
+  console.log("show", show)
 
   console.log("currentUser", currentUser)
 

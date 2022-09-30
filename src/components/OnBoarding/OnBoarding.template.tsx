@@ -1,4 +1,5 @@
 import React from 'react';
+import { DotLoader } from 'react-spinners';
 import Spinner from '../Misc/Spinner/Spinner';
 import './OnBoarding.scss';
 
@@ -21,6 +22,10 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
   return (
   <div className='OnBoardingContainer'>
     <div className='OnBoardingContainer__header'></div>
+    {show ? <div className='OnBoardingContainer__spinner'>
+        <DotLoader color="#2C6CF6" />
+        </div> : 
+    <div>
     <div className='OnBoardingContainer__image'>
         {page === 0 && screenWidthMobile && <img src="/OnBoarding/mobile1.png" alt="step"/>}
         {page === 0 && !screenWidthMobile && <img src="/OnBoarding/desktop1.png" alt="step"/>}
@@ -72,7 +77,7 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
     <div className='OnBoardingContainer__buttons'>
         <Buttons ARN={ARN} page={page} next={next} back={back} sendARN={sendARN} closePopup={closePopup} errorAPI={errorAPI} error={error}/>
     </div>
-    {show && <Spinner/>}
+</div>}
   </div>
   )
 };
