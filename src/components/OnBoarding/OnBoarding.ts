@@ -34,6 +34,9 @@ const OnBoarding = ({ closePopup }: any) => {
       getDiscounts()
           .then((response:any) => {
             console.log("responseAPI", response)
+            if (response.sync_instance_status === null && currentUser?.ARN === null) {
+              setPage(0);
+            }
             if (response.sync_instance_status == 0) {
               setErrorAPI('')
               setPage(3);
@@ -52,6 +55,8 @@ const OnBoarding = ({ closePopup }: any) => {
             }
           })
           .catch((error)=> console.log("error", error))
+    } else {
+      setPage(0)
     }
   }, [currentUser])
 
