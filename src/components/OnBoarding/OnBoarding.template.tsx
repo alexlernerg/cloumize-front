@@ -22,7 +22,7 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
   return (
   <div className='OnBoardingContainer'>
     <div className='OnBoardingContainer__header'></div>
-    {show ? <div className='OnBoardingContainer__spinner'>
+    {show && !currentUser ? <div className='OnBoardingContainer__spinner'>
         <DotLoader color="#2C6CF6" />
         </div> : 
     <div>

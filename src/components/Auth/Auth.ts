@@ -117,15 +117,14 @@ const Auth = () => {
     if (isValidSignin() && signinPage) {
       signIn({ email: data.email, password: data.password })
         .then((response: any) => {
-          console.log('response', response);
           setAccessToken(response.token);
+          setCurrentUser(response.user);
           navigate('/user');
         })
         .catch((error: any) => {
           setErrorAPI(error?.data.errors.message);
           setTimeout(() => setErrorAPI(''), 3000);
           setShow(true);
-          console.log('error', error);
         });
     }
     if (isValid() && !signinPage) {
@@ -137,14 +136,12 @@ const Auth = () => {
         userName: data.userName,
       })
         .then((response: any) => {
-          console.log('response', response);
           navigate('/signin');
         })
         .catch((error: any) => {
           setErrorAPI(error?.data.errors.message);
           setTimeout(() => setErrorAPI(''), 3000);
           setShow(true);
-          console.log('error', error);
         });
     }
   };

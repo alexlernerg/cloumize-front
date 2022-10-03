@@ -4,7 +4,6 @@ import { approveSF } from '../../../../services/DataService';
 import templateTableSkeleton from './TableSkeleton.template';
 
 const TableSkeleton = ({ data, columns }) => {
-  console.log("data", data)
   //Current url
   const { pathname } = useLocation();
 
@@ -50,7 +49,7 @@ const TableSkeleton = ({ data, columns }) => {
     const filteredArray = data.filter(
       (data) => data.state === 'Pending Approval'
     );
-    console.log("filteredArray", filteredArray)
+    // console.log("filteredArray", filteredArray)
     const mapArray = filteredArray.map((data) => {
       const obj = {
         id: data.recommendation_id_cm,
@@ -71,7 +70,7 @@ const TableSkeleton = ({ data, columns }) => {
 
   const handleClick = (e) => {
     const { id, checked } = e.target;
-    console.log('e', id, checked);
+    // console.log('e', id, checked);
     setIsCheck([...isCheck, id]);
     if (!checked) {
       setIsCheck(isCheck.filter((item) => item !== id));
@@ -81,7 +80,7 @@ const TableSkeleton = ({ data, columns }) => {
   const sendApproval = () => {
     approveSF({recommendation_id: isCheck})
     .then ((response)=> {
-      console.log("responseAPI", response)
+      // console.log("responseAPI", response)
       setResponseAPI(response)
       setTimeout(()=> {
         setShow(!show)
@@ -89,7 +88,7 @@ const TableSkeleton = ({ data, columns }) => {
       }, 3000)
     })
     .catch((error) => {
-      console.log("responseAPI", error)
+      // console.log("responseAPI", error)
       setResponseAPI(error.message)
     })
   }

@@ -29,6 +29,8 @@ const OnBoarding = ({ closePopup }: any) => {
 
   const [show, setShow] = useState(true);
 
+  let interval:any;
+
   useEffect(()=> {
     setExternalID(currentUser?.external_id)
       getDiscounts()
@@ -47,21 +49,25 @@ const OnBoarding = ({ closePopup }: any) => {
                 setShow(false)
                 setErrorAPI('')
                 setPage(3);
+                clearInterval(interval)
               }
               if (response.sync_instance_status == 1) {
                 setShow(false)
                 setErrorAPI('Please activate Cost Explorer on AWS')
                 setPage(3);
+                clearInterval(interval)
               }
               if (response.sync_instance_status == 2) {
                 setShow(false)
                 setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
                 setPage(3);
+                clearInterval(interval)
               }
               if (response.sync_instance_status == 3) {
                 setShow(false)
                 setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
                 setPage(3);
+                clearInterval(interval)
               }
             } else {
               setShow(true)

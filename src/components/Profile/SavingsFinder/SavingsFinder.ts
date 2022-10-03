@@ -34,7 +34,6 @@ const SavingsFinder = () => {
   useEffect(() => {
     getSavingsFinder()
       .then((response: any) => {
-        console.log(response)
         if (response?.savings_finder_data.length !== 0) {
           setInfo([
             { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(3)}` },

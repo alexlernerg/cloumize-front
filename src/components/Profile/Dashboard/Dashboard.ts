@@ -108,6 +108,7 @@ const Dashboard = () => {
 })
 
 const {currentUser} = useUser()
+
 useEffect(() => {
     getDashboard()
     .then((response: any) => {

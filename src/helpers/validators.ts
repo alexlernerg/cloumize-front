@@ -49,7 +49,6 @@ export const validators: any = {
     if (value && !regexARN.test(value)) {
       message = 'ARN must have a correct format';
     }
-    console.log("regex", regexARN.test(value))
 
     return message;
   },
@@ -117,7 +116,6 @@ export const validators: any = {
     if (value && checkUppercase(value)) {
       message = '';
     }
-    console.log('message', message);
     return message;
   },
   passwordLowercase: (value: string) => {
@@ -132,8 +130,6 @@ export const validators: any = {
     if (value && checkLowercase(value)) {
       message = '';
     }
-    // console.log("Lowercase", value)
-    // console.log("LowercaseMSG", message)
     return message;
   },
 };

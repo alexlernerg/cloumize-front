@@ -242,20 +242,15 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 };
 
 export const HorizontalBar = (dataRest, getRandomColor) => {
-  console.log("dataRest", dataRest.instance_family)
-  console.log("dataRest", dataRest.spending_overview)
-
   const labelsHB = [];
   dataRest.instance_family
   .map((obj) => Object.keys(obj))
   .map((key) => labelsHB.push(key[0]));
-  console.log("labelsHB", labelsHB)
 
   const dataHB = [];
   dataRest.instance_family
   .map((obj) => Object.values(obj))
   .map((value) => dataHB.push(value[0]));
-  console.log("dataHB", dataHB)
 
   const [data, setData] = useState({
     labels: labelsHB,
@@ -321,7 +316,6 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
 };
 
 export const DataServer = ({ dataRest }) => {
-  console.log("dataRest", dataRest.az)
   return (
     <div className='HorizontalBar__legend'>
       <p className='HorizontalBar__legend-title'>Region Breakdown</p>

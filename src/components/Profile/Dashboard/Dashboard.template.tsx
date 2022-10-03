@@ -13,6 +13,7 @@ import {
 import { useEffect } from 'react';
 import Spinner from '../../Misc/Spinner/Spinner';
 import { transforNumber } from '../../../helpers/transformNumber';
+import { getDiscounts } from '../../../services/DataService';
 
 const DataLastMonths = ({ data }: any) => {
   return (
@@ -53,11 +54,25 @@ const Dashboard = (dataRest: any, data: any) => {
   const [onBoarding, setOnBoarding] = useState(true);
 
   useEffect(() => {
-    currentUser && currentUser?.sync_instance_status === '0'
-        ? setOnBoarding(false)
-        : setOnBoarding(true);
-    // console.log("currentUSer", currentUser)
-  }, [currentUser]);
+    if (currentUser?.sync_instance_status == 0) {
+      setOnBoarding(false);
+    } else {
+        const interval = setInterval(()=> {
+          getDiscounts()
+          .then((response:any)=> {
+            console.log("responseAPI en Dashb", response.sync_instance_status)
+            if (response.sync_instance_status == 0) {
+              console.log("es 0")
+              setOnBoarding(false) 
+              clearInterval(interval)
+            } else {
+              console.log("no es 0")
+              setOnBoarding(true);
+            }
+          } )
+        }, 5000)
+    }
+  }, [currentUser, onBoarding]);
 
   const showOnBoarding = () => setOnBoarding(false);
 

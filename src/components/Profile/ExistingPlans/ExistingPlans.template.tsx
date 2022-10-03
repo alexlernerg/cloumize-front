@@ -6,7 +6,6 @@ import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
 import './ExistingPlans.scss';
 
 const ExternalData = ({data}:any) => {
-  console.log("dataED", data)
   return(
     <div className='ExistingPlans__interestingData'>
         <p><img src="/Profile/EP1.svg" alt="icon"/>Active Plans (MTD) {data[0]}</p>
