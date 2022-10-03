@@ -1,13 +1,17 @@
-import axios from "axios";
-import { getAccessToken, isTokenValid, logout } from "../store/AccessTokenStore";
+import axios from 'axios';
+import {
+  getAccessToken,
+  isTokenValid,
+  logout,
+} from '../store/AccessTokenStore';
 
 export const create = (opts: any): any => {
   const http = axios.create({
-    baseURL: "https://sandbox-api.cloumize.com:8080/api",
+    baseURL: 'https://sandbox-api.cloumize.com/api',
     ...opts,
   });
 
-  http.interceptors.request.use((request:any) => {
+  http.interceptors.request.use((request: any) => {
     if (opts.useAccessToken !== false) {
       // console.log("tokenValid", isTokenValid(getAccessToken()))
       // if (!isTokenValid(getAccessToken())) {
@@ -22,8 +26,8 @@ export const create = (opts: any): any => {
   });
 
   http.interceptors.response.use(
-    (response:any) => response.data,
-    (error:any) => {
+    (response: any) => response.data,
+    (error: any) => {
       if (
         opts.reloadOnUnathorized &&
         error.response &&
