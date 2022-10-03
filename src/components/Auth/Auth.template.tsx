@@ -175,14 +175,19 @@ const Auth = (
             <p>{errorAPI}</p>
           </div>}
           {signinPage ? (
-            <p className='AuthContainer__redirect'>
-              Don’t have an account?&nbsp;
-              <span>
-                <Link to='/signup'>
-                  Sign Up
-                </Link>
-              </span>
-            </p>
+            <>
+              <p className='AuthContainer__redirect'>
+                Don’t have an account?&nbsp;
+                <span>
+                  <Link to='/signup'>
+                    Sign Up
+                  </Link>
+                </span>
+              </p>
+              <div className='AuthContainer__forgot'>
+                <Link to='/forgot-password'>Forgot your password?</Link>
+              </div>
+            </>
           ) : (
             <p className='AuthContainer__redirect'>
               Already have an account?&nbsp;

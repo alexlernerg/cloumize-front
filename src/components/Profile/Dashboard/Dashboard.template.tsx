@@ -60,13 +60,10 @@ const Dashboard = (dataRest: any, data: any) => {
         const interval = setInterval(()=> {
           getDiscounts()
           .then((response:any)=> {
-            console.log("responseAPI en Dashb", response.sync_instance_status)
             if (response.sync_instance_status == 0) {
-              console.log("es 0")
               setOnBoarding(false) 
               clearInterval(interval)
             } else {
-              console.log("no es 0")
               setOnBoarding(true);
             }
           } )
