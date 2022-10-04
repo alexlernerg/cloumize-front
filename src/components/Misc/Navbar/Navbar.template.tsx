@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
-import OnBoarding from '../../OnBoarding/OnBoarding.template';
 
 const Routing = ({ pathname, screenWidthMobile, OnBoarding }: any) => {
   return (
@@ -100,7 +99,8 @@ const Routing = ({ pathname, screenWidthMobile, OnBoarding }: any) => {
   );
 };
 
-const Navbar = (pathname: string, screenWidthMobile: boolean, OnBoarding:boolean) => {
+const Navbar = (pathname: string, screenWidthMobile: boolean, OnBoarding:boolean, currentUser:any) => {
+  console.log("current", currentUser);
   return (
     <div className='NavbarContainer'>
       <div className='NavbarContainer__routing'>
@@ -117,12 +117,10 @@ const Navbar = (pathname: string, screenWidthMobile: boolean, OnBoarding:boolean
         <div className='NavbarContainer__user-info'>
           {!screenWidthMobile && (
             <>
-              <div className='NavbarContainer__user-avatar'>
-                <img src='/Misc/Navbar/Avatar.png' alt='avatar' />
-              </div>
               <div className='NavbarContainer__user-name'>
-                <p>Charlie Bergson</p>
-                <p>Charliebergson@cloumize.com</p>
+                <p>{currentUser?.company_name}</p>
+                <p>{currentUser?.user_name}</p>
+                <p>{currentUser?.email}</p>
               </div>
             </>
           )}

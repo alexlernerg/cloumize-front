@@ -48,13 +48,13 @@ const DataLastMonths = ({ data }: any) => {
   );
 };
 
-const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any) => {
+const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any, show:any, page:any, setPage:any, errorAPI:any, setErrorAPI:any) => {
 
   return (
     <>
       {onBoarding && (
         <div className='Dashboard__onboarding'>
-          <OnBoarding closePopup={showOnBoarding}/>
+          <OnBoarding closePopup={showOnBoarding} show={show} page={page} setPage={setPage} errorAPI={errorAPI} setErrorAPI={setErrorAPI}/>
         </div>
       )}
       <div className={`${onBoarding ? 'disable' : ''}`}>
@@ -67,7 +67,7 @@ const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any)
               <h1 className='Dashboard__container-title'>Dashboard</h1>
               <div className='Dashboard__container-top'>
                 <div>
-                  <p>{dataRest.potential_annual}</p>
+                  <p>${dataRest.potential_annual}</p>
                   <p>Potential Annual Savings</p>
                 </div>
                 <Link

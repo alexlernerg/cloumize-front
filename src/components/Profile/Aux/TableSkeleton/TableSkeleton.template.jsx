@@ -249,6 +249,7 @@ const TableSkeleton = (
   showPopup,
   responseAPI
 ) => {
+  console.log("filteredData", filteredData)
   return (
     <>
       <div className='TableSkeletonContainer__search'>
@@ -353,7 +354,6 @@ const TableSkeleton = (
                   className='TableSkeletonContainer__body-col'
                 >
                   {content.units}
-                  {i}
                 </td>
                 <td
                   valign='middle'
