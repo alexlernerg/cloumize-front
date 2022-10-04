@@ -48,36 +48,13 @@ const DataLastMonths = ({ data }: any) => {
   );
 };
 
-const Dashboard = (dataRest: any, data: any) => {
-  const { currentUser } = useUser();
-
-  const [onBoarding, setOnBoarding] = useState(true);
-
-  useEffect(() => {
-    if (currentUser?.sync_instance_status == 0) {
-      setOnBoarding(false);
-    } else {
-        const interval = setInterval(()=> {
-          getDiscounts()
-          .then((response:any)=> {
-            if (response.sync_instance_status == 0) {
-              setOnBoarding(false) 
-              clearInterval(interval)
-            } else {
-              setOnBoarding(true);
-            }
-          } )
-        }, 5000)
-    }
-  }, [currentUser, onBoarding]);
-
-  const showOnBoarding = () => setOnBoarding(false);
+const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any) => {
 
   return (
     <>
       {onBoarding && (
         <div className='Dashboard__onboarding'>
-          <OnBoarding closePopup={showOnBoarding} />
+          <OnBoarding closePopup={showOnBoarding}/>
         </div>
       )}
       <div className={`${onBoarding ? 'disable' : ''}`}>
