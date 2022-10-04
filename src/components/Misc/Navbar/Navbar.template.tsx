@@ -100,7 +100,6 @@ const Routing = ({ pathname, screenWidthMobile, OnBoarding }: any) => {
 };
 
 const Navbar = (pathname: string, screenWidthMobile: boolean, OnBoarding:boolean, currentUser:any) => {
-  console.log("current", currentUser);
   return (
     <div className='NavbarContainer'>
       <div className='NavbarContainer__routing'>

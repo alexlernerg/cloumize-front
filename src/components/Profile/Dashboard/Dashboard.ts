@@ -116,12 +116,10 @@ const Dashboard = () => {
   const [onBoarding, setOnBoarding] = useState(true);
   const showOnBoarding = () => setOnBoarding(false);
 
-  let interval: any;
-
   useEffect(() => {
     setShow(true);
     setOnBoarding(false);
-    getDiscounts()
+    currentUser && getDiscounts()
       .then((response: any) => {
         console.log('responseAPI', response.sync_instance_status);
         if (
@@ -132,8 +130,7 @@ const Dashboard = () => {
           setShow(false);
           setPage(0);
           setOnBoarding(true);
-        }
-        if (
+        } else if (
           response.sync_instance_status === null &&
           currentUser?.arn !== null
         ) {
@@ -184,42 +181,41 @@ const Dashboard = () => {
               }
             });
           }, 5000);
-        }
-        if (
+        } else if (
           response.sync_instance_status !== null &&
           response.sync_instance_status == 1 &&
           currentUser?.arn !== null
         ) {
+          console.log("ARN OK y Respuesta 1")
           setShow(false);
           setOnBoarding(true);
           setErrorAPI('Please activate Cost Explorer on AWS');
           setPage(3);
-        }
-        if (
+        } else if (
           response.sync_instance_status !== null &&
           response.sync_instance_status == 2 &&
           currentUser?.arn !== null
         ) {
+          console.log("ARN OK y Respuesta 2")
           setShow(false);
           setOnBoarding(true);
           setErrorAPI(
             'Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com'
           );
           setPage(3);
-        }
-        if (
+        } else if (
           response.sync_instance_status !== null &&
           response.sync_instance_status == 3 &&
           currentUser?.arn !== null
         ) {
+          console.log("ARN OK y Respuesta 3")
           setShow(false);
           setOnBoarding(true);
           setErrorAPI(
             'Something went wrong. Please contact us at support@cloumize.com'
           );
           setPage(3);
-        }
-        if (
+        } else if (
           response.sync_instance_status == 0 &&
           currentUser?.arn !== null
         ) {
@@ -238,8 +234,6 @@ const Dashboard = () => {
       })
       .catch((error) => console.log('error', error));
   }, [currentUser]);
-
-  console.log('onboarding', onBoarding);
 
   const data = [
     {

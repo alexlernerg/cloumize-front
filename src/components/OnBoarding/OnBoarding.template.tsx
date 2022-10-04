@@ -4,10 +4,11 @@ import Spinner from '../Misc/Spinner/Spinner';
 import './OnBoarding.scss';
 
 const Buttons = ({ARN, page, next, back, sendARN, closePopup, errorAPI, error}:any) => {
+    console.log("page", page)
     return (
         <>
-            {page !== 0 && <button className="Buttons__btn" onClick={back}>Back</button>}
-            {page === 0 && <img className="Buttons__image" src="/OnBoarding/dots1.png" alt="dots"/>}
+            {(page !== 0 && page !== 3) && <button className="Buttons__btn" onClick={back}>Back</button>}
+            {page === 0 && <img className="Buttons__image-1" src="/OnBoarding/dots1.png" alt="dots"/>}
             {page === 1 && <img className="Buttons__image" src="/OnBoarding/dots2.png" alt="dots"/>}
             {page === 2 && <img className="Buttons__image" src="/OnBoarding/dots3.png" alt="dots"/>}
             {page === 3 && <img className="Buttons__image" src="/OnBoarding/dots4.png" alt="dots"/>}
@@ -74,7 +75,7 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
             <p className={`OnBoardingContainer__content-${page}-text3`}>{errorAPI}</p>
         </>}
     </div>
-    <div className='OnBoardingContainer__buttons'>
+    <div className={`OnBoardingContainer__buttons ${page === 3 && 'OnBoardingContainer__buttons-page3'}`}>
         <Buttons ARN={ARN} page={page} next={next} back={back} sendARN={sendARN} closePopup={closePopup} errorAPI={errorAPI} error={error}/>
     </div>
 </div>}

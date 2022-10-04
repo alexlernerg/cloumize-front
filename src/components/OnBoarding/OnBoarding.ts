@@ -41,7 +41,7 @@ const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: 
     if(isValid()){
       sendARN({client_role_arn: ARN})
         .then((response: any) => {
-          console.log('response', response);
+          console.log("Entra en sendARN")
           setPage(3)
           getUser()
           .then((response:any)=> setCurrentUser(response))

@@ -26,7 +26,7 @@ const ForgotPassword =()=>{
       error_email: validators.email && validators.email(value),
     });
   };
-  console.log("user", user)
+
   const isValid = (): boolean => {
     if (user.error_email) {
       return false;
