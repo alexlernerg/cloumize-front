@@ -8,12 +8,8 @@ Chart.register(CategoryScale, Tooltip);
 
 export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   const labelsVB = dataVerticalBar?.map((data) => data.date);
-  const dataVB = dataVerticalBar.map(
-    (data) => data.spending_other
-  );
-  const dataVB2 = dataVerticalBar.map(
-    (data) => data.autopilot
-  );
+  const dataVB = dataVerticalBar.map((data) => data.spending_other);
+  const dataVB2 = dataVerticalBar.map((data) => data.autopilot);
   const [data, setData] = useState({
     labels: labelsVB,
     datasets: [
@@ -112,11 +108,12 @@ export const DoughnutGraphic = (
   getRandomColor,
   screenWidthMobile
 ) => {
+  console.log('dataRest', dataRest.platform);
   const [data, setData] = useState({
     labels: Object.keys(dataRest.platform),
     datasets: [
       {
-        // label: '',
+        label: '',
         data: Object.values(dataRest.platform),
         backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
       },
@@ -147,9 +144,19 @@ export const DoughnutGraphic = (
                   family: 'Rubik',
                 },
                 bodyFont: {
-                  size: 14,
-                  // weight: 'bold',
+                  size: 24,
+                  weight: 'bold',
                   family: 'Rubik',
+                },
+                callbacks: {
+                  title: function (context) {
+                    let title = context[0].label;
+                    return title;
+                  },
+                  label: function (context) {
+                    let label = context.formattedValue
+                    return label;
+                  },
                 },
               },
               legend: {
@@ -158,9 +165,9 @@ export const DoughnutGraphic = (
                 labels: {
                   padding: 10,
                   usePointStyle: true,
-                  pointStyle: 'circle',
+                  pointStyle: 'rectRounded',
                   font: {
-                    size: screenWidthMobile ? 12 : 16,
+                    size: screenWidthMobile ? 12 : 14,
                     family: 'Rubik',
                   },
                 },
@@ -208,9 +215,19 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
                   family: 'Rubik',
                 },
                 bodyFont: {
-                  size: 14,
-                  // weight: 'bold',
+                  size: 24,
+                  weight: 'bold',
                   family: 'Rubik',
+                },
+                callbacks: {
+                  title: function (context) {
+                    let title = context[0].label;
+                    return title;
+                  },
+                  label: function (context) {
+                    let label = context.formattedValue
+                    return label;
+                  },
                 },
               },
               legend: {
@@ -232,8 +249,8 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
           </p>
           <p>
             <img src='/Profile/colorLightDot.svg' alt='dot' />
-            {Object.keys(dataRest.coverage)[1] ===
-              'percentage_not_covered' && 'On-Demand'}
+            {Object.keys(dataRest.coverage)[1] === 'percentage_not_covered' &&
+              'On-Demand'}
           </p>
         </div>
       </div>
@@ -244,13 +261,13 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 export const HorizontalBar = (dataRest, getRandomColor) => {
   const labelsHB = [];
   dataRest.instance_family
-  .map((obj) => Object.keys(obj))
-  .map((key) => labelsHB.push(key[0]));
+    .map((obj) => Object.keys(obj))
+    .map((key) => labelsHB.push(key[0]));
 
   const dataHB = [];
   dataRest.instance_family
-  .map((obj) => Object.values(obj))
-  .map((value) => dataHB.push(value[0]));
+    .map((obj) => Object.values(obj))
+    .map((value) => dataHB.push(value[0]));
 
   const [data, setData] = useState({
     labels: labelsHB,
