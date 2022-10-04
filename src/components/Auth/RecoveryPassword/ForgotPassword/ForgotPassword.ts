@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { validators } from "../../../../helpers/validators";
-import { updatePassword } from "../../../../services/AuthService";
+import { passwordResetEmail } from "../../../../services/AuthService";
 import templateForgotPassword from "./ForgotPassword.template";
 
 const ForgotPassword =()=>{
@@ -38,7 +38,7 @@ const ForgotPassword =()=>{
     event.preventDefault();
 
     if (isValid()) {
-      updatePassword({email: user.email})
+      passwordResetEmail({email: user.email})
           .then((res: any) => {
             setResponse('Check your email');
           })

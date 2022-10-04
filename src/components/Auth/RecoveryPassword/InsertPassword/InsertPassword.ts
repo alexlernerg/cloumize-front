@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { validators } from '../../../../helpers/validators';
-import { passwordResetEmail } from '../../../../services/AuthService';
+import { updatePassword } from '../../../../services/AuthService';
 import templateInsertPassword from './InsertPassword.template';
 
 const InsertPassword = () => {
@@ -72,13 +72,12 @@ const InsertPassword = () => {
   const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (isValid()) {
-      passwordResetEmail({password: user.password, token: token})
+      updatePassword([{password: user.password},{token: token}])
       .then((response:any) => {
-        console.log("response", response)
-        setResponse(response)
+        setResponse(response.passwordChanged && 'Password is correctly changed')
         setTimeout(() => {
           navigate('/signin');
-        }, 3000);
+        }, 5000);
       })
       .catch ((error:any)=> setResponse(`Something went wrong: ${error.data.errors.message}`))
       // setTimeout(()=> setShow(false), 5000)
