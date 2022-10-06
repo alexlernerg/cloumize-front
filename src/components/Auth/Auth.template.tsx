@@ -126,11 +126,11 @@ const Auth = (
               }}
             />
             {touched.password && <div className='AuthContainer__form-error'>
-              <p style={{color: (errors.password.lengthMsg === '' && errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? '#13D733' : '#FF434E'}}>Your password  needs to:</p>
+              <p style={{color: (errors.password.lengthMsg === '' && errors.password.uppercaseMsg === '' && errors.password.lowercaseMsg === '') ? '#13D733' : '#FF434E'}}>Password must contain:</p>
                 <ul>
-                  {errors.password.lengthMsg === '' ? <li className='AuthContainer__form-error-correct'>v 8 characteres long</li>: <li>x 8 characteres long</li>}
-                  {errors.password.uppercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Uppercase letter</li>: <li>x Uppercase letter</li>}
-                  {errors.password.lowercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Lower case letter</li>: <li>x Lower case letter</li>}
+                  {errors.password.lengthMsg === '' ? <li className='AuthContainer__form-error-correct'>v At least 8 characteres </li>: <li>x At least 8 characters</li>}
+                  {errors.password.uppercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v 1 uppercase letter</li>: <li>x 1 uppercase letter</li>}
+                  {errors.password.lowercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v 1 lowercase letter</li>: <li>x 1 lower case letter</li>}
                 </ul>
               </div>}
             {!signinPage && (
