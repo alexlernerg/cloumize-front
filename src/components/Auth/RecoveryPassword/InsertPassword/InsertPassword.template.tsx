@@ -26,11 +26,11 @@ const InsertPassword = (props:any) => {
               }}
             />
             {props.touched.password && <div className='AuthContainer__form-error'>
-              <p style={{color: (props.errors.password.lengthMsg === '' && props.errors.password.uppercaseMsg === '' && props.errors.password.lowercaseMsg === '') ? '#13D733' : '#FF434E'}}>Your password  needs to:</p>
+              <p style={{color: (props.errors.password.lengthMsg === '' && props.errors.password.uppercaseMsg === '' && props.errors.password.lowercaseMsg === '') ? '#13D733' : '#FF434E'}}>Password must contain:</p>
                 <ul>
-                  {props.errors.password.lengthMsg === '' ? <li className='AuthContainer__form-error-correct'>v 8 characteres long</li>: <li>x 8 characteres long</li>}
-                  {props.errors.password.uppercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Uppercase letter</li>: <li>x Uppercase letter</li>}
-                  {props.errors.password.lowercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Lower case letter</li>: <li>x Lower case letter</li>}
+                  {props.errors.password.lengthMsg === '' ? <li className='AuthContainer__form-error-correct'>v 8 characteres long</li>: <li>x At least 8 characteres long</li>}
+                  {props.errors.password.uppercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Uppercase letter</li>: <li>x One upper case letter</li>}
+                  {props.errors.password.lowercaseMsg === '' ? <li className='AuthContainer__form-error-correct'>v Lower case letter</li>: <li>x One lower case letter</li>}
                 </ul>
               </div>}
           </div>
