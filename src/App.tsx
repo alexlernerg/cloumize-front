@@ -11,6 +11,8 @@ import Account from './components/Profile/Account/Account';
 import User from './components/Profile/User/User';
 import Dashboard from './components/Profile/Dashboard/Dashboard';
 import AuthCover from "./components/Auth/Cover/Cover";
+import ForgotPassword from './components/Auth/RecoveryPassword/ForgotPassword/ForgotPassword';
+import InsertPassword from './components/Auth/RecoveryPassword/InsertPassword/InsertPassword';
 import './App.scss';
 
 export default function App() {
@@ -29,6 +31,8 @@ export default function App() {
           <Route path='/user/savingsPlans' element={<SavingsPlans />} />
           <Route path='/user/account' element={<Account />} />
           <Route path='/user/:id' element={<User />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/change-password/:token' element={<InsertPassword />} />
           {/* <Route path='/*' element={<Error />} /> */}
         </Routes>
       </UserProvider>

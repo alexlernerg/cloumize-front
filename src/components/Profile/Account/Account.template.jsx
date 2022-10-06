@@ -18,7 +18,6 @@ const ProductDisplay = () => {
   };
   useEffect(() => {
     getPrice(product).then((response) => {
-      console.log(response);
       setPrice(response.prices.data[0].unit_amount);
     });
   });
@@ -42,7 +41,6 @@ const ProductDisplay = () => {
 };
 
 const SuccessDisplay = ({ sessionId }) => {
-  console.log('sessionID', sessionId);
   const onClick = (e) => {
     e.preventDefault();
     createPaymentSession({ sessionId }).then((response) => {
@@ -85,7 +83,7 @@ export default function Account() {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
-    console.log('query', query.get('session_id'));
+    // console.log('query', query.get('session_id'));
 
     if (query.get('success')) {
       setSuccess(true);

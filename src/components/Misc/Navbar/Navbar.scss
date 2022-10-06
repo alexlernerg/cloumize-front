@@ -29,27 +29,15 @@
     }
     &__user {
         width: 100%;
-        &-avatar {
-            width: fit-content;
-            border: 2px solid var(--avatar);
-            border-radius: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            & img {
-                border-radius: 100%;
-                width: 40px;
-                height: 40px;
-            }
-        }
         &-info {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            justify-content: space-between;
             margin-top: 28px;
         }
         &-name {
             margin-left: 5px;
-            & p:first-child {
+            & p {
                 font-size: 14px;
                 font-weight: 400;
                 color: var(--main-white);

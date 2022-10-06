@@ -5,7 +5,6 @@ const http = create({
 });
 
 export const getUser = () => {
-  console.log("entra en getUser")
   return http.get('/user/me');
 };
 

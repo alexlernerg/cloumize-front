@@ -92,10 +92,15 @@
         border: 1.4783px solid var(--main-primary);
         border-radius: 6px;
         padding: 12px 10px;
+        display: flex;
+        & label {
+          min-width: 70px;
+        }
         & input {
             border: none;
             margin-left: 8px;
             outline: none;
+            width: 100%;
         }
     }
     ::placeholder {
@@ -110,18 +115,19 @@
     align-items: center;
     padding: 0px 20px 32px 20px;
     border-radius: 0 0 8px 8px;
+    &-page3 {
+      justify-content: center;
+    }
   }
 }
 
 .Buttons {
   &__image {
-    &:first-child {
+    &-1 {
       margin-left: 130px !important;
+      max-width: 65px;
     }
-    &:last-child {
-      margin-right: 130px !important;
-    }
-    width: 56px;
+    max-width: 65px;
   }
   &__btn {
     background-color: var(--main-primary);
@@ -156,11 +162,8 @@
     }
     .Buttons {
         &__image {
-          &:first-child {
+          &-1 {
             margin-left: 400px !important;
-          }
-          &:last-child {
-            margin-right: 400px !important;
           }
         }
       }

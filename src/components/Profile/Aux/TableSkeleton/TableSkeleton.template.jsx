@@ -12,7 +12,6 @@ const TableMobile = ({
   handleClick,
   showPopup
 }) => {
-  console.log("dataContent", dataContent)
   return (
     <>
       {dataContent?.map((data, i) => (
@@ -250,7 +249,7 @@ const TableSkeleton = (
   showPopup,
   responseAPI
 ) => {
-  console.log("dataContent", dataContent)
+  console.log("filteredData", filteredData)
   return (
     <>
       <div className='TableSkeletonContainer__search'>
@@ -355,7 +354,6 @@ const TableSkeleton = (
                   className='TableSkeletonContainer__body-col'
                 >
                   {content.units}
-                  {i}
                 </td>
                 <td
                   valign='middle'

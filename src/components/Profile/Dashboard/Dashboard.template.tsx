@@ -13,6 +13,7 @@ import {
 import { useEffect } from 'react';
 import Spinner from '../../Misc/Spinner/Spinner';
 import { transforNumber } from '../../../helpers/transformNumber';
+import { getDiscounts } from '../../../services/DataService';
 
 const DataLastMonths = ({ data }: any) => {
   return (
@@ -47,25 +48,13 @@ const DataLastMonths = ({ data }: any) => {
   );
 };
 
-const Dashboard = (dataRest: any, data: any) => {
-  const { currentUser } = useUser();
-
-  const [onBoarding, setOnBoarding] = useState(true);
-
-  useEffect(() => {
-    currentUser && currentUser?.sync_instance_status === '0'
-        ? setOnBoarding(false)
-        : setOnBoarding(true);
-    // console.log("currentUSer", currentUser)
-  }, [currentUser]);
-
-  const showOnBoarding = () => setOnBoarding(false);
+const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any, show:any, page:any, setPage:any, errorAPI:any, setErrorAPI:any) => {
 
   return (
     <>
       {onBoarding && (
         <div className='Dashboard__onboarding'>
-          <OnBoarding closePopup={showOnBoarding} />
+          <OnBoarding closePopup={showOnBoarding} show={show} page={page} setPage={setPage} errorAPI={errorAPI} setErrorAPI={setErrorAPI}/>
         </div>
       )}
       <div className={`${onBoarding ? 'disable' : ''}`}>
@@ -78,7 +67,7 @@ const Dashboard = (dataRest: any, data: any) => {
               <h1 className='Dashboard__container-title'>Dashboard</h1>
               <div className='Dashboard__container-top'>
                 <div>
-                  <p>{dataRest.potential_annual}</p>
+                  <p>${dataRest.potential_annual}</p>
                   <p>Potential Annual Savings</p>
                 </div>
                 <Link

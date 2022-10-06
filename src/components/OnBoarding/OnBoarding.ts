@@ -3,15 +3,14 @@ import templateOnBoarding from './OnBoarding.template';
 import { getDiscounts, sendARN } from '../../services/DataService';
 import { useUser } from '../../context/hook/useUser';
 import { validators } from '../../helpers/validators';
+import { getUser } from '../../services/UserService';
 
-const OnBoarding = ({ closePopup }: any) => {
+const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: any) => {
   //Screen width
   const screenWidthMobile = window.screen.width < 500;
 
-  const {currentUser} = useUser();
+  const {currentUser, setCurrentUser} = useUser();
 
-  const [page, setPage] = useState(0);
-  const [errorAPI, setErrorAPI] = useState('');
   const [externalID, setExternalID] = useState('');
   const [ARN, setARN] = useState('');
   const [error, setError]:[any, React.Dispatch<React.SetStateAction<any>>] = useState({
@@ -27,52 +26,9 @@ const OnBoarding = ({ closePopup }: any) => {
     return error.ARN === undefined
   };
 
-  const [show, setShow] = useState(true);
-
   useEffect(()=> {
     setExternalID(currentUser?.external_id)
-      getDiscounts()
-          .then((response:any) => {
-            console.log("responseAPI", response.sync_instance_status)
-            if (currentUser) {
-              if (response.sync_instance_status === null && currentUser?.arn !== null) {
-                setShow(false)
-                setPage(3);
-              }
-              if (response.sync_instance_status === null && currentUser?.arn === null) {
-                setShow(false)
-                setPage(0);
-              }
-              if (response.sync_instance_status == 0) {
-                setShow(false)
-                setErrorAPI('')
-                setPage(3);
-              }
-              if (response.sync_instance_status == 1) {
-                setShow(false)
-                setErrorAPI('Please activate Cost Explorer on AWS')
-                setPage(3);
-              }
-              if (response.sync_instance_status == 2) {
-                setShow(false)
-                setErrorAPI('Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com')
-                setPage(3);
-              }
-              if (response.sync_instance_status == 3) {
-                setShow(false)
-                setErrorAPI('Something went wrong. Please contact us at support@cloumize.com')
-                setPage(3);
-              }
-            } else {
-              setShow(true)
-            }
-          })
-          .catch((error)=> console.log("error", error))
   }, [currentUser])
-
-  console.log("show", show)
-
-  console.log("currentUser", currentUser)
 
   const next = () => {
     setPage(page + 1);
@@ -85,8 +41,10 @@ const OnBoarding = ({ closePopup }: any) => {
     if(isValid()){
       sendARN({client_role_arn: ARN})
         .then((response: any) => {
-          console.log('response', response);
+          console.log("Entra en sendARN")
           setPage(3)
+          getUser()
+          .then((response:any)=> setCurrentUser(response))
         })
         .catch((error: any) => setErrorAPI(error));
     }

@@ -42,7 +42,7 @@ const SavingsPlans =()=>{
       });
   }, []);
   
-  const columnsSP = ['AWS Account ID', 'Savings Plan D', 'Status', 'Type', 'Instance Family', 'Term Remaining', 'Commitment', 'Payment Monthly', 'Payment Upfront']
+  const columnsSP = ['AWS Account ID', 'Savings Plan ID', 'Status', 'Type', 'Instance Family', 'Term Remaining', 'Commitment', 'Payment Monthly', 'Payment Upfront']
 
   return templateSavingsPlans(screenWidthMobile, dataSP, columnsSP, info);
 }
