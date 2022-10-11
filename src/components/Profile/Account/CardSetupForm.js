@@ -8,11 +8,14 @@ import { useUser } from '../../../context/hook/useUser';
 export default function CardSetupForm() {
     const {currentUser} = useUser();
     const [clientID, setClientID] = useState('');
-  useEffect(() => {
+const onClick = () => {
     getClientID()
-      .then((response) => setClientID(response.client_secret))
+      .then((response) => {
+        console.log("response", response)
+        setClientID(response.client_secret)
+      })
       .catch((error) => console.log('error', error));
-  }, []);
+  };
   const stripe = useStripe();
   const elements = useElements();
 
@@ -50,7 +53,7 @@ export default function CardSetupForm() {
   return (
     <form onSubmit={handleSubmit}>
       <CardSection />
-      <button disabled={!stripe}>Save Card</button>
+      <button disabled={!stripe} onClick={onClick}>Save Card</button>
     </form>
   );
 }
