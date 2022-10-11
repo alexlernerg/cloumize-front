@@ -36,9 +36,9 @@ const SavingsFinder = () => {
       .then((response: any) => {
         if (response?.savings_finder_data.length !== 0) {
           setInfo([
-            { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(3)}` },
-            { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(3)}` },
-            { id: 2, title: 'Total potential', savings: 'Savings', total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(3)}` },
+            { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(2)}` },
+            { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(2)}` },
+            { id: 2, title: 'Total potential', savings: 'Savings', total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(2)}` },
           ])
           setDataSF(response.savings_finder_data)
         }
@@ -50,13 +50,13 @@ const SavingsFinder = () => {
 
   const columnsSF = [
     'AWS Account ID',
-    'Recomendation ID',
+    'Recommendation ID',
     'Region',
     'Family',
     'Units',
-    'Current rate',
-    'Discount',
-    'Cloumize rate',
+    'Current Rate ($)',
+    'Discount (%)',
+    'Cloumize Rate ($)',
     'State',
     'Approval',
   ];

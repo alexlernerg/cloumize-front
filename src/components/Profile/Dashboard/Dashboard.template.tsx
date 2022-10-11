@@ -38,7 +38,7 @@ const DataLastMonths = ({ data }: any) => {
         </div>
       </div>
       <div>
-        <p className='DataLastMonths__content-title'>Missed Spending</p>
+        <p className='DataLastMonths__content-title'>Missed Savings</p>
         <p>
           ${transforNumber(data.wasted_spending)}
           <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
@@ -67,7 +67,7 @@ const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any,
               <h1 className='Dashboard__container-title'>Dashboard</h1>
               <div className='Dashboard__container-top'>
                 <div>
-                  <p>${dataRest.potential_annual}</p>
+                  <p>${transforNumber(dataRest.potential_annual)}</p>
                   <p>Potential Annual Savings</p>
                 </div>
                 <Link
@@ -100,7 +100,7 @@ const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any,
                   <p className='Dashboard__container-thirdBox__title'>
                     {dataRest.savings_strategies_pending}{' '}
                     <span className='Dashboard__container-thirdBox__span'>
-                      Pending
+                      Pending Approval
                     </span>
                   </p>
                   <div className='Dashboard__container-thirdBox__img'>

@@ -30,9 +30,9 @@ const SavingsPlans =()=>{
       .then((response: any) => {
         if (response?.savings_plan_data.length !== 0) {
           setInfo([
-            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.savings_plan_stats.monthly_commitment.toFixed(3)}` },
-            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(3)}` },
-            { id: 2, title: 'Savings Plans', savings: 'Count', total: `${response.savings_plan_stats.monthly_payment}` },
+            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.savings_plan_stats.monthly_commitment.toFixed(2)}` },
+            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(2)}` },
+            { id: 2, title: 'Savings Plans', savings: 'Count', total: `${response.savings_plan_stats.monthly_payment.toFixed(0)}` },
           ])
           setDataSP(response.savings_plan_data)
         }
@@ -41,7 +41,7 @@ const SavingsPlans =()=>{
         console.error('Error data SP', error);
       });
   }, []);
-  
+
   const columnsSP = ['AWS Account ID', 'Savings Plan ID', 'Status', 'Type', 'Instance Family', 'Term Remaining', 'Commitment', 'Payment Monthly', 'Payment Upfront']
 
   return templateSavingsPlans(screenWidthMobile, dataSP, columnsSP, info);

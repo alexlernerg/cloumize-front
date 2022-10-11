@@ -32,7 +32,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
   });
   return (
     <div className='VerticalBar'>
-      <p className='mb-0'>Total Compute Costs</p>
+      <p className='mb-0'>Total Compute Costs ($)</p>
       <div className='VerticalBar__legend'>
         <p className='mb-0 me-4'>
           <img src='/Profile/colorBlueDot.svg' alt='dot' />
@@ -63,7 +63,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
               },
               y: {
                 stacked: true,
-                max: 3000,
+                max: 13000,
                 ticks: {
                   stepSize: 1000,
                   font: {
@@ -122,8 +122,7 @@ export const DoughnutGraphic = (
   return (
     <div className='Doughnut'>
       <p>
-        Platform <br />
-        Breakdown
+        Platform Breakdown (%)
       </p>
       <div className='Doughnut__container'>
         <Doughnut
@@ -196,7 +195,7 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
 
   return (
     <div className='Pie'>
-      <p className='mb-0'>Reservation Coverage</p>
+      <p className='mb-0'>Reservation Coverage (%)</p>
       <div className='Pie__container'>
         <Pie
           data={data}

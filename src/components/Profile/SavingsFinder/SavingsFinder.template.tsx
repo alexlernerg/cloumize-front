@@ -9,7 +9,7 @@ const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[]
   return (
     <div className='SavingsFinder'>
       <Navbar />
-      {dataSF[0].user_id_cm === 0 ? <Spinner/> : 
+      {dataSF[0].user_id_cm === 0 ? <Spinner/> :
       <div className='SavingsFinder__container'>
         <div className='SavingsFinder__container-top'>
           <h1 className='SavingsFinder__container-title'>
@@ -26,7 +26,7 @@ const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[]
               className='SavingsFinder__container-recomendations form-check-label'
               htmlFor='flexSwitchCheckDefault'
             >
-              Recibe recomendaciones
+              Auto-Saver
             </label>
           </div>
         </div>

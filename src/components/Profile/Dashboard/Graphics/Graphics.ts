@@ -5,7 +5,7 @@ const getRandomColor = () => {
   const colorRandom = Math.floor(Math.random()*myColors.length);
   const color = myColors[colorRandom];
   return color;
-} 
+}
 
 export const VerticalBarGraphic = ({dataRest}:any) => {
   const dataVerticalBar = dataRest.spending_overview
