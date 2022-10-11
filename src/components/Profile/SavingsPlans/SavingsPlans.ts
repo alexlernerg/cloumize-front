@@ -28,13 +28,17 @@ const SavingsPlans =()=>{
   useEffect(() => {
     getSavingsPlans()
       .then((response: any) => {
+        console.log("response", response)
         if (response?.savings_plan_data.length !== 0) {
           setInfo([
-            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.savings_plan_stats.monthly_commitment.toFixed(3)}` },
-            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(3)}` },
-            { id: 2, title: 'Savings Plans', savings: 'Count', total: `${response.savings_plan_stats.monthly_payment}` },
+            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.savings_plan_stats.monthly_commitment.toFixed(2)}` },
+            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(2)}` },
+            { id: 2, title: 'Savings Plans', savings: 'Count', total: `${response.savings_plan_stats.monthly_payment.toFixed(2)}` },
           ])
           setDataSP(response.savings_plan_data)
+        }
+        else {
+          setDataSP([])
         }
       })
       .catch((error: any) => {

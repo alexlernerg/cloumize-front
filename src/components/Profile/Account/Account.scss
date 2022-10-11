@@ -86,21 +86,24 @@
       }
     }
     &-Payments {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      & p {
-        font-family: 'Rubik';
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        color: var(--main-text);
-        margin-bottom: 68px;
-      }
-      & button {
-        @include buttons.button-lg;
-        padding: 11px 120px;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+      // justify-content: center;
+      // & p {
+      //   font-family: 'Rubik';
+      //   font-weight: 400;
+      //   font-size: 14px;
+      //   line-height: 17px;
+      //   color: var(--main-text);
+      //   margin-bottom: 68px;
+      // }
+      // & button {
+      //   @include buttons.button-lg;
+      //   padding: 11px 120px;
+      // }
+      & label {
+        display: block !important;
       }
     }
   }

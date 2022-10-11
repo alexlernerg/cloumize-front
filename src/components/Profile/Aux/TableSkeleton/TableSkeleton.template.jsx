@@ -1,4 +1,5 @@
 import React from 'react';
+import { addCommas } from '../../../../helpers/transformNumber';
 import PopUp from '../PopUp/PopUp';
 import Checkbox from './Checkbox/Checkbox';
 import './TableSkeleton.scss';
@@ -20,50 +21,54 @@ const TableMobile = ({
             <>
               <tr>
                 <td>{columnsContent[0]}</td>
-                <td>{data.aws_account_id}</td>
+                <td>{data?.aws_account_id}</td>
               </tr>
               <tr>
                 <td>{columnsContent[1]}</td>
-                <td>{data.recommendation_id_cm}</td>
+                <td>{data?.recommendation_id_cm}</td>
               </tr>
               <tr>
                 <td>{columnsContent[2]}</td>
-                <td>{data.region}</td>
+                <td>{data?.region}</td>
               </tr>
               <tr>
                 <td>{columnsContent[3]}</td>
-                <td>{data.instance_family}</td>
+                <td>{data?.instance_family}</td>
               </tr>
               <tr>
                 <td>{columnsContent[4]}</td>
-                <td>{data.units}</td>
+                <td>{data?.units}</td>
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.current_rate?.toFixed(2)}</td>
+                <td>{addCommas(data?.current_rate?.toFixed(2))}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.cloumize_discount?.toFixed(2)}</td>
+                <td>{data?.cloumize_discount?.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.cloumize_rate?.toFixed(2)}</td>
+                <td>{addCommas(data?.cloumize_rate?.toFixed(2))}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
+                <td className='TableSkeletonContainer__body-col__green'>{addCommas(data?.cloumize_annual_savings?.toFixed(2))}$</td>
+              </tr>
+              <tr>
+                <td>{columnsContent[9]}</td>
                 <td valign='middle' className='TableMobile__body-col'>
-                  {data.state === 'Approved' && (
+                  {data?.state === 'Approved' && (
                     <p className='TableSkeletonContainer__body-textApproved m-0'>
                       Approved
                     </p>
                   )}
-                  {data.state === 'Pending Approval' && (
+                  {data?.state === 'Pending Approval' && (
                     <p className='TableSkeletonContainer__body-textPending m-0'>
                       Pending
                     </p>
                   )}
-                  {data.state === 'Savings Activated' && (
+                  {data?.state === 'Savings Activated' && (
                     <p className='TableSkeletonContainer__body-textActive m-0'>
                       Active
                     </p>
@@ -71,19 +76,19 @@ const TableMobile = ({
                 </td>
               </tr>
               <tr className='align-items-center'>
-                <td>{columnsContent[9]}</td>
+                <td>{columnsContent[10]}</td>
                 <td valign='middle' className='TableMobile__body-col'>
-                  {data.state === 'Approved' || data.state === 'Savings Activated' ? (
+                  {data?.state === 'Approved' || data?.state === 'Savings Activated' ? (
                     <div className='d-flex justify-content-center checkboxDesktop'>
                       <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
                     <Checkbox
-                      key={data.recommendation_id_cm}
+                      key={data?.recommendation_id_cm}
                       type='checkbox'
-                      id={data.recommendation_id_cm}
+                      id={data?.recommendation_id_cm}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(data.recommendation_id_cm)}
+                      isChecked={isCheck.includes(data?.recommendation_id_cm)}
                       className='custom-radio-checkbox__input z-10'
                     />
                   )}
@@ -104,43 +109,43 @@ const TableMobile = ({
             <>
               <tr>
                 <td>{columnsContent[0]}</td>
-                <td>{data.aws_account_id}</td>
+                <td>{data?.aws_account_id}</td>
               </tr>
               <tr>
                 <td>{columnsContent[1]}</td>
-                <td>{data.instance_id}</td>
+                <td>{data?.instance_id}</td>
               </tr>
               <tr>
                 <td>{columnsContent[2]}</td>
-                <td>{data.instance_type}</td>
+                <td>{data?.instance_type}</td>
               </tr>
               <tr>
                 <td>{columnsContent[3]}</td>
-                <td>{data.region}</td>
+                <td>{data?.region}</td>
               </tr>
               <tr>
                 <td>{columnsContent[4]}</td>
-                <td>{data.az}</td>
+                <td>{data?.az}</td>
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.platform}</td>
+                <td>{data?.platform}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.tenancy}</td>
+                <td>{data?.tenancy}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.instance_lifecycle}</td>
+                <td>{data?.instance_lifecycle}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td>{data.state}</td>
+                <td>{data?.state}</td>
               </tr>
               <tr>
                 <td>{columnsContent[9]}</td>
-                <td>{data.launch_time}</td>
+                <td>{data?.launch_time}</td>
               </tr>
             </>
           )}
@@ -148,27 +153,27 @@ const TableMobile = ({
             <>
               <tr>
                 <td>{columnsContent[0]}</td>
-                <td>{data.aws_account_id}</td>
+                <td>{data?.aws_account_id}</td>
               </tr>
               <tr>
                 <td>{columnsContent[1]}</td>
-                <td>{data.group_reservation_id}</td>
+                <td>{data?.group_reservation_id}</td>
               </tr>
               <tr>
                 <td>{columnsContent[2]}</td>
-                <td>{data.status}</td>
+                <td>{data?.status}</td>
               </tr>
               <tr>
                 <td>{columnsContent[3]}</td>
-                <td>{data.description}</td>
+                <td>{data?.description}</td>
               </tr>
               <tr>
                 <td>{columnsContent[4]}</td>
-                <td>{data.instance_family}</td>
+                <td>{data?.instance_family}</td>
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.reservation_count}</td>
+                <td>{data?.reservation_count}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
@@ -176,11 +181,11 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.discount}</td>
+                <td>{data?.discount}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td>{data.cloumize_auto_saver}</td>
+                <td>{data?.cloumize_auto_saver}</td>
               </tr>
             </>
           )}
@@ -188,39 +193,39 @@ const TableMobile = ({
             <>
               <tr>
                 <td>{columnsContent[0]}</td>
-                <td>{data.aws_account_id}</td>
+                <td>{data?.aws_account_id}</td>
               </tr>
               <tr>
                 <td>{columnsContent[1]}</td>
-                <td>{data.sp_id_aws}</td>
+                <td>{data?.sp_id_aws}</td>
               </tr>
               <tr>
                 <td>{columnsContent[2]}</td>
-                <td>{data.status}</td>
+                <td>{data?.status}</td>
               </tr>
               <tr>
                 <td>{columnsContent[3]}</td>
-                <td>{data.sp_type}</td>
+                <td>{data?.sp_type}</td>
               </tr>
               <tr>
                 <td>{columnsContent[4]}</td>
-                <td>{data.instance_family}</td>
+                <td>{data?.instance_family}</td>
               </tr>
               <tr>
                 <td>{columnsContent[5]}</td>
-                <td>{data.term_remaining_d}</td>
+                <td>{data?.term_remaining_d}</td>
               </tr>
               <tr>
                 <td>{columnsContent[6]}</td>
-                <td>{data.commitment}</td>
+                <td>{addCommas(data?.commitment.toFixed(2))}</td>
               </tr>
               <tr>
                 <td>{columnsContent[7]}</td>
-                <td>{data.payment_monthly}</td>
+                <td>{addCommas(data?.payment_monthly.toFixed(2))}</td>
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td>{data.payment_upfront}</td>
+                <td>{addCommas(data?.payment_upfront.toFixed(2))}</td>
               </tr>
             </>
           )}
@@ -249,7 +254,7 @@ const TableSkeleton = (
   showPopup,
   responseAPI
 ) => {
-  console.log("filteredData", filteredData)
+  // console.log("filteredData", filteredData)
   return (
     <>
       <div className='TableSkeletonContainer__search'>
@@ -259,7 +264,7 @@ const TableSkeleton = (
           value={filterChoosed}
           className='TableSkeletonContainer__search-select'
         >
-          {Object.keys(dataContent[0]).map((col, i) => (
+          {dataContent[0] && Object.keys(dataContent[0]).map((col, i) => (
             <option
               value={col}
               className='TableSkeletonContainer__search-col'
@@ -323,71 +328,77 @@ const TableSkeleton = (
         </thead>
         <tbody className='TableSkeletonContainer__body'>
           {pathname === '/user/savingsFinder' &&
-            filteredData.map((content, i) => (
+            filteredData?.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.aws_account_id}
+                  {content?.aws_account_id}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.recommendation_id_cm}
+                  {content?.recommendation_id_cm}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.region}
+                  {content?.region}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.instance_family}
+                  {content?.instance_family}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.units}
+                  {content?.units}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.current_rate?.toFixed(2)}
+                  {addCommas(content?.current_rate?.toFixed(2))}$
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.cloumize_discount?.toFixed(2)}
+                  {content?.cloumize_discount?.toFixed(2)}%
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.cloumize_rate?.toFixed(2)}
+                  {addCommas(content?.cloumize_rate?.toFixed(2))}$
+                </td>
+                <td
+                  valign='middle'
+                  className='TableSkeletonContainer__body-col TableSkeletonContainer__body-col__green'
+                >
+                  {addCommas(content?.cloumize_annual_savings?.toFixed(2))}$
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state === 'Approved' && (
+                  {content?.state === 'Approved' && (
                     <p className='TableSkeletonContainer__body-textApproved m-0'>
                       Approved
                     </p>
                   )}
-                  {content.state === 'Pending Approval' && (
+                  {content?.state === 'Pending Approval' && (
                     <p className='TableSkeletonContainer__body-textPending m-0'>
                       Pending
                     </p>
                   )}
-                  {content.state === 'Savings Activated' && (
+                  {content?.state === 'Savings Activated' && (
                     <p className='TableSkeletonContainer__body-textActive m-0'>
                       Active
                     </p>
@@ -397,18 +408,18 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state === 'Approved' ||
-                  content.state === 'Savings Activated' ? (
+                  {content?.state === 'Approved' ||
+                  content?.state === 'Savings Activated' ? (
                     <div className='d-flex justify-content-center checkboxDesktop'>
                       <img src='/Profile/checkbox.svg' alt='checkbox' />
                     </div>
                   ) : (
                     <Checkbox
-                      key={content.recommendation_id_cm}
+                      key={content?.recommendation_id_cm}
                       type='checkbox'
-                      id={content.recommendation_id_cm}
+                      id={content?.recommendation_id_cm}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(content.recommendation_id_cm)}
+                      isChecked={isCheck.includes(content?.recommendation_id_cm)}
                       className='custom-radio-checkbox__input z-10'
                     />
                   )}
@@ -416,168 +427,168 @@ const TableSkeleton = (
               </tr>
             ))}
           {pathname === '/user/computeFinder' &&
-            filteredData.map((content, i) => (
+            filteredData?.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.aws_account_id}
+                  {content?.aws_account_id}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                   style={{wordBreak: 'break-word'}}
                 >
-                  {content.instance_id}
+                  {content?.instance_id}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.instance_type}
+                  {content?.instance_type}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.region}
+                  {content?.region}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.az}
+                  {content?.az}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.platform}
+                  {content?.platform}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.tenancy}
+                  {content?.tenancy}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.instance_lifecycle}
+                  {content?.instance_lifecycle}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.state}
+                  {content?.state}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.launch_time}
+                  {content?.launch_time}
                 </td>
               </tr>
             ))}
           {pathname === '/user/savingsPlans' &&
-            filteredData.map((content, i) => (
+            filteredData?.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.aws_account_id}
+                  {content?.aws_account_id}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.sp_id_aws}
+                  {content?.sp_id_aws}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.status}
+                  {content?.status}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.sp_type}
+                  {content?.sp_type}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.instance_family}
+                  {content?.instance_family}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.term_remaining_d}
+                  {content?.term_remaining_d}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.commitment}
+                  {addCommas(content?.commitment.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.payment_monthly}
+                  {addCommas(content?.payment_monthly.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.payment_upfront}
+                  {addCommas(content?.payment_upfront.toFixed(2))}
                 </td>
               </tr>
             ))}
           {pathname === '/user/existingPlans' &&
-            filteredData.map((content, i) => (
+            filteredData?.map((content, i) => (
               <tr key={i} className='TableSkeletonContainer__body-line'>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.aws_account_id}
+                  {content?.aws_account_id}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.group_reservation_id}
+                  {content?.group_reservation_id}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.status}
+                  {content?.status}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.description}
+                  {content?.description}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.instance_family}
+                  {content?.instance_family}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.reservation_count}
+                  {content?.reservation_count}
                 </td>
                 <td
                   valign='middle'
@@ -589,13 +600,13 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.discount}
+                  {content?.discount}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {content.cloumize_auto_saver}
+                  {content?.cloumize_auto_saver}
                 </td>
               </tr>
             ))}

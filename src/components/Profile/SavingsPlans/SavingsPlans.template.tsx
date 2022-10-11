@@ -16,6 +16,7 @@ const ExternalData = () => {
 }
 
 const SavingsPlans = (screenWidthMobile:boolean, dataSP:any, columnsSP:string[], info:any) => {
+  console.log("data", dataSP)
   return <div className='SavingsPlans'>
     <Navbar/>
     {dataSP[0].user_id_cm === 0 ? <Spinner/> : 

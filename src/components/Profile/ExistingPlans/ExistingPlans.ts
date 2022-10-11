@@ -32,13 +32,16 @@ const ExistingPlans =()=>{
       .then((response: any) => {
         if (response.reserved_instance_data.length !== 0){
           setInfo ([
-            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.reserved_instance_stats.total_upfront_payment.toFixed(3)}` },
-            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.reserved_instance_stats.total_monthly_payment.toFixed(3)}` },
+            { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.reserved_instance_stats.total_upfront_payment.toFixed(2)}` },
+            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.reserved_instance_stats.total_monthly_payment.toFixed(2)}` },
             { id: 2, title: 'Reserved Instances', savings: 'Count', total: `${response.reserved_instance_stats.count_reserved_instance}` },
           ])
           setStats([response.reserved_instance_stats.active_plans, response.reserved_instance_stats.expiring_this_month])
           setDataEP(response.reserved_instance_data)
+        } else {
+          setDataEP([])
         }
+        
       })
       .catch((error: any) => {
         console.error('Error data EP', error);

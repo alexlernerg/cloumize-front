@@ -24,7 +24,12 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
       {
         data: dataVB2,
         backgroundColor: '#708295',
-        borderRadius: {topLeft:5, topRight:5, bottomLeft:0, bottomRight:0},
+        borderRadius: {
+          topLeft: 5,
+          topRight: 5,
+          bottomLeft: 0,
+          bottomRight: 0,
+        },
         borderSkipped: false,
         pointStyle: 'circle',
       },
@@ -50,6 +55,10 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
             maintainAspectRatio: false,
             scales: {
               x: {
+                title: {
+                  display: true,
+                  text: 'Time'
+                },
                 stacked: true,
                 grid: {
                   display: false,
@@ -62,10 +71,14 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                 },
               },
               y: {
+                title: {
+                  display: true,
+                  text: 'Spending ($)'
+                },
                 stacked: true,
-                max: 3000,
                 ticks: {
                   stepSize: 1000,
+                  min: 0,
                   font: {
                     size: screenWidthMobile ? 8 : 14,
                     family: 'Rubik',
@@ -90,6 +103,13 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                   weight: 'bold',
                   family: 'Rubik',
                 },
+                callbacks: {
+                  label: function (context) {
+                    let label = context.formattedValue;
+                    label = label + ' $';
+                    return label;
+                  },
+                },
               },
               legend: {
                 display: false,
@@ -108,7 +128,7 @@ export const DoughnutGraphic = (
   getRandomColor,
   screenWidthMobile
 ) => {
-  console.log('dataRest', dataRest.platform);
+  // console.log('dataRest', dataRest.platform);
   const [data, setData] = useState({
     labels: Object.keys(dataRest.platform),
     datasets: [
@@ -154,8 +174,8 @@ export const DoughnutGraphic = (
                     return title;
                   },
                   label: function (context) {
-                    let label = context.formattedValue
-                    return label;
+                    let label = context.formattedValue;
+                    return label + ' %';
                   },
                 },
               },
@@ -225,8 +245,8 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
                     return title;
                   },
                   label: function (context) {
-                    let label = context.formattedValue
-                    return label;
+                    let label = context.formattedValue;
+                    return label + ' %';
                   },
                 },
               },
@@ -311,6 +331,13 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
                     weight: 'bold',
                     family: 'Rubik',
                   },
+                  callbacks: {
+                    label: function (context) {
+                      let label = context.formattedValue;
+                      label = label + ' %';
+                      return label;
+                    },
+                  },
                 },
                 legend: {
                   display: false,
@@ -319,6 +346,10 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
               },
               scales: {
                 x: {
+                  title: {
+                  display: true,
+                  text: 'Spending ($)'
+                },
                   position: 'top',
                 },
               },

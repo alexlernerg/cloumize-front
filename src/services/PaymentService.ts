@@ -1,7 +1,7 @@
 import { create } from './BaseService';
 
 const http = create({
-  useAccessToken: false,
+  useAccessToken: true,
 });
 
 export const getPrice = async (data:any) => {
@@ -12,6 +12,9 @@ export const getPaymentSession = async (data:any) => {
 };
 export const createPaymentSession = async (data:any) => {
   return await http.post(`/create-portal-session`, data);
+};
+export const getClientID = async () => {
+  return await http.get(`/payment/card-wallet`);
 };
 
 // export const webhookPayment = async () => {
