@@ -125,7 +125,6 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
 
 export const DoughnutGraphic = (
   dataRest,
-  getRandomColor,
   screenWidthMobile
 ) => {
   // console.log('dataRest', dataRest.platform);
@@ -135,10 +134,11 @@ export const DoughnutGraphic = (
       {
         label: '',
         data: Object.values(dataRest.platform),
-        backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
+        backgroundColor: ['#2C6CF6', '#55BFF9', '#708295', '#0C56F6', '#96B6FB', '#477ED0', '#AADFFC'],
       },
     ],
   });
+  
   return (
     <div className='Doughnut'>
       <p>
@@ -278,7 +278,7 @@ export const PieGraphic = (screenWidthMobile, dataRest) => {
   );
 };
 
-export const HorizontalBar = (dataRest, getRandomColor) => {
+export const HorizontalBar = (dataRest) => {
   const labelsHB = [];
   dataRest.instance_family
     .map((obj) => Object.keys(obj))
@@ -294,12 +294,13 @@ export const HorizontalBar = (dataRest, getRandomColor) => {
     datasets: [
       {
         data: dataHB,
-        backgroundColor: getRandomColor(),
+        backgroundColor: ['#2C6CF6', '#55BFF9', '#477ED0', '#0C56F6', '#96B6FB', '#102F4E', '#AADFFC'],
         borderRadius: 5,
         borderSkipped: false,
       },
     ],
   });
+  console.log("data", data)
 
   return (
     <>
