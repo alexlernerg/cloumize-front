@@ -93,6 +93,11 @@ const TableSkeleton = ({ data, columns }) => {
     })
   }
 
+  const contentPopUp = {
+    title: 'Are you sure you want to pass the selected instances?',
+    button: ["Yes, I'm sure", "No, come back"]
+  }
+
   return templateTableSkeleton(
     data,
     columns,
@@ -110,7 +115,8 @@ const TableSkeleton = ({ data, columns }) => {
     sendApproval, 
     show, 
     showPopup,
-    responseAPI
+    responseAPI,
+    contentPopUp
   );
 };
 

@@ -4,8 +4,9 @@ import {loadStripe} from '@stripe/stripe-js';
 import Navbar from '../../Misc/Navbar/Navbar';
 import CardSetupForm from './CardSetupForm';
 import './Account.scss';
+import PopUp from '../Aux/PopUp/PopUp';
 
-export default function Account(currentUser, view, changeView) {
+export default function Account(currentUser, view, changeView, show, openModal, AWSfill, contentPopUp, sendApproval, responseAPI) {
   const stripePromise = loadStripe('pk_test_51LSlY8GDFiXM20ocQPScB7UOHwxTjEuwJIQehEMO527ssoaGaTZyvOrQ7vkJgITkwuQrELMaZtCcJjuBtCbZAeAe00xV0b5bxv');
 
   return (
@@ -28,14 +29,14 @@ export default function Account(currentUser, view, changeView) {
                   alt='check'
                 ></img>
               )}
-              <p className='Account__container-menu__btn-number' id='0'>
+              <p className='Account__container-menu__btn-number Account__container-menu__btn-number-1' id='0'>
                 1
               </p>
               <p className='Account__container-menu__btn-section' id='0'>
                 Account ARN
               </p>
             </button>
-            <img src='/Profile/line.svg' alt='line' />
+            <img src='/Profile/line.svg' alt='line' className='Account__container-menu__line'/>
             <button
               className='Account__container-menu__btn'
               onClick={changeView}
@@ -54,7 +55,7 @@ export default function Account(currentUser, view, changeView) {
                 AWS
               </p>
             </button>
-            <img src='/Profile/line.svg' alt='line' />
+            <img src='/Profile/line.svg' alt='line' className='Account__container-menu__line'/>
             <button
               className='Account__container-menu__btn'
               onClick={changeView}
@@ -93,10 +94,13 @@ export default function Account(currentUser, view, changeView) {
             </div>
           )}
           {view === 1 && (
-            <div className='Account__container-AWS'>
-              <p>Check if you have already filled out the AWS form</p>
-              <input type='checkbox' />
-            </div>
+            <>
+              <div className='Account__container-AWS'>
+                <p>Check if you have already filled out the AWS form</p>
+                <input type='checkbox' onChange={openModal} checked={AWSfill} disabled={AWSfill}/>
+              </div>
+              {show && <PopUp showPopup={openModal} sendApproval={sendApproval} responseAPI={responseAPI} content={contentPopUp}/>}
+            </>
           )}
           {view === 2 && (
             <div className='Account__container-Payments'>

@@ -78,7 +78,6 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                 stacked: true,
                 ticks: {
                   stepSize: 1000,
-                  min: 0,
                   font: {
                     size: screenWidthMobile ? 8 : 14,
                     family: 'Rubik',

@@ -1,13 +1,13 @@
 import React from 'react';
 import './PopUp.scss';
 
-const PopUp = (showPopup:any, sendApproval:any, responseAPI:any) => {
+const PopUp = (showPopup:any, sendApproval:any, responseAPI:any, content:any) => {
   return <div className='PopUpContainer'>
     <>
-        <p className='PopUpContainer__question'>Are you sure you want to pass the selected instances?</p>
+        <p className='PopUpContainer__question'>{content?.title}</p>
         <div>
-            <button onClick={sendApproval}>Yes, I'm sure</button>
-            <button onClick={showPopup}>No, come back</button>
+            <button onClick={sendApproval}>{content?.button[0]}</button>
+            <button onClick={showPopup}>{content?.button[1]}</button>
         </div>
         <p className='PopUpContainer__feedback'>{responseAPI}</p>
     </>

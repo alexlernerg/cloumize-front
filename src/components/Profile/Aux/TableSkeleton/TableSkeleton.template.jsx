@@ -252,7 +252,8 @@ const TableSkeleton = (
   sendApproval,
   show, 
   showPopup,
-  responseAPI
+  responseAPI, 
+  contentPopUp
 ) => {
   // console.log("filteredData", filteredData)
   return (
@@ -626,7 +627,7 @@ const TableSkeleton = (
           <button disabled={isCheck.length <= 0 ? true : false} onClick={showPopup}>Approve</button>
         </div>
       )}
-      {show && <PopUp showPopup={showPopup} sendApproval={sendApproval} responseAPI={responseAPI}/>}
+      {show && <PopUp showPopup={showPopup} sendApproval={sendApproval} responseAPI={responseAPI} content={contentPopUp}/>}
     </>
   );
 };
