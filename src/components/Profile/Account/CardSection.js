@@ -1,30 +1,28 @@
-/**
-* Use the CSS tab above to style your Element's container.
-*/
 import React from 'react';
 import {CardElement} from '@stripe/react-stripe-js';
-// import './Styles.css'
+import './Account.scss'
+
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
-      color: "#32325d",
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      color: "#102F4E",
+      fontFamily: '"Rubik", sans-serif',
       fontSmoothing: "antialiased",
       fontSize: "16px",
       "::placeholder": {
-        color: "#aab7c4",
+        color: "#8796A6",
       },
     },
     invalid: {
-      color: "#fa755a",
-      iconColor: "#fa755a",
+      color: "#FF434E",
+      iconColor: "#FF434E",
     },
   },
 };
 function CardSection() {
   return (
-    <label>
-      Card details
+    <label className='Card__label'>
+      <p>Card details </p>
       <CardElement options={CARD_ELEMENT_OPTIONS} />
     </label>
   );

@@ -4,19 +4,18 @@ const http = create({
   useAccessToken: true,
 });
 
-export const getPrice = async (data:any) => {
-    return await http.post(`/consulting-price`, data);
+export const getClientSecret = async () => {
+    return await http.get(`payment/client-secret`);
   };
-export const getPaymentSession = async (data:any) => {
-  return await http.post(`/create-checkout-session`, data);
+export const transforPaymentMethod = async () => {
+  return await http.get(`payment/default-payment`);
 };
-export const createPaymentSession = async (data:any) => {
-  return await http.post(`/create-portal-session`, data);
+export const subscribe = async () => {
+  return await http.get(`payment/subscribe`);
 };
-export const getClientID = async () => {
-  return await http.get(`/payment/card-wallet`);
+export const changePaymentMethod = async () => {
+  return await http.get(`payment/change-payment`);
 };
-
-// export const webhookPayment = async () => {
-//   return await http.get(`/webhook`);
-// };
+export const unsubscribe = async () => {
+  return await http.get(`payment/unsubscribe`);
+};
