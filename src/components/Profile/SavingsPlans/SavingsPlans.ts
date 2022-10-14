@@ -8,8 +8,7 @@ const SavingsPlans =()=>{
 
   const [info, setInfo] = useState([
     { id: 0, title: 'Monthly Commitment', savings: 'Total', total: '$0' },
-    { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' },
-    { id: 2, title: 'Savings Plans', savings: 'Count', total: '0' },
+    { id: 1, title: 'Upfront Payment', savings: 'Total', total: '$0' }
   ])
 
   const [dataSP, setDataSP] = useState([{
@@ -25,6 +24,8 @@ const SavingsPlans =()=>{
     payment_upfront: 0
   }]);
 
+  const [stats, setStats] = useState([0, 0]);
+
   useEffect(() => {
     getSavingsPlans()
       .then((response: any) => {
@@ -32,10 +33,10 @@ const SavingsPlans =()=>{
         if (response?.savings_plan_data.length !== 0) {
           setInfo([
             { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.savings_plan_stats.monthly_commitment.toFixed(2)}` },
-            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(2)}` },
-            { id: 2, title: 'Savings Plans', savings: 'Count', total: `${response.savings_plan_stats.monthly_payment.toFixed(2)}` },
+            { id: 1, title: 'Upfront Payment', savings: 'Total', total: `$${response.savings_plan_stats.upfront_payment.toFixed(2)}` }
           ])
           setDataSP(response.savings_plan_data)
+          setStats([response.savings_plan_stats.total_savings_plan, response.savings_plan_stats.expiring_savings_plan_count])
         }
         else {
           setDataSP([])
@@ -48,7 +49,7 @@ const SavingsPlans =()=>{
   
   const columnsSP = ['AWS Account ID', 'Savings Plan ID', 'Status', 'Type', 'Instance Family', 'Term Remaining', 'Commitment', 'Payment Monthly', 'Payment Upfront']
 
-  return templateSavingsPlans(screenWidthMobile, dataSP, columnsSP, info);
+  return templateSavingsPlans(screenWidthMobile, dataSP, columnsSP, info, stats);
 }
 
 export default SavingsPlans;

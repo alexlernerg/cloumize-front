@@ -108,6 +108,7 @@ const Dashboard = () => {
   });
 
   const { currentUser } = useUser();
+  console.log("current", currentUser)
 
   const [show, setShow] = useState(true);
   const [page, setPage] = useState(0);

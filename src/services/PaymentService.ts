@@ -7,6 +7,9 @@ const http = create({
 export const getClientSecret = async () => {
     return await http.get(`payment/client-secret`);
   };
+  export const getPaymentMethod = async () => {
+    return await http.get(`payment/payment-method`);
+  }
 export const transforPaymentMethod = async () => {
   return await http.get(`payment/default-payment`);
 };

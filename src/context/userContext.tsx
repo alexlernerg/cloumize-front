@@ -33,7 +33,7 @@ export const UserProvider = ({ children }: IContext): any => {
     if (getAccessToken()) {
       getCurrentUser();
     }
-    // console.log("currentUser", currentUser)
+    console.log("currentUser", currentUser)
   }, []);
 
   const values: any = {

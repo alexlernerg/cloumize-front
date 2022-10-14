@@ -1,19 +1,11 @@
-import React from 'react';
 import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
 import Navbar from '../../Misc/Navbar/Navbar';
-import CardSetupForm from './CardSetupForm';
-import './Account.scss';
 import PopUp from '../Aux/PopUp/PopUp';
-import { subscribe } from '../../../services/PaymentService';
+import CardForm from './CardForm/CardForm';
+import './Account.scss';
 
-export default function Account(currentUser, view, changeView, show, openModal, AWSfill, contentPopUp, sendApproval, responseAPI) {
-  const stripePromise = loadStripe('pk_test_51LSlY8GDFiXM20ocQPScB7UOHwxTjEuwJIQehEMO527ssoaGaTZyvOrQ7vkJgITkwuQrELMaZtCcJjuBtCbZAeAe00xV0b5bxv');
-  const onClick = () => {
-    subscribe()
-    .then((response)=> console.log(response))
-    .catch((error)=> console.log("error", error))
-  }
+export default function Account({currentUser, view, changeView, show, openModal, AWSfill, contentPopUp, sendApproval, responseAPI, stripePromise, onClick, card}) {
+  console.log("current", currentUser)
   return (
     <div className='Account'>
       <Navbar />
@@ -108,29 +100,28 @@ export default function Account(currentUser, view, changeView, show, openModal, 
             </>
           )}
           {view === 2 && (
-            <>
-              <div className='Account__container-Payments'>
+              !currentUser.stripe_customer_id ? <div className='Account__container-Payments'>
                 {/* <p>Add an account to benefit from Cloumize discounts.</p>
                 <button>Add credit card</button> */}
                 <Elements stripe={stripePromise}>
-                  <CardSetupForm />
+                  <CardForm />
                 </Elements>
               </div>
+              :
               <div className='Account__container-cardSaved'>
                 <div className='Card__saved'>
                   <img src="/Profile/creditCard.svg" alt="card"/>
                   <div>
-                    <p>· · · ·  · · · ·  · · · ·  9783</p>
-                    <p>04/23</p>
+                    <p>· · · ·  · · · ·  · · · ·  {card?.last4}</p>
+                    <p>{card?.month}/{card?.year}</p>
                   </div>
                 </div>
                 <div className='Card__saved-buttons'>
                   <button className='Card__saved-change'>Change payment method</button>
                   <button className='Card__saved-unsubscribe'>Unsubscribe</button>
                 </div>
-                {/* <button onClick={onClick}>Subscribe</button> */}
+                <button onClick={onClick}>Subscribe</button>
               </div>
-            </>
           )}
         </div>
         {/* <>

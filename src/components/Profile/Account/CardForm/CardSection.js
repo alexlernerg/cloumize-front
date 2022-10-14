@@ -1,6 +1,6 @@
 import React from 'react';
 import {CardElement} from '@stripe/react-stripe-js';
-import './Account.scss'
+import '../Account.scss'
 
 const CARD_ELEMENT_OPTIONS = {
   style: {

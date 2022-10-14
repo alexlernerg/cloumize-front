@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
+import { useEffect, useState } from "react";
+import { useUser } from "../../../../context/hook/useUser";
+import { getClientSecret, transforPaymentMethod } from "../../../../services/PaymentService";
+import templateCardForm from "./CardForm.template";
 
-import CardSection from './CardForm/CardSection';
-import { getClientSecret, transforPaymentMethod } from '../../../services/PaymentService';
-import { useUser } from '../../../context/hook/useUser';
-import './Account.scss';
-
-export default function CardSetupForm() {
-  const { currentUser } = useUser();
+const CardForm =()=>{
+    const { currentUser } = useUser();
   const [clientID, setClientID] = useState('');
   useEffect(() => {
     getClientSecret()
@@ -55,13 +53,7 @@ export default function CardSetupForm() {
     }
 
   };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <CardSection />
-      <button disabled={!stripe} className="Card__button">
-        Save Card
-      </button>
-    </form>
-  );
+  return templateCardForm(handleSubmit, stripe);
 }
+
+export default CardForm;
