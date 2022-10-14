@@ -94,7 +94,7 @@ export default function Account({currentUser, view, changeView, show, openModal,
             <>
               <div className='Account__container-AWS'>
                 <p>Check if you have already filled out the AWS form</p>
-                <input type='checkbox' onChange={openModal} checked={AWSfill} disabled={AWSfill}/>
+                <input type='checkbox' onChange={openModal} checked={currentUser.confirmed_seller || AWSfill} disabled={currentUser.confirmed_seller || AWSfill}/>
               </div>
               {show && <PopUp showPopup={openModal} sendApproval={sendApproval} responseAPI={responseAPI} content={contentPopUp}/>}
             </>
