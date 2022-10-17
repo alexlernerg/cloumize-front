@@ -6,6 +6,9 @@ import templateAccount from "./Account.template";
 import { updateAwsStatus } from '../../../services/UserService';
 
 const Account =()=>{
+  //Screen width
+  const screenWidthMobile = window.screen.width < 1280;
+
   const stripePromise = loadStripe('pk_test_51LSlY8GDFiXM20ocQPScB7UOHwxTjEuwJIQehEMO527ssoaGaTZyvOrQ7vkJgITkwuQrELMaZtCcJjuBtCbZAeAe00xV0b5bxv');
 
   const {currentUser} = useUser();
@@ -58,7 +61,7 @@ const Account =()=>{
   }
 
   const props = {
-    currentUser, view, changeView, show, openModal, AWSfill, contentPopUp, sendApproval, responseAPI, stripePromise, onClick, card
+    currentUser, view, changeView, show, openModal, AWSfill, contentPopUp, sendApproval, responseAPI, stripePromise, onClick, card, screenWidthMobile
   }
 
   return templateAccount(props);
