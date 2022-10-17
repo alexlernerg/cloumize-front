@@ -8,13 +8,8 @@ import './SavingsPlans.scss';
 const ExternalData = ({data}:any) => {
   return(
     <div className='SavingsPlans__interestingData'>
-<<<<<<< HEAD
         <p><img src="/Profile/SP1.svg" alt="icon"/>Active Plans (MTD) {data[0]}</p>
         <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month {data[1]}</p>
-=======
-        <p><img src="/Profile/SP1.svg" alt="icon"/>Active Plans (MTD) 1</p>
-        <p><img src="/Profile/CF5.svg" alt="icon"/>Expiring This Month 0</p>
->>>>>>> master
       </div>
   )
 }

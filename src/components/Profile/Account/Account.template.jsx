@@ -1,6 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js';
 import Navbar from '../../Misc/Navbar/Navbar';
-import PopUp from '../Aux/PopUp/PopUp';
+import PopUp from '../Auxiliar/PopUp/PopUp';
 import CardForm from './CardForm/CardForm';
 import './Account.scss';
 
