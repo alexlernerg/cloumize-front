@@ -50,7 +50,7 @@ const SavingsFinder = () => {
 
   const columnsSF = [
     'AWS Account ID',
-    'Recomendation ID',
+    'Recommendation ID',
     'Region',
     'Family',
     'Units',

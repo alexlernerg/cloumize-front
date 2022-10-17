@@ -46,7 +46,7 @@ const SavingsPlans =()=>{
         console.error('Error data SP', error);
       });
   }, []);
-  
+
   const columnsSP = ['AWS Account ID', 'Savings Plan ID', 'Status', 'Type', 'Instance Family', 'Term Remaining', 'Commitment', 'Payment Monthly', 'Payment Upfront']
 
   return templateSavingsPlans(screenWidthMobile, dataSP, columnsSP, info, stats);

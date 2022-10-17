@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
 import './SavingsFinder.scss';
-import TableSkeleton from '../Aux/TableSkeleton/TableSkeleton';
-import Data2Skeleton from '../Aux/DataSkeleton/DataSkeleton';
+import TableSkeleton from '../Auxiliar/TableSkeleton/TableSkeleton';
+import Data2Skeleton from '../Auxiliar/DataSkeleton/DataSkeleton';
 import Spinner from '../../Misc/Spinner/Spinner';
 
 const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[], info:any) => {
@@ -26,7 +26,7 @@ const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[]
               className='SavingsFinder__container-recomendations form-check-label'
               htmlFor='flexSwitchCheckDefault'
             >
-              Recibe recomendaciones
+              Auto-Saver
             </label>
           </div>
         </div>

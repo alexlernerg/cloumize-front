@@ -47,8 +47,8 @@ const ExistingPlans =()=>{
         console.error('Error data EP', error);
       });
   }, []);
-  
-  const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Term Remaining', 'Discount', 'Auto-Save']
+
+  const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Term Remaining', 'Discount (%)', 'Auto-Save']
 
   return templateExistingPlans(screenWidthMobile, dataEP, columnsEP, info, stats);
 }
