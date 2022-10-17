@@ -31,16 +31,37 @@ const SavingsFinder = () => {
   useEffect(() => {
     getSavingsFinder()
       .then((response: any) => {
-        console.log("responseSF", response)
+        console.log('responseSF', response);
         if (response?.savings_finder_data.length !== 0) {
           setInfo([
-            { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(2)}` },
-            { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(2)}` },
-            { id: 2, title: 'Total potential', savings: 'Savings', total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(2)}` },
-          ])
-          setDataSF(response.savings_finder_data)
+            {
+              id: 0,
+              title: 'Cloumize annual',
+              savings: 'Savings',
+              total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(
+                2
+              )}`,
+            },
+            {
+              id: 1,
+              title: 'Unapproved annual ',
+              savings: 'Savings',
+              total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(
+                2
+              )}`,
+            },
+            {
+              id: 2,
+              title: 'Total potential',
+              savings: 'Savings',
+              total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(
+                2
+              )}`,
+            },
+          ]);
+          setDataSF(response.savings_finder_data);
         } else {
-          setDataSF([])
+          setDataSF([]);
         }
       })
       .catch((error: any) => {
@@ -54,12 +75,12 @@ const SavingsFinder = () => {
     'Region',
     'Family',
     'Units',
-    'Current rate',
-    'Discount',
-    'Cloumize rate',
+    'Current Rate ($)',
+    'Discount (%)',
+    'Cloumize Rate ($)',
     'Annual Savings',
     'State',
-    'Approval'
+    'Approval',
   ];
 
   return templateSavingsFinder(screenWidthMobile, dataSF, columnsSF, info);
