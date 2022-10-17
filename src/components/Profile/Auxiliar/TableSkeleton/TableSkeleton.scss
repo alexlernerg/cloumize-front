@@ -88,6 +88,9 @@
       word-wrap: break-word;
       font-weight: 400;
       font-size: 14px;
+      &__green {
+        color: var(--decoration-5);
+      }
     }
     &-btn {
       display: flex;

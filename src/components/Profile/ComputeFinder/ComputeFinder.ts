@@ -34,7 +34,10 @@ const ComputeFinder =()=>{
             response.ec2_instance_stats.spot_instance,
             response.ec2_instance_stats.scheduled_instance, ])
           setDataCF(response.ec2_instance_data)
+        } else {
+          setDataCF([])
         }
+        
       })
       .catch((error: any) => {
         console.error('Error data CF', error);

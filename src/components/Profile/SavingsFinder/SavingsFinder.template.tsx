@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../../Misc/Navbar/Navbar';
 import './SavingsFinder.scss';
 import TableSkeleton from '../Auxiliar/TableSkeleton/TableSkeleton';
@@ -9,7 +9,7 @@ const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[]
   return (
     <div className='SavingsFinder'>
       <Navbar />
-      {dataSF[0].user_id_cm === 0 ? <Spinner/> :
+      {dataSF[0]?.recommendation_id_cm === 'no_recommendation' ? <Spinner/> : 
       <div className='SavingsFinder__container'>
         <div className='SavingsFinder__container-top'>
           <h1 className='SavingsFinder__container-title'>

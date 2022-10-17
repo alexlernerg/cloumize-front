@@ -1,129 +1,189 @@
-import React, { useState, useEffect } from 'react';
-import {
-  createPaymentSession,
-  getPaymentSession,
-  getPrice,
-} from '../../../services/PaymentService';
+import { Elements } from '@stripe/react-stripe-js';
 import Navbar from '../../Misc/Navbar/Navbar';
+import PopUp from '../Aux/PopUp/PopUp';
+import CardForm from './CardForm/CardForm';
 import './Account.scss';
 
-const ProductDisplay = () => {
-  const [product, setProduct] = useState({ lookup_keys: 'aws' });
-  const [price, setPrice] = useState(0);
-  const onClick = (e) => {
-    e.preventDefault();
-    getPaymentSession(product).then((response) => {
-      window.location.href = response.sessionURL;
-    });
-  };
-  useEffect(() => {
-    getPrice(product).then((response) => {
-      setPrice(response.prices.data[0].unit_amount);
-    });
-  });
+export default function Account({
+  currentUser,
+  view,
+  changeView,
+  show,
+  openModal,
+  AWSfill,
+  contentPopUp,
+  sendApproval,
+  responseAPI,
+  stripePromise,
+  onClick,
+  card,
+  screenWidthMobile
+}) {
+  console.log('current', currentUser);
   return (
-    <section>
-      <div className='product'>
-        <div className='description'>
-          <h3>Starter plan</h3>
-          <h5>${price} / month</h5>
+    <div className='Account'>
+      <Navbar />
+      <div className='Account__container'>
+        <h1 className='Account__container-title'>Account</h1>
+        <div className='Account__container-main'>
+          <div className='Account__container-menu'>
+            <div className='Account__container-menu__check'>
+              {currentUser?.arn && (
+                <img
+                  className='Account__container-menu__check-img'
+                  id='0'
+                  src='/Profile/check.svg'
+                  alt='check'
+                  onClick={changeView}
+                ></img>
+              )}
+              {currentUser?.confirmed_seller && (
+                <img
+                  className='Account__container-menu__check-img'
+                  id='0'
+                  src='/Profile/check.svg'
+                  alt='check'
+                  onClick={changeView}
+                ></img>
+              )}
+              {currentUser?.stripe_customer_id && (
+                <img
+                  className='Account__container-menu__check-img'
+                  id='0'
+                  src='/Profile/check.svg'
+                  alt='check'
+                  onClick={changeView}
+                ></img>
+              )}
+            </div>
+            <div className='Account__container-menu__numbers'>
+              <p
+                
+                onClick={changeView}
+              >
+                1
+              </p>
+              <img
+                src='/Profile/line.svg'
+                alt='line'
+                className='Account__container-menu__line'
+              />
+              <p
+                id='1'
+                onClick={changeView}
+              >
+                2
+              </p>
+              <img
+                src='/Profile/line.svg'
+                alt='line'
+                className='Account__container-menu__line'
+              />
+              <p
+                id='2'
+                onClick={changeView}
+              >
+                3
+              </p>
+            </div>
+            <div className='Account__container-menu__sectionName'>
+              <p
+                id='0'
+                onClick={changeView}
+              >
+                Account ARN
+              </p>
+              <p
+                id='1'
+                onClick={changeView}
+              >
+                AWS
+              </p>
+              <p
+                id='2'
+                onClick={changeView}
+              >
+                Payment Method
+              </p>
+            </div>
+          </div>
+          {view === 0 && (
+            <div className='Account__container-ARN'>
+              <div>
+                <>
+                  <p className='Account__container-ARN-label'>Account ARN</p>
+                  <p className='Account__container-ARN-info'>
+                    {!screenWidthMobile ? currentUser?.arn : currentUser?.arn.slice(0, 25) + '...'}
+                  </p>
+                </>
+                <>
+                  <p className='Account__container-ARN-label'>Email</p>
+                  <p className='Account__container-ARN-info'>
+                    {currentUser?.email}
+                  </p>
+                </>
+              </div>
+            </div>
+          )}
+          {view === 1 && (
+            <>
+              <div className='Account__container-AWS'>
+                <p>Check if you have already filled out the AWS form</p>
+                <input
+                  type='checkbox'
+                  onChange={openModal}
+                  checked={currentUser.confirmed_seller || AWSfill}
+                  disabled={currentUser.confirmed_seller || AWSfill}
+                />
+              </div>
+              {show && (
+                <PopUp
+                  showPopup={openModal}
+                  sendApproval={sendApproval}
+                  responseAPI={responseAPI}
+                  content={contentPopUp}
+                />
+              )}
+            </>
+          )}
+          {view === 2 &&
+            (!currentUser.stripe_customer_id ? (
+              <div className='Account__container-Payments'>
+                {/* <p>Add an account to benefit from Cloumize discounts.</p>
+                <button>Add credit card</button> */}
+                <Elements stripe={stripePromise}>
+                  <CardForm />
+                </Elements>
+              </div>
+            ) : (
+              <div className='Account__container-cardSaved'>
+                <div className='Card__saved'>
+                  <img src='/Profile/creditCard.svg' alt='card' />
+                  <div className='Card__saved-data'>
+                    <p>· · · · · · · · · · · · {card?.last4}</p>
+                    <p>
+                      {card?.month}/{card?.year}
+                    </p>
+                  </div>
+                </div>
+                <div className='Card__saved-buttons'>
+                  <button className='Card__saved-change'>
+                    Change payment method
+                  </button>
+                  <button className='Card__saved-unsubscribe'>
+                    Unsubscribe
+                  </button>
+                </div>
+                <button onClick={onClick}>Subscribe</button>
+              </div>
+            ))}
         </div>
+        {/* <>
+          {!success && message === '' && <ProductDisplay />}
+          {success && sessionId !== '' && <SuccessDisplay sessionId={sessionId} />}
+          <Message message={message} />
+        </> */}
       </div>
-      <form>
-        {/* Add a hidden field with the lookup_key of your Price */}
-        <input type='hidden' name='lookup_key' value={product.lookup_keys} />
-        <button id='checkout-and-portal-button' onClick={onClick}>
-          Checkout
-        </button>
-      </form>
-    </section>
+    </div>
   );
-};
-
-const SuccessDisplay = ({ sessionId }) => {
-  const onClick = (e) => {
-    e.preventDefault();
-    createPaymentSession({ sessionId }).then((response) => {
-      window.location.href = response.portalSession;
-    });
-  };
-  return (
-    <section>
-      <div className='product Box-root'>
-        <div className='description Box-root'>
-          <h3>Subscription to starter plan successful!</h3>
-        </div>
-      </div>
-      <form>
-        <input
-          type='hidden'
-          id='session-id'
-          name='session_id'
-          value={sessionId}
-        />
-        <button id='checkout-and-portal-button' onClick={onClick}>
-          Manage your billing information
-        </button>
-      </form>
-    </section>
-  );
-};
-
-const Message = ({ message }) => (
-  <section>
-    <p>{message}</p>
-  </section>
-);
-
-export default function Account() {
-  let [message, setMessage] = useState('');
-  let [success, setSuccess] = useState(false);
-  let [sessionId, setSessionId] = useState('');
-
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-    // console.log('query', query.get('session_id'));
-
-    if (query.get('success')) {
-      setSuccess(true);
-      setSessionId(query.get('session_id'));
-    }
-
-    if (query.get('canceled')) {
-      setSuccess(false);
-      setMessage(
-        "Order canceled -- continue to shop around and checkout when you're ready."
-      );
-    }
-  }, [sessionId]);
-
-  if (!success && message === '') {
-    return (
-      <div className='Account'>
-        <Navbar />
-        <div className='Account__container'>
-          <ProductDisplay />
-        </div>
-      </div>
-    );
-  } else if (success && sessionId !== '') {
-    return (
-      <div className='Account'>
-        <Navbar />
-        <div className='Account__container'>
-        <SuccessDisplay sessionId={sessionId} />
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className='Account'>
-        <Navbar />
-        <div className='Account__container'>
-        <Message message={message} />
-        </div>
-      </div>
-    )  
-  }
 }

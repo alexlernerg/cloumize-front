@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUser } from '../../../context/hook/useUser';
 import Navbar from '../../Misc/Navbar/Navbar';
 import OnBoarding from '../../OnBoarding/OnBoarding';
 import './Dashboard.scss';
@@ -10,10 +9,8 @@ import {
   PieGraphicView,
   VerticalBarGraphic,
 } from './Graphics/Graphics';
-import { useEffect } from 'react';
 import Spinner from '../../Misc/Spinner/Spinner';
-import { transforNumber } from '../../../helpers/transformNumber';
-import { getDiscounts } from '../../../services/DataService';
+import { addCommas } from '../../../helpers/transformNumber';
 
 const DataLastMonths = ({ data }: any) => {
   return (
@@ -25,14 +22,14 @@ const DataLastMonths = ({ data }: any) => {
         <div>
           <p className='DataLastMonths__content-title'>EC2 Costs</p>
           <p>
-            ${transforNumber(data.EC2)}
+            ${addCommas(data.EC2.toFixed(2))}
             <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
           </p>
         </div>
         <div>
           <p className='DataLastMonths__content-title'>Achieved Savings</p>
           <p>
-            ${transforNumber(data.achieved_savings)}
+            ${addCommas(data.achieved_savings.toFixed(2))}
             <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
           </p>
         </div>
@@ -40,7 +37,7 @@ const DataLastMonths = ({ data }: any) => {
       <div>
         <p className='DataLastMonths__content-title'>Missed Savings</p>
         <p>
-          ${transforNumber(data.wasted_spending)}
+          ${addCommas(data.wasted_spending.toFixed(2))}
           <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
         </p>
       </div>
@@ -49,7 +46,6 @@ const DataLastMonths = ({ data }: any) => {
 };
 
 const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any, show:any, page:any, setPage:any, errorAPI:any, setErrorAPI:any) => {
-
   return (
     <>
       {onBoarding && (
@@ -60,14 +56,14 @@ const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any,
       <div className={`${onBoarding ? 'disable' : ''}`}>
         <div className='Dashboard'>
           <Navbar onBoarding={onBoarding} />
-          {dataRest.potential_annual === 0 ? (
+          {dataRest.potential_annual === -100 ? (
             <Spinner />
           ) : (
             <div className='Dashboard__container'>
               <h1 className='Dashboard__container-title'>Dashboard</h1>
               <div className='Dashboard__container-top'>
                 <div>
-                  <p>${transforNumber(dataRest.potential_annual)}</p>
+                  <p>${addCommas(dataRest.potential_annual)}</p>
                   <p>Potential Annual Savings</p>
                 </div>
                 <Link

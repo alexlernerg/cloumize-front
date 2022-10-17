@@ -1,4 +1,5 @@
 import React from 'react';
+import { addCommas } from '../../../../helpers/transformNumber';
 import './DataSkeleton.scss';
 
 const DataSkeleton = (info: any, pathname: string, onClick:any) => {
@@ -22,7 +23,7 @@ const DataSkeleton = (info: any, pathname: string, onClick:any) => {
                   <p className='DataSkeleton__sections-savings'>
                     {inf.savings}
                   </p>
-                  <p className='DataSkeleton__sections-total'>{inf.total}</p>
+                  <p className='DataSkeleton__sections-total'>{addCommas(inf.total)}</p>
                 </div>
               </div>
             ))}

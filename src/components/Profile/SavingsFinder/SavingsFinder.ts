@@ -1,9 +1,6 @@
 import templateSavingsFinder from './SavingsFinder.template';
 import { useEffect, useState } from 'react';
 import { getSavingsFinder } from '../../../services/DataService';
-import { useUser } from '../../../context/hook/useUser';
-import axios from 'axios';
-import { getAccessToken } from '../../../store/AccessTokenStore';
 
 const SavingsFinder = () => {
   //Screen width
@@ -19,14 +16,14 @@ const SavingsFinder = () => {
     {
       user_id_cm: 0,
       aws_account_id: 111825639153,
-      recommendation_id_cm: 'cm_22926193',
+      recommendation_id_cm: 'no_recommendation',
       region: 'EXAMPLE EU (Frankfurt)',
       instance_family: 't2',
       units: 3,
       current_rate: 156.8040008544922,
       cloumize_discount: 36.31285095214844,
       cloumize_rate: 99.86399841308594,
-      monthly_savings: 56.939998626708984,
+      cloumize_annual_savings: 521.22,
       state: '',
     },
   ]);
@@ -34,13 +31,37 @@ const SavingsFinder = () => {
   useEffect(() => {
     getSavingsFinder()
       .then((response: any) => {
+        console.log('responseSF', response);
         if (response?.savings_finder_data.length !== 0) {
           setInfo([
-            { id: 0, title: 'Cloumize annual', savings: 'Savings', total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(2)}` },
-            { id: 1, title: 'Unapproved annual ', savings: 'Savings', total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(2)}` },
-            { id: 2, title: 'Total potential', savings: 'Savings', total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(2)}` },
-          ])
-          setDataSF(response.savings_finder_data)
+            {
+              id: 0,
+              title: 'Cloumize annual',
+              savings: 'Savings',
+              total: `$${response.savings_finder_stats.cloumize_annual_savings.toFixed(
+                2
+              )}`,
+            },
+            {
+              id: 1,
+              title: 'Unapproved annual ',
+              savings: 'Savings',
+              total: `$${response.savings_finder_stats.unapproved_annual_savings.toFixed(
+                2
+              )}`,
+            },
+            {
+              id: 2,
+              title: 'Total potential',
+              savings: 'Savings',
+              total: `$${response.savings_finder_stats.total_potential_annual_savings.toFixed(
+                2
+              )}`,
+            },
+          ]);
+          setDataSF(response.savings_finder_data);
+        } else {
+          setDataSF([]);
         }
       })
       .catch((error: any) => {
@@ -57,6 +78,7 @@ const SavingsFinder = () => {
     'Current Rate ($)',
     'Discount (%)',
     'Cloumize Rate ($)',
+    'Annual Savings',
     'State',
     'Approval',
   ];

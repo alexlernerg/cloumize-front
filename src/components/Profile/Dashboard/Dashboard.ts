@@ -5,7 +5,7 @@ import templateDashboard from './Dashboard.template';
 
 const Dashboard = () => {
   const [dataRest, setDataRest] = useState({
-    potential_annual: 0,
+    potential_annual: -100,
     missed_savings_last_year: 1596.9853334544,
     ec2_cost_last_year: 19868.27,
     achieved_savings_last_year: 0,
@@ -108,6 +108,7 @@ const Dashboard = () => {
   });
 
   const { currentUser } = useUser();
+  console.log("current", currentUser)
 
   const [show, setShow] = useState(true);
   const [page, setPage] = useState(0);
@@ -121,12 +122,12 @@ const Dashboard = () => {
     setOnBoarding(false);
     currentUser && getDiscounts()
       .then((response: any) => {
-        console.log('responseAPI', response.sync_instance_status);
+        // console.log('responseAPI', response.sync_instance_status);
         if (
           response.sync_instance_status === null &&
           currentUser?.arn === null
         ) {
-          console.log('ARN KO y RESPUESTA KO');
+          // console.log('ARN KO y RESPUESTA KO');
           setShow(false);
           setPage(0);
           setOnBoarding(true);
@@ -134,7 +135,7 @@ const Dashboard = () => {
           response.sync_instance_status === null &&
           currentUser?.arn !== null
         ) {
-          console.log('ARN OK y RESPUESTA KO');
+          // console.log('ARN OK y RESPUESTA KO');
           setOnBoarding(true);
           const interval = setInterval(() => {
             getDiscounts().then((response: any) => {
@@ -186,7 +187,7 @@ const Dashboard = () => {
           response.sync_instance_status == 1 &&
           currentUser?.arn !== null
         ) {
-          console.log("ARN OK y Respuesta 1")
+          // console.log("ARN OK y Respuesta 1")
           setShow(false);
           setOnBoarding(true);
           setErrorAPI('Please activate Cost Explorer on AWS');
@@ -196,7 +197,7 @@ const Dashboard = () => {
           response.sync_instance_status == 2 &&
           currentUser?.arn !== null
         ) {
-          console.log("ARN OK y Respuesta 2")
+          // console.log("ARN OK y Respuesta 2")
           setShow(false);
           setOnBoarding(true);
           setErrorAPI(
@@ -208,7 +209,7 @@ const Dashboard = () => {
           response.sync_instance_status == 3 &&
           currentUser?.arn !== null
         ) {
-          console.log("ARN OK y Respuesta 3")
+          // console.log("ARN OK y Respuesta 3")
           setShow(false);
           setOnBoarding(true);
           setErrorAPI(
@@ -219,10 +220,11 @@ const Dashboard = () => {
           response.sync_instance_status == 0 &&
           currentUser?.arn !== null
         ) {
-          console.log('ARN OK y RESPUESTA OK');
+          // console.log('ARN OK y RESPUESTA OK');
           setOnBoarding(false);
           getDashboard()
-            .then((response: any) => {
+          .then((response: any) => {
+              setShow(false);
               if (response.dashboard_data.length !== 0) {
                 setDataRest(response.dashboard_data);
               }

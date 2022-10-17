@@ -16,3 +16,6 @@ export const deleteUser = (user:any) => {
   return http.delete(`/user/delete`, user);
 };
 
+export const updateAwsStatus = (status:any) => {
+  return http.put(`/user/update`, status)
+};
