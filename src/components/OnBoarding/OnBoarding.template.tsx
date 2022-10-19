@@ -25,7 +25,7 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
     <div className='OnBoardingContainer__header'></div>
     {show && !currentUser ? <div className='OnBoardingContainer__spinner'>
         <DotLoader color="#2C6CF6" />
-        </div> : 
+        </div> :
     <div>
     <div className='OnBoardingContainer__image'>
         {page === 0 && screenWidthMobile && <img src="/OnBoarding/mobile1.png" alt="step"/>}
@@ -45,7 +45,7 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
             <p className={`OnBoardingContainer__content-${page}-text0`}>This CloudFormation template creates an IAM policy and role provides limited access to read your historic usage find savings on the EC2 Reserved Instance Marketplace. It does not allow us to change, modify or read your code or sensitive information.</p>
         </>}
         {page === 1 && <>
-            <p className={`OnBoardingContainer__content-${page}-title1`}>Click on the following link to create an IAM CloudFormation Stack: <a href={`https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://cloumize-public-dev.s3.eu-west-3.amazonaws.com/cfn-iam-role-template-public-without-signed/iamrole.yml&stackName=Cloumize-Create-I-AM-Role&param_CloumizeExternalID=${externalID}&param_CloumizeIamRole=arn:aws:iam::863543637728:root`} target="_blank" rel="noreferrer">here</a></p>
+            <p className={`OnBoardingContainer__content-${page}-title1`}>Click on the following link to create an IAM CloudFormation Stack: <a href={`https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://cloumize-public-cfn.s3.eu-west-1.amazonaws.com/cfn-iam-role-template-public/iamrole.yml&stackName=Cloumize-Create-IAM-Role2&param_CloumizeExternalID=${externalID}&param_CloumizeIamRole=arn:aws:iam::863543637728:root`} target="_blank" rel="noreferrer">here</a></p>
             <p className={`OnBoardingContainer__content-${page}-text1`}>To obtain the benefits and continue with the process, <span>create a Stack</span></p>
         </>}
         {page === 2 && <>
