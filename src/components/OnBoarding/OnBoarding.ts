@@ -39,7 +39,7 @@ const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: 
 
   const sendARNF = () => {
     if(isValid()){
-      sendARN({client_role_arn: ARN})
+      sendARN({client_role_arn: ARN.trim()})
         .then((response: any) => {
           console.log("Entra en sendARN")
           setPage(3)

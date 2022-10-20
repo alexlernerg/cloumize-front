@@ -48,7 +48,10 @@ const CardForm =()=>{
       //   // card to a Customer
       // }
       transforPaymentMethod()
-        .then((response) => console.log("response", response))
+        .then((response) => {
+          console.log("response", response)
+          window.location.reload()
+        })
         .catch((error)=> console.log("error", error))
     }
 

@@ -3,6 +3,7 @@ import Navbar from '../../Misc/Navbar/Navbar';
 import PopUp from '../Auxiliar/PopUp/PopUp';
 import CardForm from './CardForm/CardForm';
 import './Account.scss';
+import { logout } from '../../../store/AccessTokenStore';
 
 export default function Account({
   currentUser,
@@ -19,7 +20,6 @@ export default function Account({
   card,
   screenWidthMobile
 }) {
-  console.log('current', currentUser);
   return (
     <div className='Account'>
       <Navbar />
@@ -177,6 +177,9 @@ export default function Account({
                 <button onClick={onClick}>Subscribe</button>
               </div>
             ))}
+        </div>
+        <div className='Account__container-btnLogout'>
+          <button onClick={logout}>Logout</button>
         </div>
         {/* <>
           {!success && message === '' && <ProductDisplay />}
