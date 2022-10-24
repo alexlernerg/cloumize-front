@@ -41,14 +41,14 @@ const ExistingPlans =()=>{
         } else {
           setDataEP([])
         }
-        
+
       })
       .catch((error: any) => {
         console.error('Error data EP', error);
       });
   }, []);
 
-  const columnsEP = ['AWS Account ID', 'Group Reservation ID', 'Status', 'Description', 'Instance Family', 'Reservation Count', 'Term Remaining', 'Discount (%)', 'Auto-Save']
+  const columnsEP = ['AWS Account ID', 'Reserved Instance ID', 'Status', 'Description', 'Instance Type', 'Reservation Count', 'Tenancy', 'Term Remaining', 'Auto-Save']
 
   return templateExistingPlans(screenWidthMobile, dataEP, columnsEP, info, stats);
 }
