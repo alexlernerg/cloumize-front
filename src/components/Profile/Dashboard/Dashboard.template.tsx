@@ -12,7 +12,45 @@ import {
 import Spinner from '../../Misc/Spinner/Spinner';
 import { addCommas } from '../../../helpers/transformNumber';
 
-const DataLastMonths = ({ data }: any) => {
+interface IDate {
+  date: string;
+  spending_other: number;
+  autopilot: number;
+}
+interface IPlatform {
+  Windows: number;
+  'Linux/UNIX': number;
+  'Windows BYOL': number;
+}
+interface ICoverage {
+  percentage_covered: number;
+  percentage_not_covered: number;
+}
+ export interface IDataRest {
+  potential_annual: number;
+  missed_savings_last_year: number;
+  ec2_cost_last_year: number;
+  achieved_savings_last_year: number;
+  missed_savings_last_month: number;
+  ec2_cost_last_month: number;
+  achieved_savings_last_month: number;
+  savings_strategies_approved: number;
+  savings_strategies_running: number;
+  savings_strategies_pending: number;
+  instance_family: any;
+  az: any;
+  platform: IPlatform;
+  coverage: ICoverage;
+  spending_overview: IDate[];
+}
+interface IData {
+  title: string;
+  EC2: number;
+  achieved_savings: number;
+  wasted_spending: number;
+}
+
+const DataLastMonths = ({ data }: {data:IData}) => {
   return (
     <section className='DataLastMonths'>
       <div className='DataLastMonths__header'>
@@ -22,14 +60,14 @@ const DataLastMonths = ({ data }: any) => {
         <div>
           <p className='DataLastMonths__content-title'>EC2 Costs</p>
           <p>
-            ${addCommas(data.EC2.toFixed(2))}
+            ${addCommas(Number(data.EC2.toFixed(2)))}
             <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
           </p>
         </div>
         <div>
           <p className='DataLastMonths__content-title'>Achieved Savings</p>
           <p>
-            ${addCommas(data.achieved_savings.toFixed(2))}
+            ${addCommas(Number(data.achieved_savings.toFixed(2)))}
             <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
           </p>
         </div>
@@ -37,7 +75,7 @@ const DataLastMonths = ({ data }: any) => {
       <div>
         <p className='DataLastMonths__content-title'>Missed Savings</p>
         <p>
-          ${addCommas(data.wasted_spending.toFixed(2))}
+          ${addCommas(Number(data.wasted_spending.toFixed(2)))}
           <img src='/Profile/graphic.svg' alt='graphic' className='ms-2' />
         </p>
       </div>
@@ -45,12 +83,29 @@ const DataLastMonths = ({ data }: any) => {
   );
 };
 
-const Dashboard = (dataRest: any, data: any, onBoarding:any, showOnBoarding:any, show:any, page:any, setPage:any, errorAPI:any, setErrorAPI:any) => {
+const Dashboard = (
+  dataRest: IDataRest,
+  data: IData[],
+  onBoarding: boolean,
+  showOnBoarding: () => void,
+  show: boolean,
+  page: number,
+  setPage: React.Dispatch<React.SetStateAction<number>>,
+  errorAPI: string,
+  setErrorAPI: React.Dispatch<React.SetStateAction<string>>
+) => {
   return (
     <>
       {onBoarding && (
         <div className='Dashboard__onboarding'>
-          <OnBoarding closePopup={showOnBoarding} show={show} page={page} setPage={setPage} errorAPI={errorAPI} setErrorAPI={setErrorAPI}/>
+          <OnBoarding
+            closePopup={showOnBoarding}
+            show={show}
+            page={page}
+            setPage={setPage}
+            errorAPI={errorAPI}
+            setErrorAPI={setErrorAPI}
+          />
         </div>
       )}
       <div className={`${onBoarding ? 'disable' : ''}`}>

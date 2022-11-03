@@ -4,6 +4,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import { getPaymentMethod, subscribe } from '../../../services/PaymentService';
 import templateAccount from "./Account.template";
 import { updateAwsStatus } from '../../../services/UserService';
+import { IError, IResponse } from '../../../interfaces/common';
 
 const Account =()=>{
   //Screen width
@@ -14,8 +15,8 @@ const Account =()=>{
   const {currentUser} = useUser();
 
   const [view, setView] = useState(0);
-  const changeView = (e:any) => {
-    const {id} = e.target;
+  const changeView = (e: React.FormEvent<HTMLInputElement>) => {
+    const {id} = e.currentTarget;
     setView(Number(id));
   }
   const [AWSfill, setAWSfill] = useState(false);
@@ -41,11 +42,11 @@ const Account =()=>{
   const [responseAPI, setResponseAPI] = useState('');
   const sendApproval = () => {
     updateAwsStatus({ confirmed_seller: AWSfill})
-    .then((response:any)=> {
+    .then((response: IResponse)=> {
       setShow(!response.isUpdated)
       window.location.reload()
     })
-    .catch((error:any)=> console.log("error", error))
+    .catch((error: IError)=> console.log("error", error))
     // TODO: Incluir setResponseAPI
   }
 

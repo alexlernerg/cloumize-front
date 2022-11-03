@@ -149,8 +149,6 @@ export default function Account({
           {view === 2 &&
             (!currentUser.stripe_customer_id ? (
               <div className='Account__container-Payments'>
-                {/* <p>Add an account to benefit from Cloumize discounts.</p>
-                <button>Add credit card</button> */}
                 <Elements stripe={stripePromise}>
                   <CardForm />
                 </Elements>

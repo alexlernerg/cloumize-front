@@ -6,7 +6,6 @@ import { signIn, signUp, passwordResetEmail } from '../../services/AuthService';
 import { setAccessToken } from '../../store/AccessTokenStore';
 import { useNavigate } from 'react-router-dom';
 import templateAuth from './Auth.template';
-import { IUser } from '../../interfaces/json';
 
 const Auth = () => {
   //Current url
@@ -23,7 +22,7 @@ const Auth = () => {
   const { setCurrentUser, getCurrentUser } = useUser();
 
   //Form logic
-  const [data, setData]: [IUser, React.Dispatch<React.SetStateAction<IUser>>] =
+  const [data, setData]: [any, React.Dispatch<React.SetStateAction<any>>] =
     useState({
       awsAccountName: '',
       companyName: '',
@@ -47,7 +46,7 @@ const Auth = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setData((prevState: IUser) => ({
+    setData((prevState: any) => ({
       ...prevState,
       [name]: value,
     }));

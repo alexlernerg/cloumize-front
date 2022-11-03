@@ -1,3 +1,4 @@
+import { IAWSStatus } from "../interfaces/services";
 import { create } from "./BaseService";
 
 const http = create({
@@ -8,14 +9,14 @@ export const getUser = () => {
   return http.get('/user/me');
 };
 
-export const updateUser = (updateUser:any) => {
-  return http.patch(`/user/update`, updateUser);
-};
+// export const updateUser = (updateUser:any) => {
+//   return http.patch(`/user/update`, updateUser);
+// };
 
-export const deleteUser = (user:any) => {
-  return http.delete(`/user/delete`, user);
-};
+// export const deleteUser = (user:any) => {
+//   return http.delete(`/user/delete`, user);
+// };
 
-export const updateAwsStatus = (status:any) => {
+export const updateAwsStatus = (status:IAWSStatus) => {
   return http.put(`/user/update`, status)
 };

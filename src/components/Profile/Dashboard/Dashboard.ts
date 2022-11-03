@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '../../../context/hook/useUser';
+import { IError, IResponse } from '../../../interfaces/common';
 import { getDashboard, getDiscounts } from '../../../services/DataService';
 import templateDashboard from './Dashboard.template';
 
@@ -108,7 +109,6 @@ const Dashboard = () => {
   });
 
   const { currentUser } = useUser();
-  console.log("current", currentUser)
 
   const [show, setShow] = useState(true);
   const [page, setPage] = useState(0);
@@ -121,7 +121,7 @@ const Dashboard = () => {
     setShow(true);
     setOnBoarding(false);
     currentUser && getDiscounts()
-      .then((response: any) => {
+      .then((response: IResponse) => {
         // console.log('responseAPI', response.sync_instance_status);
         if (
           response.sync_instance_status === null &&
@@ -138,7 +138,7 @@ const Dashboard = () => {
           // console.log('ARN OK y RESPUESTA KO');
           setOnBoarding(true);
           const interval = setInterval(() => {
-            getDiscounts().then((response: any) => {
+            getDiscounts().then((response: IResponse) => {
               if (response.sync_instance_status == 0) {
                 setOnBoarding(false);
                 clearInterval(interval);
@@ -146,12 +146,12 @@ const Dashboard = () => {
                 setErrorAPI('');
                 setPage(3);
                 getDashboard()
-                  .then((response: any) => {
+                  .then((response: IResponse) => {
                     if (response.dashboard_data.length !== 0) {
                       setDataRest(response.dashboard_data);
                     }
                   })
-                  .catch((error: any) => {
+                  .catch((error: IError) => {
                     console.error('Error data Dashboard', error);
                   });
               } else if (response.sync_instance_status == 1) {
@@ -223,13 +223,13 @@ const Dashboard = () => {
           // console.log('ARN OK y RESPUESTA OK');
           setOnBoarding(false);
           getDashboard()
-          .then((response: any) => {
+          .then((response: IResponse) => {
               setShow(false);
               if (response.dashboard_data.length !== 0) {
                 setDataRest(response.dashboard_data);
               }
             })
-            .catch((error: any) => {
+            .catch((error: IError) => {
               console.error('Error data Dashboard', error);
             });
         }
@@ -251,6 +251,7 @@ const Dashboard = () => {
       wasted_spending: dataRest?.missed_savings_last_month,
     },
   ];
+  
   return templateDashboard(
     dataRest,
     data,

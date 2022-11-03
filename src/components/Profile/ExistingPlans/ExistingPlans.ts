@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IError, IResponse } from "../../../interfaces/common";
 import { getExistingPlans } from "../../../services/DataService";
 import templateExistingPlans from "./ExistingPlans.template";
 
@@ -22,14 +23,14 @@ const ExistingPlans =()=>{
     description: "Linux/UNIX standard reserved Instance",
     instance_family: 12,
     reservation_count: 2,
-    'term_remaining (days)': "Autopilot", //Change
+    'term_remaining (days)': "Autopilot", 
     discount: "25%",
-    cloumize_auto_saver: "True", //Change
+    cloumize_auto_saver: "True", 
   }]);
 
   useEffect(() => {
     getExistingPlans()
-      .then((response: any) => {
+      .then((response: IResponse) => {
         if (response.reserved_instance_data.length !== 0){
           setInfo ([
             { id: 0, title: 'Monthly Commitment', savings: 'Total', total: `$${response.reserved_instance_stats.total_upfront_payment.toFixed(2)}` },
@@ -43,7 +44,7 @@ const ExistingPlans =()=>{
         }
 
       })
-      .catch((error: any) => {
+      .catch((error: IError) => {
         console.error('Error data EP', error);
       });
   }, []);
