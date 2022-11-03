@@ -105,7 +105,7 @@ export const VerticalBar = (screenWidthMobile, dataVerticalBar) => {
                 callbacks: {
                   label: function (context) {
                     let label = context.formattedValue;
-                    label = label + ' $';
+                    label = '$ ' + label;
                     return label;
                   },
                 },
@@ -298,7 +298,6 @@ export const HorizontalBar = (dataRest) => {
       },
     ],
   });
-  console.log("data", data)
 
   return (
     <>
@@ -333,7 +332,7 @@ export const HorizontalBar = (dataRest) => {
                   callbacks: {
                     label: function (context) {
                       let label = context.formattedValue;
-                      label = label + ' %';
+                      label = '$ ' + label;
                       return label;
                     },
                   },

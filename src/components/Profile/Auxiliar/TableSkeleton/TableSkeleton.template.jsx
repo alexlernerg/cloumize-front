@@ -53,7 +53,7 @@ const TableMobile = ({
               </tr>
               <tr>
                 <td>{columnsContent[8]}</td>
-                <td className='TableSkeletonContainer__body-col__green'>{addCommas(data?.cloumize_annual_savings?.toFixed(2))}$</td>
+                <td className='TableSkeletonContainer__body-col__green'>${addCommas(data?.cloumize_annual_savings?.toFixed(2))}</td>
               </tr>
               <tr>
                 <td>{columnsContent[9]}</td>
@@ -365,7 +365,7 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {addCommas(content?.current_rate?.toFixed(2))}$
+                  ${addCommas(content?.current_rate?.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
@@ -377,13 +377,13 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {addCommas(content?.cloumize_rate?.toFixed(2))}$
+                  ${addCommas(content?.cloumize_rate?.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col TableSkeletonContainer__body-col__green'
                 >
-                  {addCommas(content?.cloumize_annual_savings?.toFixed(2))}$
+                  ${addCommas(content?.cloumize_annual_savings?.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
@@ -536,19 +536,19 @@ const TableSkeleton = (
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {addCommas(content?.commitment.toFixed(2))}
+                  ${addCommas(content?.commitment.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {addCommas(content?.payment_monthly.toFixed(2))}
+                  ${addCommas(content?.payment_monthly.toFixed(2))}
                 </td>
                 <td
                   valign='middle'
                   className='TableSkeletonContainer__body-col'
                 >
-                  {addCommas(content?.payment_upfront.toFixed(2))}
+                  ${addCommas(content?.payment_upfront.toFixed(2))}
                 </td>
               </tr>
             ))}

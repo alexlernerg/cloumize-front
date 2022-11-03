@@ -1,10 +1,14 @@
 import templateSavingsFinder from './SavingsFinder.template';
 import { useEffect, useState } from 'react';
-import { getSavingsFinder } from '../../../services/DataService';
+import { getSavingsFinder, saver } from '../../../services/DataService';
+import { useUser } from '../../../context/hook/useUser';
 
 const SavingsFinder = () => {
   //Screen width
   const screenWidthMobile = window.screen.width < 1280;
+
+  const {currentUser} = useUser();
+  console.log("currentUSer", currentUser)
 
   const [info, setInfo] = useState([
     { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
@@ -69,6 +73,10 @@ const SavingsFinder = () => {
       });
   }, []);
 
+  useEffect(()=> {
+    currentUser && currentUser.auto_saver_status !== 0 ? setAutoSaver(true) : setAutoSaver(false)
+  }, [currentUser])
+
   const columnsSF = [
     'AWS Account ID',
     'Recommendation ID',
@@ -83,7 +91,25 @@ const SavingsFinder = () => {
     'Approval',
   ];
 
-  return templateSavingsFinder(screenWidthMobile, dataSF, columnsSF, info);
+  const [autoSaver, setAutoSaver] = useState(false);
+
+  const sendAutoSaver = (number:any) => {
+    saver({auto_saver_status: number, user_id_cm: currentUser.user_id_cm})
+    .then ((response:any)=> console.log("response", response))
+    .catch((error:any)=> console.log("error", error))
+  }
+
+  const onChange = async (e:any) => {
+    if (autoSaver) {
+      setAutoSaver(false)
+      sendAutoSaver(0)
+    } else if (!autoSaver) {
+      setAutoSaver(true)
+      sendAutoSaver(1)
+    }
+  }
+
+  return templateSavingsFinder(screenWidthMobile, dataSF, columnsSF, info, onChange, autoSaver);
 };
 
 export default SavingsFinder;

@@ -31,7 +31,16 @@ export const getDiscounts = async () => {
 export const sendARN = async (ARN:any) => {
   return await http.post(`/data/insert-arn`, {data:ARN});
 };
+export const retryARN = async (SF:any) => {
+  return await http.post(`/data/retry-insert-arn`, {data:SF});
+};
 export const approveSF = async (SF:any) => {
   return await http.post(`/data/aprove-saving-finder`, {data:SF});
+};
+
+//AUTO-SAVER
+export const saver = async (SF:any) => {
+  console.log("DATA TO API:", SF)
+  return await http.post(`/data/auto-saver`, {data:SF});
 };
 
