@@ -1,3 +1,5 @@
+@use '../../theme/buttons.scss';
+
 .OnBoardingContainer {
   position: absolute;
   display: flex;
@@ -71,6 +73,9 @@
         font-weight: 300;
         font-size: 14px;
         text-align: center;
+        & span {
+          color: var(--main-primary);
+        }
     }
     &-video {
       width: 100%;
@@ -117,6 +122,14 @@
     border-radius: 0 0 8px 8px;
     &-page3 {
       justify-content: center;
+    }
+  }
+  &__content-3 {
+    &-button {
+      @include buttons.button-lg;
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
     }
   }
 }

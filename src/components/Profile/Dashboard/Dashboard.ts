@@ -201,7 +201,7 @@ const Dashboard = () => {
           setShow(false);
           setOnBoarding(true);
           setErrorAPI(
-            'Oops, we found an error when collecting your ARN code. Please contact us at support@cloumize.com'
+            'Oops, we found an error when collecting your ARN code.'
           );
           setPage(3);
         } else if (
@@ -213,7 +213,7 @@ const Dashboard = () => {
           setShow(false);
           setOnBoarding(true);
           setErrorAPI(
-            'Something went wrong. Please contact us at support@cloumize.com'
+            'Something went wrong.'
           );
           setPage(3);
         } else if (

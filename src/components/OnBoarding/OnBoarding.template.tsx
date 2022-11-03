@@ -20,7 +20,7 @@ const Buttons = ({ARN, page, next, back, sendARN, closePopup, errorAPI, error, e
     )
 }
 
-const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, closePopup:any, errorAPI:string, error:any, touched:any, onFocus:any, onBlur:any, show:boolean) => {
+const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidthMobile:boolean, sendARN:any, ARN:string, onChange:any, externalID:string, closePopup:any, errorAPI:string, error:any, touched:any, onFocus:any, onBlur:any, show:boolean, enterARNAgain:any) => {
   return (
   <div className='OnBoardingContainer'>
     <div className='OnBoardingContainer__header'></div>
@@ -72,8 +72,10 @@ const OnBoarding = (currentUser:any, page:number, next:any, back:any, screenWidt
             </div>
         </>}
         {page === 3 && errorAPI !=='' && <>
-            <p className={`OnBoardingContainer__content-${page}-title3`}>An error has happened</p>
+            <p className={`OnBoardingContainer__content-${page}-title3`}>An error has ocurred:</p>
             <p className={`OnBoardingContainer__content-${page}-text3`}>{errorAPI}</p>
+            <p className={`OnBoardingContainer__content-${page}-text3`}>Please try again introducing a new arn code. If the problem persists, please get in touch with <span>support@cloumize.com</span></p>
+            <button onClick={enterARNAgain} className={`OnBoardingContainer__content-${page}-button`}>Try again</button>
         </>}
     </div>
     <div className={`OnBoardingContainer__buttons ${page === 3 && 'OnBoardingContainer__buttons-page3'}`}>
