@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import templateOnBoarding from './OnBoarding.template';
-import { getDiscounts, sendARN } from '../../services/DataService';
+import { retryARN, sendARN } from '../../services/DataService';
 import { useUser } from '../../context/hook/useUser';
 import { validators } from '../../helpers/validators';
 import { getUser } from '../../services/UserService';
@@ -10,6 +10,7 @@ const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: 
   const screenWidthMobile = window.screen.width < 500;
 
   const {currentUser, setCurrentUser} = useUser();
+  console.log("current", currentUser);
 
   const [externalID, setExternalID] = useState('');
   const [ARN, setARN] = useState('');
@@ -26,8 +27,11 @@ const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: 
     return error.ARN === undefined
   };
 
+  const [userID, setUserID] = useState('')
+
   useEffect(()=> {
     setExternalID(currentUser?.external_id)
+    setUserID(currentUser?.user_id_cm)
   }, [currentUser])
 
   const next = () => {
@@ -70,6 +74,15 @@ const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: 
     }));
   };
 
+  const enterARNAgain = () => {
+    retryARN({user_id_cm: userID})
+    .then((response)=> {
+      console.log("response", response)
+      setPage(2)
+    })
+    .catch((error)=> console.log("error", error))
+  }
+
   return templateOnBoarding(
     currentUser,
     page,
@@ -86,7 +99,8 @@ const OnBoarding = ({ closePopup, show, page, setPage, errorAPI, setErrorAPI }: 
     touched,
     onFocus, 
     onBlur,
-    show
+    show, 
+    enterARNAgain
   );
 };
 

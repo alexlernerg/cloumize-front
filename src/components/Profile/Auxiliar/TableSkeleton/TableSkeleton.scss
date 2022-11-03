@@ -68,6 +68,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-left: 20px;
     }
   }
 
@@ -204,6 +205,14 @@
   .TableSkeletonContainer {
     &__body {
       max-height: 424px;
+      &-col {
+        width: 170px !important;
+      }
+    }
+    &__head {
+      &-col {
+        width: 170px !important;
+      }
     }
   }
   .checkboxDesktop {

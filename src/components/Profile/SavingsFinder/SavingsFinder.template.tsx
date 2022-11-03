@@ -5,7 +5,7 @@ import TableSkeleton from '../Auxiliar/TableSkeleton/TableSkeleton';
 import Data2Skeleton from '../Auxiliar/DataSkeleton/DataSkeleton';
 import Spinner from '../../Misc/Spinner/Spinner';
 
-const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[], info:any) => {
+const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[], info:any, onChange:any, autoSaver:boolean) => {
   return (
     <div className='SavingsFinder'>
       <Navbar />
@@ -21,6 +21,8 @@ const SavingsFinder = (screenWidthMobile:boolean, dataSF:any, columnsSF:string[]
               type='checkbox'
               role='switch'
               id='flexSwitchCheckDefault'
+              onChange={onChange}
+              checked={autoSaver}
             />
             <label
               className='SavingsFinder__container-recomendations form-check-label'
