@@ -19,6 +19,6 @@ export const passwordResetEmail = (user:IPasswordResetEmail) => {
 };
 
 // Button on landing page to update password
-export const updatePassword = (user:[{password: string}, {token:string}]) => {
+export const updatePassword = (user:[{password: string}, {token:string | undefined}]) => {
   return http.put(`/user/change-password/${user[1].token}`, user[0]);
 };

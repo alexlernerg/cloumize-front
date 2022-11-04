@@ -44,7 +44,7 @@ const SavingsPlans = (
   console.log('data', dataSP);
   return (
     <div className='SavingsPlans'>
-      <Navbar />
+      <Navbar onBoarding={false}/>
       {dataSP[0].user_id_cm === 0 ? (
         <Spinner />
       ) : (

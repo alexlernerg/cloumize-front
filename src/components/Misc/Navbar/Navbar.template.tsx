@@ -6,20 +6,20 @@ import './Navbar.scss';
 const Routing = ({
   pathname,
   screenWidthMobile,
-  OnBoarding,
+  onBoarding,
 }: IRoutingParams) => {
   return (
     <ul className="Routing__list">
       {pathname === "/user" ? (
         <li className="Routing__list-white">
-          <Link to="/user" className={`${OnBoarding ? "disabled" : ""}`}>
+          <Link to="/user" className={`${onBoarding ? "disabled" : ""}`}>
             <img src="/Misc/Navbar/dashBlue.svg" alt="Dashboard" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Dashboard</p>}
           </Link>
         </li>
       ) : (
         <li className="Routing__list-blue">
-          <Link to="/user" className={`${OnBoarding ? "disabled" : ""}`}>
+          <Link to="/user" className={`${onBoarding ? "disabled" : ""}`}>
             <img src="/Misc/Navbar/dashWhite.svg" alt="Dashboard" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Dashboard</p>}
           </Link>
@@ -29,7 +29,7 @@ const Routing = ({
         <li className="Routing__list-white">
           <Link
             to="/user/savingsFinder"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/SFBlue.svg" alt="Savings Finder" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Savings Finder</p>}
@@ -39,7 +39,7 @@ const Routing = ({
         <li className="Routing__list-blue">
           <Link
             to="/user/savingsFinder"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/SFWhite.svg" alt="Savings Finder" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Savings Finder</p>}
@@ -50,7 +50,7 @@ const Routing = ({
         <li className="Routing__list-white">
           <Link
             to="/user/computeFinder"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/CFBlue.svg" alt="Compute Finder" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Compute Finder</p>}
@@ -60,7 +60,7 @@ const Routing = ({
         <li className="Routing__list-blue">
           <Link
             to="/user/computeFinder"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/CFWhite.svg" alt="Compute Finder" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Compute Finder</p>}
@@ -71,7 +71,7 @@ const Routing = ({
         <li className="Routing__list-white">
           <Link
             to="/user/existingPlans"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/EPBlue.svg" alt="Existing Plans" />
             {!screenWidthMobile && (
@@ -83,7 +83,7 @@ const Routing = ({
         <li className="Routing__list-blue">
           <Link
             to="/user/existingPlans"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/EPWhite.svg" alt="Existing Plans" />
             {!screenWidthMobile && (
@@ -96,7 +96,7 @@ const Routing = ({
         <li className="Routing__list-white">
           <Link
             to="/user/savingsPlans"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/SPBlue.svg" alt="Savings Plans" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Savings Plans</p>}
@@ -106,7 +106,7 @@ const Routing = ({
         <li className="Routing__list-blue">
           <Link
             to="/user/savingsPlans"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/SPWhite.svg" alt="Savings Plans" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Savings Plans</p>}
@@ -117,7 +117,7 @@ const Routing = ({
         <li className="Routing__list-white">
           <Link
             to="/user/account"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/AccountBlue.svg" alt="Account" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Account</p>}
@@ -127,7 +127,7 @@ const Routing = ({
         <li className="Routing__list-blue">
           <Link
             to="/user/account"
-            className={`${OnBoarding ? "disabled" : ""}`}
+            className={`${onBoarding ? "disabled" : ""}`}
           >
             <img src="/Misc/Navbar/AccountWhite.svg" alt="Account" />
             {!screenWidthMobile && <p style={{ margin: 0 }}>Account</p>}
@@ -138,7 +138,7 @@ const Routing = ({
   );
 };
 
-const Navbar = ({pathname, screenWidthMobile, OnBoarding, currentUser}: IRoutingParams) => {
+const Navbar = ({pathname, screenWidthMobile, onBoarding, currentUser}: IRoutingParams) => {
   return (
     <div className='NavbarContainer'>
       <div className='NavbarContainer__routing'>
@@ -146,7 +146,7 @@ const Navbar = ({pathname, screenWidthMobile, OnBoarding, currentUser}: IRouting
         {!screenWidthMobile ? <img src='/Misc/Navbar/logo.svg' alt='logo' /> : <img src='/Misc/Navbar/logo2.svg' alt='logo' />}
           <hr className='NavbarContainer__routing-hr' />
         </div>
-        <Routing pathname={pathname} screenWidthMobile={screenWidthMobile} OnBoarding={OnBoarding}/>
+        <Routing pathname={pathname} screenWidthMobile={screenWidthMobile} onBoarding={onBoarding}/>
       </div>
       <div className='NavbarContainer__user'>
         {!screenWidthMobile && (
@@ -162,7 +162,7 @@ const Navbar = ({pathname, screenWidthMobile, OnBoarding, currentUser}: IRouting
               </div>
             </>
           )}
-          <Link to='/user/:id' className={`NavbarContainer__user-settingsImg ${OnBoarding ? 'disabled' : ''}`}>
+          <Link to='/user/:id' className={`NavbarContainer__user-settingsImg ${onBoarding ? 'disabled' : ''}`}>
             <img src='/Misc/Navbar/settings.svg' alt='settings' />
           </Link>
         </div>

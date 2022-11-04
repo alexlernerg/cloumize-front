@@ -30,7 +30,7 @@ const SavingsFinder = (
 ) => {
   return (
     <div className='SavingsFinder'>
-      <Navbar />
+      <Navbar onBoarding={false}/>
       {dataSF[0]?.recommendation_id_cm === 'no_recommendation' ? (
         <Spinner />
       ) : (

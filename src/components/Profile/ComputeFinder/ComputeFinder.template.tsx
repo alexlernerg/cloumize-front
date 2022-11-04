@@ -44,7 +44,7 @@ const ExternalData = ({data}:{data:number[]}) => {
 const ComputeFinder = (screenWidthMobile: boolean, dataCF: IDataCF[], columnsCF:string[], stats:number[]) => {
   return (
     <div className='ComputeFinder'>
-      <Navbar />
+      <Navbar onBoarding={false}/>
       {dataCF[0].user_id_cm === 0 ? <Spinner/> : 
       <div className='ComputeFinder__container'>
         <h1 className='ComputeFinder__container-title'>

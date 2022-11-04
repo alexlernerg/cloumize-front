@@ -48,7 +48,7 @@ const ExistingPlans = (
 ) => {
   return (
     <div className='ExistingPlans'>
-      <Navbar />
+      <Navbar onBoarding={false}/>
       {dataEP[0].user_id_cm === 0 ? (
         <Spinner />
       ) : (
