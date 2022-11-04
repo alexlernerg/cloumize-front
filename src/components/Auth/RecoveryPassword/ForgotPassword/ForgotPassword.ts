@@ -1,3 +1,4 @@
+import { IUser, ITouched } from './interface';
 import { useState } from "react";
 import { validators } from "../../../../helpers/validators";
 import { passwordResetEmail } from "../../../../services/AuthService";
@@ -5,21 +6,24 @@ import templateForgotPassword from "./ForgotPassword.template";
 
 const ForgotPassword =()=>{
   const [user, setUser]: [
-    { email: string; error_email: string },
-    React.Dispatch<React.SetStateAction<{ email: string; error_email: string }>>
+   IUser,
+    React.Dispatch<React.SetStateAction<IUser>>
   ] = useState({
     email: '',
-    error_email: validators.email(),
+    error_email: validators.email(''),
   });
 
-  const [response, setResponse] = useState('');
+  const [response, setResponse]:[
+    string,
+    React.Dispatch<React.SetStateAction<string>>
+  ] = useState('');
 
   const [show, setShow]: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>):void => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {value} = event.target;
     setUser({
       email: value,
@@ -39,10 +43,10 @@ const ForgotPassword =()=>{
 
     if (isValid()) {
       passwordResetEmail({email: user.email})
-          .then((res: any) => {
+          .then(() => {
             setResponse('Check your email');
           })
-          .catch((error: any) => {
+          .catch((error: Error) => {
             setResponse(`Something went wrong: ${error.message}`);
           });
       setTimeout(()=> setShow(false), 5000)
@@ -50,7 +54,7 @@ const ForgotPassword =()=>{
     }
   };
 
-  const [touched, setTouched] = useState({});
+  const [touched, setTouched]: [ITouched, React.Dispatch<React.SetStateAction<ITouched>>] =useState({});
 
   const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
@@ -70,18 +74,18 @@ const ForgotPassword =()=>{
     }));
   };
 
-  const props = {
+
+  return templateForgotPassword({
     user,
     show,
     isValid,
     onChange,
     onSubmit,
-    touched,
     onBlur,
     onFocus,
+    touched,
     response
-  };
-  return templateForgotPassword(props);
+});
 }
 
 export default ForgotPassword;

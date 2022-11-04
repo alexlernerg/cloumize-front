@@ -1,12 +1,14 @@
+import { ITouched } from './RecoveryPassword/InsertPassword/interfaces';
+import { IError, IResponse } from './../../interfaces/common';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useUser } from '../../context/hook/useUser';
 import { validators } from '../../helpers/validators';
-import { signIn, signUp, passwordResetEmail } from '../../services/AuthService';
+import { signIn, signUp } from '../../services/AuthService';
 import { setAccessToken } from '../../store/AccessTokenStore';
 import { useNavigate } from 'react-router-dom';
 import templateAuth from './Auth.template';
-import { IUser } from '../../interfaces/json';
+import { IData, IErrors } from './interfaces';
 
 const Auth = () => {
   //Current url
@@ -23,7 +25,8 @@ const Auth = () => {
   const { setCurrentUser, getCurrentUser } = useUser();
 
   //Form logic
-  const [data, setData]: [IUser, React.Dispatch<React.SetStateAction<IUser>>] =
+  const [data, setData]: [IData,
+    React.Dispatch<React.SetStateAction<IData>>] =
     useState({
       awsAccountName: '',
       companyName: '',
@@ -32,12 +35,13 @@ const Auth = () => {
       password: '',
       confirmPassword: '',
     });
-  const [errors, setErrors]: [any, React.Dispatch<React.SetStateAction<any>>] =
+
+  const [errors, setErrors]: [IErrors, React.Dispatch<React.SetStateAction<IErrors>>] =
     useState({
-      awsAccountName: validators.aws(),
-      companyName: validators.company(),
-      userName: validators.name(),
-      email: validators.email(),
+      awsAccountName: validators.aws(''),
+      companyName: validators.company(''),
+      userName: validators.name(''),
+      email: validators.email(''),
       password: {
         lengthMsg: validators.password(data.password),
         uppercaseMsg: validators.passwordUppercase(data.password),
@@ -47,17 +51,17 @@ const Auth = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setData((prevState: IUser) => ({
+    setData((prevState: IData) => ({
       ...prevState,
       [name]: value,
     }));
     if (name !== 'password') {
-      setErrors((prevState: any) => ({
+      setErrors((prevState: IErrors) => ({
         ...prevState,
         [name]: validators[name] && validators[name](value),
       }));
     } else {
-      setErrors((prevState: any) => ({
+      setErrors((prevState: IErrors) => ({
         ...prevState,
         password: {
           lengthMsg: validators.password(value),
@@ -68,7 +72,7 @@ const Auth = () => {
     }
   };
 
-  const [touched, setTouched] = useState({});
+  const [touched, setTouched]: [ITouched, React.Dispatch<React.SetStateAction<ITouched>>] = useState({});
 
   const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
@@ -116,12 +120,12 @@ const Auth = () => {
     e.preventDefault();
     if (isValidSignin() && signinPage) {
       signIn({ email: data.email, password: data.password })
-        .then((response: any) => {
+        .then((response: IResponse) => {
           setAccessToken(response.token);
           setCurrentUser(response.user);
           navigate('/user');
         })
-        .catch((error: any) => {
+        .catch((error: IError) => {
           setErrorAPI(error?.data.errors.message);
           setTimeout(() => setErrorAPI(''), 3000);
           setShow(true);
@@ -135,10 +139,10 @@ const Auth = () => {
         companyName: data.companyName,
         userName: data.userName,
       })
-        .then((response: any) => {
+        .then((response: IResponse) => {
           navigate('/signin');
         })
-        .catch((error: any) => {
+        .catch((error: IError) => {
           setErrorAPI(error?.data.errors.message);
           setTimeout(() => setErrorAPI(''), 3000);
           setShow(true);
@@ -146,7 +150,9 @@ const Auth = () => {
     }
   };
 
-  const formLogic = {
+  return templateAuth({
+    screenWidthMobile,
+    signinPage,
     data,
     errors,
     onChange,
@@ -154,9 +160,8 @@ const Auth = () => {
     onBlur,
     onFocus,
     onSubmit,
-  };
-
-  return templateAuth(screenWidthMobile, signinPage, formLogic, errorAPI, show);
+    errorAPI,
+    show});
 };
 
 export default Auth;
