@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IEvent } from "./interface";
 import templateLanding from "./Landing.template";
 
 const Landing =()=>{
@@ -18,13 +19,14 @@ const Landing =()=>{
     {id: 2, img:{src:"/Landing/info5-3.svg", alt:"picture"}, content: "Select the discounts and start saving with the guaranteed sale program"}
   ]
 
-  const [ID, setID] = useState(0);
-  const onClick = (e:any) => {
-    const {id} = e.target;
+  const [ID, setID]: [string, React.Dispatch<React.SetStateAction<string>>] = useState('0');
+
+  const onClick = (event: IEvent) => {
+    const { id } = event.target
     setID(id)
   }
 
-  return templateLanding(screenWidthMobile, info2, info5, ID, onClick);
+  return templateLanding({screenWidthMobile, info2, info5, ID, onClick});
 }
 
 export default Landing;

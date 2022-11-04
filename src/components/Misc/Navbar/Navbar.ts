@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useUser } from "../../../context/hook/useUser";
 import templateNavbar from "./Navbar.template";
 
-const Navbar =({onBoarding}:any)=>{
+const Navbar = ({ OnBoarding }: { OnBoarding: boolean})=>{
   //Current url
   const {pathname} = useLocation();
 
@@ -11,7 +11,7 @@ const Navbar =({onBoarding}:any)=>{
   //Screen width
   const screenWidthMobile = window.screen.width < 1280
 
-  return templateNavbar(pathname, screenWidthMobile, onBoarding, currentUser);
+  return templateNavbar({pathname, screenWidthMobile, OnBoarding, currentUser});
 }
 
 export default Navbar;

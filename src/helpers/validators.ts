@@ -39,7 +39,7 @@ const parts = [
 // Joined parts into regex expression
 const regexARN = new RegExp(parts.join(''));
 
-export const validators: any = {
+export const validators: { [key: string]: (value: string) => string|undefined} = {
   ARN: (value: string): any => {
     let message;
 
