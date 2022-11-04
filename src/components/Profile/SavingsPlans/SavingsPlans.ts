@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IError, IResponse } from "../../../interfaces/common";
 import { getSavingsPlans } from "../../../services/DataService";
 import templateSavingsPlans from "./SavingsPlans.template";
 
@@ -28,7 +29,7 @@ const SavingsPlans =()=>{
 
   useEffect(() => {
     getSavingsPlans()
-      .then((response: any) => {
+      .then((response: IResponse) => {
         console.log("response", response)
         if (response?.savings_plan_data.length !== 0) {
           setInfo([
@@ -42,7 +43,7 @@ const SavingsPlans =()=>{
           setDataSP([])
         }
       })
-      .catch((error: any) => {
+      .catch((error: IError) => {
         console.error('Error data SP', error);
       });
   }, []);

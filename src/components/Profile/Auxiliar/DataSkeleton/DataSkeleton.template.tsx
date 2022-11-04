@@ -2,7 +2,7 @@ import React from 'react';
 import { addCommas } from '../../../../helpers/transformNumber';
 import './DataSkeleton.scss';
 
-const DataSkeleton = (info: any, pathname: string, onClick:any) => {
+const DataSkeleton = (info: any, pathname: string, onClick:() => void) => {
   return (
     <>
       <div className={`DataSkeleton ${pathname === '/user/savingsFinder' && 'mb-4'}`}>

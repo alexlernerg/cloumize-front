@@ -1,7 +1,7 @@
 export interface IRoutingParams {
   pathname: string,
   screenWidthMobile: boolean,
-  OnBoarding: boolean,
+  onBoarding: boolean,
   currentUser?: {
     name: string
     email: string

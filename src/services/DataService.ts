@@ -1,3 +1,4 @@
+import { IARN, ISF, IState, IStatus } from '../interfaces/services';
 import { create } from './BaseService';
 
 const http = create({
@@ -28,19 +29,18 @@ export const getDiscounts = async () => {
 };
 
 //POST
-export const sendARN = async (ARN:any) => {
+export const sendARN = async (ARN:IARN) => {
   return await http.post(`/data/insert-arn`, {data:ARN});
 };
-export const retryARN = async (SF:any) => {
-  return await http.post(`/data/retry-insert-arn`, {data:SF});
+export const retryARN = async (state:IState) => {
+  return await http.post(`/data/retry-insert-arn`, {data: state});
 };
-export const approveSF = async (SF:any) => {
+export const approveSF = async (SF:ISF) => {
   return await http.post(`/data/aprove-saving-finder`, {data:SF});
 };
 
 //AUTO-SAVER
-export const saver = async (SF:any) => {
-  console.log("DATA TO API:", SF)
-  return await http.post(`/data/auto-saver`, {data:SF});
+export const saver = async (status:IStatus) => {
+  return await http.post(`/data/auto-saver`, {data: status});
 };
 

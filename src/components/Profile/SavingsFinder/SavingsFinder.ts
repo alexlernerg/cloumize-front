@@ -2,13 +2,13 @@ import templateSavingsFinder from './SavingsFinder.template';
 import { useEffect, useState } from 'react';
 import { getSavingsFinder, saver } from '../../../services/DataService';
 import { useUser } from '../../../context/hook/useUser';
+import { IError, IResponse } from '../../../interfaces/common';
 
 const SavingsFinder = () => {
   //Screen width
   const screenWidthMobile = window.screen.width < 1280;
 
   const {currentUser} = useUser();
-  console.log("currentUSer", currentUser)
 
   const [info, setInfo] = useState([
     { id: 0, title: 'Cloumize annual', savings: 'Savings', total: '$1,000' },
@@ -34,8 +34,8 @@ const SavingsFinder = () => {
 
   useEffect(() => {
     getSavingsFinder()
-      .then((response: any) => {
-        console.log('responseSF', response);
+      .then((response: IResponse) => {
+        // console.log('responseSF', response);
         if (response?.savings_finder_data.length !== 0) {
           setInfo([
             {
@@ -68,7 +68,7 @@ const SavingsFinder = () => {
           setDataSF([]);
         }
       })
-      .catch((error: any) => {
+      .catch((error: IError) => {
         console.error('Error data SF', error);
       });
   }, []);
@@ -93,13 +93,13 @@ const SavingsFinder = () => {
 
   const [autoSaver, setAutoSaver] = useState(false);
 
-  const sendAutoSaver = (number:any) => {
+  const sendAutoSaver = (number:number) => {
     saver({auto_saver_status: number, user_id_cm: currentUser.user_id_cm})
-    .then ((response:any)=> console.log("response", response))
-    .catch((error:any)=> console.log("error", error))
+    .then ((response: IResponse)=> console.log("response", response))
+    .catch((error: IError)=> console.log("error", error))
   }
 
-  const onChange = async (e:any) => {
+  const onChange = async (e: React.FormEvent<HTMLInputElement>) => {
     if (autoSaver) {
       setAutoSaver(false)
       sendAutoSaver(0)

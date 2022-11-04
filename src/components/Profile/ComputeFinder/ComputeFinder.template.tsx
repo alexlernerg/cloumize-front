@@ -5,7 +5,21 @@ import Data2Skeleton from '../Auxiliar/DataSkeleton/DataSkeleton';
 import TableSkeleton from '../Auxiliar/TableSkeleton/TableSkeleton';
 import './ComputeFinder.scss';
 
-const ExternalData = ({data}:any) => {
+interface IDataCF {
+  user_id_cm: number;
+  aws_account_id: number;
+  instance_id: string;
+  instance_type: string;
+  region: string;
+  az: string;
+  platform: string;
+  tenancy: string;
+  instance_lifecycle: string;
+  state: string;
+  launch_time: string;
+}
+
+const ExternalData = ({data}:{data:number[]}) => {
   return (
     <div className='ComputeFinder__interestingData'>
       <p>
@@ -27,10 +41,10 @@ const ExternalData = ({data}:any) => {
   );
 };
 
-const ComputeFinder = (screenWidthMobile: boolean, dataCF:any, columnsCF:string[], stats:any) => {
+const ComputeFinder = (screenWidthMobile: boolean, dataCF: IDataCF[], columnsCF:string[], stats:number[]) => {
   return (
     <div className='ComputeFinder'>
-      <Navbar />
+      <Navbar onBoarding={false}/>
       {dataCF[0].user_id_cm === 0 ? <Spinner/> : 
       <div className='ComputeFinder__container'>
         <h1 className='ComputeFinder__container-title'>

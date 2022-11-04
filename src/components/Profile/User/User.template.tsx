@@ -4,7 +4,7 @@ import './User.scss';
 
 const User = () => {
   return <div className='UserContainer'>
-    <Navbar/>
+    <Navbar onBoarding={false}/>
     <div>User</div>
   </div>;
 };

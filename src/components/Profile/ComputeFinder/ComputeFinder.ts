@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { getComputeFinder } from "../../../services/DataService";
-import templateComputeFinder from "./ComputeFinder.template";
+import { useEffect, useState } from 'react';
+import { IError, IResponse } from '../../../interfaces/common';
+import { getComputeFinder } from '../../../services/DataService';
+import templateComputeFinder from './ComputeFinder.template';
 
-const ComputeFinder =()=>{
+const ComputeFinder = () => {
   //Screen width
-  const screenWidthMobile = window.screen.width < 1280
+  const screenWidthMobile = window.screen.width < 1280;
 
   const [dataCF, setDataCF] = useState([
     {
@@ -19,31 +20,32 @@ const ComputeFinder =()=>{
       instance_lifecycle: 'on_demand',
       state: 'stopped',
       launch_time: '2022-03-30 08:22:13',
-    }
-  ])
+    },
+  ]);
 
   const [stats, setStats] = useState([0, 0, 0, 0, 0]);
 
   useEffect(() => {
     getComputeFinder()
-      .then((response: any) => {
+      .then((response: IResponse) => {
         if (response?.ec2_instance_data.length !== 0) {
-          setStats([response.ec2_instance_stats.running_instance,
+          setStats([
+            response.ec2_instance_stats.running_instance,
             response.ec2_instance_stats.stopped_instance,
             response.ec2_instance_stats.on_demand_instance,
             response.ec2_instance_stats.spot_instance,
-            response.ec2_instance_stats.scheduled_instance, ])
-          setDataCF(response.ec2_instance_data)
+            response.ec2_instance_stats.scheduled_instance,
+          ]);
+          setDataCF(response.ec2_instance_data);
         } else {
-          setDataCF([])
+          setDataCF([]);
         }
-        
       })
-      .catch((error: any) => {
+      .catch((error: IError) => {
         console.error('Error data CF', error);
       });
   }, []);
-  
+
   const columnsCF = [
     'AWS Account ID',
     'Instance ID',
@@ -58,6 +60,6 @@ const ComputeFinder =()=>{
   ];
 
   return templateComputeFinder(screenWidthMobile, dataCF, columnsCF, stats);
-}
+};
 
 export default ComputeFinder;
