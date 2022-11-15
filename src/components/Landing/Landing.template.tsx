@@ -679,13 +679,7 @@ const Landing = ({
                 <img src="/Landing/Twitter.svg" alt="twitter" />
               </a>
             </div>
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=support@cloumize.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              support@cloumize.com
-            </a>
+            <a href='https://privacy-terms-cloumize.s3.eu-west-1.amazonaws.com/Cloumize+Privacy+Policy+V3.docx.pdf' target="_blank" rel="noreferrer">Privacy Policy & Terms and Conditions</a>
           </div>
         </div>
       </footer>
