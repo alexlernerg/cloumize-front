@@ -4,7 +4,7 @@ import { getAccessToken, isTokenValid, logout } from "../store/AccessTokenStore"
 export const create = (opts: any): any => {
   const http = axios.create({
     baseURL:
-    "https://sandbox-api.cloutomo.com/api",
+    "http://sandbox-api.cloutomo.com/api",
     // "https://cloumize-api.herokuapp.com/api",
     ...opts,
   });
