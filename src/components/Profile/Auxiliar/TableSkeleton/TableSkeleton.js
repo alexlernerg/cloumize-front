@@ -94,7 +94,7 @@ const TableSkeleton = ({ data, columns }) => {
   }
 
   const contentPopUp = {
-    title: 'Are you sure you want to pass the selected instances?',
+    title: 'Are you sure you want to reserve the selected instances?',
     button: ["Yes, I'm sure", "No, come back"]
   }
 
@@ -105,15 +105,15 @@ const TableSkeleton = ({ data, columns }) => {
     screenWidthMobile,
     filteredData,
     filterChoosed,
-    search, 
+    search,
     onChange,
     isCheckAll,
-    isCheck, 
+    isCheck,
     list,
     handleSelectAll,
-    handleClick, 
-    sendApproval, 
-    show, 
+    handleClick,
+    sendApproval,
+    show,
     showPopup,
     responseAPI,
     contentPopUp

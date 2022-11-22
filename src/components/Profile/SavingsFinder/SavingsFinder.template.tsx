@@ -50,7 +50,7 @@ const SavingsFinder = (
                 className='SavingsFinder__container-recomendations form-check-label'
                 htmlFor='flexSwitchCheckDefault'
               >
-                Auto-Saver
+                Auto-Saver - This will enable autopilot mode, approving all recommentations
               </label>
             </div>
           </div>

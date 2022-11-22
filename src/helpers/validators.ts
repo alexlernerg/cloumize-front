@@ -45,9 +45,9 @@ export const validators: { [key: string]: (value: string) => string|undefined} =
 
     if (!value) {
       message = 'ARN is required';
-    } 
+    }
     if (value && !regexARN.test(value)) {
-      message = 'ARN must have a correct format';
+      message = 'Please insert the full ARN code starting with "arn::aws::iam"';
     }
 
     return message;
@@ -109,10 +109,10 @@ export const validators: { [key: string]: (value: string) => string|undefined} =
 
     if (!value) {
       message = 'Uppercase letter';
-    } 
+    }
     if (value && !checkUppercase(value)) {
       message = 'Uppercase letter';
-    } 
+    }
     if (value && checkUppercase(value)) {
       message = '';
     }
@@ -126,7 +126,7 @@ export const validators: { [key: string]: (value: string) => string|undefined} =
     }
     if (value && !checkLowercase(value)) {
       message = 'Lower case letter';
-    } 
+    }
     if (value && checkLowercase(value)) {
       message = '';
     }
