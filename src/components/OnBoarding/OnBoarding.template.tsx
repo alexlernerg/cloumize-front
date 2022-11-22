@@ -157,18 +157,24 @@ const OnBoarding = (
                   savings on the EC2 Reserved Instance Marketplace. It does not
                   allow us to change, modify or read your code or sensitive
                   information.
-                </p>
+                  </p>
+
+                  <a href={
+                    `https://privacy-terms-cloumize.s3.eu-west-1.amazonaws.com/Cloumize+IAM+Policy.pdf`}
+                     target="_blank" rel="noreferrer">
+                      Full list of permissions we ask for </a>
               </>
+
             )}
             {page === 1 && (
               <>
                 <p className={`OnBoardingContainer__content-${page}-title1`}>
-                  Click on the following link to create an IAM CloudFormation
-                  Stack.
+                  Click on next or on the link below to open the IAM CloudFormation Stack: <p> <a href={
+                    `https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://cloumize-public-dev.s3.eu-west-3.amazonaws.com/cfn-iam-role-template-public-without-signed/iamrole.yml&stackName=Cloumize-Create-I-AM-Role&param_CloumizeExternalID=${externalID}&param_CloumizeIamRole=arn:aws:iam::863543637728:root`}
+                     target="_blank" rel="noreferrer">
+                     Link to the AWS CloudFormation Template </a>
                 </p>
-                <p className={`OnBoardingContainer__content-${page}-text1`}>
-                  To obtain the benefits and continue with the process,{' '}
-                  <span>create a Stack</span>
+
                 </p>
               </>
             )}
@@ -176,11 +182,11 @@ const OnBoarding = (
               <>
                 <div className={`OnBoardingContainer__content-${page}-step1`}>
                   <img src='/OnBoarding/step1.svg' alt='step1' />
-                  <p>Wait until the stack creation is complete</p>
+                  <p>Wait until the stack creation is complete - This should take from 3-5 minutes</p>
                 </div>
                 <div className={`OnBoardingContainer__content-${page}-step2`}>
                   <img src='/OnBoarding/step2.svg' alt='step2' />
-                  <p>Select the output tab and insert the arn code</p>
+                  <p>Select the output tab and insert the arn code (full output value)</p>
                 </div>
                 <div className={`OnBoardingContainer__content-${page}-ARN`}>
                   <label>Arn Code</label>
