@@ -32,7 +32,7 @@ export default function App() {
           <Route path='/user/account' element={<Account />} />
           <Route path='/user/:id' element={<User />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
-          <Route path='change-password/:token' element={<InsertPassword />} />
+          <Route path='/change-password/:token' element={<InsertPassword >} />
           {/* <Route path='/*' element={<Error />} /> */}
         </Routes>
       </UserProvider>
