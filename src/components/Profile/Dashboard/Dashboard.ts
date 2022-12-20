@@ -245,13 +245,13 @@ const Dashboard = () => {
       wasted_spending: dataRest?.missed_savings_last_year,
     },
     {
-      title: 'Last month',
+      title: 'Current month',
       EC2: dataRest?.ec2_cost_last_month,
       achieved_savings: dataRest?.achieved_savings_last_month,
       wasted_spending: dataRest?.missed_savings_last_month,
     },
   ];
-  
+
   return templateDashboard(
     dataRest,
     data,
