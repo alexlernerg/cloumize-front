@@ -679,7 +679,7 @@ const Landing = ({
                 <img src="/Landing/Twitter.svg" alt="twitter" />
               </a>
             </div>
-            <a href='https://privacy-terms-cloumize.s3.eu-west-1.amazonaws.com/Cloumize+Privacy+Policy+V3.docx.pdf' target="_blank" rel="noreferrer">Privacy Policy & Terms and Conditions</a>
+            <a href='https://docs.google.com/document/u/2/d/e/2PACX-1vRPFb7RKXugpPoktVYwH1O6m_rLSSFK9KYe4T64Z3QlBsyGBhtJdyj-_8xWFi4i9w/pub' target="_blank" rel="noreferrer">Privacy Policy & Terms and Conditions</a>
           </div>
         </div>
       </footer>
