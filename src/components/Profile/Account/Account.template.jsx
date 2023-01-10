@@ -130,7 +130,7 @@ export default function Account({
               <div className='Account__container-AWS'>
                 <p>Please Register as an seller in the AWS Reserved Instance Marketplace. Check the box once completed, for instructions follow this
                 <a href={
-                `https://privacy-terms-cloumize.s3.eu-west-1.amazonaws.com/AWS+Seller+Registration%2C+Espan%CC%83ol.pdf`}
+                `https://docs.google.com/document/d/e/2PACX-1vTBItuTBkp8llFZNVy_v0B78iUPCvmXeUzhcTAxGUgPhH6BvzuvRQhoVLUqMJTNgf_PHySJdldHipCo/pub`}
                  target="_blank" rel="noreferrer">
                 link
                   </a>
